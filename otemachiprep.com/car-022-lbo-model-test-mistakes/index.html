@@ -1,0 +1,2644 @@
+<!DOCTYPE html>
+<html lang="ja" class="js">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600&family=Inter:wght@400;500;600&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet" media="print" onload="this.media='all';this.onload=null"><noscript><link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600&family=Inter:wght@400;500;600&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet"></noscript>
+<link rel="icon" type="image/png" sizes="32x32" href="../wp-content/themes/otemachi-prep-child/assets/images/op-favicon.png">
+<link rel="icon" type="image/png" sizes="64x64" href="../wp-content/themes/otemachi-prep-child/assets/images/op-favicon-64.png">
+<link rel="apple-touch-icon" href="../wp-content/themes/otemachi-prep-child/assets/images/op-touch-icon.png">
+<meta name="theme-color" content="#14355F">
+<script>document.documentElement.classList.add('js');</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-YL19Q40XV6"></script>
+<script id="opm-gtag">
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('set', 'user_properties', {op_member_level: "guest"});
+gtag('config', "G-YL19Q40XV6", {anonymize_ip: true});
+</script>
+		<title>LBOモデルテストで落ちる典型的なミス30選｜採点者が見るポイントと修正方法｜大手町プレップ</title>
+<meta name='robots' content='max-image-preview:large' />
+<script id="opm-datalayer">
+window.dataLayer = window.dataLayer || [];
+(function(){
+  var base = {"op_member_level":"guest"};
+  function push(o){
+    var d = {}; for (var k in base) d[k] = base[k];
+    for (var k2 in o) d[k2] = o[k2];
+    window.dataLayer.push(d);
+    if (typeof window.gtag === 'function' && d.event) {
+      var p = {}; for (var k3 in d) { if (k3 !== 'event') p[k3] = d[k3]; }
+      window.gtag('event', d.event, p);
+    }
+  }
+  window.opmTrack = push;
+  var evs = [{"event":"op_free_content_view","op_visibility":"public"}];
+  for (var i = 0; i < evs.length; i++) push(evs[i]);
+})();
+</script>
+		<link rel="preload" href="https://otemachiprep.com/wp-content/themes/otemachi-prep-child/assets/fonts/inter/InterVariable.woff2" as="font" type="font/woff2" crossorigin>
+<link rel='dns-prefetch' href='//secure.gravatar.com' />
+<link rel='dns-prefetch' href='//widgets.wp.com' />
+<link rel='dns-prefetch' href='//jetpack.wordpress.com' />
+<link rel='dns-prefetch' href='//s0.wp.com' />
+<link rel='dns-prefetch' href='//public-api.wordpress.com' />
+<link rel='dns-prefetch' href='//0.gravatar.com' />
+<link rel='dns-prefetch' href='//1.gravatar.com' />
+<link rel='dns-prefetch' href='//2.gravatar.com' />
+<link rel='preconnect' href='//i0.wp.com' />
+<link rel='preconnect' href='//c0.wp.com' />
+<link rel="alternate" type="application/rss+xml" title="大手町プレップ &raquo; フィード" href="https://otemachiprep.com/feed/" />
+<link rel="alternate" type="application/rss+xml" title="大手町プレップ &raquo; コメントフィード" href="https://otemachiprep.com/comments/feed/" />
+<link rel="alternate" type="application/rss+xml" title="大手町プレップ &raquo; LBOモデルテストで落ちる典型的なミス30選｜採点者が見るポイントと修正方法 のコメントのフィード" href="https://otemachiprep.com/car-022-lbo-model-test-mistakes/feed/" />
+<link rel="alternate" title="oEmbed (JSON)" type="application/json+oembed" href="https://otemachiprep.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fotemachiprep.com%2Fcar-022-lbo-model-test-mistakes%2F" />
+<link rel="alternate" title="oEmbed (XML)" type="text/xml+oembed" href="https://otemachiprep.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fotemachiprep.com%2Fcar-022-lbo-model-test-mistakes%2F&#038;format=xml" />
+
+<!-- op-seo-v1 -->
+<meta name="description" content="PE・投資銀行選考のLBOモデルテストで失点しやすい典型的なミス30項目を、モデル構造・S&amp;U・Debt Schedule・金利計算・税金・IRR/MOIC・時間配分の分類別に整理。原因と数値への影響、採点者が見るポイント、Excel上の修正方法まで解説します。">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="大手町プレップ">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:title" content="LBOモデルテストで落ちる典型的なミス30選｜採点者が見るポイントと修正方法｜大手町プレップ">
+<meta property="og:description" content="PE・投資銀行選考のLBOモデルテストで失点しやすい典型的なミス30項目を、モデル構造・S&amp;U・Debt Schedule・金利計算・税金・IRR/MOIC・時間配分の分類別に整理。原因と数値への影響、採点者が見るポイント、Excel上の修正方法まで解説します。">
+<meta property="og:url" content="https://otemachiprep.com/car-022-lbo-model-test-mistakes/">
+<meta property="og:image" content="https://i0.wp.com/otemachiprep.com/wp-content/uploads/thumbnails/2026-09-20/car-022-lbo-model-test-mistakes.webp?fit=1600%2C900&#038;ssl=1">
+<meta property="og:image:width" content="1600">
+<meta property="og:image:height" content="900">
+<meta property="og:image:alt" content="大手町プレップ｜学ぶ。調べる。実践する。— M&amp;A・PE・投資銀行・財務モデリングの専門プラットフォーム">
+<meta property="article:published_time" content="2026-08-16T13:23:22+09:00">
+<meta property="article:modified_time" content="2026-09-10T02:30:35+09:00">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="LBOモデルテストで落ちる典型的なミス30選｜採点者が見るポイントと修正方法｜大手町プレップ">
+<meta name="twitter:description" content="PE・投資銀行選考のLBOモデルテストで失点しやすい典型的なミス30項目を、モデル構造・S&amp;U・Debt Schedule・金利計算・税金・IRR/MOIC・時間配分の分類別に整理。原因と数値への影響、採点者が見るポイント、Excel上の修正方法まで解説します。">
+<meta name="twitter:image" content="https://i0.wp.com/otemachiprep.com/wp-content/uploads/thumbnails/2026-09-20/car-022-lbo-model-test-mistakes.webp?fit=1600%2C900&#038;ssl=1">
+<meta name="twitter:image:alt" content="大手町プレップ｜学ぶ。調べる。実践する。— M&amp;A・PE・投資銀行・財務モデリングの専門プラットフォーム">
+
+<!-- op-seo-v1 JSON-LD -->
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://otemachiprep.com/#organization","name":"大手町プレップ","alternateName":"OTEMACHI PREP","url":"https://otemachiprep.com/","logo":{"@type":"ImageObject","@id":"https://otemachiprep.com/#logo","url":"https://otemachiprep.com/wp-content/uploads/2026/07/op-site-icon-preview.png","width":512,"height":512,"caption":"大手町プレップ"},"image":{"@id":"https://otemachiprep.com/#logo"},"contactPoint":{"@type":"ContactPoint","email":"support@otemachiprep.com","contactType":"customer support","availableLanguage":["Japanese"]}},{"@type":"WebSite","@id":"https://otemachiprep.com/#website","url":"https://otemachiprep.com/","name":"大手町プレップ","alternateName":"OTEMACHI PREP","description":"DCF・LBO・M&A・バリュエーション・財務モデリングを日本語で学べる実務者向けファイナンス学習サイト","publisher":{"@id":"https://otemachiprep.com/#organization"},"inLanguage":"ja","potentialAction":{"@type":"SearchAction","target":{"@type":"EntryPoint","urlTemplate":"https://otemachiprep.com/?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@type":"BreadcrumbList","@id":"https://otemachiprep.com/car-022-lbo-model-test-mistakes/#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"大手町プレップ","item":"https://otemachiprep.com/"},{"@type":"ListItem","position":2,"name":"キャリア・面接","item":"https://otemachiprep.com/category/%e3%82%ad%e3%83%a3%e3%83%aa%e3%82%a2%e3%83%bb%e9%9d%a2%e6%8e%a5/"},{"@type":"ListItem","position":3,"name":"LBOモデルテストで落ちる典型的なミス30選｜採点者が見るポイントと修正方法","item":"https://otemachiprep.com/car-022-lbo-model-test-mistakes/"}]},{"@type":"Article","@id":"https://otemachiprep.com/car-022-lbo-model-test-mistakes/#article","headline":"LBOモデルテストで落ちる典型的なミス30選｜採点者が見るポイントと修正方法","description":"PE・投資銀行選考のLBOモデルテストで失点しやすい典型的なミス30項目を、モデル構造・S&U・Debt Schedule・金利計算・税金・IRR/MOIC・時間配分の分類別に整理。原因と数値への影響、採点者が見るポイント、Excel上の修正方法まで解説します。","inLanguage":"ja","datePublished":"2026-08-16T13:23:22+09:00","dateModified":"2026-09-10T02:30:35+09:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://otemachiprep.com/car-022-lbo-model-test-mistakes/"},"image":{"@type":"ImageObject","url":"https://i0.wp.com/otemachiprep.com/wp-content/uploads/thumbnails/2026-09-20/car-022-lbo-model-test-mistakes.webp?fit=1600%2C900&ssl=1"},"author":{"@type":"Organization","name":"大手町プレップ編集部","@id":"https://otemachiprep.com/#organization","url":"https://otemachiprep.com/about/"},"editor":{"@type":"Person","name":"西","url":"https://otemachiprep.com/about/#supervisor"},"publisher":{"@id":"https://otemachiprep.com/#organization"},"isPartOf":{"@id":"https://otemachiprep.com/#website"}},{"@type":"FAQPage","@id":"https://otemachiprep.com/car-022-lbo-model-test-mistakes/#faq","mainEntity":[{"@type":"Question","name":"モデルテストは何分で完成させるべきですか。","acceptedAnswer":{"@type":"Answer","text":"ファンドや出題形式によって幅があり、一律の正解時間はありません。1時間程度の短時間形式では、精緻さより「S&Uが合う」「三表が締まる」「リターン計算まで到達する」という完成度が優先される傾向があります。数時間〜数日の形式では、感度分析やICメモ相当の考察まで求められることが多くなります。いずれの形式でも、本記事のミス30を後半に発生させないよう、時間配分をあらかじめ決めておくことが重要です。"}},{"@type":"Question","name":"循環参照は使ってよいのですか。","acceptedAnswer":{"@type":"Answer","text":"平均残高方式で金利を計算する限り、循環参照の発生自体は自然な結果であり、それ自体は誤りではありません。問題になるのは、循環参照が発生しているのに反復計算（Iterative Calculation）を有効化していない、あるいはサーキュラリティ・スイッチのような復旧手段を用意せずにモデルが壊れやすい状態のまま提出することです。循環参照を避けたい場合は、期首残高方式を採用して意図的に循環を切るという設計判断もあり得ますが、その場合は利息がやや過大計上される点を理解した上で選ぶ必要があります。"}},{"@type":"Question","name":"本記事と手計算（Paper LBO）の記事はどう使い分ければよいですか。","acceptedAnswer":{"@type":"Answer","text":"ペーパーLBO（手計算）の練習法は、Excelを使わずに概算のIRR・MOICを素早く出す力を鍛える記事で、面接のその場での口頭説明にも直結します。本記事は、実際にExcelモデルを完成させる段階で技術的なミスを避けるためのカタログです。手計算で当たりをつける力と、Excelで精緻に組み上げる力の両方が、モデルテストでは別々に評価されると考えてください。面接全般の想定問答を横断的に確認したい場合はPE面接想定問答100選、キャリア全体の見取り図はPEキャリアの全体像もあわせて参考にしてください。"}}]}]}</script>
+<link rel='stylesheet' id='all-css-1368889a98bef45a99d69428d25a3303' href='https://otemachiprep.com/_static/??wp-content/themes/otemachi-prep-child/assets/css/op-article.css,wp-content/plugins/otemachi-prep-membership/assets/css/opm.css?m=1789961453' type='text/css' media='all' />
+<style id="jetpack-global-styles-frontend-style-inline-css">
+:root { --font-headings: unset; --font-base: unset; --font-headings-default: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif; --font-base-default: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif;}
+/*# sourceURL=jetpack-global-styles-frontend-style-inline-css */
+</style>
+<link rel='stylesheet' id='all-css-d83ba1559ad7b211576588f2cd1b94bb' href='https://otemachiprep.com/wp-content/themes/otemachi-prep-child/assets/css/op-article-v2.css?m=1789194615' type='text/css' media='all' />
+<script id="jetpack-mu-wpcom-settings-js-before">
+var JETPACK_MU_WPCOM_SETTINGS = {"assetsUrl":"https://otemachiprep.com/wp-content/mu-plugins/wpcomsh/jetpack_vendor/automattic/jetpack-mu-wpcom/src/build/"};
+//# sourceURL=jetpack-mu-wpcom-settings-js-before
+</script>
+<link rel="https://api.w.org/" href="https://otemachiprep.com/wp-json/" /><link rel="alternate" title="JSON" type="application/json" href="https://otemachiprep.com/wp-json/wp/v2/posts/3667" /><link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://otemachiprep.com/xmlrpc.php?rsd" />
+
+<link rel="canonical" href="index.html" />
+<link rel='shortlink' href='https://wp.me/phjY2f-X9' />
+<meta name="pinterest-rich-pin" content="false" />	<noscript><style>.woocommerce-product-gallery{ opacity: 1 !important; }</style></noscript>
+	<style id="op-fm-links-css">
+.op-fml-nav{margin:0 0 26px;padding:12px 16px;background:#F7F9FB;border:1px solid #DDE4EC;border-left:3px solid #14355F;border-radius:10px;font-size:.84rem;line-height:1.7}
+.op-fml-nav__crumb{margin:0 0 6px;display:flex;flex-wrap:wrap;gap:6px 8px;align-items:center;color:#41505F}
+.op-fml-nav__crumb a{color:#14355F;font-weight:700;text-decoration:none}
+.op-fml-nav__crumb a:hover{text-decoration:underline}
+.op-fml-nav__no{font-family:Inter,sans-serif;font-weight:700;color:#14355F}
+.op-fml-nav__pn{margin:0;display:grid;grid-template-columns:1fr 1fr;gap:10px 18px}
+.op-fml-nav__pn a,.op-fml-nav__none{display:block;color:#1D2B3A;text-decoration:none;font-weight:600}
+.op-fml-nav__pn a:hover{text-decoration:underline}
+.op-fml-nav__next{text-align:right}
+.op-fml-nav__none{color:#8792A2;font-weight:500}
+.op-fml-nav__lbl{display:block;font-size:.68rem;font-weight:700;letter-spacing:.08em;color:#6B7A8C}
+.op-fml{margin:36px 0 8px;padding:18px 20px;background:#fff;border:1px solid #DDE4EC;border-radius:10px}
+.op-fml__h{margin:0 0 10px;font-size:.78rem;font-weight:700;letter-spacing:.08em;color:#6B7A8C}
+.op-fml__list{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+.op-fml__list li{margin:0;padding:0 0 0 1.1em;position:relative;font-size:.9rem;line-height:1.75}
+.op-fml__list li::before{content:"→";position:absolute;left:0;top:0;color:#B08A3C;font-weight:700}
+.op-fml__list a{color:#14355F;font-weight:700;text-decoration:underline;text-underline-offset:3px}
+.op-fml__note{display:block;font-size:.8rem;color:#5B6B7C}
+@media(max-width:600px){.op-fml-nav__pn{grid-template-columns:1fr}.op-fml-nav__next{text-align:left}}
+</style>
+	<style id='wp-fonts-local'>
+@font-face{font-family:Inter;font-style:normal;font-weight:100 800;font-display:fallback;font-stretch:normal;src:url(../wp-content/themes/assembler/assets/fonts/inter/InterVariable.woff2) format('woff2');}
+@font-face{font-family:Inter;font-style:italic;font-weight:100 800;font-display:fallback;font-stretch:normal;src:url(../wp-content/themes/assembler/assets/fonts/inter/InterVariable-Italic.woff2) format('woff2');}
+</style>
+<link rel="icon" href="https://i0.wp.com/otemachiprep.com/wp-content/uploads/2026/07/op-site-icon-preview.png?fit=32%2C32&#038;ssl=1" sizes="32x32" />
+<link rel="icon" href="https://i0.wp.com/otemachiprep.com/wp-content/uploads/2026/07/op-site-icon-preview.png?fit=192%2C192&#038;ssl=1" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://i0.wp.com/otemachiprep.com/wp-content/uploads/2026/07/op-site-icon-preview.png?fit=180%2C180&#038;ssl=1" />
+<meta name="msapplication-TileImage" content="https://i0.wp.com/otemachiprep.com/wp-content/uploads/2026/07/op-site-icon-preview.png?fit=270%2C270&#038;ssl=1" />
+
+<style id="op-cp-style">/* =====================================================================
+   op-fc v4.0.0 — 無料・7日間 財務モデリング講座ポップアップ
+   トークンは :root に定義。フォールバック付き var() を使う（wp.com のCSS結合で
+   カスタムプロパティが落ちた事例があるため）。
+   ===================================================================*/
+:root{
+  --op-fc-navy:#14355F;
+  --op-fc-navy-deep:#0D2440;
+  --op-fc-gold:#C8A24B;
+  --op-fc-gold-deep:#A9853A;
+  --op-fc-green:#007A4D;
+  --op-fc-green-hover:#00663F;
+  --op-fc-green-active:#005B38;
+  --op-fc-ink:#24384E;
+  --op-fc-soft:#5A6A7C;
+  --op-fc-line:#DCE3EC;
+  --op-fc-panel:#F5F7FA;
+}
+.op-fc-root[hidden],.op-fc-mini[hidden],.op-fc-card[hidden]{display:none!important}
+.op-fc-root,.op-fc-root *,.op-fc-mini,.op-fc-mini *{box-sizing:border-box}
+
+/* ---------- overlay ---------- */
+.op-fc-root{position:fixed;inset:0;z-index:99990;display:flex;align-items:center;justify-content:center;padding:24px 16px;font-family:"Noto Sans JP","Inter",system-ui,-apple-system,"Segoe UI",sans-serif;-webkit-font-smoothing:antialiased}
+.op-fc-backdrop{position:absolute;inset:0;background:rgba(13,36,64,.55);opacity:0;transition:opacity .22s ease}
+.op-fc-root.op-fc-visible .op-fc-backdrop{opacity:1}
+
+/* ---------- card ---------- */
+.op-fc-card{position:relative;width:100%;max-width:880px;max-height:calc(100vh - 48px);overflow-y:auto;overscroll-behavior:contain;-webkit-overflow-scrolling:touch;
+  display:grid;grid-template-columns:minmax(0,1fr) minmax(0,.92fr);
+  background:#fff;border:1px solid var(--op-fc-line,#DCE3EC);border-top:3px solid var(--op-fc-navy,#14355F);border-radius:16px;
+  box-shadow:0 24px 60px rgba(13,36,64,.22);
+  opacity:0;transform:translateY(8px);transition:opacity .22s ease-out,transform .22s ease-out;
+  color:var(--op-fc-ink,#24384E);line-height:1.6;text-align:left}
+.op-fc-root.op-fc-visible .op-fc-card{opacity:1;transform:translateY(0)}
+.op-fc-card:focus{outline:none}
+.op-fc-card:focus-visible{outline:3px solid var(--op-fc-gold,#C8A24B);outline-offset:3px}
+
+/* ---------- close ---------- */
+.op-fc-close{position:absolute;top:12px;right:12px;z-index:3;width:44px;height:44px;display:inline-flex;align-items:center;justify-content:center;
+  background:#fff;border:1px solid var(--op-fc-line,#DCE3EC);border-radius:999px;color:var(--op-fc-soft,#5A6A7C);cursor:pointer;padding:0;margin:0;
+  box-shadow:0 2px 6px rgba(13,36,64,.08);transition:background-color .15s ease,color .15s ease}
+.op-fc-close:hover{background:#F0F3F7;color:var(--op-fc-navy,#14355F)}
+.op-fc-close:focus-visible{outline:3px solid var(--op-fc-gold,#C8A24B);outline-offset:2px}
+
+/* ---------- main column ---------- */
+.op-fc-main{padding:34px 30px 28px 32px;min-width:0;display:flex;flex-direction:column;justify-content:center}
+.op-fc-facts{list-style:none;margin:0 0 12px;padding:0;display:flex;flex-wrap:wrap;gap:6px 14px}
+.op-fc-facts li{position:relative;padding-left:18px;font-size:12px;font-weight:600;color:var(--op-fc-navy,#14355F);line-height:1.6;white-space:nowrap}
+.op-fc-facts li::before{content:"";position:absolute;left:0;top:.42em;width:12px;height:12px;border-radius:999px;background:var(--op-fc-green,#007A4D);-webkit-mask:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><circle cx='12' cy='12' r='12' fill='black'/><path d='M7 12.5l3.2 3.2L17 9' stroke='white' stroke-width='2.4' fill='none' stroke-linecap='round' stroke-linejoin='round'/></svg>") center/contain no-repeat;mask:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><circle cx='12' cy='12' r='12' fill='black'/><path d='M7 12.5l3.2 3.2L17 9' stroke='white' stroke-width='2.4' fill='none' stroke-linecap='round' stroke-linejoin='round'/></svg>") center/contain no-repeat}
+.op-fc-eyebrow{margin:0 0 12px;font-size:12.5px;font-weight:700;letter-spacing:.06em;color:var(--op-fc-gold-deep,#A9853A);display:flex;align-items:center;gap:8px;flex-wrap:wrap;padding-right:44px}
+.op-fc-eyebrow-free{display:inline-block;background:var(--op-fc-gold,#C8A24B);color:#fff;font-size:11px;line-height:1;padding:5px 8px 4px;border-radius:999px;letter-spacing:.12em}
+.op-fc-eyebrow::after{content:"";display:block;width:100%;height:0;flex-basis:100%}
+.op-fc-eyebrow-line{display:block;width:32px;height:2px;background:var(--op-fc-gold,#C8A24B);margin:2px 0 0;border-radius:2px}
+.op-fc-h{margin:0 0 12px;font-size:25px;line-height:1.4;font-weight:700;color:var(--op-fc-navy,#14355F);letter-spacing:.01em}
+.op-fc-h br{display:inline}
+.op-fc-sub{margin:0 0 20px;font-size:15px;line-height:1.75;color:var(--op-fc-ink,#24384E)}
+.op-fc-actions{display:flex;flex-direction:column;gap:10px;margin:0 0 14px}
+.op-fc-cta1,.op-fc-cta2{display:inline-flex;align-items:center;justify-content:center;gap:8px;width:100%;min-height:52px;padding:12px 18px;border-radius:10px;
+  font-size:16px;font-weight:700;text-decoration:none;line-height:1.3;cursor:pointer;transition:background-color .15s ease,color .15s ease,border-color .15s ease,transform .15s ease}
+.op-fc-cta1{background:var(--op-fc-green,#007A4D);color:#fff;border:1.5px solid var(--op-fc-green,#007A4D);box-shadow:0 6px 16px rgba(0,122,77,.22)}
+.op-fc-cta1:hover{background:var(--op-fc-green-hover,#00663F);border-color:var(--op-fc-green-hover,#00663F);color:#fff}
+.op-fc-cta1:active{background:var(--op-fc-green-active,#005B38)}
+.op-fc-cta2{background:#fff;color:var(--op-fc-green,#007A4D);border:1.5px solid var(--op-fc-green,#007A4D);min-height:48px;font-size:15px;font-weight:600;box-shadow:none}
+.op-fc-cta2:hover{background:#F1F8F4;color:var(--op-fc-green-hover,#00663F)}
+.op-fc-cta1:focus-visible,.op-fc-cta2:focus-visible{outline:3px solid var(--op-fc-gold,#C8A24B);outline-offset:2px}
+.op-fc-ar{display:inline-block;font-weight:700}
+.op-fc-note{margin:0;font-size:12px;line-height:1.7;color:var(--op-fc-soft,#5A6A7C)}
+
+/* ---------- side panel ---------- */
+.op-fc-side{position:relative;background:var(--op-fc-panel,#F5F7FA);border-left:1px solid var(--op-fc-line,#DCE3EC);padding:30px 26px 24px;min-width:0;border-radius:0 13px 13px 0}
+.op-fc-side::before{content:"";position:absolute;left:0;right:0;top:0;height:2px;background:linear-gradient(90deg,var(--op-fc-gold,#C8A24B),rgba(200,162,75,.15));border-radius:0 13px 0 0}
+.op-fc-chips{list-style:none;margin:0 0 16px;padding:0;display:flex;flex-wrap:wrap;gap:6px}
+.op-fc-chips li{font-size:12px;font-weight:600;color:var(--op-fc-navy,#14355F);background:#fff;border:1px solid var(--op-fc-line,#DCE3EC);border-radius:999px;padding:4px 10px;line-height:1.4;white-space:nowrap}
+.op-fc-chips--m{display:none}
+.op-fc-days{margin:0 0 16px;border:0}
+.op-fc-days-t{list-style:none;display:flex;align-items:center;justify-content:space-between;font-size:13px;font-weight:700;color:var(--op-fc-navy,#14355F);letter-spacing:.02em;margin:0 0 10px;padding:0;cursor:default}
+.op-fc-days-t::-webkit-details-marker{display:none}
+.op-fc-days-ic{display:none;width:20px;height:20px;border-radius:999px;border:1px solid var(--op-fc-line,#DCE3EC);background:#fff;position:relative}
+.op-fc-days-ic::before,.op-fc-days-ic::after{content:"";position:absolute;left:50%;top:50%;background:var(--op-fc-navy,#14355F);transform:translate(-50%,-50%)}
+.op-fc-days-ic::before{width:8px;height:1.5px}
+.op-fc-days-ic::after{width:1.5px;height:8px;transition:opacity .15s}
+.op-fc-days[open] .op-fc-days-ic::after{opacity:0}
+.op-fc-days-l{list-style:none;margin:0;padding:0;display:grid;gap:7px}
+.op-fc-days-l li{display:grid;grid-template-columns:44px minmax(0,1fr);gap:8px;align-items:baseline;padding:0 0 7px;border-bottom:1px solid rgba(220,227,236,.8)}
+.op-fc-days-l li:last-child{border-bottom:0;padding-bottom:0}
+.op-fc-day{font-family:"Inter","Noto Sans JP",system-ui,sans-serif;font-size:11px;font-weight:700;color:var(--op-fc-gold-deep,#A9853A);letter-spacing:.04em;white-space:nowrap}
+.op-fc-day-b{display:block;min-width:0}
+.op-fc-day-b strong{display:block;font-size:13.5px;font-weight:700;color:var(--op-fc-navy,#14355F);line-height:1.45}
+.op-fc-day-b span{display:block;font-size:12px;line-height:1.55;color:var(--op-fc-soft,#5A6A7C)}
+.op-fc-perk{display:flex;gap:12px;align-items:center;padding:12px;background:#fff;border:1px solid var(--op-fc-line,#DCE3EC);border-radius:10px}
+.op-fc-perk-img{width:88px;height:auto;flex:0 0 88px;border:1px solid var(--op-fc-line,#DCE3EC);border-radius:6px;background:#fff;display:block}
+.op-fc-perk-t{margin:0;font-size:12px;line-height:1.6;color:var(--op-fc-ink,#24384E)}
+.op-fc-perk-t strong{color:var(--op-fc-navy,#14355F)}
+.op-fc-list{list-style:none;margin:0 0 12px;padding:0;display:grid;gap:8px}
+.op-fc-list li{position:relative;padding-left:16px;font-size:13.5px;line-height:1.5;color:var(--op-fc-navy,#14355F);font-weight:600}
+.op-fc-list li::before{content:"";position:absolute;left:0;top:.62em;width:7px;height:7px;border-radius:999px;background:var(--op-fc-gold,#C8A24B)}
+.op-fc-list li small{display:block;font-size:11.5px;font-weight:400;color:var(--op-fc-soft,#5A6A7C)}
+.op-fc-side-t{margin:0 0 12px;font-size:13px;font-weight:700;color:var(--op-fc-navy,#14355F)}
+.op-fc-side-note{margin:0;font-size:12px;line-height:1.6;color:var(--op-fc-soft,#5A6A7C)}
+
+/* ---------- attention (2回だけ・1秒後) ---------- */
+@keyframes opFcPulse{0%{transform:scale(1)}50%{transform:scale(1.025)}100%{transform:scale(1)}}
+@keyframes opFcArrow{0%{transform:translateX(0)}50%{transform:translateX(3px)}100%{transform:translateX(0)}}
+@keyframes opFcFade{from{opacity:0}to{opacity:1}}
+.op-fc-root.op-fc-visible .op-fc-cta1{animation:opFcPulse .6s ease-in-out 1s 2}
+.op-fc-root.op-fc-visible .op-fc-cta1 .op-fc-ar{animation:opFcArrow .6s ease-in-out 1s 2}
+.op-fc-root.op-fc-visible .op-fc-days-l li{animation:opFcFade .24s ease-out both}
+.op-fc-root.op-fc-visible .op-fc-days-l li:nth-child(2){animation-delay:.04s}
+.op-fc-root.op-fc-visible .op-fc-days-l li:nth-child(3){animation-delay:.08s}
+.op-fc-root.op-fc-visible .op-fc-days-l li:nth-child(4){animation-delay:.12s}
+.op-fc-root.op-fc-visible .op-fc-days-l li:nth-child(5){animation-delay:.16s}
+.op-fc-root.op-fc-visible .op-fc-days-l li:nth-child(6){animation-delay:.20s}
+.op-fc-root.op-fc-visible .op-fc-days-l li:nth-child(7){animation-delay:.24s}
+
+/* ---------- scroll lock ---------- */
+html.op-fc-lock,body.op-fc-lock{overflow:hidden!important}
+
+/* ---------- tablet: 1 column ---------- */
+@media (max-width:860px){
+  .op-fc-card{grid-template-columns:minmax(0,1fr);max-width:560px}
+  .op-fc-side{border-left:0;border-top:1px solid var(--op-fc-line,#DCE3EC);border-radius:0 0 13px 13px;padding:22px 26px 24px}
+  .op-fc-side::before{border-radius:0}
+  .op-fc-main{padding:30px 26px 22px}
+}
+
+/* ---------- mobile: bottom sheet ---------- */
+@media (max-width:640px){
+  .op-fc-root{align-items:flex-end;padding:0}
+  .op-fc-card{max-width:none;max-height:92dvh;border-radius:16px 16px 0 0;border-left:0;border-right:0;border-bottom:0;transform:translateY(12px);
+    display:flex;flex-direction:column}
+  .op-fc-close{position:sticky;top:10px;align-self:flex-end;margin:10px 12px -44px 0;width:44px;height:44px}
+  .op-fc-main{padding:26px 20px 14px;display:flex;flex-direction:column}
+  .op-fc-eyebrow{font-size:12px;padding-right:48px}
+  .op-fc-h{font-size:21px;line-height:1.42}
+  .op-fc-sub{font-size:14px;margin-bottom:12px}
+  .op-fc-chips--m{display:flex;margin:0 0 16px}
+  .op-fc-actions{margin-bottom:10px}
+  .op-fc-cta1{min-height:52px}
+  .op-fc-side{border-top:0;border-radius:0;padding:4px 20px calc(20px + env(safe-area-inset-bottom,0px))}
+  .op-fc-side::before{display:none}
+  .op-fc-side .op-fc-chips:not(.op-fc-chips--m){display:none}
+  .op-fc-days{margin:0 0 12px;border-top:1px solid var(--op-fc-line,#DCE3EC);padding-top:12px}
+  .op-fc-days-t{cursor:pointer;margin:0;padding:6px 0;min-height:44px;align-items:center}
+  .op-fc-days-ic{display:block}
+  .op-fc-days[open] .op-fc-days-t{margin-bottom:8px}
+  .op-fc-note{order:9}
+  .op-fc-facts{gap:4px 12px;margin-bottom:8px}
+  .op-fc-perk{padding:10px}
+  .op-fc-perk-img{width:72px;flex-basis:72px}
+}
+@media (max-height:520px) and (min-width:641px){
+  .op-fc-card{max-height:calc(100vh - 24px)}
+  .op-fc-main{padding:24px 24px 18px 26px}
+  .op-fc-side{padding:22px 22px 18px}
+}
+
+/* ---------- mini banner ---------- */
+.op-fc-mini{position:fixed;right:16px;bottom:calc(var(--op-fc-mini-lift,16px) + env(safe-area-inset-bottom,0px));z-index:99970;display:flex;align-items:stretch;max-width:280px;
+  background:#fff;border:1px solid var(--op-fc-line,#DCE3EC);border-left:3px solid var(--op-fc-gold,#C8A24B);border-radius:12px;box-shadow:0 12px 32px rgba(13,36,64,.18);
+  font-family:"Noto Sans JP","Inter",system-ui,-apple-system,"Segoe UI",sans-serif;opacity:0;transform:translateY(8px);transition:opacity .2s ease-out,transform .2s ease-out}
+.op-fc-mini.op-fc-mini-visible{opacity:1;transform:translateY(0)}
+.op-fc-mini-a{display:flex;flex-direction:column;justify-content:center;gap:1px;padding:10px 6px 10px 14px;text-decoration:none;color:var(--op-fc-navy,#14355F);min-height:56px;flex:1 1 auto;min-width:0;border-radius:12px 0 0 12px}
+.op-fc-mini-a:hover{background:#F5F7FA}
+.op-fc-mini-a:focus-visible{outline:3px solid var(--op-fc-gold,#C8A24B);outline-offset:-3px}
+.op-fc-mini-1{font-size:11px;font-weight:700;letter-spacing:.06em;color:var(--op-fc-gold-deep,#A9853A);line-height:1.3}
+.op-fc-mini-2{font-size:14px;font-weight:700;line-height:1.35;color:var(--op-fc-navy,#14355F)}
+.op-fc-mini-2 span{color:var(--op-fc-green,#007A4D)}
+.op-fc-mini-x{flex:0 0 44px;width:44px;display:inline-flex;align-items:center;justify-content:center;background:transparent;border:0;border-left:1px solid var(--op-fc-line,#DCE3EC);color:var(--op-fc-soft,#5A6A7C);cursor:pointer;padding:0;margin:0;border-radius:0 12px 12px 0}
+.op-fc-mini-x:hover{background:#F0F3F7;color:var(--op-fc-navy,#14355F)}
+.op-fc-mini-x:focus-visible{outline:3px solid var(--op-fc-gold,#C8A24B);outline-offset:-3px}
+@media (max-width:640px){
+  .op-fc-mini{right:16px;left:auto;max-width:min(320px,calc(100% - 32px))}
+}
+
+/* ---------- reduced motion: 装飾アニメーションを全停止 ---------- */
+@media (prefers-reduced-motion:reduce){
+  .op-fc-backdrop,.op-fc-card,.op-fc-mini,.op-fc-close,.op-fc-cta1,.op-fc-cta2,.op-fc-mini-a{transition:none!important}
+  .op-fc-root.op-fc-visible .op-fc-cta1,.op-fc-root.op-fc-visible .op-fc-cta1 .op-fc-ar,.op-fc-root.op-fc-visible .op-fc-days-l li{animation:none!important}
+  .op-fc-card{transform:none!important}
+  .op-fc-mini{transform:none!important}
+}</style>
+<style type="text/css" id="wp-custom-css">/* op-hide-jetpack-subscribe-modal 2026-07 */
+.jetpack-subscription-modal, .jetpack-subscription-modal__modal-content, .jetpack-subscription-modal-screen-overlay{display:none !important;}
+
+/* op-fix-vc-nav-hover 2026-07 : VC等の独自テンプレでヘッダーのドロップダウンが開かない不具合をCSSホバーで補完(マウス環境のみ) */
+@media (hover:hover) and (pointer:fine){
+  .nv-item:hover &gt; .nv-sub{display:block !important;}
+  .nv-item:hover &gt; .nv-sub.nv-mega{display:flex !important;}
+}
+
+/* op-gmw: hide Jetpack Likes unfilled %d dialog (2026-08-31) */
+#likes-other-gravatars{display:none !important;}</style>
+<link rel="stylesheet" id="op-gltip-css" href="../wp-content/themes/otemachi-prep-child/assets/css/op-gltip.css"></head>
+<body class="op-art2">
+<a class="art-skip" href="#art-body">本文へ移動</a>
+<header class="site-header op-hdr2 op-hdr3" id="siteHeader" data-logged-in="0">
+
+  <!-- ===== 第1段：ロゴ・検索・会員導線（白） ===== -->
+  <div class="op-uh">
+    <div class="wrap op-uh-in">
+
+      <div class="brand op-uh-brand">
+		        <a href="../index.html" aria-label="大手町プレップ トップページ">
+          <img class="brand-mark" src="../wp-content/themes/otemachi-prep-child/assets/images/op-logo-mark.png" alt="" width="40" height="42" onerror="this.style.display='none'">
+          <span class="brand-text">
+            <span class="brand-en-main">OTEMACHI&nbsp;PREP</span>
+            <span class="brand-ja-sub">大手町プレップ</span>
+          </span>
+        </a>
+		      </div>
+
+      <form class="op-hs" role="search" method="get" action="../index.html">
+        <label class="screen-reader-text" for="opm-s">サイト内検索</label>
+        <span class="op-hs-ico" aria-hidden="true"><svg viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M8.5 15a6.5 6.5 0 1 1 0-13 6.5 6.5 0 0 1 0 13Zm0-1.8a4.7 4.7 0 1 0 0-9.4 4.7 4.7 0 0 0 0 9.4Z" fill="currentColor"/><path d="m13.2 12 4.5 4.5-1.3 1.3-4.5-4.5z" fill="currentColor"/></svg></span>
+        <input type="search" id="opm-s" name="s" value="" placeholder="キーワードを入力" autocomplete="off" maxlength="80">
+        <button type="submit" class="op-hs-btn">検索</button>
+      </form>
+
+      <div class="op-uh-actions">
+		          <a class="op-btn op-btn-ghost" href="../login/index.html" data-ga4="header_login_click">ログイン</a>
+          <a class="op-btn op-btn-green" href="../register/index.html" data-ga4="header_signup_click" data-opm-cta="header">無料会員登録</a>
+		      </div>
+
+      <button type="button" class="op-hs-toggle" aria-expanded="false" aria-controls="opm-hs-m" aria-label="検索を開く"><svg viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M8.5 15a6.5 6.5 0 1 1 0-13 6.5 6.5 0 0 1 0 13Zm0-1.8a4.7 4.7 0 1 0 0-9.4 4.7 4.7 0 0 0 0 9.4Z" fill="currentColor"/><path d="m13.2 12 4.5 4.5-1.3 1.3-4.5-4.5z" fill="currentColor"/></svg></button>
+		            <a class="op-btn op-btn-green op-uh-mreg" href="../register/index.html" data-ga4="header_signup_click" data-opm-cta="mobile_header">無料会員登録</a>
+		            <a class="op2-acct-ic" href="../login/index.html" aria-label="ログイン"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="8" r="3.4" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="M5.5 19.5c1.2-3.4 3.6-5 6.5-5s5.3 1.6 6.5 5" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg></a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="op2nav" aria-label="メニューを開く"><span></span></button>
+
+    </div>
+
+    <div class="op-hs-m" id="opm-hs-m" hidden>
+      <form class="op-hs-mform" role="search" method="get" action="../index.html">
+        <label class="screen-reader-text" for="opm-s-m">サイト内検索</label>
+        <input type="search" id="opm-s-m" name="s" value="" placeholder="キーワードを入力" autocomplete="off" maxlength="80">
+        <button type="submit" class="op-hs-btn">検索</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- ===== 第2段：グローバルナビ（白） ===== -->
+  <div class="op-gn-row">
+    <div class="wrap op-gn-in">
+
+      <span class="op2-mini-brand brand">        <a href="../index.html" aria-label="大手町プレップ トップページ">
+          <img class="brand-mark" src="../wp-content/themes/otemachi-prep-child/assets/images/op-logo-mark.png" alt="" width="40" height="42" onerror="this.style.display='none'">
+          <span class="brand-text">
+            <span class="brand-en-main">OTEMACHI&nbsp;PREP</span>
+            <span class="brand-ja-sub">大手町プレップ</span>
+          </span>
+        </a>
+		</span>
+
+      <nav id="op2nav" class="op2-nav" aria-label="グローバルナビゲーション">
+
+        <!-- ドロワー先頭の会員導線（モバイルのみ） -->
+        <div class="op2-drawer-auth">
+		          <a class="op-btn op-btn-green" href="../register/index.html" data-ga4="header_signup_click" data-opm-cta="drawer">無料会員登録</a>
+          <a class="op-btn op-btn-ghost" href="../login/index.html" data-ga4="header_login_click">ログイン</a>
+		        </div>
+
+        <ul class="op2-list">
+          <li class="op2-item op2-item--home"><a class="op2-link" href="../index.html">ホーム</a></li>
+
+          <li class="op2-item"><a class="op2-link" href="../whats-new/index.html" data-ga4="header_whatsnew_click">新着情報</a></li>
+
+          <li class="op2-item op2-item--mega">
+            <button class="op2-btn" type="button" aria-expanded="false" aria-controls="op2-articles">記事・用語集<span class="op2-car" aria-hidden="true"></span></button>
+            <div class="op2-panel op2-panel--mega" id="op2-articles" aria-label="記事・用語集">
+              <div class="op2-cols">
+                <div class="op2-col">
+                  <p class="op2-ch">分野別記事</p>
+                  <ul>
+					<li><a href="../articles/index.html">会計・財務三表／財務分析</a></li>
+<li><a href="../articles/index.html">財務モデリング</a></li>
+<li><a href="../articles/index.html">バリュエーション</a></li>
+<li><a href="../articles/index.html">M&amp;A・投資銀行実務</a></li>
+<li><a href="../articles/index.html">PE・LBO</a></li>
+<li><a href="../articles/index.html">PEキャリア分析</a></li>
+<li><a href="../articles/index.html">ベンチャーキャピタル</a></li>
+<li><a href="../articles/index.html">資本市場・クレジット</a></li>
+<li><a href="../articles/index.html">事業再生・リストラクチャリング</a></li>
+<li><a href="../articles/index.html">不動産・REIT</a></li>
+<li><a href="../articles/index.html">業種別モデリング</a></li>
+<li><a href="../articles/index.html">投資分析・エクイティリサーチ</a></li>
+<li><a href="../articles/index.html">AI×ファイナンス</a></li>
+                  </ul>
+                </div>
+                <div class="op2-col">
+                  <p class="op2-ch">リファレンス</p>
+                  <ul>
+					<li><a href="../articles/index.html">構築チュートリアル（画面つき）</a></li>
+<li><a href="../articles/index.html">経営企画・FP&amp;A</a></li>
+<li><a href="../articles/index.html">Excel・PowerPoint実務</a></li>
+<li><a href="../articles/index.html">データ・テクノロジー</a></li>
+<li><a href="../glossary/index.html">ファイナンス実務用語集</a></li>
+<li><a href="../reference/index.html">財務・投資指標の早見辞典</a></li>
+<li><a href="../course/index.html">財務モデリング講座（無料・全28章）</a></li>
+                  </ul>
+                </div>
+              </div>
+              <a class="op2-foot" href="../articles/index.html">すべての記事から探す <span class="ar" aria-hidden="true">→</span></a>
+            </div>
+          </li>
+
+          <li class="op2-item op2-item--mega">
+            <button class="op2-btn" type="button" aria-expanded="false" aria-controls="op2-funds">データベース<span class="op2-car" aria-hidden="true"></span></button>
+            <div class="op2-panel op2-panel--mega op2-panel--grid" id="op2-funds" aria-label="データベース">
+              <div class="op2-mcols">
+                <div class="op2-mcol">
+                  <p class="op2-mk">投資家</p>
+                  <p class="op2-mh">PEファンド一覧</p>
+                  <p class="op2-md">国内・海外のPEファンドを地域別・投資規模別に検索、比較できます。</p>
+                  <a class="op2-mlink" href="../pe-funds/index.html">一覧を見る <span class="ar" aria-hidden="true">→</span></a>
+                </div>
+                <div class="op2-mcol">
+                  <p class="op2-mk">投資家</p>
+                  <p class="op2-mh">VC・CVC一覧</p>
+                  <p class="op2-md">国内・海外のVC・CVCを地域別・投資分野別に確認できます。</p>
+                  <a class="op2-mlink" href="../vc-funds/index.html">一覧を見る <span class="ar" aria-hidden="true">→</span></a>
+                </div>
+                <div class="op2-mcol">
+                  <p class="op2-mk">投資家</p>
+                  <p class="op2-mh">アクティビストファンド一覧</p>
+                  <p class="op2-md">国内外の主要アクティビストファンドと活動事例をまとめています。</p>
+                  <a class="op2-mlink" href="../activist-funds/index.html">一覧を見る <span class="ar" aria-hidden="true">→</span></a>
+                </div>
+                <div class="op2-mcol">
+                  <p class="op2-mk">アドバイザー</p>
+                  <p class="op2-mh">FA・M&amp;A仲介会社DB</p>
+                  <p class="op2-md">FA・M&amp;A仲介会社を手数料・得意領域・クロスボーダー実績で比較できます。</p>
+                  <a class="op2-mlink" href="../ma-advisors/index.html">一覧を見る <span class="ar" aria-hidden="true">→</span></a>
+                </div>
+              </div>
+            </div>
+          </li>
+
+          <li class="op2-item op2-item--mega">
+            <button class="op2-btn" type="button" aria-expanded="false" aria-controls="op2-lab">モデリングラボ<span class="op2-car" aria-hidden="true"></span></button>
+            <div class="op2-panel op2-panel--mega" id="op2-lab" aria-label="モデリングラボ">
+              <div class="op2-cols">
+                <div class="op2-col">
+                  <p class="op2-ch">ブラウザで計算する</p>
+                  <ul>
+					<li><a href="../lab/index.html">財務指標分析</a></li>
+<li><a href="../lab/index.html">財務三表・オペレーティングモデル</a></li>
+<li><a href="../lab/index.html">DCFモデル</a></li>
+<li><a href="../lab/index.html">LBOモデル</a></li>
+<li><a href="../lab/index.html">類似会社比較</a></li>
+<li><a href="../lab/index.html">類似取引比較</a></li>
+<li><a href="../lab/index.html">M&amp;Aモデル</a></li>
+                  </ul>
+                </div>
+                <div class="op2-col">
+                  <p class="op2-ch">手を動かして組む</p>
+                  <ul>
+					<li><a href="../tut-ops-3stmt-build/index.html">3表連動モデルを組む</a></li>
+<li><a href="../tut-dcf-excel-build/index.html">DCFモデルを組む</a></li>
+<li><a href="../tut-ma-excel-build/index.html">M&amp;Aモデルを組む（S&amp;U含む）</a></li>
+<li><a href="../tut-lbo-excel-build/index.html">LBOモデルを組む</a></li>
+<li><a href="../tut-debt-debt-schedule-build/index.html">Debt Scheduleを組む</a></li>
+<li><a href="../tut-sens-sens-table-build/index.html">感応度分析を組む</a></li>
+<li><a href="../mod-001-modeling-guide/index.html">モデルQCチェックリスト</a></li>
+                  </ul>
+                </div>
+              </div>
+              <a class="op2-foot" href="../lab/index.html">モデリングラボを開く <span class="ar" aria-hidden="true">→</span></a>
+            </div>
+          </li>
+
+          <li class="op2-item">
+            <button class="op2-btn" type="button" aria-expanded="false" aria-controls="op2-career">キャリア<span class="op2-car" aria-hidden="true"></span></button>
+            <div class="op2-panel" id="op2-career" aria-label="キャリア">
+              <div class="op2-col">
+                <ul>
+					<li><a class="op2-hot" href="../career-fit/index.html">無料｜ファイナンスキャリア適性診断</a></li>
+<li><a href="../car-001-ib-career/index.html">投資銀行（IBD）を目指す</a></li>
+<li><a href="../car-002-pe-career/index.html">PEファンドを目指す</a></li>
+<li><a href="../car-012-ma-career-comparison/index.html">FAS・M&amp;Aアドバイザリーを目指す</a></li>
+<li><a href="../car-003-technical-interview/index.html">テクニカル面接の頻出質問</a></li>
+<li><a href="../articles/index.html">面接・モデルテスト対策の記事</a></li>
+                </ul>
+              </div>
+              <a class="op2-foot" href="../articles/index.html">キャリア・面接対策の記事をすべて見る <span class="ar" aria-hidden="true">→</span></a>
+            </div>
+          </li>
+
+          <li class="op2-item op2-item--mega op2-item--last">
+            <button class="op2-btn" type="button" aria-expanded="false" aria-controls="op2-program">講座・アセスメント<span class="op2-car" aria-hidden="true"></span></button>
+            <div class="op2-panel op2-panel--mega op2-panel--grid" id="op2-program" aria-label="講座・アセスメント">
+              <div class="op2-mcols">
+                <div class="op2-mcol">
+                  <p class="op2-mk">Input</p>
+                  <p class="op2-mh">講座・教材</p>
+                  <p class="op2-md">PDF、Excel、ケーススタディを通じて、会計、バリュエーション、M&amp;A、LBO、財務モデリングを体系的に学びます。</p>
+                  <a class="op2-mlink" href="../materials/index.html">講座・教材を見る <span class="ar" aria-hidden="true">→</span></a>
+                </div>
+                <div class="op2-mcol">
+                  <p class="op2-mk">Output</p>
+                  <p class="op2-mh">実践アセスメント</p>
+                  <p class="op2-md">課題を提出し、採点、レビュー、フィードバックを受けて、実務レベルのアウトプットへ改善します。</p>
+                  <a class="op2-mlink" href="../assessment/index.html">アセスメントを見る <span class="ar" aria-hidden="true">→</span></a>
+                </div>
+                <div class="op2-mcol">
+                  <p class="op2-mk">Plan</p>
+                  <p class="op2-mh">料金・プラン比較</p>
+                  <p class="op2-md">各講座プランとAssessmentの対象範囲、提供内容を比較できます。</p>
+                  <a class="op2-mlink" href="../pricing/index.html" data-ga4="pricing_nav_click">料金を比較する <span class="ar" aria-hidden="true">→</span></a>
+                </div>
+                <div class="op2-mcol">
+                  <p class="op2-mk">Complete</p>
+                  <p class="op2-mh">学習の進め方</p>
+                  <p class="op2-md">教材で学び（Input）、Assessmentで評価を受ける（Output）推奨学習フローを確認できます。</p>
+                  <a class="op2-mlink" href="../pricing/index.html">進め方を見る <span class="ar" aria-hidden="true">→</span></a>
+                </div>
+              </div>
+            </div>
+          </li>
+
+                    <li class="op2-item op2-item--drawer-only"><a class="op2-link" href="../about/index.html">大手町プレップについて</a></li>
+        </ul>
+      </nav>
+
+      <div class="op2-tools">
+        <button type="button" class="op2-c-search" aria-expanded="false" aria-controls="op2-c-panel" aria-label="検索を開く"><svg viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M8.5 15a6.5 6.5 0 1 1 0-13 6.5 6.5 0 0 1 0 13Zm0-1.8a4.7 4.7 0 1 0 0-9.4 4.7 4.7 0 0 0 0 9.4Z" fill="currentColor"/><path d="m13.2 12 4.5 4.5-1.3 1.3-4.5-4.5z" fill="currentColor"/></svg></button>
+		        <a class="op2-tool-link" href="../login/index.html">ログイン</a>
+        <a class="op-btn op-btn-green op-btn-sm op2-reg-mini" href="../register/index.html" data-ga4="header_signup_click" data-opm-cta="sticky">無料会員登録</a>
+		      </div>
+
+    </div>
+
+    <div class="op2-c-panel" id="op2-c-panel" hidden>
+      <form class="op2-c-form" role="search" method="get" action="../index.html">
+        <label class="screen-reader-text" for="op2-s-c">サイト内検索</label>
+        <input type="search" id="op2-s-c" name="s" value="" placeholder="キーワードを入力" autocomplete="off" maxlength="80">
+        <button type="submit" class="op-hs-btn">検索</button>
+      </form>
+    </div>
+  </div>
+</header>
+				
+<main id="main" class="op-art">
+<div class="wrap">
+<div class="art-grid">
+  <header class="art-head">
+    <nav class="art-crumbs" aria-label="パンくずリスト"><ol><li><a href="../index.html">ホーム</a></li><li><a href="../articles/careers/index.html">キャリア・面接対策</a></li><li aria-current="page"><span>LBOモデルテストで落ちる典型的なミス30選｜採点者が見るポイントと修正方法</span></li></ol></nav>
+    <p class="art-cat"><a href="../articles/careers/index.html">キャリア・面接対策</a></p>
+    <h1 class="art-title"><span class="art-h1-main">LBOモデルテストで落ちる典型的なミス30選</span><span class="art-sr">｜</span><span class="art-h1-sub">採点者が見るポイントと修正方法</span></h1>
+    <p class="art-lead">PE・投資銀行選考のLBOモデルテストで失点しやすい典型的なミス30項目を、モデル構造・S&amp;U・Debt Schedule・金利計算・税金・IRR/MOIC・時間配分の分類別に整理。原因と数値への影響、採点者が見るポイント、Excel上の修正方法まで解説します。</p>    <p class="art-meta"><span>公開日 <time datetime="2026-08-16T13:23:22+09:00">2026年8月16日</time></span><span>更新日 <time datetime="2026-09-10T02:30:35+09:00">2026年9月10日</time></span><span>読了目安 約24分</span></p>
+    <p class="art-byline"><span>執筆 <a href="../about/index.html">大手町プレップ編集部</a></span><span>監修 <a href="../about/index.html">西</a></span><span><a href="../about/index.html">編集方針</a></span></p>
+  </header>
+  <div class="art-rail">
+        <nav class="art-toc" aria-label="目次">
+      <p class="art-toc-title" aria-hidden="true">目次</p>
+      <button type="button" class="art-toc-btn" aria-expanded="false" aria-controls="art-toc-list"><span class="art-toc-btn-l">目次</span><span class="art-toc-count">19項目</span><span class="art-toc-state">開く</span><span class="art-toc-chev" aria-hidden="true"></span></button>
+      <ol id="art-toc-list" class="art-toc-list">
+        <li><a href="#s1"><span class="art-toc-n">1</span><span class="art-toc-t">結論：モデルテストの失点は「構造」「計算の整合」「時間配分」の3層に集中する</span></a></li><li><a href="#s2"><span class="art-toc-n">2</span><span class="art-toc-t">モデルテストの出題形式と採点の一般的な観点</span></a></li><li><a href="#s3"><span class="art-toc-n">3</span><span class="art-toc-t">ミス30選の読み方：10分類で技術的なミスを総点検する</span></a></li><li><a href="#s4"><span class="art-toc-n">4</span><span class="art-toc-t">①モデル構造・レイアウト</span></a></li><li><a href="#s5"><span class="art-toc-n">5</span><span class="art-toc-t">②Sources &amp; Uses</span></a></li><li><a href="#s6"><span class="art-toc-n">6</span><span class="art-toc-t">③営業予測</span></a></li><li><a href="#s7"><span class="art-toc-n">7</span><span class="art-toc-t">④運転資本</span></a></li><li><a href="#s8"><span class="art-toc-n">8</span><span class="art-toc-t">⑤Debt Schedule・Cash Sweep</span></a></li><li><a href="#s9"><span class="art-toc-n">9</span><span class="art-toc-t">⑥金利計算・循環参照</span></a></li><li><a href="#s10"><span class="art-toc-n">10</span><span class="art-toc-t">⑦税金</span></a></li><li><a href="#s11"><span class="art-toc-n">11</span><span class="art-toc-t">⑧Exit・IRR/MOIC</span></a></li><li><a href="#s12"><span class="art-toc-n">12</span><span class="art-toc-t">⑨Excel操作・体裁</span></a></li><li><a href="#s13"><span class="art-toc-n">13</span><span class="art-toc-t">⑩エラーチェック・時間配分</span></a></li><li><a href="#s14"><span class="art-toc-n">14</span><span class="art-toc-t">重大度×頻度の全体像</span></a></li><li><a href="#s15"><span class="art-toc-n">15</span><span class="art-toc-t">提出前10分の最終チェックリスト</span></a></li><li><a href="#s16"><span class="art-toc-n">16</span><span class="art-toc-t">練習方法：白紙から時間を計って組み、採点基準に照らす</span></a></li><li><a href="#s17"><span class="art-toc-n">17</span><span class="art-toc-t">よくある質問（FAQ）</span></a></li><li><a href="#s18"><span class="art-toc-n">18</span><span class="art-toc-t">まとめ</span></a></li><li><a href="#src"><span class="art-toc-n">19</span><span class="art-toc-t">出典・参考（2026-08-16確認）</span></a></li>      </ol>
+    </nav>
+      </div>
+  <div class="art-main">
+    <article class="article-body art-body" id="art-body">
+
+
+<div class="summary-box"><h2 style="word-break:auto-phrase">この記事で分かること</h2><ul><li style="word-break:auto-phrase">LBOモデルテストで失点しやすい30の技術的ミスを、構造・S&amp;U・営業予測・<a href="../acc-003-working-capital/index.html" class="op-gt" data-gt="working-capital">運転資本</a>・Debt Schedule・金利計算・税金・Exit/リターン・Excel操作・時間配分の10分類で網羅的に把握できる</li><li style="word-break:auto-phrase">それぞれのミスが「なぜ起きるか」「採点者がどこを見ているか」「Excel上でどう直すか」を型として身につけられる</li><li style="word-break:auto-phrase"><a href="../mod-008-cash-sweep/index.html" class="op-gt" data-gt="cash-sweep">Cash Sweep</a>の定義、<a href="../mod-005-circular-reference/index.html" class="op-gt" data-gt="circular-reference">循環参照</a>の扱い、<a href="../mod-016-tax-modeling/index.html" class="op-gt" data-gt="nol-tax-shield">NOL</a><span style="white-space:nowrap">（繰越欠損金）</span>、IRR近似式と<a href="../glossary/moic/index.html" class="op-gt" data-gt="moic">MOIC</a>の関係など、数値の整合性に関わる急所を正確な数式で確認できる</li><li style="word-break:auto-phrase">提出前10分で使える最終チェックリストと、時間配分を含めた練習の型が分かる</li></ul></div>
+
+<h2 id="s1" style="word-break:auto-phrase">結論：モデルテストの失点は「構造」「計算の整合」「時間配分」の3層に集中する</h2>
+<p>本記事は、PEファンドや投資銀行の選考で出題されるLBOモデルテストを想定し、<b>技術的なミスをカタログ化</b>したものです。対象読者はPE・IB・FASのモデルテストを控えた学生・若手実務家で、扱う範囲はモデルそのものの技術的な正確性に限定します。モデルテストで落ちる原因には、進め方や態度に起因するもの（時間の使い方、質問の仕方、優先順位のつけ方）と、モデルの中身そのものの誤り<span style="white-space:nowrap">（数式・構造・整合性）</span>の2種類がありますが、前者は<a href="../car-005-modeling-test/index.html" class="op-gt" data-gt="modeling-test">モデルテストで落ちる人の共通点<span style="white-space:nowrap">（進め方編）</span></a>で扱っているため、本記事は後者、すなわち<b>モデルの中に実際に埋め込まれるミス</b>だけを対象にします。</p>
+<p>結論から言えば、30項目のミスは大きく3層に集中します。第一に<b>モデル構造の層</b>（入力と計算の分離、シート設計）、第二に<b>計算の整合の層</b>（Sources &amp; Uses、運転資本の符号、Debt ScheduleとCash Sweep、循環参照、税金、Exit時のリターン計算）、第三に<b>時間配分の層</b>（Balance Checkのような<a href="../xl-010-error-checks/index.html" class="op-gt" data-gt="error-checks">エラーチェック</a>を最後まで残す余裕があるか）です。この<a href="../glossary/boj-current-account-cds/index.html" class="op-gt" data-gt="boj-current-account-cds">3層構造</a>を頭に入れて本記事の30項目を読むと、単なる暗記リストではなく「なぜここでつまずくのか」という因果関係として理解できます。体系的に組む手順から一から学びたい方は、<a href="../materials/index.html">教材一覧</a>もあわせてご覧ください。</p>
+
+<style id="op-reg-bridge-css">.op-art2 .art-cta--bridge{border-top-color:var(--gold-ink,#8a6d2f)}.op-art2 .art-cta--bridge .rb-list{list-style:none;margin:0 0 16px;padding:0}.op-art2 .art-cta--bridge .rb-list li{margin:0;padding:10px 0;border-top:1px solid var(--line,#e3e6ea);font-size:14.5px;line-height:1.6}.op-art2 .art-cta--bridge .rb-list li:last-child{border-bottom:1px solid var(--line,#e3e6ea)}.op-art2 .art-cta--bridge .rb-tag{display:inline-block;margin:0 .6em 0 0;padding:1px 7px;font-size:11.5px;font-weight:700;line-height:1.6;color:var(--navy,#12284a);border:1px solid var(--line-2,#c9ced6);border-radius:2px;vertical-align:1px}.op-art2 .art-cta--bridge .rb-list a{font-weight:700;color:var(--navy,#12284a);text-decoration:underline;text-underline-offset:3px}.op-art2 .art-cta--bridge .rb-desc{display:block;margin-top:2px;font-size:13px;color:var(--mute,#5b6675)}</style><aside class="art-cta art-cta--bridge" data-art-cta="bridge" data-art-cta-src="op-reg-bridge" data-art-cta-target="career" aria-labelledby="art-cta-bridge-title"><p class="art-cta-eyebrow">無料で始める</p><p class="art-cta-title" id="art-cta-bridge-title">PE・投資銀行の選考対策を、無料の特典3点で始める</p><p class="art-cta-text">面接の想定問答、モデリングテストに備えるExcelテンプレート、入社後の仕事の進め方まで。無料会員登録（約60秒・クレジットカード不要）ですぐに受け取れます。登録後は、Excel実務・三表連動・DCF・LBOを1日1通のメールで学ぶ「7日間ファイナンス講座」も無料で届きます。</p><ul class="rb-list"><li><span class="rb-tag">無料会員登録特典</span><a href="../materials/investment-banking-interview-160/index.html">投資銀行面接 想定問答160</a><span class="rb-desc">選考で問われる160問を模範解答と深掘り質問への備えつきで準備（PDF102ページ）</span></li><li><span class="rb-tag">無料会員登録特典</span><a href="../materials/excel-starter-pack/index.html">Excel Starter Pack</a><span class="rb-desc">3表連動・DCF・LBO・M&amp;Aモデルなど9ブック54シート。PE面接で頻出のPaper LBO演習も収録</span></li><li><span class="rb-tag">無料会員登録特典</span><a href="../materials/professional-skills-handbook/index.html">若手プロフェッショナルの仕事術</a><span class="rb-desc">作業依頼の受け方・進捗報告・資料の品質管理を文例とチェックリストで整理</span></li><li><span class="rb-tag">無料診断</span><a href="../career-fit/index.html">ファイナンスキャリア適性診断</a><span class="rb-desc">13職種との相性と現在の準備度を約5分・38問で整理（会員登録不要）</span></li></ul><p class="art-cta-act"><a class="art-btn art-btn--gold" href="../register/index.html">無料会員登録して3点を受け取る</a></p></aside>
+<h2 id="s2" style="word-break:auto-phrase">モデルテストの出題形式と採点の一般的な観点</h2>
+<p>以下は<b>公開情報と指導経験に基づく編集部の一般的な整理</b>であり、特定のファンドの実際の出題内容を主張するものではありません。出題形式はファンドや職種によって幅がありますが、大別すると、①空白のExcel<span style="white-space:nowrap">（Blank）</span>に一から前提・S&amp;U・三表・Debt Schedule・リターン計算まで組み上げさせる形式、②骨格の一部<span style="white-space:nowrap">（三表のテンプレート等）</span>が既に用意されていて数式や前提の穴埋めをさせる形式、③紙とペン、または電卓のみで概算IRRを出させる<a href="../car-006-paper-lbo/index.html" class="op-gt" data-gt="paper-lbo">Paper LBO<span style="white-space:nowrap">（手計算）</span></a>形式、の3つに分かれます。制限時間も1〜4時間程度まで幅があり、在宅で数日与えられるケースエボリューション型もあります。</p>
+<p>採点の一般的な観点として、①<b>数式の正確性</b>（S&amp;Uが一致するか、Balance Checkが締まるか）、②<b>構造の一貫性</b>（前提が一箇所に集約され、コピーしても崩れないか）、③<b>完成度</b>（制限時間内にリターン計算まで到達できたか）、④<b>解釈力</b>（出てきた数字から投資推奨・主要リスクを言語化できるか）の4点が繰り返し挙げられます。LBOモデルの全体構造そのものを先に押さえたい方は<a href="../pe-002-lbo-model/index.html" class="op-gt" data-gt="lbo-model">LBOモデルの全体像</a>、モデリングの基本動作を確認したい方は<a href="../mod-001-modeling-guide/index.html" class="op-gt" data-gt="financial-modeling">財務モデリングの基本ガイド</a>、<a href="../pe-001-lbo-basics/index.html" class="op-gt" data-gt="lbo">LBO</a>の前提となる基礎概念は<a href="../pe-interview-lbo-basics/index.html">LBOの基礎知識</a>を先に読むと、以下のミス解説の理解が早くなります。</p>
+
+<h2 id="s3" style="word-break:auto-phrase">ミス30選の読み方：10分類で技術的なミスを総点検する</h2>
+<p>ここから、モデルの完成物に実際に現れる技術的なミスを<b>①モデル構造・レイアウト ②Sources &amp; Uses ③営業予測 ④運転資本 ⑤Debt Schedule・Cash Sweep ⑥金利計算・循環参照 ⑦税金 ⑧Exit・IRR/MOIC ⑨Excel操作・体裁 ⑩エラーチェック・時間配分</b>の10分類・30項目に整理します。各項目は「なぜ起きるか」「採点者が見るポイント」「修正方法」「重大度<span style="white-space:nowrap">（高・中・低）</span>」の型で統一しています。数値例はすべて<b>架空の設例</b>であり、実在企業・実在ファンドの実績ではありません。</p>
+
+<figure style="margin:28px 0;border:1px solid var(--line,#D8DEE8);background:#fff;border-radius:10px;overflow:hidden">
+<div style="overflow-x:auto;-webkit-overflow-scrolling:touch">
+<svg viewBox="0 0 1000 400" role="img" aria-label="LBOモデルの標準的な構造を示す図。左から順に、前提条件（Assumptions）、Sources and Uses、三表（損益計算書・貸借対照表・キャッシュフロー計算書）とDebt Scheduleが相互参照する塊、リターン計算（IRR・MOIC）の4つのブロックが矢印でつながっている。三表とDebt Scheduleのブロックには循環参照が生じ得ることを示す円環矢印が描かれている。各ブロックの上に赤い丸印があり、それぞれSources and Usesの上に本記事のミス4から6、三表とDebt Scheduleの上にミス13から19、リターン計算の上にミス23から25が対応することを示している。" style="display:block;width:100%;min-width:844px;height:auto;font-family:'Noto Sans JP',sans-serif">
+  <rect x="0" y="0" width="1000" height="56" fill="#14355F"/>
+  <text x="24" y="36" fill="#fff" font-size="30" font-weight="700">LBOモデルの標準構造とミス多発ポイント</text>
+
+  <rect x="20" y="150" width="150" height="90" rx="8" fill="#EAF1FB" stroke="#14355F"/>
+  <text x="95" y="188" text-anchor="middle" font-size="19" font-weight="700" fill="#14355F">前提条件</text>
+  <text x="95" y="208" text-anchor="middle" font-size="16" fill="#1A2331">(Assumptions)</text>
+
+  <polygon points="170,195 200,190 200,200" fill="#14355F"/>
+  <line x1="170" y1="195" x2="200" y2="195" stroke="#14355F" stroke-width="2"/>
+
+  <rect x="200" y="150" width="170" height="90" rx="8" fill="#EAF1FB" stroke="#14355F"/>
+  <text x="285" y="198" text-anchor="middle" font-size="19" font-weight="700" fill="#14355F">Sources &amp; Uses</text>
+
+  <circle cx="285" cy="130" r="12" fill="#B23A48"/>
+  <text x="285" y="135" text-anchor="middle" font-size="18" font-weight="700" fill="#fff">!</text>
+  <text x="285" y="112" text-anchor="middle" font-size="16" fill="#B23A48">ミス4〜6</text>
+
+  <polygon points="370,195 400,190 400,200" fill="#14355F"/>
+  <line x1="370" y1="195" x2="400" y2="195" stroke="#14355F" stroke-width="2"/>
+
+  <rect x="400" y="130" width="280" height="130" rx="8" fill="#EAF1FB" stroke="#14355F"/>
+  <text x="540" y="160" text-anchor="middle" font-size="19" font-weight="700" fill="#14355F">三表（PL/BS/CF）</text>
+  <text x="540" y="180" text-anchor="middle" font-size="18" fill="#1A2331">⇅ 相互参照</text>
+  <text x="540" y="200" text-anchor="middle" font-size="19" font-weight="700" fill="#14355F">Debt Schedule</text>
+  <text x="540" y="220" text-anchor="middle" font-size="16" fill="#5B6470">(金利⇄Cash Sweepで循環参照)</text>
+  <path d="M 460 240 A 40 14 0 1 0 461 240" fill="none" stroke="#2563EB" stroke-width="2"/>
+  <polygon points="459,236 448,240 459,246" fill="#2563EB"/>
+
+  <circle cx="540" cy="110" r="12" fill="#B23A48"/>
+  <text x="540" y="115" text-anchor="middle" font-size="18" font-weight="700" fill="#fff">!</text>
+  <text x="540" y="92" text-anchor="middle" font-size="16" fill="#B23A48">ミス13〜19</text>
+
+  <polygon points="680,195 710,190 710,200" fill="#14355F"/>
+  <line x1="680" y1="195" x2="710" y2="195" stroke="#14355F" stroke-width="2"/>
+
+  <rect x="710" y="150" width="180" height="90" rx="8" fill="#EAF1FB" stroke="#14355F"/>
+  <text x="800" y="188" text-anchor="middle" font-size="19" font-weight="700" fill="#14355F">リターン計算</text>
+  <text x="800" y="208" text-anchor="middle" font-size="16" fill="#1A2331">(IRR / MOIC)</text>
+
+  <circle cx="800" cy="130" r="12" fill="#B23A48"/>
+  <text x="800" y="135" text-anchor="middle" font-size="18" font-weight="700" fill="#fff">!</text>
+  <text x="800" y="112" text-anchor="middle" font-size="16" fill="#B23A48">ミス23〜25</text>
+
+  <text x="20" y="300" font-size="16" fill="#5B6470">※本図はモデルの一般的な構成を示す概念図です。ファンドやテンプレートにより順序・粒度は異なります。</text>
+  <text x="20" y="320" font-size="16" fill="#5B6470">※赤丸は本記事で扱うミスが集中しやすいブロックの例示であり、それ以外のブロックにミスが生じないという意味ではありません。</text>
+</svg>
+</div>
+<figcaption style="word-break:auto-phrase;padding:8px 14px;color:#5B6470;font-size:13px">図：LBOモデルの一般的な構造（前提条件→Sources &amp; Uses→三表・Debt Schedule→リターン計算）と、本記事で扱うミスが集中しやすいブロック<span style="white-space:nowrap">（赤マーカー）</span>。</figcaption>
+</figure>
+
+<h2 id="s4" style="word-break:auto-phrase">①モデル構造・レイアウト</h2>
+<h3 style="word-break:auto-phrase">ミス1: 入力セルと計算セルが色分けされていない</h3>
+<p><b>なぜ起きるか：</b>時間に追われてBlankモデルにいきなり数式を書き込み、成長率やマージンといった前提を数式の中に埋め込んでしまう。<b>採点者が見るポイント：</b>前提を変えたときに数字がどう動くかをその場で確認しようとした瞬間、ハードコードされた数値がどこにあるか探すだけで時間を失う。ウォール街標準では入力＝青字、シート内数式＝黒字、他シート参照＝緑字が目安。<b>修正方法：</b>提出前に前提条件を専用の「Assumptions」タブに集約し、フォントカラーで入力と数式を区別する。<b>重大度：</b><b style="color:#C08A2D">中</b></p>
+<h3 style="word-break:auto-phrase">ミス2: シートをまたぐ参照が追跡不能なほど複雑になる</h3>
+<p><b>なぜ起きるか：</b>タブを行き来しながら思いつくままに数式を組み、後から見返しても数字の出所を自分で説明できなくなる。<b>採点者が見るポイント：</b>あるセルを指して「この前提はどこから来ていますか」と即答できるかは、モデル構造の理解度を測る定番の質問。<b>修正方法：</b>前提→Sources &amp; Uses→三表・Debt Schedule→リターン計算という一方向の流れを崩さず、アウトプット側からインプット側への書き戻しを作らない。<b>重大度：</b><b style="color:#C08A2D">中</b></p>
+<h3 style="word-break:auto-phrase">ミス3: 外部ワークブックへのリンクが残ったまま提出する</h3>
+<p><b>なぜ起きるか：</b>練習用に他ファイルの数字をコピーした際、値ではなく数式のまま貼り付け、リンク切れの外部参照が残る。<b>採点者が見るポイント：</b>提出ファイルを開いた瞬間に外部ブック更新の警告や<a href="../glossary/excel-error-types/index.html" class="op-gt" data-gt="excel-error-types">#REF!エラー</a>が出る状態は、確認不足の第一印象として響く。<b>修正方法：</b>提出直前にリンクの有無を確認し、必要な数値は「<a href="../glossary/paste-special-values/index.html" class="op-gt" data-gt="paste-special-values">形式を選択して貼り付け</a><span style="white-space:nowrap">（値のみ）</span>」に置き換える。<b>重大度：</b><b style="color:#1F7A5A">低</b></p>
+
+<h2 id="s5" style="word-break:auto-phrase">②Sources &amp; Uses</h2>
+<h3 style="word-break:auto-phrase">ミス4: SourcesとUsesの合計が一致しないまま先へ進む</h3>
+<p><b>なぜ起きるか：</b>エクイティ出資額を後から調整する際にSources側だけを書き換え、Uses側への反映を忘れる、あるいは端数を無視する。<b>採点者が見るポイント：</b>Sources &amp; Usesは全モデルの起点であり、ここが合っていなければ後続の三表もDebt Scheduleも意味を持たない。差額チェック行の有無を必ず確認される。<b>修正方法：</b>Sources &amp; Usesシートの末尾に「Sources−Uses」の差額チェック行を置き、常にゼロであることを可視化する。<b>重大度：</b><b style="color:#B23A48">高</b></p>
+<h3 style="word-break:auto-phrase">ミス5: 既存の有利子負債の借換を見落とす</h3>
+<p><b>なぜ起きるか：</b><a href="../glossary/enterprise-value/index.html" class="op-gt" data-gt="enterprise-value">エンタープライズバリュー</a>から<a href="../glossary/equity-value/index.html" class="op-gt" data-gt="equity-value">株式価値</a>への計算に気を取られ、対象会社が既に抱える有利子負債をクロージング時に返済<span style="white-space:nowrap">（refinance）</span>する必要がある点をUsesに反映し忘れる。<b>採点者が見るポイント：</b>Net Debt<span style="white-space:nowrap">（既存有利子負債−現金）</span>を正しく引けているか、Usesに「既存有利子負債の返済」という項目があるかを確認される。<b>修正方法：</b>Uses側に「既存有利子負債の返済」を明示し、新規調達デットと区別する。<b>重大度：</b><b style="color:#B23A48">高</b></p>
+<h3 style="word-break:auto-phrase">ミス6: 取引費用と資金調達費用を同じ扱いにする</h3>
+<p><b>なぜ起きるか：</b>FA報酬や弁護士費用等の取引費用<span style="white-space:nowrap">（Transaction Fees）</span>と、デット調達に伴う融資関連費用<span style="white-space:nowrap">（Financing Fees）</span>を一括りにし、償却方法の違いを無視する。<b>採点者が見るポイント：</b>取引費用は発生年度に一括費用処理される一方、資金調達費用はデットの残存期間にわたり償却されるのが一般的な扱いで、この区別がモデルと<a href="../pe-007-investment-thesis/index.html" class="op-gt" data-gt="investment-committee">ICメモ</a>の整合性を左右する。<b>修正方法：</b>Uses側で二つを別行に分け、<a href="../mod-015-capex-depreciation-schedule/index.html" class="op-gt" data-gt="capex-schedule">償却スケジュール</a>をDebt Scheduleと連動させる。<b>重大度：</b><b style="color:#C08A2D">中</b></p>
+
+<h2 id="s6" style="word-break:auto-phrase">③営業予測</h2>
+<h3 style="word-break:auto-phrase">ミス7: 成長率とマージンの前提に根拠がない</h3>
+<p><b>なぜ起きるか：</b>IM<span style="white-space:nowrap">（<a href="../glossary/cim/index.html" class="op-gt" data-gt="cim">企業概要書</a>）</span>の事業計画をそのままコピーし、自分なりの妥当性検証をせずに数字を置く。<b>採点者が見るポイント：</b>「なぜこの成長率なのか」を問われた際に、過去実績や業界水準との比較で説明できるかを見られる。<b>修正方法：</b>前提の横に根拠（過去実績のCAGR、業界平均等）を注記するセルを設ける。<b>重大度：</b><b style="color:#C08A2D">中</b></p>
+<h3 style="word-break:auto-phrase">ミス8: 減価償却の前提とCapexの前提が整合していない</h3>
+<p><b>なぜ起きるか：</b>減価償却費を過去実績の延長で置きながらCapexだけ事業計画の数字に差し替え、両者の関係（固定資産残高の積み上がり）を検証しない。<b>採点者が見るポイント：</b>長期的にCapexが減価償却費を大きく下回り続ける前提は、資産の老朽化を放置している設例に見え、EBITDAの持続可能性への疑義として扱われる。<b>修正方法：</b>「期首残高＋Capex−減価償却＝期末残高」という簡易ロールフォワードを作り、整合を確認する。<b>重大度：</b><b style="color:#C08A2D">中</b></p>
+<h3 style="word-break:auto-phrase">ミス9: 一過性項目を正常化せずに成長率に混ぜる</h3>
+<p><b>なぜ起きるか：</b>訴訟和解金や災害損失、拠点統廃合費用といった一過性の損益項目を除かずに過去実績のEBITDAをそのまま伸ばし、正常収益力を見誤る。<b>採点者が見るポイント：</b>正常化EBITDA<span style="white-space:nowrap">（Normalized EBITDA）</span>の考え方を理解しているかは財務DDと直結する論点で、モデルテストでも頻出する。<b>修正方法：</b>一過性項目の調整表を別行で作り、調整後EBITDAを起点に予測を伸ばす。<b>重大度：</b><b style="color:#B23A48">高</b></p>
+
+<h2 id="s7" style="word-break:auto-phrase">④運転資本</h2>
+<h3 style="word-break:auto-phrase">ミス10: 運転資本の定義に現金や有利子負債項目を混入させる</h3>
+<p><b>なぜ起きるか：</b>貸借対照表の流動資産・流動負債をそのまま合算し、現金及び現金同等物や短期借入金といった非事業性項目を除外し忘れる。<b>採点者が見るポイント：</b>運転資本<span style="white-space:nowrap">（Net Working Capital）</span>は売掛金・棚卸資産・買掛金等の事業性項目に限定するのが原則で、この線引きができているかがモデルの基礎理解を示す。<b>修正方法：</b>運転資本の計算行に「事業性項目のみ」と注記し、対象科目を明示する。<b>重大度：</b><b style="color:#B23A48">高</b></p>
+<h3 style="word-break:auto-phrase">ミス11: 運転資本の変動の符号を逆にする</h3>
+<p><b>なぜ起きるか：</b>運転資本が増加した年はキャッシュが社内に固定される（フリーキャッシュフローのマイナス要因）にもかかわらず、符号を逆にしてキャッシュフロー計算書に加算してしまう。<b>採点者が見るポイント：</b>「運転資本の増加はマイナス、減少はプラス」という関係が体に入っているかを、前提を動かして確認される。<b>修正方法：</b>運転資本の増減額を別行で算出し、キャッシュフロー計算書では「−運転資本の増加額」として明示的に控除する。<b>重大度：</b><b style="color:#B23A48">高</b></p>
+<h3 style="word-break:auto-phrase">ミス12: 回転期間<span style="white-space:nowrap">（DSO/DPO/DIO）</span>の前提が実績と乖離する</h3>
+<p><b>なぜ起きるか：</b>過去実績から算出した売上債権回転日数等を検証せず、予測期間だけ大きく短縮・改善させる前提を置く。<b>採点者が見るポイント：</b>回転期間の急激な改善前提は、それ自体がバリューアップ施策として説明されない限り、根拠のない前提として指摘される。<b>修正方法：</b>過去3期程度の実績回転期間を算出し、予測前提との差を説明できるようにする。<b>重大度：</b><b style="color:#C08A2D">中</b></p>
+
+<h2 id="s8" style="word-break:auto-phrase">⑤Debt Schedule・Cash Sweep</h2>
+<p>この分類は、<a href="../pe-004-debt-capacity/index.html" class="op-gt" data-gt="debt-capacity">デットキャパシティの考え方</a>とあわせて理解すると全体像がつかみやすくなります。</p>
+<h3 style="word-break:auto-phrase">ミス13: Cash Sweepの対象となるFCFの範囲を取り違える</h3>
+<p><b>なぜ起きるか：</b>「Cash Sweep<span style="white-space:nowrap">（任意繰上返済額の原資）</span>＝FCF−強制返済<span style="white-space:nowrap">（Mandatory Amortization）</span>」という定義において、FCFを税引前・利払前の営業キャッシュフローと混同し、税金や強制返済を控除しないまま任意繰上返済額を過大に計算する。<b>採点者が見るポイント：</b>FCFが税引後・Capex後・強制返済後のキャッシュフローであることを理解しているかは、Debt Scheduleの正確性そのものに直結する。<b>修正方法：</b>FCFの計算行を独立させ、税金・Capex・強制返済を順に控除した最終行だけをCash Sweepの計算に接続する。<b>重大度：</b><b style="color:#B23A48">高</b></p>
+<h3 style="word-break:auto-phrase">ミス14: トランシェ間の返済順位<span style="white-space:nowrap">（ウォーターフォール）</span>を無視する</h3>
+<p><b>なぜ起きるか：</b>タームローンA・Bのような複数のデットトランシェがある設例で、返済順位を無視して任意繰上返済額を全トランシェに按分してしまう。<b>採点者が見るポイント：</b>一般的な信用契約では最もシニアなトランシェから優先的に繰上返済されるのが通常で、この優先順位の理解がDebt Scheduleの設計思想を示す。<b>修正方法：</b>トランシェごとに返済順位フラグを立て、上位トランシェの残高がゼロになるまで下位トランシェに繰上返済が回らない構造にする。<b>重大度：</b><b style="color:#C08A2D">中</b></p>
+<h3 style="word-break:auto-phrase">ミス15: 強制返済額を二重に控除、または控除し忘れる</h3>
+<p><b>なぜ起きるか：</b>強制返済<span style="white-space:nowrap">（元本の一定割合）</span>をFCFの計算とCash Sweepの計算の両方で控除してしまう、あるいはどちらでも控除し忘れる。<b>採点者が見るポイント：</b>期末デット残高が「期首残高−強制返済−任意繰上返済」で正しく積み上がっているかを、Debt Scheduleの検算行で確認される。<b>修正方法：</b>強制返済はFCF計算の一項目として一度だけ控除し、Cash Sweepの計算式には含めない設計に統一する。<b>重大度：</b><b style="color:#B23A48">高</b></p>
+<h3 style="word-break:auto-phrase">ミス16: 余剰現金・不足時のリボルバーの扱いがモデルにない</h3>
+<p><b>なぜ起きるか：</b>期中でキャッシュが不足する局面を考慮せず、リボルビングクレジットファシリティ<span style="white-space:nowrap">（Revolver）</span>からの引き出しと返済のロジックをモデルに組み込まない。<b>採点者が見るポイント：</b>現金残高が最低水準<span style="white-space:nowrap">（cash floor）</span>を下回りそうな年にRevolverが自動的に引き出され、余剰が出れば返済される双方向のロジックがあるかを確認される。<b>修正方法：</b>期首現金残高が最低水準を下回る場合にRevolverから自動的に補填し、上回る場合は返済に充てるIF文を組み込む。<b>重大度：</b><b style="color:#C08A2D">中</b></p>
+
+<h2 id="s9" style="word-break:auto-phrase">⑥金利計算・循環参照</h2>
+<h3 style="word-break:auto-phrase">ミス17: 期首残高方式と平均残高方式を混同する</h3>
+<p><b>なぜ起きるか：</b>利息費用の計算で、期首残高と期末残高の平均に金利を掛ける「平均残高方式」と、期首残高だけに金利を掛ける「期首残高方式」を場面によって使い分け、Debt Scheduleの中で不統一になる。<b>採点者が見るポイント：</b>平均残高方式の方が実態に近いが循環参照を生む一方、期首残高方式は循環参照を避けられる代わりに利息をやや過大計上する、というトレードオフを理解しているか。<b>修正方法：</b>モデル全体でどちらの方式を採用するかを明記し、一貫させる。<b>重大度：</b><b style="color:#C08A2D">中</b></p>
+<h3 style="word-break:auto-phrase">ミス18: 循環参照が発生しているのにIterative Calculationがオフのまま</h3>
+<p><b>なぜ起きるか：</b>平均残高方式を採用すると、利息費用→当期純利益→FCF→Cash Sweep→デット残高→利息費用という循環が生じるが、Excelの反復計算（ファイル＞オプション＞数式＞反復計算を有効にする）を有効化しないまま提出し、循環参照の警告やエラーが残る。<b>採点者が見るポイント：</b>モデルを開いた瞬間に循環参照の警告が出る、あるいはセルが0や#REF!のままになっている状態は、技術的な仕上げ不足として即座に見抜かれる。<b>修正方法：</b>反復計算を有効化し（最大反復回数100回程度、変化の最大値0.001程度が目安）、循環が正しく収束していることを確認する。<b>重大度：</b><b style="color:#B23A48">高</b></p>
+<h3 style="word-break:auto-phrase">ミス19: 循環参照を切るためのスイッチ（サーキュラリティ・ブレーカー）を入れない</h3>
+<p><b>なぜ起きるか：</b>反復計算を有効にしただけでは、前提を大きく動かした瞬間に#DIV/0!等のエラーが連鎖し、モデルが発散して自力で復旧できなくなることがある。<b>採点者が見るポイント：</b>経験のあるモデラーは循環部分の数式に「スイッチがオフのときは強制的に利息をゼロとして循環を切る」というIF文を仕込んでおり、この備えの有無で完成度の見え方が変わる。<b>修正方法：</b>サーキュラリティ・スイッチ用のセル<span style="white-space:nowrap">（0または1）</span>を作り、循環参照を含む数式をIF(スイッチ=0, 0, 通常の計算)の形にしておく。<b>重大度：</b><b style="color:#C08A2D">中</b></p>
+
+<h2 id="s10" style="word-break:auto-phrase">⑦税金</h2>
+<h3 style="word-break:auto-phrase">ミス20: 税引前利益がマイナスの年でも税金をそのまま計算する</h3>
+<p><b>なぜ起きるか：</b>「税金＝税引前利益×実効税率」という数式を全期間にそのまま適用し、税引前利益がマイナスの年に「税金がマイナス<span style="white-space:nowrap">（還付）</span>」という非現実的な値をそのまま使ってしまう。単体で当期に現金還付を受けられる前提は通常成立しない。<b>採点者が見るポイント：</b>繰越欠損金<span style="white-space:nowrap">（NOL）</span>、すなわち当期の損失を将来の課税所得と相殺する処理を理解しているかを見られる。<b>修正方法：</b>繰越欠損金残高を別行でロールフォワードし、課税所得がプラスに転じた年から順に相殺してから税金を計算する。<b>重大度：</b><b style="color:#B23A48">高</b></p>
+<h3 style="word-break:auto-phrase">ミス21: 支払利息の節税効果を無視、または過大評価する</h3>
+<p><b>なぜ起きるか：</b>LBOにおける支払利息の損金算入によるタックスシールドを完全に無視して税負担を過大に見積もる、あるいは逆に上限のない節税効果を前提に置き、利子控除に関する制限のような論点を一切考慮しない。<b>採点者が見るポイント：</b>支払利息が原則として課税所得から控除される点と、その節税効果の大きさが実効税率の設定次第で変わる点の両方を説明できるか。<b>修正方法：</b>実効税率の前提根拠を明記し、支払利息控除後の課税所得に対して税金を計算する式を統一する。<b>重大度：</b><b style="color:#C08A2D">中</b></p>
+<h3 style="word-break:auto-phrase">ミス22: のれんの税務償却可否を誤る</h3>
+<p><b>なぜ起きるか：</b>会計上ののれん<span style="white-space:nowrap">（Goodwill）</span>の非償却・減損処理と税務上の取り扱いを混同し、株式取得<span style="white-space:nowrap">（ストック・ディール）</span>であるにもかかわらず、のれんの税務償却によるタックスシールドをモデルに織り込んでしまう。<b>採点者が見るポイント：</b>ディールストラクチャー<span style="white-space:nowrap">（株式取得か事業譲渡か等）</span>によって、のれんに税務上の償却が認められるかどうかが変わるという理解の有無。<b>修正方法：</b>設例で想定するディールストラクチャーを明示し、それに応じてのれんの税務償却の有無をモデルに反映する。<b>重大度：</b><b style="color:#1F7A5A">低</b></p>
+
+<h2 id="s11" style="word-break:auto-phrase">⑧Exit・IRR/MOIC</h2>
+<p>この分類のリターン計算の基礎は<a href="../pe-005-irr-moic/index.html" class="op-gt" data-gt="irr">IRRとMOICの計算と使い分け</a>、下振れ時の前提づくりは<a href="../pe-014-downside-case/index.html">ダウンサイドケースの作り方</a>で詳しく扱っています。</p>
+<h3 style="word-break:auto-phrase">ミス23: Exit倍率をEntry倍率と根拠なく異なる値に置く</h3>
+<p><b>なぜ起きるか：</b>Exit時点のEV/EBITDA倍率をEntry時点と同じに置く保守的な前提は妥当な出発点ですが、根拠なくExit倍率をEntry倍率より高く設定し、マルチプル拡大<span style="white-space:nowrap">（multiple expansion）</span>を織り込んでIRRを底上げしてしまうケースが目につきます。<b>採点者が見るポイント：</b>マルチプル拡大を前提に置くなら、その根拠（市場環境、企業規模の変化、収益性の改善等）を説明できるかを問われる。<b>修正方法：</b>ベースケースはExit倍率＝Entry倍率を出発点とし、拡大を織り込む場合は感度分析として別ケースで示す。<b>重大度：</b><b style="color:#B23A48">高</b></p>
+<h3 style="word-break:auto-phrase">ミス24: IRR計算で年次近似式と実際の日付がずれる</h3>
+<p><b>なぜ起きるか：</b>投資期間中に配当や追加出資といった中間キャッシュフローがあるにもかかわらず、単純な年次のIRR近似式だけで済ませ、実際の日付ベースのキャッシュフロー系列を使った検算をしない。<b>採点者が見るポイント：</b>中間キャッシュフローがない前提であれば近似式で十分だが、その前提が成立しているかを自分で確認しているか。<b>修正方法：</b>中間キャッシュフローがある設例では日付付きのキャッシュフロー系列を作り、XIRR関数等で計算する。近似式との差が大きい場合は前提を見直す。<b>重大度：</b><b style="color:#C08A2D">中</b></p>
+<p>中間キャッシュフローがない前提であれば、近似的に<b>IRR ≒ (Exit Equity ÷ Entry Equity)<sup><span style="white-space:nowrap">(1/n)</span></sup> − 1 ＝ MOIC<sup><span style="white-space:nowrap">(1/n)</span></sup> − 1</b><span style="white-space:nowrap">（nは保有年数）</span>という関係が成り立ちます。MOICと保有年数からおおよそのIRRを逆算すると、次のようになります<span style="white-space:nowrap">（架空の設例）</span>。</p>
+<figure style="margin:24px 0;overflow-x:auto"><table style="border-collapse:collapse;width:100%;min-width:640px;font-size:15px"><thead style="white-space:nowrap"><tr style="background:#14355F;color:#fff"><th style="padding:10px;text-align:left">保有年数</th><th style="white-space:nowrap;padding:10px;text-align:left">MOIC 2.0x</th><th style="white-space:nowrap;padding:10px;text-align:left">MOIC 2.5x</th><th style="white-space:nowrap;padding:10px;text-align:left">MOIC 3.0x</th></tr></thead><tbody><tr style="border-bottom:1px solid #D8DEE8"><td style="white-space:nowrap;padding:10px">3年</td><td style="white-space:nowrap;padding:10px">約26.0%</td><td style="white-space:nowrap;padding:10px">約35.7%</td><td style="white-space:nowrap;padding:10px">約44.2%</td></tr><tr style="border-bottom:1px solid #D8DEE8"><td style="white-space:nowrap;padding:10px">4年</td><td style="white-space:nowrap;padding:10px">約18.9%</td><td style="white-space:nowrap;padding:10px">約25.7%</td><td style="white-space:nowrap;padding:10px">約31.6%</td></tr><tr style="border-bottom:1px solid #D8DEE8"><td style="white-space:nowrap;padding:10px">5年</td><td style="white-space:nowrap;padding:10px">約14.9%</td><td style="white-space:nowrap;padding:10px">約20.1%</td><td style="white-space:nowrap;padding:10px">約24.6%</td></tr></tbody></table></figure>
+<p>この表から読み取れるのは、<b>同じMOICでも保有年数が延びるほどIRRは急速に下がる</b>という関係です。「もう1年保有すれば利益が伸びる」という判断は、MOICを維持できたとしてもIRRを押し下げる方向に働くため、Exitの時期判断ではこの表のような感覚を持っておくことが重要です。あくまで中間キャッシュフローがない単純化した前提での近似値であり、実際のディールでは配当や追加出資を織り込んだXIRRベースの計算が必要になります。</p>
+<h3 style="word-break:auto-phrase">ミス25: MOICの計算で中間配当を計上し忘れる</h3>
+<p><b>なぜ起きるか：</b>MOIC（Multiple of Invested Capital）を「Exit時のエクイティ回収額÷当初出資額」だけで計算し、保有期間中にDividend Recap等で受け取った中間配当をMOICの分子から除外してしまう。<b>採点者が見るポイント：</b>MOICは投資期間中に株主に還元された現金の合計を分子に置く指標であり、中間配当の有無で数字が大きく変わることを理解しているか。<b>修正方法：</b>中間配当とExit時回収額を合算した「株主への総還元額」を分子とし、当初出資額で除す式に統一する。<b>重大度：</b><b style="color:#C08A2D">中</b></p>
+
+<h2 id="s12" style="word-break:auto-phrase">⑨Excel操作・体裁</h2>
+<h3 style="word-break:auto-phrase">ミス26: 数式の中に数値がハードコードされている</h3>
+<p><b>なぜ起きるか：</b>「＝A1×1.03」のように成長率等の前提を数式の中に直接書き込み、前提セルを参照しない。<b>採点者が見るポイント：</b>前提を1か所変えるだけでモデル全体が連動するかを確認するため、採点者は必ず主要な前提を動かしてみる。数式の中に数値が埋まっているとその瞬間に発覚する。<b>修正方法：</b>数値は必ず専用の前提セルに置き、数式はそのセルを参照する形に統一する。<b>重大度：</b><b style="color:#C08A2D">中</b></p>
+<h3 style="word-break:auto-phrase">ミス27: 相対参照・絶対参照の使い分けを誤りコピーで崩れる</h3>
+<p><b>なぜ起きるか：</b>複数期間・複数トランシェにわたる数式を右方向・下方向にコピーする際、$記号による絶対参照の固定を誤り、参照先がずれた状態のまま気づかず提出する。<b>採点者が見るポイント：</b>ある期間だけ数値が不自然に飛んでいる、あるいは同じ行の数式パターンが途中で崩れている箇所は、コピー時の参照ミスとしてすぐに見抜かれる。<b>修正方法：</b>数式をコピーした後、数式表示モードで全期間の数式パターンが揃っているかを目視確認する。<b>重大度：</b><b style="color:#C08A2D">中</b></p>
+<h3 style="word-break:auto-phrase">ミス28: 単位表記が統一されていない</h3>
+<p><b>なぜ起きるか：</b>あるシートは百万円単位、別のシートは千円単位のまま数値を転記し、桁を1,000倍間違えたまま気づかない。倍率表記<span style="white-space:nowrap">（x）</span>とパーセント表記<span style="white-space:nowrap">（%）</span>の混同も同様に起きやすい。<b>採点者が見るポイント：</b>EBITDAが3桁多い、あるいは少ないといった明らかな桁違いは、モデルの信頼性そのものを疑わせる致命的な印象を与える。<b>修正方法：</b>モデル冒頭に単位の前提<span style="white-space:nowrap">（例：百万円単位で統一）</span>を明記し、シートごとに単位表示を統一する。<b>重大度：</b><b style="color:#B23A48">高</b></p>
+
+<h2 id="s13" style="word-break:auto-phrase">⑩エラーチェック・時間配分</h2>
+<h3 style="word-break:auto-phrase">ミス29: Balance Checkがない、またはFALSEのまま提出する</h3>
+<p><b>なぜ起きるか：</b>バランスシートの資産合計と負債・純資産合計が一致するかを検算する行<span style="white-space:nowrap">（Balance Check）</span>を作らない、あるいは作っていても不一致のまま時間切れで提出してしまう。<b>採点者が見るポイント：</b>Balance Checkは三表連動モデルが技術的に完成しているかを一目で判定できる指標であり、多くの採点者が最初に確認する項目の一つ。<b>修正方法：</b>モデルの目立つ位置にBalance Check行を置き、差額がゼロであることを常に可視化しておく。<b>重大度：</b><b style="color:#B23A48">高</b></p>
+<h3 style="word-break:auto-phrase">ミス30: 時間配分を誤り後半のリターン計算・要点整理が手薄になる</h3>
+<p><b>なぜ起きるか：</b>前半の三表構築やDebt Scheduleの体裁作り込みに時間を使いすぎ、本来配点が大きいリターン計算<span style="white-space:nowrap">（IRR/MOIC）</span>や投資判断の要点整理に十分な時間を残せない。<b>採点者が見るポイント：</b>未完成のまま提出されたリターン計算や、結論を書く時間がなかった空欄のサマリー欄は、モデルの巧拙以前に完成度の低さとして評価される。<b>修正方法：</b>各パートの時間配分（例：前提とSources &amp; Uses 15分、三表30分、Debt Schedule 25分、リターン計算20分、チェックと要点整理10分）を事前に決め、タイマーで区切って進める。<b>重大度：</b><b style="color:#C08A2D">中</b></p>
+
+<h2 id="s14" style="word-break:auto-phrase">重大度×頻度の全体像</h2>
+<p>30項目を俯瞰すると、頻度と重大度は必ずしも一致しません。次の図は、各分類がモデルテストの答案でどのあたりに位置しやすいかを、編集部の定性的な整理として示したものです。</p>
+<figure style="margin:28px 0;border:1px solid var(--line,#D8DEE8);background:#fff;border-radius:10px;overflow:hidden">
+<div style="overflow-x:auto;-webkit-overflow-scrolling:touch">
+<svg viewBox="0 0 1000 560" role="img" aria-label="10分類のミスを発生頻度と重大度の2軸で位置づけた概念図。横軸は発生頻度が低いから高い、縦軸は重大度が低いから高いを示す。Debt Scheduleとキャッシュスイープは高頻度かつ高重大度の右上に位置し、Sources and Usesと金利計算・循環参照とエラーチェック・時間配分は中頻度かつ高重大度の上部中央付近に位置する。Excel操作・体裁は高頻度だが重大度は低めの右下に位置する。税金は低頻度だが重大度は高めの左上寄りに位置する。図の下部に凡例として10分類の番号と名称の対応表が付いている。" style="display:block;width:100%;min-width:1200px;height:auto;font-family:'Noto Sans JP',sans-serif">
+  <rect x="0" y="0" width="1000" height="56" fill="#14355F"/>
+  <text x="24" y="36" fill="#fff" font-size="22" font-weight="700">重大度×頻度の2軸マトリクス（10分類・概念図）</text>
+
+  <rect x="100" y="80" width="850" height="320" fill="#F4F7FB" stroke="#D8DEE8"/>
+  <line x1="525" y1="80" x2="525" y2="400" stroke="#D8DEE8" stroke-dasharray="4 4"/>
+  <line x1="100" y1="240" x2="950" y2="240" stroke="#D8DEE8" stroke-dasharray="4 4"/>
+
+  <text x="525" y="430" text-anchor="middle" font-size="14" fill="#1A2331">発生頻度（低 ← → 高）</text>
+  <text x="60" y="240" text-anchor="middle" font-size="14" fill="#1A2331" transform="rotate(-90 60 240)">重大度（低 ← → 高）</text>
+
+  <circle cx="780" cy="272" r="15" fill="#2563EB"/><text x="780" y="277" text-anchor="middle" font-size="12" fill="#fff" font-weight="700">1</text>
+  <circle cx="440" cy="112" r="15" fill="#2563EB"/><text x="440" y="117" text-anchor="middle" font-size="12" fill="#fff" font-weight="700">2</text>
+  <circle cx="610" cy="240" r="15" fill="#2563EB"/><text x="610" y="245" text-anchor="middle" font-size="12" fill="#fff" font-weight="700">3</text>
+  <circle cx="695" cy="176" r="15" fill="#2563EB"/><text x="695" y="181" text-anchor="middle" font-size="12" fill="#fff" font-weight="700">4</text>
+  <circle cx="865" cy="112" r="15" fill="#B23A48"/><text x="865" y="117" text-anchor="middle" font-size="12" fill="#fff" font-weight="700">5</text>
+  <circle cx="525" cy="144" r="15" fill="#2563EB"/><text x="525" y="149" text-anchor="middle" font-size="12" fill="#fff" font-weight="700">6</text>
+  <circle cx="355" cy="176" r="15" fill="#2563EB"/><text x="355" y="181" text-anchor="middle" font-size="12" fill="#fff" font-weight="700">7</text>
+  <circle cx="610" cy="144" r="15" fill="#2563EB"/><text x="610" y="149" text-anchor="middle" font-size="12" fill="#fff" font-weight="700">8</text>
+  <circle cx="865" cy="304" r="15" fill="#5B6470"/><text x="865" y="309" text-anchor="middle" font-size="12" fill="#fff" font-weight="700">9</text>
+  <circle cx="525" cy="112" r="15" fill="#B23A48"/><text x="525" y="117" text-anchor="middle" font-size="12" fill="#fff" font-weight="700">10</text>
+
+  <text x="880" y="100" font-size="10" fill="#5B6470">高頻度×高重大度＝要注意</text>
+  <text x="120" y="395" font-size="12" fill="#5B6470">低頻度×低重大度</text>
+
+  <g font-size="13" fill="#1A2331">
+    <text x="100" y="460">①モデル構造・レイアウト　②Sources &amp; Uses　③営業予測　④運転資本　⑤Debt Schedule・Cash Sweep</text>
+    <text x="100" y="482">⑥金利計算・循環参照　⑦税金　⑧Exit・IRR/MOIC　⑨Excel操作・体裁　⑩エラーチェック・時間配分</text>
+  </g>
+  <text x="100" y="520" font-size="12" fill="#5B6470">※各分類の位置は、公開情報と指導経験に基づく編集部の定性的な整理であり、統計データではありません。</text>
+  <text x="100" y="540" font-size="12" fill="#5B6470">※個々の30項目の重大度は、各見出し内に「高・中・低」として個別に記載しています。</text>
+</svg>
+</div>
+<figcaption style="word-break:auto-phrase;padding:8px 14px;color:#5B6470;font-size:13px">図：10分類の発生頻度と重大度の位置づけ<span style="white-space:nowrap">（概念図）</span>。⑤Debt Schedule・Cash Sweepと⑩エラーチェック・時間配分が高頻度・高重大度の領域に位置しやすい。</figcaption>
+</figure>
+
+<p>次の表は、30項目を分類・重大度でサマリーしたものです。復習の優先順位づけに使ってください。</p>
+<figure style="margin:24px 0;overflow-x:auto"><table style="border-collapse:collapse;width:100%;min-width:744px;font-size:15px"><thead style="white-space:nowrap"><tr style="background:#14355F;color:#fff"><th style="padding:10px;text-align:left">No.</th><th style="white-space:nowrap;padding:10px;text-align:left">ミス<span style="white-space:nowrap">（要約）</span></th><th style="white-space:nowrap;padding:10px;text-align:left">分類</th><th style="white-space:nowrap;padding:10px;text-align:left">重大度</th></tr></thead><tbody>
+<tr style="border-bottom:1px solid #D8DEE8"><td style="white-space:nowrap;padding:10px">1</td><td style="padding:10px">入力と計算セルの色分けなし</td><td style="white-space:nowrap;padding:10px">①構造・レイアウト</td><td style="white-space:nowrap;padding:10px">中</td></tr>
+<tr style="border-bottom:1px solid #D8DEE8"><td style="white-space:nowrap;padding:10px">2</td><td style="padding:10px">シート跨ぎ参照が追跡不能</td><td style="white-space:nowrap;padding:10px">①構造・レイアウト</td><td style="white-space:nowrap;padding:10px">中</td></tr>
+<tr style="border-bottom:1px solid #D8DEE8"><td style="white-space:nowrap;padding:10px">3</td><td style="padding:10px">外部ブックへのリンク残存</td><td style="white-space:nowrap;padding:10px">①構造・レイアウト</td><td style="white-space:nowrap;padding:10px">低</td></tr>
+<tr style="border-bottom:1px solid #D8DEE8"><td style="white-space:nowrap;padding:10px">4</td><td style="padding:10px">Sources＝Usesが不一致</td><td style="white-space:nowrap;padding:10px">②Sources &amp; Uses</td><td style="white-space:nowrap;padding:10px">高</td></tr>
+<tr style="border-bottom:1px solid #D8DEE8"><td style="white-space:nowrap;padding:10px">5</td><td style="padding:10px">既存有利子負債の借換漏れ</td><td style="white-space:nowrap;padding:10px">②Sources &amp; Uses</td><td style="white-space:nowrap;padding:10px">高</td></tr>
+<tr style="border-bottom:1px solid #D8DEE8"><td style="white-space:nowrap;padding:10px">6</td><td style="padding:10px">取引費用と調達費用の混同</td><td style="white-space:nowrap;padding:10px">②Sources &amp; Uses</td><td style="white-space:nowrap;padding:10px">中</td></tr>
+<tr style="border-bottom:1px solid #D8DEE8"><td style="white-space:nowrap;padding:10px">7</td><td style="padding:10px">成長率・マージンの根拠なし</td><td style="white-space:nowrap;padding:10px">③営業予測</td><td style="white-space:nowrap;padding:10px">中</td></tr>
+<tr style="border-bottom:1px solid #D8DEE8"><td style="white-space:nowrap;padding:10px">8</td><td style="padding:10px">減価償却とCapexの不整合</td><td style="white-space:nowrap;padding:10px">③営業予測</td><td style="white-space:nowrap;padding:10px">中</td></tr>
+<tr style="border-bottom:1px solid #D8DEE8"><td style="white-space:nowrap;padding:10px">9</td><td style="padding:10px">一過性項目の正常化漏れ</td><td style="white-space:nowrap;padding:10px">③営業予測</td><td style="white-space:nowrap;padding:10px">高</td></tr>
+<tr style="border-bottom:1px solid #D8DEE8"><td style="white-space:nowrap;padding:10px">10</td><td style="padding:10px">運転資本の定義に現金等を混入</td><td style="white-space:nowrap;padding:10px">④運転資本</td><td style="white-space:nowrap;padding:10px">高</td></tr>
+<tr style="border-bottom:1px solid #D8DEE8"><td style="white-space:nowrap;padding:10px">11</td><td style="padding:10px">運転資本増減の符号が逆</td><td style="white-space:nowrap;padding:10px">④運転資本</td><td style="white-space:nowrap;padding:10px">高</td></tr>
+<tr style="border-bottom:1px solid #D8DEE8"><td style="white-space:nowrap;padding:10px">12</td><td style="padding:10px">回転期間の前提が実績と乖離</td><td style="white-space:nowrap;padding:10px">④運転資本</td><td style="white-space:nowrap;padding:10px">中</td></tr>
+<tr style="border-bottom:1px solid #D8DEE8"><td style="white-space:nowrap;padding:10px">13</td><td style="padding:10px">Cash SweepのFCF範囲の取り違え</td><td style="white-space:nowrap;padding:10px">⑤Debt Schedule</td><td style="white-space:nowrap;padding:10px">高</td></tr>
+<tr style="border-bottom:1px solid #D8DEE8"><td style="white-space:nowrap;padding:10px">14</td><td style="padding:10px">トランシェの返済順位無視</td><td style="white-space:nowrap;padding:10px">⑤Debt Schedule</td><td style="white-space:nowrap;padding:10px">中</td></tr>
+<tr style="border-bottom:1px solid #D8DEE8"><td style="white-space:nowrap;padding:10px">15</td><td style="padding:10px">強制返済の二重計上・計上漏れ</td><td style="white-space:nowrap;padding:10px">⑤Debt Schedule</td><td style="white-space:nowrap;padding:10px">高</td></tr>
+<tr style="border-bottom:1px solid #D8DEE8"><td style="white-space:nowrap;padding:10px">16</td><td style="padding:10px">Revolverのロジック欠如</td><td style="white-space:nowrap;padding:10px">⑤Debt Schedule</td><td style="white-space:nowrap;padding:10px">中</td></tr>
+<tr style="border-bottom:1px solid #D8DEE8"><td style="white-space:nowrap;padding:10px">17</td><td style="padding:10px">期首残高方式と平均残高方式の混同</td><td style="white-space:nowrap;padding:10px">⑥金利・循環参照</td><td style="white-space:nowrap;padding:10px">中</td></tr>
+<tr style="border-bottom:1px solid #D8DEE8"><td style="white-space:nowrap;padding:10px">18</td><td style="padding:10px">反復計算オフのまま循環参照放置</td><td style="white-space:nowrap;padding:10px">⑥金利・循環参照</td><td style="white-space:nowrap;padding:10px">高</td></tr>
+<tr style="border-bottom:1px solid #D8DEE8"><td style="white-space:nowrap;padding:10px">19</td><td style="padding:10px">サーキュラリティ・スイッチなし</td><td style="white-space:nowrap;padding:10px">⑥金利・循環参照</td><td style="white-space:nowrap;padding:10px">中</td></tr>
+<tr style="border-bottom:1px solid #D8DEE8"><td style="white-space:nowrap;padding:10px">20</td><td style="padding:10px">赤字年の税金・NOL未考慮</td><td style="white-space:nowrap;padding:10px">⑦税金</td><td style="white-space:nowrap;padding:10px">高</td></tr>
+<tr style="border-bottom:1px solid #D8DEE8"><td style="white-space:nowrap;padding:10px">21</td><td style="padding:10px">支払利息の節税効果の誤り</td><td style="white-space:nowrap;padding:10px">⑦税金</td><td style="white-space:nowrap;padding:10px">中</td></tr>
+<tr style="border-bottom:1px solid #D8DEE8"><td style="white-space:nowrap;padding:10px">22</td><td style="padding:10px">のれん税務償却可否の誤り</td><td style="white-space:nowrap;padding:10px">⑦税金</td><td style="white-space:nowrap;padding:10px">低</td></tr>
+<tr style="border-bottom:1px solid #D8DEE8"><td style="white-space:nowrap;padding:10px">23</td><td style="padding:10px">Exit倍率の根拠なき設定</td><td style="white-space:nowrap;padding:10px">⑧Exit・IRR/MOIC</td><td style="white-space:nowrap;padding:10px">高</td></tr>
+<tr style="border-bottom:1px solid #D8DEE8"><td style="white-space:nowrap;padding:10px">24</td><td style="padding:10px">IRR近似式と実日付のずれ</td><td style="white-space:nowrap;padding:10px">⑧Exit・IRR/MOIC</td><td style="white-space:nowrap;padding:10px">中</td></tr>
+<tr style="border-bottom:1px solid #D8DEE8"><td style="white-space:nowrap;padding:10px">25</td><td style="padding:10px">MOICに中間配当を未計上</td><td style="white-space:nowrap;padding:10px">⑧Exit・IRR/MOIC</td><td style="white-space:nowrap;padding:10px">中</td></tr>
+<tr style="border-bottom:1px solid #D8DEE8"><td style="white-space:nowrap;padding:10px">26</td><td style="padding:10px">数式内への数値ハードコード</td><td style="white-space:nowrap;padding:10px">⑨Excel操作・体裁</td><td style="white-space:nowrap;padding:10px">中</td></tr>
+<tr style="border-bottom:1px solid #D8DEE8"><td style="white-space:nowrap;padding:10px">27</td><td style="padding:10px">参照方式の誤りでコピー崩壊</td><td style="white-space:nowrap;padding:10px">⑨Excel操作・体裁</td><td style="white-space:nowrap;padding:10px">中</td></tr>
+<tr style="border-bottom:1px solid #D8DEE8"><td style="white-space:nowrap;padding:10px">28</td><td style="white-space:nowrap;padding:10px">単位表記の不統一</td><td style="white-space:nowrap;padding:10px">⑨Excel操作・体裁</td><td style="white-space:nowrap;padding:10px">高</td></tr>
+<tr style="border-bottom:1px solid #D8DEE8"><td style="white-space:nowrap;padding:10px">29</td><td style="padding:10px">Balance Check未達成のまま提出</td><td style="white-space:nowrap;padding:10px">⑩エラーチェック</td><td style="white-space:nowrap;padding:10px">高</td></tr>
+<tr style="border-bottom:1px solid #D8DEE8"><td style="white-space:nowrap;padding:10px">30</td><td style="padding:10px">時間配分ミスで後半が手薄</td><td style="white-space:nowrap;padding:10px">⑩エラーチェック</td><td style="white-space:nowrap;padding:10px">中</td></tr>
+</tbody></table></figure>
+
+<h2 id="s15" style="word-break:auto-phrase">提出前10分の最終チェックリスト</h2>
+<p>制限時間内にすべてを見直す余裕がない場合でも、最後の10分は次の15項目の確認に充ててください。順序はおおむね「数値の整合性→ロジックの整合性→アウトプットの妥当性→体裁」の流れです。</p>
+<ul>
+<li>☐ Balance Check<span style="white-space:nowrap">（資産＝負債＋純資産）</span>がゼロになっているか</li>
+<li>☐ Sources合計とUses合計が一致しているか</li>
+<li>☐ 循環参照がある場合、反復計算<span style="white-space:nowrap">（Iterative Calculation）</span>を有効にしたか</li>
+<li>☐ サーキュラリティ・スイッチを入れ、循環部分を強制的に切れる状態にしてあるか</li>
+<li>☐ 運転資本の増減の符号<span style="white-space:nowrap">（増加＝キャッシュアウト）</span>が正しいか</li>
+<li>☐ 単位<span style="white-space:nowrap">（百万円/千円、倍率/％）</span>がシート間で統一されているか</li>
+<li>☐ 数式内に前提数値がハードコードされていないか</li>
+<li>☐ 強制返済とCash Sweepを二重計上・計上漏れしていないか</li>
+<li>☐ 繰越欠損金<span style="white-space:nowrap">（NOL）</span>を必要な年で相殺しているか</li>
+<li>☐ Exit倍率の前提（Entry倍率と同一か、拡大するなら根拠は何か）を明示したか</li>
+<li>☐ MOICの分子に中間配当等の還元額を含めたか</li>
+<li>☐ IRRを近似式で出した場合、中間キャッシュフローがない前提を確認したか</li>
+<li>☐ 前提セルを一つ動かし、モデル全体が連動して動くか<span style="white-space:nowrap">（感応度チェック）</span></li>
+<li>☐ 外部ブックへのリンクが残っていないか</li>
+<li>☐ 結論（推奨投資判断・主要リスク）を書く時間を確保したか</li>
+</ul>
+
+<figure style="margin:28px 0;border:1px solid var(--line,#D8DEE8);background:#fff;border-radius:10px;overflow:hidden">
+<div style="overflow-x:auto;-webkit-overflow-scrolling:touch">
+<svg viewBox="0 0 1000 260" role="img" aria-label="提出前チェックの順序フロー図。左から右へ、数値の整合性の確認、ロジックの整合性の確認、前提の妥当性の確認、アウトプットの確認、体裁の確認、提出の6段階が矢印でつながっている。" style="display:block;width:100%;min-width:1000px;height:auto;font-family:'Noto Sans JP',sans-serif">
+  <rect x="0" y="0" width="1000" height="56" fill="#14355F"/>
+  <text x="24" y="36" fill="#fff" font-size="22" font-weight="700">提出前チェックの順序フロー</text>
+
+  <line x1="72" y1="150" x2="928" y2="150" stroke="#14355F" stroke-width="2"/>
+  <polygon points="928,142 948,150 928,158" fill="#14355F"/>
+  <circle cx="72" cy="150" r="16" fill="#173F99"/>
+  <circle cx="243" cy="150" r="16" fill="#173F99"/>
+  <circle cx="414" cy="150" r="16" fill="#2563EB"/>
+  <circle cx="585" cy="150" r="16" fill="#2563EB"/>
+  <circle cx="756" cy="150" r="16" fill="#1F7A5A"/>
+  <circle cx="927" cy="150" r="16" fill="#C08A2D"/>
+  <g fill="#fff" font-size="13" font-weight="700" text-anchor="middle">
+    <text x="72" y="155">1</text>
+    <text x="243" y="155">2</text>
+    <text x="414" y="155">3</text>
+    <text x="585" y="155">4</text>
+    <text x="756" y="155">5</text>
+    <text x="927" y="155">6</text>
+  </g>
+  <g fill="#1A2331" font-size="13" text-anchor="middle">
+    <text x="72" y="120">数値の整合性</text>
+    <text x="72" y="138">(Balance Check</text>
+    <text x="72" y="200">/Sources&amp;Uses)</text>
+    <text x="243" y="200">ロジックの整合性</text>
+    <text x="243" y="218">(循環参照・符号)</text>
+    <text x="414" y="120">前提の妥当性</text>
+    <text x="414" y="138">(感応度チェック)</text>
+    <text x="585" y="200">アウトプットの確認</text>
+    <text x="585" y="218">(IRR/MOIC・結論)</text>
+    <text x="756" y="120">体裁の確認</text>
+    <text x="756" y="138">(単位・参照方式)</text>
+    <text x="927" y="200">提出</text>
+  </g>
+</svg>
+</div>
+<figcaption style="word-break:auto-phrase;padding:8px 14px;color:#5B6470;font-size:13px">図：提出前の見直しは「数値→ロジック→前提→アウトプット→体裁」の順で進めると、限られた時間でも取りこぼしが少ない。</figcaption>
+</figure>
+
+<h2 id="s16" style="word-break:auto-phrase">練習方法：白紙から時間を計って組み、採点基準に照らす</h2>
+<p>30項目を眺めるだけでは、本番で同じミスを避けられるようにはなりません。効果が高いのは、①テンプレートに頼らず<b>白紙から</b>モデルを組む練習を重ね、②<b>時間を計って</b>本番同様の制約下で完成させ、③完成後に本記事の30項目とチェックリストに照らして自己採点する、という順序です。手順をまだ体系的に押さえていない場合は<a href="../tut-lbo-model-complete/index.html">白紙からLBOモデルを組む手順</a>を先に確認し、電卓だけでIRRの当たりをつける感覚を養うには<a href="../car-006-paper-lbo/index.html" class="op-gt" data-gt="paper-lbo">ペーパーLBO<span style="white-space:nowrap">（手計算）</span>の練習法</a>が有効です。</p>
+
+<aside class="art-cta art-cta--inline" data-art-cta="inline" data-art-cta-src="authored" data-art-cta-target="lbo" aria-labelledby="art-cta-inline-1"><p class="art-cta-eyebrow">実務で試す</p><p class="art-cta-title" id="art-cta-inline-1">白紙からLBOモデルを組める状態を目指す</p><p class="art-cta-text">LBOマスター講座では、空のBlankシートから自分の手で組み上げる4段階のExcel（Blank→Guided→Checkpoint→Completed）を使い、Paper LBOから統合LBO・PPA・三表統合・Dividend Recap・ICメモまでを順に練習できます。本記事の30項目を、実際に自分の手を動かしながら確認する場として設計されています（プラチナプランに含まれます）。</p><p class="art-cta-act"><a class="art-btn art-btn--gold" href="../materials/lbo/index.html">LBOマスター講座の詳細を見る</a></p></aside>
+
+<h2 id="s17" style="word-break:auto-phrase">よくある質問<span style="white-space:nowrap">（FAQ）</span></h2>
+<div class="art-faq"><div class="art-faq-item"><h3 class="art-faq-q"><span class="art-faq-mk" aria-hidden="true">Q</span><span class="art-faq-qt">モデルテストは何分で完成させるべきですか。</span></h3><div class="art-faq-a"><span class="art-faq-mk" aria-hidden="true">A</span><div class="art-faq-at"><p>ファンドや出題形式によって幅があり、一律の正解時間はありません。1時間程度の短時間形式では、精緻さより「S&amp;Uが合う」「三表が締まる」「リターン計算まで到達する」という完成度が優先される傾向があります。数時間〜数日の形式では、感度分析やICメモ相当の考察まで求められることが多くなります。いずれの形式でも、本記事のミス30を後半に発生させないよう、時間配分をあらかじめ決めておくことが重要です。</p></div></div></div>
+<div class="art-faq-item"><h3 class="art-faq-q"><span class="art-faq-mk" aria-hidden="true">Q</span><span class="art-faq-qt">循環参照は使ってよいのですか。</span></h3><div class="art-faq-a"><span class="art-faq-mk" aria-hidden="true">A</span><div class="art-faq-at"><p>平均残高方式で金利を計算する限り、循環参照の発生自体は自然な結果であり、それ自体は誤りではありません。問題になるのは、循環参照が発生しているのに反復計算<span style="white-space:nowrap">（Iterative Calculation）</span>を有効化していない、あるいはサーキュラリティ・スイッチのような復旧手段を用意せずにモデルが壊れやすい状態のまま提出することです。循環参照を避けたい場合は、期首残高方式を採用して意図的に循環を切るという設計判断もあり得ますが、その場合は利息がやや過大計上される点を理解した上で選ぶ必要があります。</p></div></div></div>
+<div class="art-faq-item"><h3 class="art-faq-q"><span class="art-faq-mk" aria-hidden="true">Q</span><span class="art-faq-qt">本記事と手計算<span style="white-space:nowrap">（Paper LBO）</span>の記事はどう使い分ければよいですか。</span></h3><div class="art-faq-a"><span class="art-faq-mk" aria-hidden="true">A</span><div class="art-faq-at"><p><a href="../car-006-paper-lbo/index.html" class="op-gt" data-gt="paper-lbo">ペーパーLBO<span style="white-space:nowrap">（手計算）</span>の練習法</a>は、Excelを使わずに概算のIRR・MOICを素早く出す力を鍛える記事で、面接のその場での口頭説明にも直結します。本記事は、実際にExcelモデルを完成させる段階で技術的なミスを避けるためのカタログです。手計算で当たりをつける力と、Excelで精緻に組み上げる力の両方が、モデルテストでは別々に評価されると考えてください。面接全般の想定問答を横断的に確認したい場合は<a href="../car-023-pe-interview-100questions/index.html">PE面接想定問答100選</a>、キャリア全体の見取り図は<a href="../car-002-pe-career/index.html">PEキャリアの全体像</a>もあわせて参考にしてください。</p></div></div></div>
+
+</div><h2 id="s18" style="word-break:auto-phrase">まとめ</h2>
+<p>LBOモデルテストの失点は、①モデル構造・レイアウト、②Sources &amp; Uses、③営業予測、④運転資本、⑤Debt Schedule・Cash Sweep、⑥金利計算・循環参照、⑦税金、⑧Exit・IRR/MOIC、⑨Excel操作・体裁、⑩エラーチェック・時間配分という10分類・30項目に整理できます。中でも重大度が高いのは、<b>Sources &amp; Usesの不一致、運転資本の定義・符号の誤り、Cash Sweepの範囲や強制返済の二重計上、循環参照の未処理、赤字年のNOL未考慮、Exit倍率の根拠なき設定、Balance Check未達成</b>の7項目です。これらは単なる体裁の問題ではなく、モデルが出す数字そのものを誤らせるため、優先して潰しておく価値があります。技術的な正確さと同時に、時間内に結論まで到達する完成度も評価対象である点を忘れず、白紙から時間を計って組む練習を重ねてください。</p>
+
+<div class="related-box"><p class="related-box-h">次に読む</p><ul><li><a href="../car-005-modeling-test/index.html" class="op-gt" data-gt="modeling-test">モデルテストで落ちる人の共通点<span style="white-space:nowrap">（進め方編）</span></a></li><li><a href="../tut-lbo-model-complete/index.html">白紙からLBOモデルを組む手順</a></li><li><a href="../car-006-paper-lbo/index.html" class="op-gt" data-gt="paper-lbo">ペーパーLBO<span style="white-space:nowrap">（手計算）</span>の練習法</a></li><li><a href="../pe-005-irr-moic/index.html" class="op-gt" data-gt="irr">IRRとMOICの計算と使い分け</a></li><li><a href="../pe-interview-lbo-basics/index.html">LBOの基礎知識</a></li><li><a href="../car-023-pe-interview-100questions/index.html">PE面接想定問答100選</a></li><li><a href="../car-026-model-test-time-strategy/index.html">モデリングテスト90分・180分の攻略法｜時間配分・作成順序・合格水準</a></li><li><a href="../car-089-lbo-test-drill/index.html">LBOモデルテスト実践演習<span style="white-space:nowrap">（60分版）</span></a></li><li><a href="../car-103-model-walkthrough-defense/index.html">モデル提出後の想定問答｜Walk me through your model</a></li></ul></div>
+
+<div style="margin:28px 0;padding:18px 20px;border:1px solid #17636A;border-radius:10px;background:#F2F8F7"><p style="font-weight:700;margin:0 0 8px;color:#17636A">時間を計ったモデルテスト形式で、採点基準に沿ったフィードバックを受ける</p><p style="margin:0 0 10px">本記事の30項目を頭で理解しても、本番の時間制約の中で再現できるかは別問題です。Assessmentでは、架空企業のケースを時間内に解き、実務経験者が採点基準に沿って添削します。自分のモデルのどこが本記事のどのミスに該当するかを、第三者の目で確認できます。</p><p style="margin:0"><a href="../assessment/index.html" style="font-weight:700">Assessmentの詳細を見る→</a></p></div>
+
+<h2 id="src" style="word-break:auto-phrase">出典・参考<span style="white-space:nowrap">（2026-08-16確認）</span></h2>
+<ul class="art-src"><li>本記事は、公開されているLBOモデリング・財務モデリングの一般的な実務知識と、モデルテスト対策の指導経験を編集部が一般化して整理したものです。特定のファンドの実際の出題内容・採点基準を示すものではありません。</li><li>数値例はすべて理解のための架空の設例であり、実在企業・実在ファンドの実績とは無関係です。</li></ul>
+
+<p class="art-note">※本記事は教育目的の一般的な解説であり、法務・税務・投資助言ではありません。設例は理解のための仮設例です。</p>
+
+<aside class="op-fml" aria-label="財務モデリングを体系的に学ぶ"><p class="op-fml__h">この記事のテーマを、体系的に学ぶ</p><ul class="op-fml__list"><li><a href="../course/index.html" data-ga4="fm_links_click" data-fml="pillar">財務モデリングを体系的に学ぶ</a><span class="op-fml__note">Excel・財務三表・DCF・Comps・M&amp;A・LBOの学習順序、無料28章と7日間講座、有料教材との違い</span></li><li><a href="../materials/lbo/index.html" data-ga4="fm_links_click" data-fml="material-lbo">LBOモデリング講座</a><span class="op-fml__note">Paper LBOの手計算から、統合LBOモデル、三表統合・PPA・IC判断まで。3つのLEVELとExcel45ブックで、LBOモデルを自力で組める状態へ。</span></li><li><a href="../materials/excel-starter-pack/index.html" data-ga4="fm_links_click" data-fml="starter">無料Excelテンプレート集（Excel Starter Pack）</a><span class="op-fml__note">無料会員登録で、三表連動・DCF・LBO・M&amp;Aモデルなど9つのExcelテンプレートを受け取れます</span></li></ul></aside>    </article>
+    <div class="art-share"><style id="op-share-style">
+.op-share{margin:44px 0 0;padding-top:18px;border-top:1px solid #E3E8EF}
+.op-share-h{font-size:.78rem;font-weight:700;color:#5B6470;letter-spacing:.05em;margin:0 0 10px}
+.op-share-list{display:flex;flex-wrap:wrap;gap:8px;list-style:none;margin:0;padding:0}
+.op-share-list li{margin:0;padding:0}
+.op-share-btn{display:inline-flex;align-items:center;gap:7px;min-height:34px;padding:6px 13px;border:1px solid #D8DEE8;border-radius:8px;background:#fff;color:#14355F;font-size:.78rem;font-weight:600;font-family:inherit;line-height:1;text-decoration:none;cursor:pointer;transition:border-color .15s ease,color .15s ease,background .15s ease}
+.op-share-btn svg{width:15px;height:15px;flex:0 0 auto}
+.op-share-btn:hover{border-color:#C08A2D;color:#8A6115;background:#FFFDF7}
+.op-share-btn:focus-visible{outline:2px solid #14355F;outline-offset:2px}
+.op-share-copy .op-share-ic-done{display:none}
+.op-share-copy.is-copied{border-color:#007A4D;color:#007A4D;background:#F2FAF6}
+.op-share-copy.is-copied .op-share-ic-link{display:none}
+.op-share-copy.is-copied .op-share-ic-done{display:inline-block}
+@media(max-width:760px){.op-share-btn{min-height:40px;padding:8px 14px;font-size:.8rem}.op-share-btn svg{width:16px;height:16px}}
+</style>
+<div class="op-share" data-ctype="article" data-slug="car-022-lbo-model-test-mistakes" data-stitle="LBOモデルテストで落ちる典型的なミス30選｜採点者が見るポイントと修正方法" data-url="https://otemachiprep.com/car-022-lbo-model-test-mistakes/">
+  <h3 class="op-share-h">この記事を共有</h3>
+  <ul class="op-share-list">
+    <li><a class="op-share-btn" data-pf="x" href="https://twitter.com/intent/tweet?text=LBO%E3%83%A2%E3%83%87%E3%83%AB%E3%83%86%E3%82%B9%E3%83%88%E3%81%A7%E8%90%BD%E3%81%A1%E3%82%8B%E5%85%B8%E5%9E%8B%E7%9A%84%E3%81%AA%E3%83%9F%E3%82%B930%E9%81%B8%EF%BD%9C%E6%8E%A1%E7%82%B9%E8%80%85%E3%81%8C%E8%A6%8B%E3%82%8B%E3%83%9D%E3%82%A4%E3%83%B3%E3%83%88%E3%81%A8%E4%BF%AE%E6%AD%A3%E6%96%B9%E6%B3%95&#038;url=https%3A%2F%2Fotemachiprep.com%2Fcar-022-lbo-model-test-mistakes%2F" target="_blank" rel="nofollow noopener noreferrer" aria-label="X（旧Twitter）で共有（新しいウィンドウで開きます）"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231 5.451-6.231zm-1.161 17.52h1.833L7.084 4.126H5.117l11.966 15.644z"/></svg><span>X</span></a></li>
+    <li><a class="op-share-btn" data-pf="facebook" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fotemachiprep.com%2Fcar-022-lbo-model-test-mistakes%2F" target="_blank" rel="nofollow noopener noreferrer" aria-label="Facebookで共有（新しいウィンドウで開きます）"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M24 12.073C24 5.446 18.627.073 12 .073S0 5.446 0 12.073c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.668 4.533-4.668 1.312 0 2.686.234 2.686.234v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg><span>Facebook</span></a></li>
+    <li><a class="op-share-btn" data-pf="linkedin" href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fotemachiprep.com%2Fcar-022-lbo-model-test-mistakes%2F" target="_blank" rel="nofollow noopener noreferrer" aria-label="LinkedInで共有（新しいウィンドウで開きます）"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.266 2.37 4.266 5.455v6.286zM5.337 7.433a2.062 2.062 0 1 1 0-4.125 2.062 2.062 0 0 1 0 4.125zM7.119 20.452H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.225 0z"/></svg><span>LinkedIn</span></a></li>
+    <li><button type="button" class="op-share-btn op-share-copy" data-pf="copy_link" aria-label="記事のリンクをコピー"><svg class="op-share-ic-link" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z"/></svg><svg class="op-share-ic-done" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M9 16.2 5.5 12.7 4 14.2l5 5 11-11-1.5-1.5z"/></svg><span class="op-share-copylabel" aria-live="polite">リンクをコピー</span></button></li>
+    <li class="op-share-native-li" hidden><button type="button" class="op-share-btn" data-pf="native_share" aria-label="その他のアプリで共有"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92s2.92-1.31 2.92-2.92-1.31-2.92-2.92-2.92z"/></svg><span>その他のアプリで共有</span></button></li>
+  </ul>
+</div>
+<script id="op-share-js">
+(function(){
+  'use strict';
+  var d = document;
+  function reveal(){
+    if (navigator.share) {
+      var lis = d.querySelectorAll('.op-share-native-li');
+      for (var i = 0; i < lis.length; i++) { lis[i].hidden = false; }
+    }
+  }
+  if (d.readyState === 'loading') { d.addEventListener('DOMContentLoaded', reveal); } else { reveal(); }
+  function track(root, pf){
+    var p = {
+      content_type:  root.getAttribute('data-ctype') || '',
+      article_slug:  root.getAttribute('data-slug') || '',
+      article_title: root.getAttribute('data-stitle') || '',
+      share_platform: pf
+    };
+    if (typeof window.gtag === 'function') { window.gtag('event', 'article_share', p); }
+    else if (window.dataLayer && typeof window.dataLayer.push === 'function') { p.event = 'article_share'; window.dataLayer.push(p); }
+  }
+  d.addEventListener('click', function(e){
+    var btn = e.target && e.target.closest ? e.target.closest('.op-share-btn') : null;
+    if (!btn) { return; }
+    var root = btn.closest('.op-share');
+    if (!root) { return; }
+    var pf    = btn.getAttribute('data-pf') || '';
+    var url   = root.getAttribute('data-url') || location.href;
+    var title = root.getAttribute('data-stitle') || d.title;
+    if (pf === 'copy_link') {
+      e.preventDefault();
+      var done = function(){
+        btn.classList.add('is-copied');
+        var lb = btn.querySelector('.op-share-copylabel');
+        if (lb) { lb.textContent = 'コピーしました'; }
+        if (btn._opShareT) { clearTimeout(btn._opShareT); }
+        btn._opShareT = setTimeout(function(){
+          btn.classList.remove('is-copied');
+          if (lb) { lb.textContent = 'リンクをコピー'; }
+        }, 2200);
+      };
+      var fallback = function(){
+        var ta = d.createElement('textarea');
+        ta.value = url;
+        ta.setAttribute('readonly', '');
+        ta.style.position = 'fixed';
+        ta.style.opacity = '0';
+        d.body.appendChild(ta);
+        ta.select();
+        try { if (d.execCommand('copy')) { done(); } } catch (err) {}
+        d.body.removeChild(ta);
+      };
+      if (navigator.clipboard && window.isSecureContext) {
+        navigator.clipboard.writeText(url).then(done, fallback);
+      } else {
+        fallback();
+      }
+    } else if (pf === 'native_share') {
+      e.preventDefault();
+      if (navigator.share) { navigator.share({ title: title, url: url }).catch(function(){}); }
+    }
+    track(root, pf);
+  });
+})();
+</script>
+</div>    <aside class="art-cta art-cta--end" data-art-cta="end" data-art-cta-src="template" data-art-cta-target="lbo" aria-labelledby="art-cta-end-name"><p class="art-cta-eyebrow">関連教材</p><div class="art-cta-item"><p class="art-cta-name" id="art-cta-end-name"><a href="../materials/lbo/index.html">LBOマスター講座</a></p><p class="art-cta-text">Paper LBOの手計算から、統合LBOモデル、三表統合・PPA・IC判断まで。3つのLEVELとExcel45ブックで、LBOモデルを自力で組める状態へ。</p><p class="art-cta-facts"><span>PDF16冊（計102頁）＋Excel45ブック（Blank／Guided／Checkpoint／Completed）</span><span>収録プラン：プラチナ限定</span></p></div><p class="art-cta-act"><a class="art-btn art-btn--gold" href="../materials/lbo/index.html">教材の内容を見る</a><a class="art-cta-sub" href="../materials/index.html">教材一覧を見る</a></p><p class="art-cta-free">無料で試す場合は、会員登録で受け取れる<a href="../materials/excel-starter-pack/index.html">大手町プレップ Excel Starter Pack</a>から始められます。</p></aside>  </div>
+</div>
+	<section class="art-related" aria-labelledby="art-rel-h">
+  <h2 id="art-rel-h" class="art-rel-h">関連記事</h2>
+  <ul class="art-rel-grid">
+		    <li><a class="art-rel-card" href="../car-002-pe-career/index.html"><span class="art-rel-thumb"><img src="https://i0.wp.com/otemachiprep.com/wp-content/uploads/thumbnails/2026-09-20/car-002-pe-career.webp?fit=1024%2C576&#038;ssl=1" srcset="https://i0.wp.com/otemachiprep.com/wp-content/uploads/thumbnails/2026-09-20/car-002-pe-career.webp?w=1600&amp;ssl=1 1600w, https://i0.wp.com/otemachiprep.com/wp-content/uploads/thumbnails/2026-09-20/car-002-pe-career.webp?resize=300%2C169&amp;ssl=1 300w, https://i0.wp.com/otemachiprep.com/wp-content/uploads/thumbnails/2026-09-20/car-002-pe-career.webp?resize=1024%2C576&amp;ssl=1 1024w, https://i0.wp.com/otemachiprep.com/wp-content/uploads/thumbnails/2026-09-20/car-002-pe-career.webp?resize=768%2C432&amp;ssl=1 768w, https://i0.wp.com/otemachiprep.com/wp-content/uploads/thumbnails/2026-09-20/car-002-pe-career.webp?resize=1536%2C864&amp;ssl=1 1536w, https://i0.wp.com/otemachiprep.com/wp-content/uploads/thumbnails/2026-09-20/car-002-pe-career.webp?resize=1320%2C743&amp;ssl=1 1320w, https://i0.wp.com/otemachiprep.com/wp-content/uploads/thumbnails/2026-09-20/car-002-pe-career.webp?resize=600%2C338&amp;ssl=1 600w" sizes="(max-width:599px) 92vw, (max-width:1023px) 46vw, 360px" width="1024" height="576" alt="" loading="lazy" decoding="async"></span><span class="art-rel-body"><span class="art-rel-cat">キャリア・面接対策</span><span class="art-rel-title">PEファンド転職完全ガイド｜選考プロセス・面接・モデルテスト対策の全体像</span><span class="art-rel-more" aria-hidden="true">読む <span>→</span></span></span></a></li>
+		    <li><a class="art-rel-card" href="../car-014-pe-lbo-10questions/index.html"><span class="art-rel-thumb"><img src="https://i0.wp.com/otemachiprep.com/wp-content/uploads/thumbnails/2026-09-20/car-014-pe-lbo-10questions.webp?fit=1024%2C576&#038;ssl=1" srcset="https://i0.wp.com/otemachiprep.com/wp-content/uploads/thumbnails/2026-09-20/car-014-pe-lbo-10questions.webp?w=1600&amp;ssl=1 1600w, https://i0.wp.com/otemachiprep.com/wp-content/uploads/thumbnails/2026-09-20/car-014-pe-lbo-10questions.webp?resize=300%2C169&amp;ssl=1 300w, https://i0.wp.com/otemachiprep.com/wp-content/uploads/thumbnails/2026-09-20/car-014-pe-lbo-10questions.webp?resize=1024%2C576&amp;ssl=1 1024w, https://i0.wp.com/otemachiprep.com/wp-content/uploads/thumbnails/2026-09-20/car-014-pe-lbo-10questions.webp?resize=768%2C432&amp;ssl=1 768w, https://i0.wp.com/otemachiprep.com/wp-content/uploads/thumbnails/2026-09-20/car-014-pe-lbo-10questions.webp?resize=1536%2C864&amp;ssl=1 1536w, https://i0.wp.com/otemachiprep.com/wp-content/uploads/thumbnails/2026-09-20/car-014-pe-lbo-10questions.webp?resize=1320%2C743&amp;ssl=1 1320w, https://i0.wp.com/otemachiprep.com/wp-content/uploads/thumbnails/2026-09-20/car-014-pe-lbo-10questions.webp?resize=600%2C338&amp;ssl=1 600w" sizes="(max-width:599px) 92vw, (max-width:1023px) 46vw, 360px" width="1024" height="576" alt="" loading="lazy" decoding="async"></span><span class="art-rel-body"><span class="art-rel-cat">キャリア・面接対策</span><span class="art-rel-title">PE面接のLBO頻出問題・厳選10問｜30秒回答と計算の型（無料抜粋版）</span><span class="art-rel-more" aria-hidden="true">読む <span>→</span></span></span></a></li>
+		    <li><a class="art-rel-card" href="../car-047-last-minute-prep/index.html"><span class="art-rel-thumb"><img src="https://i0.wp.com/otemachiprep.com/wp-content/uploads/thumbnails/2026-09-20/car-047-last-minute-prep.webp?fit=1024%2C576&#038;ssl=1" srcset="https://i0.wp.com/otemachiprep.com/wp-content/uploads/thumbnails/2026-09-20/car-047-last-minute-prep.webp?w=1600&amp;ssl=1 1600w, https://i0.wp.com/otemachiprep.com/wp-content/uploads/thumbnails/2026-09-20/car-047-last-minute-prep.webp?resize=300%2C169&amp;ssl=1 300w, https://i0.wp.com/otemachiprep.com/wp-content/uploads/thumbnails/2026-09-20/car-047-last-minute-prep.webp?resize=1024%2C576&amp;ssl=1 1024w, https://i0.wp.com/otemachiprep.com/wp-content/uploads/thumbnails/2026-09-20/car-047-last-minute-prep.webp?resize=768%2C432&amp;ssl=1 768w, https://i0.wp.com/otemachiprep.com/wp-content/uploads/thumbnails/2026-09-20/car-047-last-minute-prep.webp?resize=1536%2C864&amp;ssl=1 1536w, https://i0.wp.com/otemachiprep.com/wp-content/uploads/thumbnails/2026-09-20/car-047-last-minute-prep.webp?resize=1320%2C743&amp;ssl=1 1320w, https://i0.wp.com/otemachiprep.com/wp-content/uploads/thumbnails/2026-09-20/car-047-last-minute-prep.webp?resize=600%2C338&amp;ssl=1 600w" sizes="(max-width:599px) 92vw, (max-width:1023px) 46vw, 360px" width="1024" height="576" alt="" loading="lazy" decoding="async"></span><span class="art-rel-body"><span class="art-rel-cat">キャリア・面接対策</span><span class="art-rel-title">投資銀行・PE面接の直前対策｜残り時間で「落ちない最低ライン」を作る優先順位</span><span class="art-rel-more" aria-hidden="true">読む <span>→</span></span></span></a></li>
+		  </ul>
+</section>
+	</div>
+</main>
+<footer class="site-footer op2-footer">
+
+  <!-- 中段：メインフッター（濃紺・ブランド行＋6分類） -->
+  <div class="op2-fmain op2-fv4">
+    <div class="wrap">
+      <div class="op2-fgrid">
+        <div class="op2-fbrand footer-brand">
+          <span class="brand-lockup">
+            <img class="footer-mark" src="../wp-content/themes/otemachi-prep-child/assets/images/op-logo-mark-white.png" alt="" width="44" height="46" onerror="this.style.display='none'">
+            <span class="brand-text">
+              <span class="brand-en-main">OTEMACHI&nbsp;PREP</span>
+              <span class="brand-ja-sub">大手町プレップ</span>
+            </span>
+          </span>
+          <p class="op2-fdesc">M&amp;A・PE・投資銀行・コーポレートファイナンスを、専門記事・一次情報データベース・モデリングラボ・専門講座で「学ぶ・調べる・実践する」。日本語で実務水準まで到達するためのファイナンス専門プラットフォームです。</p>
+        </div>
+
+        <nav class="op2-fcol" aria-label="記事・用語集">
+          <h3>記事・用語集</h3>
+          <ul>
+			<li><a href="../articles/index.html">分野別記事</a></li>
+<li><a href="../glossary/index.html">ファイナンス実務用語集</a></li>
+<li><a href="../reference/index.html">指標リファレンス</a></li>
+<li><a href="../course/index.html">財務モデリング講座（無料）</a></li>
+<li><a href="../articles/index.html">AI×ファイナンス</a></li>
+<li><a href="../materials/excel-starter-pack/index.html">無料Excelテンプレート集（Starter Pack）</a></li>
+          </ul>
+        </nav>
+
+        <nav class="op2-fcol" aria-label="データベース">
+          <h3>データベース</h3>
+          <ul>
+			<li><a href="../pe-funds/index.html">PEファンド一覧</a></li>
+<li><a href="../vc-funds/index.html">VC・CVC一覧</a></li>
+<li><a href="../activist-funds/index.html">アクティビスト一覧</a></li>
+<li><a href="../ma-advisors/index.html">FA・M&amp;A仲介会社DB</a></li>
+<li><a href="../whats-new/index.html">データベース更新情報</a></li>
+          </ul>
+        </nav>
+
+        <nav class="op2-fcol" aria-label="モデリングラボ">
+          <h3>モデリングラボ</h3>
+          <ul>
+			<li><a href="../lab/index.html">モデリングラボ</a></li>
+<li><a href="../lab/index.html">財務三表モデル</a></li>
+<li><a href="../lab/index.html">DCFモデル</a></li>
+<li><a href="../lab/index.html">M&amp;Aモデル</a></li>
+<li><a href="../lab/index.html">LBOモデル</a></li>
+<li><a href="../articles/index.html">構築チュートリアル</a></li>
+          </ul>
+        </nav>
+
+        <nav class="op2-fcol" aria-label="キャリア">
+          <h3>キャリア</h3>
+          <ul>
+			<li><a href="../career-fit/index.html">キャリア適性診断（無料）</a></li>
+<li><a href="../car-001-ib-career/index.html">投資銀行（IBD）</a></li>
+<li><a href="../car-002-pe-career/index.html">PEファンド</a></li>
+<li><a href="../car-012-ma-career-comparison/index.html">FAS・M&amp;Aアドバイザリー</a></li>
+<li><a href="../articles/index.html">面接・選考対策の記事</a></li>
+          </ul>
+        </nav>
+
+        <nav class="op2-fcol" aria-label="講座・アセスメント">
+          <h3>講座・アセスメント</h3>
+          <ul>
+			<li><a href="../materials/index.html">講座・教材</a></li>
+<li><a href="../assessment/index.html">実践アセスメント</a></li>
+<li><a href="../pricing/index.html">料金・プラン比較</a></li>
+<li><a href="../pricing/index.html">学習の進め方</a></li>
+			            <li><a href="../register/index.html">無料会員登録</a></li>
+            <li><a href="../login/index.html">ログイン</a></li>
+			          </ul>
+        </nav>
+
+        <nav class="op2-fcol" aria-label="大手町プレップ">
+          <h3>大手町プレップ</h3>
+          <ul>
+			<li><a href="../about/index.html">大手町プレップとは</a></li>
+<li><a href="../about/index.html">運営者情報・編集方針</a></li>
+<li><a href="../index.html">よくある質問</a></li>
+<li><a href="../contact/index.html">お問い合わせ</a></li>
+<li><a href="../legal/index.html">利用規約</a></li>
+<li><a href="../legal/index.html">プライバシーポリシー</a></li>
+<li><a href="../legal/index.html">免責事項</a></li>
+<li><a href="../legal/index.html">特定商取引法に基づく表記（教材プラン）</a></li>
+<li><a href="../tokushoho/index.html">特定商取引法に基づく表記（月額アセスメント）</a></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </div>
+
+  <!-- 下段：リーガル -->
+  <div class="op2-flegal">
+    <div class="wrap op2-flegal-in">
+      <p class="op2-fnote">本サイトは特定の金融商品の勧誘・投資助言を行うものではありません。</p>
+      <p class="op2-fcopy">&copy; <span id="year">2026</span> OTEMACHI PREP</p>
+    </div>
+  </div>
+</footer>
+		
+
+<a class="to-top" href="#" aria-label="ページの先頭へ">↑</a>
+<script>(function(){try{if(navigator.webdriver||document.getElementById('wpadminbar'))return;var k='opfv-art-car-022-lbo-model-test-mistakes';if(sessionStorage.getItem(k))return;setTimeout(function(){try{sessionStorage.setItem(k,'1');}catch(e){}fetch('https://otemachiprep.com/wp-json/otemachi/v1/fv',{method:'POST',credentials:'same-origin',keepalive:true,headers:{'Content-Type':'application/json'},body:JSON.stringify({d:'art',s:'car-022-lbo-model-test-mistakes'})}).catch(function(){});},2000);}catch(e){}})();</script><!-- wpcom_wp_footer -->
+<script type="speculationrules">
+{"prefetch":[{"source":"document","where":{"and":[{"href_matches":"/*"},{"not":{"href_matches":["/wp-*.php","/wp-admin/*","/wp-content/uploads/*","/wp-content/*","/wp-content/plugins/*","/wp-content/themes/otemachi-prep-child/*","/wp-content/themes/assembler/*","/*\\?(.+)"]}},{"not":{"selector_matches":"a[rel~=\"nofollow\"]"}},{"not":{"selector_matches":".no-prefetch, .no-prefetch a"}}]},"eagerness":"conservative"}]}
+</script>
+<meta id="bilmur" property="bilmur:data" content="" data-customproperties="{&quot;woo_active&quot;:&quot;1&quot;,&quot;logged_in&quot;:&quot;0&quot;,&quot;wptheme&quot;:&quot;otemachi-prep-child&quot;,&quot;wptheme_is_block&quot;:&quot;1&quot;}" data-provider="wordpress.com" data-service="atomic"  data-site-tz="Asia/Tokyo"  >
+<script defer src="https://s0.wp.com/wp-content/js/bilmur.min.js?m=202639"></script>
+					<div class="jetpack-subscription-modal">
+						<div class="jetpack-subscription-modal__modal-content">
+								
+	<div class="wp-block-group has-border-color jetpack-subscription-modal__modal-content-form is-layout-flow wp-block-group-is-layout-flow" style="border-color:#dddddd;border-width:1px;margin-top:0;margin-bottom:0;padding:32px">
+
+		
+		<h2 class="wp-block-heading has-text-align-center" style="margin-top:4px;margin-bottom:10px;font-size:clamp(16.834px, 1.052rem + ((1vw - 3.2px) * 0.818), 26px);font-style:normal;font-weight:600">大手町プレップをもっと見る</h2>
+		
+
+		
+		<p class="has-text-align-center wp-block-paragraph" style='margin-top:4px;margin-bottom:0px;font-size:clamp(14px, 0.875rem + ((1vw - 3.2px) * 0.089), 15px);'>今すぐ購読し、続きを読んで、すべてのアーカイブにアクセスしましょう。</p>
+		
+
+			<div class="wp-block-jetpack-subscriptions__supports-newline is-style-compact wp-block-jetpack-subscriptions">
+		<div class="wp-block-jetpack-subscriptions__container is-not-subscriber">
+							<form
+					action="https://wordpress.com/email-subscriptions"
+					method="post"
+					accept-charset="utf-8"
+					data-blog="255956723"
+					data-post_access_level="everybody"
+					data-subscriber_email=""
+					id="subscribe-blog"
+				>
+					<div class="wp-block-jetpack-subscriptions__form-elements">
+												<p id="subscribe-email">
+							<label
+								id="subscribe-field-label"
+								for="subscribe-field"
+								class="screen-reader-text"
+							>
+								メールアドレスを入力...							</label>
+							<input
+									required="required"
+									type="email"
+									name="email"
+									autocomplete="email"
+									
+									style="font-size: 16px;padding: 15px 23px 15px 23px;border-radius: 50px;border-width: 1px;"
+									placeholder="メールアドレスを入力..."
+									value=""
+									id="subscribe-field"
+									title="このフィールドに入力してください。"
+								/>						</p>
+												<p id="subscribe-submit"
+													>
+							<input type="hidden" name="action" value="subscribe"/>
+							<input type="hidden" name="blog_id" value="255956723"/>
+							<input type="hidden" name="source" value="https://otemachiprep.com/car-022-lbo-model-test-mistakes/"/>
+							<input type="hidden" name="sub-type" value="subscribe-block"/>
+							<input type="hidden" name="app_source" value="atomic-subscription-modal-lo"/>
+							<input type="hidden" name="redirect_fragment" value="subscribe-blog"/>
+							<input type="hidden" name="lang" value="ja"/>
+							<input type="hidden" id="_wpnonce" name="_wpnonce" value="7764d9547f" /><input type="hidden" name="_wp_http_referer" value="/car-022-lbo-model-test-mistakes/" /><input type="hidden" name="post_id" value="3667"/>							<button type="submit"
+																	class="wp-block-button__link"
+																									style="font-size: 16px;padding: 15px 23px 15px 23px;margin: 0; margin-left: 10px;border-radius: 50px;border-width: 1px;"
+																name="jetpack_subscriptions_widget"
+							>
+								購読							</button>
+						</p>
+					</div>
+				</form>
+								</div>
+	</div>
+	
+
+		
+		<p class="has-text-align-center jetpack-subscription-modal__close wp-block-paragraph" style="margin-top:20px;font-size:14px"><a href="#">続きを読む</a></p>
+		
+	</div>
+							</div>
+					</div>
+			<link rel='stylesheet' id='all-css-02e62cf3b6d888714ec6fdd45820a25c' href='https://otemachiprep.com/wp-content/plugins/woocommerce/assets/client/blocks/wc-blocks.css?m=1790088002' type='text/css' media='all' />
+<link rel='stylesheet' id='all-css-dd532132d321d843ecfd793ab082b479' href='https://otemachiprep.com/_static/??-eJyljkEKwjAQRS9kO1QI1YV4FEmmIR2bJsNMYujtLXTlStDl530er3GHORWfCnCsgZJCqPt0XgK4SnECLVv0Ci5mXLpITqxsMHs7UQoH7FdKPaqe2o82tmKDWJ6/+56+sMUFHpTwsChodYpCXCjvjxf59ldNkFz5s+S+3obxcjXGDOP5DRK+dWk=' type='text/css' media='all' />
+<script id="wp-dom-ready-js" src="../wp-content/plugins/gutenberg/build/scripts/dom-ready/index.min.js"></script>
+<script id="subscription-modal-js-js-extra">
+var subscriptionData = {"homeUrl":"otemachiprep.com"};
+//# sourceURL=subscription-modal-js-js-extra
+</script>
+<script type='text/javascript'  src='https://otemachiprep.com/_static/??-eJyljksOwjAMRC9EmtANZYE4S+paNCWJo9gh18dCLPjt2HnmaZ7ciwHKgllsie0SMtsNpXi42kRLi8gWKCXlbLnNDDUUCZSNUh+NHk/8gw4b7/q3vxM9NhXQemZU86ZyalrMjQXrWxhSyB8mWTHpYySYPKzBlIoK1xCXFyEV46sEiPjf2txGFZzTaX84OjdNzo13BRJ1PQ=='></script>
+<script id="op-act-meganav-card-js-after">
+(function(){var C={"label":"NEW","title":"\u30a2\u30af\u30c6\u30a3\u30d3\u30b9\u30c8\u30d5\u30a1\u30f3\u30c9\u5206\u6790","desc":"\u65e5\u672c\u682a\u306e\u4fdd\u6709\u30fb\u63d0\u6848\u30fb\u8b70\u6c7a\u7d50\u679c\u3092\u8ffd\u8de1","href":"/activist-funds/","ev":"popular:activist-funds","note":"109","icon":"<svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M4 5v14h16\"/><path d=\"M6.5 14.5 10 10.5l3 2.5 4.5-5.5\"/><circle cx=\"17.5\" cy=\"7.5\" r=\"2.1\"/><path d=\"M17.5 4.6v1.2M17.5 9.2v1.2M14.6 7.5h1.2M19.2 7.5h1.2\"/></svg>"};function esc(s){return String(s).replace(/[&<>"]/g,function(c){return({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;"})[c];});}function build(){return '<span class="opmm-card-ic">'+C.icon+'</span>'+'<span class="opmm-card-b"><span class="opmm-card-t">'+esc(C.title)+'</span>'+'<span class="opmm-card-d">'+esc(C.desc)+(C.note?'<span class="opmm-n">'+esc(C.note)+'</span>':'')+'</span></span>'+'<span class="opmm-tag">'+esc(C.label)+'</span><span class="opmm-go" aria-hidden="true">→</span>';}function fix(){var root=document.getElementById("nv-cat");if(!root){return;}var a=root.querySelector('a.opmm-card[data-opnav="popular:career"]');if(!a){return;}a.setAttribute("href",C.href);a.setAttribute("data-opnav",C.ev);a.innerHTML=build();}fix();if("MutationObserver" in window){var mo=new MutationObserver(function(){fix();});mo.observe(document.body,{childList:true,subtree:true});}window.addEventListener("load",fix);if(document.readyState==="loading"){document.addEventListener("DOMContentLoaded",fix);}setTimeout(fix,300);setTimeout(fix,1000);setTimeout(fix,2500);})();
+//# sourceURL=op-act-meganav-card-js-after
+</script>
+<script id="jetpack-stats-js-before">
+_stq = window._stq || [];
+_stq.push([ "view", {"v":"ext","blog":"255956723","post":"3667","tz":"9","srv":"otemachiprep.com","hp":"atomic","ac":"2","amp":"0","j":"1:16.3-a.3"} ]);
+_stq.push([ "clickTrackerInit", "255956723", "3667" ]);
+//# sourceURL=jetpack-stats-js-before
+</script>
+<script data-wp-strategy="defer" defer fetchpriority="low" id="jetpack-stats-js" src="https://stats.wp.com/e-202639.js"></script>
+<script id="opm-js" src="../wp-content/plugins/otemachi-prep-membership/assets/js/opm.js"></script>
+<script id="opm-js-after">
+(function () {
+  var d = document;
+  if (window.__opmNav2) { return; }
+  window.__opmNav2 = true;
+
+  var hdr   = d.getElementById('siteHeader');
+  var nav   = d.getElementById('op2nav');
+  var mBtn  = d.querySelector('.op-hdr3 .menu-toggle');
+  var uh    = d.querySelector('.op-hdr3 .op-uh');
+  var cBtn  = d.querySelector('.op2-c-search');
+  var cPane = d.getElementById('op2-c-panel');
+  var mqPc    = window.matchMedia('(min-width: 901px)');
+  var mqHover = window.matchMedia('(hover: hover) and (pointer: fine)');
+
+  function closeCPanel() {
+    if (cPane && !cPane.hasAttribute('hidden')) {
+      cPane.setAttribute('hidden', '');
+      if (cBtn) { cBtn.setAttribute('aria-expanded', 'false'); }
+    }
+  }
+
+  /* ---- scrolled ＋ コンパクト固定（.is-stuck） ---- */
+  if (hdr) {
+    var stuckAt = 60;
+    var measure = function () {
+      if (uh) {
+        var h = Math.round(uh.getBoundingClientRect().height);
+        if (h > 0) { stuckAt = h; }
+      }
+    };
+    measure();
+    window.addEventListener('resize', measure, { passive: true });
+    window.addEventListener('load', measure);
+
+    var onScroll = function () {
+      var y = window.scrollY || 0;
+      hdr.classList.toggle('scrolled', y > 10);
+      if (mqPc.matches) {
+        if (y > stuckAt + 8) { hdr.classList.add('is-stuck'); }
+        else if (y < stuckAt - 8) { hdr.classList.remove('is-stuck'); closeCPanel(); }
+      } else if (hdr.classList.contains('is-stuck')) {
+        hdr.classList.remove('is-stuck');
+        closeCPanel();
+      }
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+  }
+
+  /* ---- コンパクト検索 ---- */
+  if (cBtn && cPane) {
+    cBtn.addEventListener('click', function () {
+      if (cPane.hasAttribute('hidden')) {
+        cPane.removeAttribute('hidden');
+        cBtn.setAttribute('aria-expanded', 'true');
+        var f = cPane.querySelector('input[type="search"]');
+        if (f) { f.focus(); }
+      } else {
+        closeCPanel();
+      }
+    });
+  }
+
+  if (!nav) { return; }
+
+  /* ---- ドロワー（〜900px） ---- */
+  function drawerOpen() { return nav.classList.contains('open'); }
+  function setDrawer(open) {
+    nav.classList.toggle('open', open);
+    d.documentElement.classList.toggle('op2-lock', open && !mqPc.matches);
+    if (mBtn) {
+      mBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+      mBtn.setAttribute('aria-label', open ? 'メニューを閉じる' : 'メニューを開く');
+    }
+    if (!open) { closeAll(null); }
+  }
+  if (mBtn) {
+    mBtn.addEventListener('click', function () { setDrawer(!drawerOpen()); });
+  }
+
+  /* ---- ドロップダウン／アコーディオン ---- */
+  var items = Array.prototype.slice.call(nav.querySelectorAll('.op2-item'));
+  function setOpen(it, on) {
+    it.setAttribute('data-open', on ? 'true' : 'false');
+    var b = it.querySelector('.op2-btn');
+    if (b) { b.setAttribute('aria-expanded', on ? 'true' : 'false'); }
+  }
+  function closeAll(except) {
+    items.forEach(function (o) { if (o !== except) { setOpen(o, false); } });
+  }
+
+  items.forEach(function (it) {
+    var b = it.querySelector('.op2-btn');
+    if (!b) { return; }
+
+    b.addEventListener('click', function () {
+      var was = it.getAttribute('data-open') === 'true';
+      closeAll(it);
+      setOpen(it, !was);
+    });
+
+    b.addEventListener('keydown', function (e) {
+      if (e.key === 'ArrowDown') {
+        e.preventDefault();
+        if (it.getAttribute('data-open') !== 'true') { closeAll(it); setOpen(it, true); }
+        var f = it.querySelector('.op2-panel a');
+        if (f) { f.focus(); }
+      }
+    });
+
+    /* fine pointer のPCのみホバーで開閉（タッチではクリックのみ） */
+    var tm = null;
+    it.addEventListener('mouseenter', function () {
+      if (!mqPc.matches || !mqHover.matches) { return; }
+      if (tm) { clearTimeout(tm); tm = null; }
+      closeAll(it);
+      setOpen(it, true);
+    });
+    it.addEventListener('mouseleave', function () {
+      if (!mqPc.matches || !mqHover.matches) { return; }
+      tm = setTimeout(function () { setOpen(it, false); }, 140);
+    });
+  });
+
+  /* 外側クリックで閉じる */
+  d.addEventListener('click', function (e) {
+    var t = e.target;
+    if (!nav.contains(t) && !(mBtn && mBtn.contains(t))) {
+      closeAll(null);
+      if (drawerOpen() && !mqPc.matches && hdr && !hdr.contains(t)) { setDrawer(false); }
+    }
+    if (cPane && cBtn && !cPane.contains(t) && !cBtn.contains(t)) {
+      // コンパクト検索はフォーム操作中を除き閉じる
+      if (!cPane.hasAttribute('hidden') && !(t.closest && t.closest('#op2-c-panel'))) { closeCPanel(); }
+    }
+  });
+
+  /* Esc で閉じ、開いていた項目のボタンへフォーカスを戻す */
+  d.addEventListener('keydown', function (e) {
+    if (e.key !== 'Escape') { return; }
+    var open = null;
+    items.some(function (o) { if (o.getAttribute('data-open') === 'true') { open = o; return true; } return false; });
+    closeAll(null);
+    closeCPanel();
+    if (open) {
+      var b = open.querySelector('.op2-btn');
+      if (b) { b.focus(); }
+    }
+    if (drawerOpen() && !mqPc.matches) {
+      setDrawer(false);
+      if (mBtn) { mBtn.focus(); }
+    }
+  });
+
+  /* フォーカスがナビ外へ出たら閉じる（PCのみ） */
+  nav.addEventListener('focusout', function () {
+    window.setTimeout(function () {
+      if (mqPc.matches && !nav.contains(d.activeElement)) { closeAll(null); }
+    }, 10);
+  });
+
+  /* ドロワー展開中のフォーカストラップ（Tabをヘッダー内で循環させる） */
+  d.addEventListener('keydown', function (e) {
+    if (e.key !== 'Tab') { return; }
+    if (!drawerOpen() || mqPc.matches || !hdr) { return; }
+    var fs = hdr.querySelectorAll('a[href], button:not([disabled]), input:not([disabled])');
+    var list = [];
+    for (var i = 0; i < fs.length; i++) {
+      var el = fs[i];
+      if (el.offsetParent !== null) { list.push(el); }
+    }
+    if (!list.length) { return; }
+    var first = list[0], last = list[list.length - 1];
+    if (e.shiftKey && d.activeElement === first) { e.preventDefault(); last.focus(); }
+    else if (!e.shiftKey && d.activeElement === last) { e.preventDefault(); first.focus(); }
+    else if (!hdr.contains(d.activeElement)) { e.preventDefault(); first.focus(); }
+  });
+
+  /* 画面幅がPCへ変わったらドロワー状態とスクロール固定を解除 */
+  function onMq() {
+    if (mqPc.matches) {
+      setDrawer(false);
+      d.documentElement.classList.remove('op2-lock');
+    } else if (hdr) {
+      hdr.classList.remove('is-stuck');
+      closeCPanel();
+    }
+  }
+  if (mqPc.addEventListener) { mqPc.addEventListener('change', onMq); }
+  else if (mqPc.addListener) { mqPc.addListener(onMq); }
+})();
+(function () {
+  var d = document;
+  var f = d.querySelector('[data-opm-form="register"]');
+  if (!f || window.__opmFormLive) { return; }
+  window.__opmFormLive = true;
+
+  function paint(id, key, msg) {
+    var input = d.getElementById(id);
+    if (!input) { return; }
+    var wrap = input.closest('.op-field');
+    var box  = d.getElementById('opm-err-' + key);
+    if (msg) {
+      if (wrap) { wrap.classList.add('has-error'); }
+      input.setAttribute('aria-invalid', 'true');
+      if (box) {
+        box.textContent = '';
+        var ic = d.createElement('span');
+        ic.className = 'op-err-ico';
+        ic.setAttribute('aria-hidden', 'true');
+        ic.textContent = '!';
+        box.appendChild(ic);
+        box.appendChild(d.createTextNode(msg));
+        box.removeAttribute('hidden');
+        box.setAttribute('role', 'alert');
+      }
+    } else {
+      if (wrap) { wrap.classList.remove('has-error'); }
+      input.removeAttribute('aria-invalid');
+      if (box) { box.textContent = ''; box.setAttribute('hidden', ''); }
+    }
+  }
+
+  var email  = d.getElementById('opm-reg-email');
+  var pass   = d.getElementById('opm-reg-pass');
+  var pass2  = d.getElementById('opm-reg-pass2');
+
+  function checkEmail() {
+    var v = email ? email.value.trim() : '';
+    if (!v) { paint('opm-reg-email', 'email', ''); return; }
+    paint('opm-reg-email', 'email', /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v) ? '' : 'メールアドレスの形式が正しくありません');
+  }
+  function checkPass() {
+    if (!pass || !pass.value) { paint('opm-reg-pass', 'pass', ''); return; }
+    paint('opm-reg-pass', 'pass', pass.value.length >= 8 ? '' : 'パスワードは8文字以上で設定してください');
+  }
+  function checkPass2() {
+    if (!pass2 || !pass2.value) { paint('opm-reg-pass2', 'pass2', ''); return; }
+    paint('opm-reg-pass2', 'pass2', pass.value === pass2.value ? '' : 'パスワードが一致していません');
+  }
+
+  // 確認欄は入力中も判定する（詳細は v1 と同じ3段階ロジック）。
+  var tp2 = null;
+  function livePass2( force ) {
+    if (!pass2) { return; }
+    clearTimeout(tp2);
+    var s = pass ? pass.value : '';
+    var c = pass2.value;
+    if (!c || c === s) { paint('opm-reg-pass2', 'pass2', ''); return; }
+    var typing = s.indexOf(c) === 0 && !force;
+    paint('opm-reg-pass2', 'pass2', typing ? '' : 'パスワードが一致していません');
+    if (typing) { tp2 = setTimeout(function () { livePass2(true); }, 700); }
+  }
+  function onPass2() { livePass2(false); }
+
+  if (email)  { email.addEventListener('blur', checkEmail); }
+  if (pass)   { pass.addEventListener('blur', function () { checkPass(); checkPass2(); }); pass.addEventListener('input', onPass2); }
+  if (pass2)  { pass2.addEventListener('input', onPass2); pass2.addEventListener('blur', checkPass2); }
+})();
+(function () {
+  var box = document.querySelector('[data-opm-ev="register_mail_sent"]');
+  if (!box || window.__opmVerifyPoll) { return; }
+  window.__opmVerifyPoll = true;
+
+  var tries = 0, busy = false, done = false, timer = null;
+
+  function check() {
+    if (busy || done) { return; }
+    busy = true;
+    fetch('https://otemachiprep.com/wp-admin/admin-ajax.php', {
+      method: 'POST',
+      credentials: 'same-origin',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: 'action=opm_verify_status'
+    })
+      .then(function (r) { return r.json(); })
+      .then(function (j) {
+        busy = false;
+        if (j && j.data && j.data.verified && j.data.redirect) {
+          done = true;
+          if (timer) { clearInterval(timer); }
+          window.location.href = j.data.redirect;
+        }
+      })
+      .catch(function () { busy = false; });  // 通信失敗時は次の機会に再試行
+  }
+
+  timer = setInterval(function () {
+    tries++;
+    if (tries > 150) { clearInterval(timer); return; }  // 約10分で打ち切り
+    check();
+  }, 4000);
+
+  // 非表示タブの setInterval は間引かれるため、タブ復帰時に必ず確認する。
+  document.addEventListener('visibilitychange', function () {
+    if (!document.hidden) { check(); }
+  });
+  window.addEventListener('focus', check);
+  window.addEventListener('pageshow', check);
+})();
+//# sourceURL=opm-js-after
+</script>
+<script id="jetpack-blocks-assets-base-url-js-before">
+var Jetpack_Block_Assets_Base_Url="https://otemachiprep.com/wp-content/plugins/jetpack/_inc/blocks/";
+//# sourceURL=jetpack-blocks-assets-base-url-js-before
+</script>
+<script type='text/javascript'  src='https://otemachiprep.com/wp-includes/js/dist/vendor/wp-polyfill.min.js?m=1784059681'></script>
+<script data-wp-strategy="defer" defer id="jetpack-block-subscriptions-js" src="../wp-content/plugins/jetpack/_inc/blocks/subscriptions/view.js"></script>
+<script id="wp-emoji-settings" type="application/json">
+{"baseUrl":"https://s.w.org/images/core/emoji/17.0.2/72x72/","ext":".png","svgUrl":"https://s.w.org/images/core/emoji/17.0.2/svg/","svgExt":".svg","source":{"concatemoji":"https://otemachiprep.com/wp-includes/js/wp-emoji-release.min.js?ver=7.1.2"}}
+</script>
+<script type="module">
+/*! This file is auto-generated */
+var e="script#wp-emoji-settings",t=document.querySelector(e);if(!(t instanceof HTMLScriptElement))throw new Error("Element missing: "+e);const r=JSON.parse(t.text),s=(window._wpemojiSettings=r,"wpEmojiSettingsSupports"),o=["flag","emoji"];function i(e){try{var t={supportTests:e,timestamp:(new Date).valueOf()};sessionStorage.setItem(s,JSON.stringify(t))}catch(e){}}function c(e,t,n){e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(t,0,0);t=new Uint32Array(e.getImageData(0,0,e.canvas.width,e.canvas.height).data);e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(n,0,0);const r=new Uint32Array(e.getImageData(0,0,e.canvas.width,e.canvas.height).data);return t.every((e,t)=>e===r[t])}function p(e,t){e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(t,0,0);var n=e.getImageData(16,16,1,1);for(let e=0;e<n.data.length;e++)if(0!==n.data[e])return!1;return!0}function u(e,t,n,r){switch(t){case"flag":return n(e,"\ud83c\udff3\ufe0f\u200d\u26a7\ufe0f","\ud83c\udff3\ufe0f\u200b\u26a7\ufe0f")?!1:!n(e,"\ud83c\udde8\ud83c\uddf6","\ud83c\udde8\u200b\ud83c\uddf6")&&!n(e,"\ud83c\udff4\udb40\udc67\udb40\udc62\udb40\udc65\udb40\udc6e\udb40\udc67\udb40\udc7f","\ud83c\udff4\u200b\udb40\udc67\u200b\udb40\udc62\u200b\udb40\udc65\u200b\udb40\udc6e\u200b\udb40\udc67\u200b\udb40\udc7f");case"emoji":return!r(e,"\ud83e\u1fac8")}return!1}function f(e,t,n,r){let a;const s=(a="undefined"!=typeof WorkerGlobalScope&&self instanceof WorkerGlobalScope?new OffscreenCanvas(300,150):document.createElement("canvas")).getContext("2d",{willReadFrequently:!0}),o=(s.textBaseline="top",s.font="600 32px Arial",{});return e.forEach(e=>{o[e]=t(s,e,n,r)}),o}function a(e){var t=document.createElement("script");t.src=e,t.defer=!0,document.head.appendChild(t)}r.supports={everything:!0,everythingExceptFlag:!0},new Promise(t=>{let n=function(){try{var e=JSON.parse(sessionStorage.getItem(s));if("object"==typeof e&&"number"==typeof e.timestamp&&(new Date).valueOf()<e.timestamp+604800&&"object"==typeof e.supportTests)return e.supportTests}catch(e){}return null}();if(!n){if("undefined"!=typeof Worker&&"undefined"!=typeof OffscreenCanvas&&"undefined"!=typeof URL&&URL.createObjectURL&&"undefined"!=typeof Blob)try{var e="postMessage("+f.toString()+"("+[JSON.stringify(o),u.toString(),c.toString(),p.toString()].join(",")+"));",r=new Blob([e],{type:"text/javascript"});const a=new Worker(URL.createObjectURL(r),{name:"wpTestEmojiSupports"});return void(a.onmessage=e=>{i(n=e.data),a.terminate(),t(n)})}catch(e){}i(n=f(o,u,c,p))}t(n)}).then(e=>{for(const n in e)r.supports[n]=e[n],r.supports.everything=r.supports.everything&&r.supports[n],"flag"!==n&&(r.supports.everythingExceptFlag=r.supports.everythingExceptFlag&&r.supports[n]);var t;r.supports.everythingExceptFlag=r.supports.everythingExceptFlag&&!r.supports.flag,r.supports.everything||((t=r.source||{}).concatemoji?a(t.concatemoji):t.wpemoji&&t.twemoji&&(a(t.twemoji),a(t.wpemoji)))});
+//# sourceURL=https://otemachiprep.com/wp-includes/js/wp-emoji-loader.min.js
+</script>
+
+<!-- op-fc-popup-v4 -->
+<div id="op-fc-root" class="op-fc-root" data-kind="" hidden><div class="op-fc-backdrop" data-fc="backdrop"></div><div class="op-fc-card op-fc-card--course" role="dialog" aria-modal="true" aria-labelledby="op-fc-h1" aria-describedby="op-fc-d1" tabindex="-1" data-fc-card="course"><button type="button" class="op-fc-close" data-fc="close" aria-label="無料講座のご案内を閉じる"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button><div class="op-fc-main"><p class="op-fc-eyebrow"><span class="op-fc-eyebrow-free">無料</span><span data-fc-copy="label">7日間 財務モデリング講座</span><span class="op-fc-eyebrow-line" aria-hidden="true"></span></p><h2 id="op-fc-h1" class="op-fc-h" data-fc-copy="headline">財務モデリングを、<br>7日間で“読む”から“組める”へ。</h2><p id="op-fc-d1" class="op-fc-sub" data-fc-copy="sub" data-fc-subtext="1">借入とレバレッジ、返済余力、IRRなど、LBOモデルの基本を学べます。</p><ul class="op-fc-chips op-fc-chips--m" aria-label="学べるテーマ"><li>Excel</li><li>財務三表</li><li>DCF</li><li>LBO</li><li>M&amp;A</li></ul><div class="op-fc-actions"><a class="op-fc-cta1" data-fc="cta1" data-fc-cta="free" href="https://otemachiprep.com/register/?src=fc-popup&#038;v=A&#038;t=pe"><span data-fc-copy="cta1">無料講座を受け取る</span><span class="op-fc-ar" aria-hidden="true">→</span></a><a class="op-fc-cta2" data-fc="cta2" data-fc-cta="materials" href="https://otemachiprep.com/materials/?src=fc-popup&#038;v=A&#038;t=pe"><span data-fc-copy="cta2">実践教材・料金プランを見る</span></a></div><ul class="op-fc-facts" aria-label="受講条件"><li>登録料0円</li><li>1日1通・メールで配信</li><li>いつでも配信停止</li></ul><p class="op-fc-note">無料会員登録後、7日間にわたりメールで講座をお届けします。登録は無料です。不要になった場合はいつでも配信停止できます。</p></div><aside class="op-fc-side" aria-label="7日間で学べる内容"><ul class="op-fc-chips" aria-label="学べるテーマ"><li>Excel</li><li>財務三表</li><li>DCF</li><li>LBO</li><li>M&amp;A</li></ul><details class="op-fc-days" open><summary class="op-fc-days-t"><span>7日間で学べる内容</span><span class="op-fc-days-ic" aria-hidden="true"></span></summary><ol class="op-fc-days-l"><li><span class="op-fc-day">Day 1</span><span class="op-fc-day-b"><strong>Excel・財務モデルの基本ルール</strong><span>入力は青、計算式は黒。Cover→Assumptions→Checksの構造</span></span></li><li><span class="op-fc-day">Day 2</span><span class="op-fc-day-b"><strong>財務三表のつながり</strong><span>減価償却が100増えると、PL→CF→BSはどう動くか</span></span></li><li><span class="op-fc-day">Day 3</span><span class="op-fc-day-b"><strong>予測と運転資本</strong><span>単価×数量のドライバー予測、固定費と変動費、回転日数</span></span></li><li><span class="op-fc-day">Day 4</span><span class="op-fc-day-b"><strong>DCF法による企業価値評価</strong><span>WACC・継続価値、企業価値から株式価値へのブリッジ</span></span></li><li><span class="op-fc-day">Day 5</span><span class="op-fc-day-b"><strong>LBOモデルの基本</strong><span>借入がIRRを押し上げる仕組みと、返済余力の確認</span></span></li><li><span class="op-fc-day">Day 6</span><span class="op-fc-day-b"><strong>M&amp;Aモデルの基本</strong><span>EPSと株主価値、のれん、提出前に確認するChecks 5項目</span></span></li><li><span class="op-fc-day">Day 7</span><span class="op-fc-day-b"><strong>現在地の確認と次の学習</strong><span>3問の自己診断で「理解」と「白紙から再現」の差を測る</span></span></li></ol></details><div class="op-fc-perk"><img class="op-fc-perk-img" data-src="../wp-content/themes/otemachi-prep-child/assets/images/exsp/exsp-preview1.webp" alt="Excel Starter Packの3表連動モデル（PL）の画面" width="1600" height="996"><p class="op-fc-perk-t">登録当日に <strong>Excel Starter Pack</strong>（3表連動・DCF・LBO・M&amp;Aなど9ブック）をお渡しします。</p></div></aside></div><div class="op-fc-card op-fc-card--materials" role="dialog" aria-modal="true" aria-labelledby="op-fc-h2" aria-describedby="op-fc-d2" tabindex="-1" data-fc-card="materials" hidden><button type="button" class="op-fc-close" data-fc="close" aria-label="教材のご案内を閉じる"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button><div class="op-fc-main"><p class="op-fc-eyebrow"><span>実践教材・料金プラン</span><span class="op-fc-eyebrow-line" aria-hidden="true"></span></p><h2 id="op-fc-h2" class="op-fc-h">財務モデリングを、<br>体系的に学びませんか？</h2><p id="op-fc-d2" class="op-fc-sub">財務三表、DCF、M&amp;A、LBO、PE実務、AI×ファイナンスまで。目的とレベルに応じた実践教材をご用意しています。</p><div class="op-fc-actions"><a class="op-fc-cta1" data-fc="cta1" data-fc-cta="materials" href="https://otemachiprep.com/materials/?src=fc-popup&#038;v=A&#038;t=pe"><span>実践教材・料金プランを見る</span><span class="op-fc-ar" aria-hidden="true">→</span></a><a class="op-fc-cta2" data-fc="cta2" data-fc-cta="free" href="https://otemachiprep.com/register/?src=fc-popup&#038;v=R&#038;t=pe"><span>まずは7日間の無料講座から始める</span></a></div><p class="op-fc-note">無料会員登録は不要です。教材の内容と料金は一覧ページでご確認いただけます。</p></div><aside class="op-fc-side" aria-label="目的別に選べる実践教材"><p class="op-fc-side-t">目的別に選べる実践教材</p><ul class="op-fc-list"><li>財務三表モデリング講座<small>シルバー以上</small></li><li>DCFモデリング講座／Compsモデリング講座<small>ゴールド以上</small></li><li>M&amp;Aモデリング講座／LBOマスター講座<small>プラチナ</small></li><li>PEディールプロセス実務入門<small>プラチナ</small></li><li>AI×ファイナンス実務マスター講座<small>単体購入</small></li></ul><p class="op-fc-side-note">プランは買い切り・税込。6か月後の更新は任意です。</p></aside></div></div>
+<!-- /op-fc-popup-v4 -->
+
+<!-- op-fc-mini-v4 -->
+<div id="op-fc-mini" class="op-fc-mini" role="complementary" aria-label="無料・7日間 財務モデリング講座のご案内" hidden><a class="op-fc-mini-a" data-fc-mini="link" href="https://otemachiprep.com/register/?src=fc-mini&#038;t=pe"><span class="op-fc-mini-1">無料・7日間</span><span class="op-fc-mini-2">財務モデリング講座 <span aria-hidden="true">→</span></span></a><button type="button" class="op-fc-mini-x" data-fc-mini="close" aria-label="無料講座のご案内を閉じる"><svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button></div>
+<!-- /op-fc-mini-v4 -->
+
+<script id="op-cp-config">window.OP_CP={"mode":"popup","source":"contextual-popup","version":"4.0.0","state":{"loginState":"guest","loggedIn":false,"membershipStatus":"guest","courseStatus":"guest"},"page":{"pageType":"article_single","articleCategory":"pe","isArticle":true,"contentCategory":"article"},"timing":{"triggerActiveMs":12000,"triggerScrollRatio":0.35,"triggerPageViews":2,"triggerPageViewDelayMs":1500,"triggerMode":"any","articleActiveMs":20000,"articleScrollRatio":0.5,"maxImpressionsPerSession":1,"modalSuppressMs":604800000,"miniDelayMs":90000,"miniSuppressMs":604800000,"ctaMiniSuppressMs":86400000,"returningAfterMs":86400000,"attrTtlMs":2592000000,"variantTtlMs":7776000000,"signupStartWindowMs":1800000},"variants":{"A":{"weight":100,"label":"7\u65e5\u9593 \u8ca1\u52d9\u30e2\u30c7\u30ea\u30f3\u30b0\u8b1b\u5ea7","headline":"\u8ca1\u52d9\u30e2\u30c7\u30ea\u30f3\u30b0\u3092\u3001<br>7\u65e5\u9593\u3067\u201c\u8aad\u3080\u201d\u304b\u3089\u201c\u7d44\u3081\u308b\u201d\u3078\u3002","sub":"Excel\u30fb\u8ca1\u52d9\u4e09\u8868\u304b\u3089DCF\u3001M&A\u3001LBO\u307e\u3067\u3002\u30d5\u30a1\u30a4\u30ca\u30f3\u30b9\u5b9f\u52d9\u306e\u5168\u4f53\u50cf\u3092\u3001\u6bce\u65e5\u5c11\u3057\u305a\u3064\u5b66\u3079\u307e\u3059\u3002","cta1":"\u7121\u6599\u8b1b\u5ea7\u3092\u53d7\u3051\u53d6\u308b","cta2":"\u5b9f\u8df5\u6559\u6750\u30fb\u6599\u91d1\u30d7\u30e9\u30f3\u3092\u898b\u308b","layout":"standard"},"B":{"weight":0,"label":"7\u65e5\u9593\u306e\u7121\u6599\u30d5\u30a1\u30a4\u30ca\u30f3\u30b9\u8b1b\u5ea7","headline":"\u30d5\u30a1\u30a4\u30ca\u30f3\u30b9\u5b9f\u52d9\u306e\u5168\u4f53\u50cf\u3092\u3001<br>7\u65e5\u9593\u3067\u3002","sub":"\u8ca1\u52d9\u4e09\u8868\u30fbDCF\u30fbM&A\u30fbLBO\u306e\u300c\u3064\u306a\u304c\u308a\u300d\u3092\u30011\u65e51\u901a\u306e\u30e1\u30fc\u30eb\u3068Excel\u6f14\u7fd2\u3067\u4f53\u7cfb\u7684\u306b\u5b66\u3079\u307e\u3059\u3002","cta1":"7\u65e5\u9593\u306e\u7121\u6599\u8b1b\u5ea7\u3092\u59cb\u3081\u308b","cta2":"\u5b9f\u8df5\u6559\u6750\u30fb\u6599\u91d1\u30d7\u30e9\u30f3\u3092\u898b\u308b","layout":"standard"},"C":{"weight":0,"label":"7\u65e5\u9593 \u8ca1\u52d9\u30e2\u30c7\u30ea\u30f3\u30b0\u8b1b\u5ea7","headline":"\u8ca1\u52d9\u30e2\u30c7\u30ea\u30f3\u30b0\u3092\u3001<br>7\u65e5\u9593\u3067\u201c\u8aad\u3080\u201d\u304b\u3089\u201c\u7d44\u3081\u308b\u201d\u3078\u3002","sub":"Excel\u30fb\u8ca1\u52d9\u4e09\u8868\u304b\u3089DCF\u3001M&A\u3001LBO\u307e\u3067\u3002\u30d5\u30a1\u30a4\u30ca\u30f3\u30b9\u5b9f\u52d9\u306e\u5168\u4f53\u50cf\u3092\u3001\u6bce\u65e5\u5c11\u3057\u305a\u3064\u5b66\u3079\u307e\u3059\u3002","cta1":"\u7121\u6599\u8b1b\u5ea7\u3092\u53d7\u3051\u53d6\u308b","cta2":"\u5b9f\u8df5\u6559\u6750\u30fb\u6599\u91d1\u30d7\u30e9\u30f3\u3092\u898b\u308b","layout":"preview"},"D":{"weight":0,"label":"7\u65e5\u9593 \u8ca1\u52d9\u30e2\u30c7\u30ea\u30f3\u30b0\u8b1b\u5ea7","headline":"\u8ca1\u52d9\u30e2\u30c7\u30ea\u30f3\u30b0\u3092\u3001<br>7\u65e5\u9593\u3067\u201c\u8aad\u3080\u201d\u304b\u3089\u201c\u7d44\u3081\u308b\u201d\u3078\u3002","sub":"Excel\u30fb\u8ca1\u52d9\u4e09\u8868\u304b\u3089DCF\u3001M&A\u3001LBO\u307e\u3067\u3002\u30d5\u30a1\u30a4\u30ca\u30f3\u30b9\u5b9f\u52d9\u306e\u5168\u4f53\u50cf\u3092\u3001\u6bce\u65e5\u5c11\u3057\u305a\u3064\u5b66\u3079\u307e\u3059\u3002","cta1":"\u7121\u6599\u8b1b\u5ea7\u3092\u53d7\u3051\u53d6\u308b","cta2":"\u5b9f\u8df5\u6559\u6750\u30fb\u6599\u91d1\u30d7\u30e9\u30f3\u3092\u898b\u308b","layout":"choice"}},"subtext":"\u501f\u5165\u3068\u30ec\u30d0\u30ec\u30c3\u30b8\u3001\u8fd4\u6e08\u4f59\u529b\u3001IRR\u306a\u3069\u3001LBO\u30e2\u30c7\u30eb\u306e\u57fa\u672c\u3092\u5b66\u3079\u307e\u3059\u3002","urls":{"register":"\/register\/?src=fc-popup&v=A&t=pe","materials":"\/materials\/?src=fc-popup&v=A&t=pe","registerReturning":"\/register\/?src=fc-popup&v=R&t=pe","mini":"\/register\/?src=fc-mini&t=pe"},"ids":{"course":"op-fc-course","materials":"op-fc-materials","mini":"op-fc-mini"}};</script>
+<script id="op-cp-js">/* op-fc v4.0.0 — 無料・7日間 財務モデリング講座ポップアップ
+   表示制御: アクティブ12秒 / スクロール35% / セッション2ページ目 のいずれか（記事は20秒/50%）。
+   頻度:     1セッション1回 / 閉じて7日 / CTA後7日（ミニは24h）。
+   再訪者:   初回接触から24h以上のゲストには教材一覧版カードを表示。
+   再接触:   モーダルを閉じて90秒後に右下ミニバナー（閉じたら7日）。
+   定数はサーバー側 op_cp_timing() の1箇所で管理し window.OP_CP.timing で受け取る。
+   ES5固定（wp.comの古いUAキャッシュ経路を考慮）。 */
+(function () {
+	'use strict';
+
+	var CFG = window.OP_CP;
+	if (!CFG || !CFG.mode) { return; }
+
+	var T = CFG.timing || {};
+
+	/* ---------- ストレージ（プライベートモード等で例外が出ても無視・メモリへフォールバック） ---------- */
+	var memStore = {};
+	function ssGet(k) { try { var v = window.sessionStorage.getItem(k); return (v === null && k in memStore) ? memStore[k] : v; } catch (e) { return (k in memStore) ? memStore[k] : null; } }
+	function ssSet(k, v) { memStore[k] = v; try { window.sessionStorage.setItem(k, v); } catch (e) {} }
+	function lsGet(k) { try { var v = window.localStorage.getItem(k); return (v === null && k in memStore) ? memStore[k] : v; } catch (e) { return (k in memStore) ? memStore[k] : null; } }
+	function lsSet(k, v) { memStore[k] = v; try { window.localStorage.setItem(k, v); } catch (e) {} }
+	function lsRemove(k) { try { delete memStore[k]; } catch (e0) {} try { window.localStorage.removeItem(k); } catch (e) {} }
+
+	/* ---------- 新キー（すべて op_fc_ 接頭辞） ---------- */
+	var K_FIRST_SEEN   = 'op_fc_first_seen';
+	var K_VARIANT      = 'op_fc_variant';
+	var K_MODAL_UNTIL  = 'op_fc_modal_until';
+	var K_DISMISSED_AT = 'op_fc_dismissed_at';
+	var K_MINI_UNTIL   = 'op_fc_mini_until';
+	var K_ATTR         = 'op_fc_attr';
+	var K_SIGNUP_DONE  = 'op_fc_signup_done';
+	var K_PV                 = 'op_fc_pv';
+	var K_REF                = 'op_fc_ref';
+	var K_SESSION_SHOWN      = 'op_fc_session_shown';
+	var K_VARIANT_SENT       = 'op_fc_variant_sent';
+	var K_MINI_IMP_SENT      = 'op_fc_mini_imp_sent';
+	var K_SIGNUP_START_SENT  = 'op_fc_signup_start_sent';
+	var K_MATERIALS_VIEW_SENT = 'op_fc_materials_view_sent';
+
+	/* ---------- 旧 v3 キーの掃除（起動時に1回。残留していると新版が出ない事故を防ぐ） ----------
+	   注意: 記事ページのLBOモデルCTA（op-lbo-cta.php）はv3のキーを読み書きして自身の
+	   表示抑制・アトリビューションを行っている（現役・併存中）。そのため
+	   op_cp_dismiss_until / op_cp_cta_until / op_cp2_dismiss_until / op_cp_attribution は
+	   ここで削除しない（v4側から値をミラー書き込みし、期限切れは自然消滅に任せる）。
+	   それ以外の、v3内部でのみ使われていたキーだけを掃除する。 */
+	function cleanupLegacyKeys() {
+		var legacyLocal = ['op_cp2_signup_attr'];
+		var legacySession = ['op_cp_session_impressions', 'op_cp2_pending', 'op_cp2_active_ms', 'op_cp2_session_shown'];
+		var i;
+		for (i = 0; i < legacyLocal.length; i++) { lsRemove(legacyLocal[i]); }
+		for (i = 0; i < legacySession.length; i++) {
+			try { window.sessionStorage.removeItem(legacySession[i]); } catch (e) {}
+		}
+	}
+	/* 旧LBO CTA（v3系）との互換のための固定値。v3のCTAクリック後10時間抑制の値をそのまま踏襲。 */
+	var LEGACY_CTA_SUPPRESS_MS = 10 * 60 * 60 * 1000;
+
+	function now() { return Date.now(); }
+	function num(v) { var n = parseInt(v || '0', 10); return isNaN(n) ? 0 : n; }
+
+	function deviceType() {
+		var w = window.innerWidth || document.documentElement.clientWidth || 0;
+		if (w <= 640) { return 'mobile'; }
+		if (w <= 1024) { return 'tablet'; }
+		return 'desktop';
+	}
+
+	/* ---------- 初回接触・セッションPV・参照元 ----------
+	   pv（op_fc_pv）は popup / track の両モードで加算する（例: /materials/lbo/ を track で
+	   閲覧した後に記事を開いたセッションは2ページ目として数える）。モーダルの表示判定
+	   （pv>=triggerPageViews）自体は popup モードのみで評価する。 */
+	function ensureFirstSeen() {
+		var fs = lsGet(K_FIRST_SEEN);
+		if (!fs) { lsSet(K_FIRST_SEEN, String(now())); }
+	}
+	function isReturning() {
+		var fs = num(lsGet(K_FIRST_SEEN));
+		if (!fs) { return false; }
+		return (now() - fs) >= (T.returningAfterMs || 0);
+	}
+	function incrementPv() {
+		var v = num(ssGet(K_PV)) + 1;
+		ssSet(K_PV, String(v));
+		return v;
+	}
+	function computeReferrerType() {
+		var ref = '';
+		try { ref = document.referrer || ''; } catch (e) {}
+		var host = '';
+		if (ref) {
+			try { host = String(ref).replace(/^https?:\/\//i, '').split('/')[0].toLowerCase(); } catch (e2) { host = ''; }
+		}
+		var selfHost = '';
+		try { selfHost = (window.location && window.location.hostname) || ''; } catch (e3) {}
+		var result = 'direct';
+		if (host) {
+			if (selfHost && host === selfHost.toLowerCase()) {
+				result = 'internal';
+			} else if (matchesAny(host, ['google', 'bing', 'yahoo', 'duckduckgo', 'baidu'])) {
+				result = 'search';
+			} else if (isHostOrSub(host, 't.co') || matchesAny(host, ['x.com', 'twitter.com', 'threads.net', 'facebook', 'instagram', 'linkedin', 'b.hatena', 'note.com'])) {
+				result = 'social';
+			} else if (matchesAny(host, ['chatgpt', 'openai', 'perplexity', 'claude.ai', 'gemini.google', 'copilot'])) {
+				result = 'ai';
+			} else {
+				result = 'referral';
+			}
+		}
+		var search = '';
+		try { search = (window.location && window.location.search) || ''; } catch (e4) {}
+		if (search.indexOf('utm_source=email') !== -1) { result = 'email'; }
+		return result;
+	}
+	function matchesAny(host, needles) {
+		var i;
+		for (i = 0; i < needles.length; i++) { if (host.indexOf(needles[i]) !== -1) { return true; } }
+		return false;
+	}
+	/* 't.co'（Twitterの短縮URLドメイン）は単純な部分一致だと 'chatgpt.com' 等と誤衝突するため、
+	   ホスト自体またはサブドメインとしての一致に限定する。 */
+	function isHostOrSub(host, base) {
+		if (host === base) { return true; }
+		var suf = '.' + base;
+		return host.length > suf.length && host.slice(-suf.length) === suf;
+	}
+	function ensureRef() {
+		var r = ssGet(K_REF);
+		if (!r) { r = computeReferrerType(); ssSet(K_REF, r); }
+		return r;
+	}
+	function getRef() { var r = ssGet(K_REF); return r || 'direct'; }
+
+	/* ---------- 計測（個人情報は送らない） ---------- */
+	var emittedSeen = {};
+	function commonAttrs() {
+		return {
+			device_type: deviceType(),
+			page_type: (CFG.page && CFG.page.pageType) || '',
+			article_category: (CFG.page && CFG.page.articleCategory) ? CFG.page.articleCategory : 'unclassified',
+			new_or_returning: isReturning() ? 'returning' : 'new',
+			referrer_type: getRef(),
+			logged_in_status: (CFG.state && CFG.state.loggedIn) ? 'logged_in' : 'logged_out',
+			membership_status: (CFG.state && CFG.state.membershipStatus) || 'guest',
+			course_registration_status: (CFG.state && CFG.state.courseStatus) || 'guest'
+		};
+	}
+	function emit(eventName, popupId, variant, triggerType, extra) {
+		var dedupeKey = eventName + '|' + Math.floor(now() / 1000);
+		if (emittedSeen[dedupeKey]) { return; }
+		emittedSeen[dedupeKey] = true;
+		var payload = commonAttrs();
+		payload.event = eventName;
+		payload.popup_id = popupId || '';
+		payload.popup_version = CFG.version || '';
+		payload.variant = variant || '';
+		payload.trigger_type = triggerType || '';
+		var k;
+		if (extra) { for (k in extra) { if (Object.prototype.hasOwnProperty.call(extra, k)) { payload[k] = extra[k]; } } }
+		try {
+			if (typeof window.opmTrack === 'function') {
+				window.opmTrack(payload);
+			} else {
+				window.dataLayer = window.dataLayer || [];
+				window.dataLayer.push(payload);
+			}
+		} catch (e) {}
+		try { document.dispatchEvent(new CustomEvent('op_finance_course_popup', { detail: payload })); } catch (e2) {}
+	}
+
+	function idFor(kind) {
+		var ids = CFG.ids || {};
+		if (kind === 'course') { return ids.course || 'op-fc-course'; }
+		if (kind === 'materials') { return ids.materials || 'op-fc-materials'; }
+		return ids.mini || 'op-fc-mini';
+	}
+
+	/* ---------- variant（重み付き乱択・90日保持） ---------- */
+	function pickWeighted() {
+		var variants = CFG.variants || {};
+		var pool = [];
+		var total = 0;
+		var key, w;
+		for (key in variants) {
+			if (Object.prototype.hasOwnProperty.call(variants, key)) {
+				w = num(variants[key] && variants[key].weight);
+				if (w > 0) { pool.push({ k: key, w: w }); total += w; }
+			}
+		}
+		if (!pool.length || total <= 0) { return 'A'; }
+		var r = Math.random() * total;
+		var acc = 0, i;
+		for (i = 0; i < pool.length; i++) {
+			acc += pool[i].w;
+			if (r <= acc) { return pool[i].k; }
+		}
+		return pool[pool.length - 1].k;
+	}
+	function resolveVariant() {
+		var raw = lsGet(K_VARIANT);
+		if (raw) {
+			try {
+				var obj = JSON.parse(raw);
+				if (obj && obj.v && obj.exp && now() < obj.exp) { return obj.v; }
+			} catch (e) {}
+		}
+		var v = pickWeighted();
+		try { lsSet(K_VARIANT, JSON.stringify({ v: v, exp: now() + (T.variantTtlMs || 0) })); } catch (e2) {}
+		return v;
+	}
+	function maybeSendVariantEvent(variant, kind) {
+		if (num(ssGet(K_VARIANT_SENT)) >= 1) { return; }
+		ssSet(K_VARIANT_SENT, '1');
+		emit('finance_course_popup_variant', idFor(kind), variant, '', {});
+	}
+
+	/* ---------- 固定UI（ミニバナーが覆わないようにする対象） ---------- */
+	var MINI_AVOID_SELECTOR = '.to-top, .m-ctabar, #opMcta, #op-lbocta-sticky';
+	function computeMiniLift() {
+		var lift = 0;
+		try {
+			var els = document.querySelectorAll(MINI_AVOID_SELECTOR);
+			var i, el, rect, cs, d;
+			for (i = 0; i < els.length; i++) {
+				el = els[i];
+				if (!el || el.hidden) { continue; }
+				rect = el.getBoundingClientRect ? el.getBoundingClientRect() : null;
+				if (!rect || rect.height <= 0) { continue; }
+				cs = window.getComputedStyle ? window.getComputedStyle(el) : null;
+				if (!cs || cs.position !== 'fixed') { continue; }
+				d = (window.innerHeight || 0) - rect.top;
+				if (d > lift) { lift = d; }
+			}
+		} catch (e) {}
+		return lift;
+	}
+
+	/* ================================================================
+	 * 競合防止（他モーダル・展開中メニュー・入力中フォーム）
+	 * ==============================================================*/
+	function conflicting(root) {
+		try {
+			if (document.documentElement.classList.contains('op-lbocta-lock')) { return true; }
+			var modals = document.querySelectorAll('[aria-modal="true"], dialog[open], .op-lightbox.is-open, [data-op-modal="open"], #op-lbocta-popup, #op-lbocta-lb');
+			var i, m;
+			for (i = 0; i < modals.length; i++) {
+				m = modals[i];
+				if (root && root.contains(m)) { continue; }
+				if (m.hidden) { continue; }
+				if (m.offsetParent !== null || (m.getClientRects && m.getClientRects().length)) { return true; }
+			}
+			var expanded = document.querySelectorAll('.menu-toggle[aria-expanded="true"], .op-hs-toggle[aria-expanded="true"], .op2-c-search[aria-expanded="true"]');
+			if (expanded.length) { return true; }
+			var ae = document.activeElement;
+			if (ae && (ae.tagName === 'INPUT' || ae.tagName === 'TEXTAREA' || ae.tagName === 'SELECT' || ae.isContentEditable)) { return true; }
+			var fields = document.querySelectorAll('form input[type="text"], form input[type="email"], form input[type="password"], form textarea');
+			for (i = 0; i < fields.length; i++) {
+				if (fields[i].value && fields[i].value.length > 0 && fields[i].value !== fields[i].defaultValue) { return true; } // サーバー初期値（ログイン中の自動入力等）は「入力中」とみなさない
+			}
+		} catch (e) {}
+		return false;
+	}
+
+	/* ================================================================
+	 * モーダル（op-fc-course / op-fc-materials）
+	 * ==============================================================*/
+	function buildModal(miniApi) {
+		var root = document.getElementById('op-fc-root');
+		if (!root) { return null; }
+		var courseCard = root.querySelector('[data-fc-card="course"]');
+		var materialsCard = root.querySelector('[data-fc-card="materials"]');
+		if (!courseCard || !materialsCard) { return null; }
+
+		function suppressedModal() {
+			if (num(ssGet(K_SESSION_SHOWN)) >= (T.maxImpressionsPerSession || 1)) { return true; }
+			var mu = num(lsGet(K_MODAL_UNTIL));
+			if (mu && now() < mu) { return true; }
+			return false;
+		}
+		if (suppressedModal()) { return null; }
+
+		var kind = isReturning() ? 'materials' : 'course';
+		var card = (kind === 'course') ? courseCard : materialsCard;
+		var otherCard = (kind === 'course') ? materialsCard : courseCard;
+
+		var variant = resolveVariant();
+		maybeSendVariantEvent(variant, kind);
+		applyHrefs(variant);
+		if (kind === 'course') { applyCourseCopy(courseCard, variant); }
+
+		var isArticle = !!(CFG.page && CFG.page.isArticle);
+		var ACTIVE_MS = isArticle ? T.articleActiveMs : T.triggerActiveMs;
+		var SCROLL_RATIO = isArticle ? T.articleScrollRatio : T.triggerScrollRatio;
+		var activeLabel = 'active_' + Math.round((ACTIVE_MS || 0) / 1000) + 's';
+		var scrollLabel = 'scroll_' + Math.round((SCROLL_RATIO || 0) * 100);
+
+		var triggerType = '';
+		var shown = false, closed = false;
+		var timeReady = false, scrollReady = false, pvReady = false;
+		var activeMs = 0, lastTick = 0, tickTimer = null, retryTimer = null, pvTimer = null, scrollGuardTimer = null;
+		var lastFocused = null;
+		var windowBlurred = false;
+		var resizeObserverInstance = null;
+		var modalBootTime = now();
+		/* 戻る操作・アンカー付き遷移で読み込み直後からスクロール率が既に閾値以上のケースの
+		   誤トリガーを防ぐため、起動から最低これだけは経過してからスクロール条件を成立させる。 */
+		var SCROLL_MIN_ELAPSED_MS = 2000;
+		var conflictRetryCount = 0;
+		/* 競合状態が解消しないまま無限にリトライし続けないための上限（700ms×60=約42秒で諦める）。
+		   諦めた場合もセッション枠（K_SESSION_SHOWN）は消費しない。 */
+		var CONFLICT_RETRY_MAX = 60;
+
+		function isActive() {
+			if (document.visibilityState && document.visibilityState !== 'visible') { return false; }
+			return !windowBlurred;
+		}
+		function tick() {
+			var t = now();
+			if (isActive()) {
+				if (lastTick) { activeMs += (t - lastTick); }
+				lastTick = t;
+				if (!timeReady && activeMs >= ACTIVE_MS) {
+					timeReady = true;
+					if (!triggerType) { triggerType = activeLabel; }
+					maybeShow();
+				}
+			} else {
+				lastTick = 0;
+			}
+		}
+		function startTicking() {
+			if (tickTimer) { return; }
+			lastTick = isActive() ? now() : 0;
+			tickTimer = window.setInterval(tick, 250);
+		}
+		function stopTicking() {
+			if (tickTimer) { window.clearInterval(tickTimer); tickTimer = null; }
+			if (retryTimer) { window.clearInterval(retryTimer); retryTimer = null; }
+			if (pvTimer) { window.clearTimeout(pvTimer); pvTimer = null; }
+			if (scrollGuardTimer) { window.clearTimeout(scrollGuardTimer); scrollGuardTimer = null; }
+		}
+
+		function scrollRatio() {
+			var d = document.documentElement;
+			var docH = Math.max(
+				d.scrollHeight || 0, document.body ? document.body.scrollHeight : 0,
+				d.offsetHeight || 0, document.body ? document.body.offsetHeight : 0
+			);
+			var max = docH - (window.innerHeight || d.clientHeight || 0);
+			if (max <= 0) { return -1; }
+			var y = window.scrollY || window.pageYOffset || d.scrollTop || 0;
+			var r = y / max;
+			if (r < 0) { r = 0; }
+			if (r > 1) { r = 1; }
+			return r;
+		}
+		function checkScroll() {
+			if (scrollReady) { return; }
+			if (now() - modalBootTime < SCROLL_MIN_ELAPSED_MS) { return; }
+			var r = scrollRatio();
+			if (r >= SCROLL_RATIO) {
+				scrollReady = true;
+				if (!triggerType) { triggerType = scrollLabel; }
+				maybeShow();
+			}
+		}
+		function checkPv() {
+			if (pvReady) { return; }
+			if (num(ssGet(K_PV)) >= (T.triggerPageViews || 2)) {
+				pvTimer = window.setTimeout(function () {
+					pvReady = true;
+					if (!triggerType) { triggerType = 'second_pageview'; }
+					maybeShow();
+				}, T.triggerPageViewDelayMs || 0);
+			}
+		}
+
+		function maybeShow() {
+			if (shown || closed) { return; }
+			if (!(timeReady || scrollReady || pvReady)) { return; }
+			if (suppressedModal()) { teardown(); return; }
+			if (conflicting(root)) {
+				conflictRetryCount++;
+				if (conflictRetryCount >= CONFLICT_RETRY_MAX) {
+					// 競合が解消しないまま諦める。トリガー監視は全解除し、セッション枠は消費しない
+					// （closedにするだけで、K_SESSION_SHOWNは増やさない＝別ページビューで再挑戦できる）。
+					stopWatching();
+					closed = true;
+					return;
+				}
+				if (!retryTimer) { retryTimer = window.setInterval(function () { maybeShow(); }, 700); }
+				return;
+			}
+			if (retryTimer) { window.clearInterval(retryTimer); retryTimer = null; }
+			conflictRetryCount = 0;
+			show();
+		}
+
+		/* ---------- フォーカストラップ（表示中のカードに限定） ---------- */
+		var FOCUSABLE = 'a[href], button:not([disabled]), textarea, input, select, summary, [tabindex]:not([tabindex="-1"])';
+		function focusables() {
+			var list = card.querySelectorAll(FOCUSABLE);
+			var out = [];
+			var i, el;
+			for (i = 0; i < list.length; i++) {
+				el = list[i];
+				if (el.offsetParent !== null || (el.getClientRects && el.getClientRects().length)) { out.push(el); }
+			}
+			return out;
+		}
+		function onKeydown(ev) {
+			if (ev.key === 'Escape' || ev.keyCode === 27) {
+				ev.preventDefault();
+				close('esc');
+				return;
+			}
+			if (ev.key !== 'Tab' && ev.keyCode !== 9) { return; }
+			var f = focusables();
+			if (!f.length) { ev.preventDefault(); card.focus(); return; }
+			var first = f[0];
+			var last = f[f.length - 1];
+			if (ev.shiftKey) {
+				if (document.activeElement === first || document.activeElement === card) { ev.preventDefault(); last.focus(); }
+			} else if (document.activeElement === last) {
+				ev.preventDefault();
+				first.focus();
+			}
+		}
+		function onFocusIn(ev) {
+			if (!root.hidden && !root.contains(ev.target)) {
+				ev.stopPropagation();
+				var f = focusables();
+				(f.length ? f[0] : card).focus();
+			}
+		}
+
+		function applyDaysOpenState() {
+			var details = card.querySelector('.op-fc-days');
+			if (!details) { return; }
+			if ((window.innerWidth || 0) <= 640) { details.removeAttribute('open'); }
+			else { details.setAttribute('open', ''); }
+		}
+		function applyLazyImage() {
+			var img = card.querySelector('.op-fc-perk-img');
+			if (img) {
+				var ds = img.getAttribute('data-src');
+				if (ds) { img.setAttribute('src', ds); }
+			}
+		}
+
+		function show() {
+			shown = true;
+			stopWatching();
+			ssSet(K_SESSION_SHOWN, String(num(ssGet(K_SESSION_SHOWN)) + 1));
+
+			try { lastFocused = document.activeElement; } catch (e) { lastFocused = null; }
+
+			card.hidden = false;
+			otherCard.hidden = true;
+			root.setAttribute('data-kind', kind);
+			applyDaysOpenState();
+			applyLazyImage();
+
+			root.hidden = false;
+			void root.offsetHeight;
+			root.classList.add('op-fc-visible');
+			document.documentElement.classList.add('op-fc-lock');
+			if (document.body) { document.body.classList.add('op-fc-lock'); }
+
+			document.addEventListener('keydown', onKeydown, true);
+			document.addEventListener('focusin', onFocusIn, true);
+
+			var closeBtn = card.querySelector('[data-fc="close"]');
+			var f = focusables();
+			try { (closeBtn || (f.length ? f[0] : card)).focus(); } catch (e2) {}
+
+			emit('finance_course_popup_impression', idFor(kind), variant, triggerType, {});
+		}
+
+		function release() {
+			document.removeEventListener('keydown', onKeydown, true);
+			document.removeEventListener('focusin', onFocusIn, true);
+			document.documentElement.classList.remove('op-fc-lock');
+			if (document.body) { document.body.classList.remove('op-fc-lock'); }
+		}
+
+		function close(reason) {
+			if (closed || root.hidden) { return; }
+			closed = true;
+			root.classList.remove('op-fc-visible');
+			var t = now();
+			var modalUntil = t + (T.modalSuppressMs || 0);
+			lsSet(K_MODAL_UNTIL, String(modalUntil));
+			lsSet(K_DISMISSED_AT, String(t));
+			// 旧LBO CTA（v3系）が読む op_cp_dismiss_until をミラー書き込みする（互換維持）。
+			lsSet('op_cp_dismiss_until', String(modalUntil));
+			release();
+			emit('finance_course_popup_close', idFor(kind), variant, triggerType, { close_method: reason || 'close_button' });
+			try { if (lastFocused && lastFocused.focus) { lastFocused.focus(); } } catch (e) {}
+			window.setTimeout(function () { root.hidden = true; }, 260);
+			if (miniApi) { miniApi.arm(); }
+		}
+
+		function buildHref(base, v) {
+			if (!base) { return ''; }
+			return String(base).replace('v=A', 'v=' + v);
+		}
+		function applyHrefs(v) {
+			var courseCta1 = courseCard.querySelector('[data-fc="cta1"]');
+			var courseCta2 = courseCard.querySelector('[data-fc="cta2"]');
+			var matCta1 = materialsCard.querySelector('[data-fc="cta1"]');
+			var matCta2 = materialsCard.querySelector('[data-fc="cta2"]');
+			var urls = CFG.urls || {};
+			if (courseCta1) { courseCta1.setAttribute('href', buildHref(urls.register, v)); }
+			if (courseCta2) { courseCta2.setAttribute('href', buildHref(urls.materials, v)); }
+			if (matCta1) { matCta1.setAttribute('href', buildHref(urls.materials, v)); }
+			if (matCta2) { matCta2.setAttribute('href', urls.registerReturning || ''); }
+		}
+		function applyCourseCopy(cCard, v) {
+			var variants = CFG.variants || {};
+			var vv = variants[v];
+			if (!vv || vv.layout !== 'standard') { vv = variants.A; }
+			if (!vv) { return; }
+			setCopy(cCard, 'label', vv.label, false);
+			setCopy(cCard, 'headline', vv.headline, true);
+			var subEl = cCard.querySelector('[data-fc-copy="sub"]');
+			if (subEl && subEl.getAttribute('data-fc-subtext') !== '1' && vv.sub) {
+				subEl.textContent = vv.sub;
+			}
+			setCopy(cCard, 'cta1', vv.cta1, false);
+			setCopy(cCard, 'cta2', vv.cta2, false);
+		}
+		function setCopy(cCard, key, text, asHtml) {
+			if (!text) { return; }
+			var el = cCard.querySelector('[data-fc-copy="' + key + '"]');
+			if (!el) { return; }
+			if (asHtml) { el.innerHTML = text; } else { el.textContent = text; }
+		}
+
+		function onCta(ctaKind, url) {
+			var t = now();
+			var modalUntil = t + (T.modalSuppressMs || 0);
+			lsSet(K_MODAL_UNTIL, String(modalUntil));
+			lsSet(K_MINI_UNTIL, String(t + (T.ctaMiniSuppressMs || 0)));
+			// 旧LBO CTA（v3系）との互換: op_cp_dismiss_until をミラーし、
+			// v3独自の10時間CTA抑止（op_cp_cta_until）も書き込む。
+			lsSet('op_cp_dismiss_until', String(modalUntil));
+			lsSet('op_cp_cta_until', String(t + LEGACY_CTA_SUPPRESS_MS));
+			try {
+				lsSet(K_ATTR, JSON.stringify({
+					popup_id: idFor(kind),
+					variant: variant || '',
+					page_type: (CFG.page && CFG.page.pageType) || '',
+					article_category: (CFG.page && CFG.page.articleCategory) || '',
+					cta: ctaKind,
+					trigger_type: triggerType || '',
+					ts: t
+				}));
+			} catch (e) {}
+			emit(ctaKind === 'free' ? 'finance_course_popup_free_cta_click' : 'finance_course_popup_materials_cta_click', idFor(kind), variant, triggerType, { cta_destination: url || '' });
+			release();
+		}
+
+		var ctaEls = root.querySelectorAll('[data-fc="cta1"], [data-fc="cta2"]');
+		(function bindCtas() {
+			var i;
+			for (i = 0; i < ctaEls.length; i++) {
+				(function (el) {
+					el.addEventListener('click', function () {
+						onCta(el.getAttribute('data-fc-cta') || '', el.getAttribute('href') || '');
+					});
+				})(ctaEls[i]);
+			}
+		})();
+
+		var closeEls = root.querySelectorAll('[data-fc="close"]');
+		(function bindClose() {
+			var i;
+			for (i = 0; i < closeEls.length; i++) {
+				(function (el) {
+					el.addEventListener('click', function (e) { e.preventDefault(); close('close_button'); });
+				})(closeEls[i]);
+			}
+		})();
+		var backdrop = root.querySelector('[data-fc="backdrop"]');
+		if (backdrop) { backdrop.addEventListener('click', function () { close('backdrop'); }); }
+
+		function teardown() {
+			stopWatching();
+			if (!root.hidden) {
+				root.classList.remove('op-fc-visible');
+				release();
+				root.hidden = true;
+			}
+			closed = true;
+		}
+		window.addEventListener('storage', function (ev) {
+			if (!ev || ev.key !== K_MODAL_UNTIL) { return; }
+			if (suppressedModal() && !shown) { teardown(); }
+		});
+
+		/* ---------- トリガー監視用リスナー一式（表示・離脱・諦めのいずれでも確実に解除する） ---------- */
+		function onVisibilityChange() { lastTick = isActive() ? now() : 0; }
+		function onWindowBlur() { windowBlurred = true; lastTick = 0; }
+		function onWindowFocus() { windowBlurred = false; if (isActive()) { lastTick = now(); } }
+		/** トリガー検出まわりの監視を全解除する（表示確定・離脱・競合断念のいずれでも呼ぶ）。 */
+		function stopWatching() {
+			stopTicking();
+			document.removeEventListener('visibilitychange', onVisibilityChange);
+			window.removeEventListener('blur', onWindowBlur);
+			window.removeEventListener('focus', onWindowFocus);
+			window.removeEventListener('scroll', checkScroll);
+			window.removeEventListener('resize', checkScroll);
+			window.removeEventListener('orientationchange', checkScroll);
+			if (resizeObserverInstance) {
+				try { resizeObserverInstance.disconnect(); } catch (e) {}
+				resizeObserverInstance = null;
+			}
+		}
+
+		checkPv();
+		startTicking();
+		document.addEventListener('visibilitychange', onVisibilityChange);
+		window.addEventListener('blur', onWindowBlur);
+		window.addEventListener('focus', onWindowFocus);
+		window.addEventListener('scroll', checkScroll, { passive: true });
+		window.addEventListener('resize', checkScroll, { passive: true });
+		window.addEventListener('orientationchange', checkScroll);
+		try {
+			if (window.ResizeObserver && document.body) {
+				resizeObserverInstance = new ResizeObserver(function () { checkScroll(); });
+				resizeObserverInstance.observe(document.body);
+			}
+		} catch (e) {}
+		checkScroll();
+		// 読み込み直後に既にスクロール済み（戻る操作・アンカー付き遷移）でも、以後スクロールが
+		// 全く起きないケースを拾えるよう、猶予時間の経過時点で一度だけ再評価する。
+		scrollGuardTimer = window.setTimeout(function () { scrollGuardTimer = null; checkScroll(); }, SCROLL_MIN_ELAPSED_MS);
+
+		return { close: close };
+	}
+
+	/* ================================================================
+	 * ミニバナー（非モーダル・右下）
+	 * ==============================================================*/
+	function buildMini() {
+		var mini = document.getElementById('op-fc-mini');
+		if (!mini) { return null; }
+		var link = mini.querySelector('[data-fc-mini="link"]');
+		var closeBtn = mini.querySelector('[data-fc-mini="close"]');
+		var urls = CFG.urls || {};
+		if (link && urls.mini) { link.setAttribute('href', urls.mini); }
+
+		var shown = false, closed = false;
+		var delayTimer = null;
+		var liftThrottle = null;
+
+		function suppressedMini() {
+			var mu = num(lsGet(K_MINI_UNTIL));
+			return !!(mu && now() < mu);
+		}
+		function modalVisible() {
+			var r = document.getElementById('op-fc-root');
+			return !!(r && !r.hidden);
+		}
+		function eligible() {
+			var da = num(lsGet(K_DISMISSED_AT));
+			if (!da) { return false; }
+			if (now() - da < (T.miniDelayMs || 0)) { return false; }
+			if (suppressedMini()) { return false; }
+			if (modalVisible()) { return false; }
+			return true;
+		}
+
+		function applyLift() {
+			try {
+				var lift = computeMiniLift();
+				var px = lift ? (lift + 12) : 16;
+				mini.style.setProperty('--op-fc-mini-lift', px + 'px');
+			} catch (e) {}
+		}
+		function onViewportChange() {
+			if (liftThrottle) { return; }
+			liftThrottle = window.setTimeout(function () { liftThrottle = null; applyLift(); }, 150);
+		}
+
+		function show() {
+			shown = true;
+			applyLift();
+			if (num(ssGet(K_MINI_IMP_SENT)) < 1) {
+				ssSet(K_MINI_IMP_SENT, '1');
+				emit('finance_course_mini_banner_impression', idFor('mini'), '', '', {});
+			}
+			mini.hidden = false;
+			void mini.offsetHeight;
+			mini.classList.add('op-fc-mini-visible');
+			window.addEventListener('resize', onViewportChange, { passive: true });
+			window.addEventListener('scroll', onViewportChange, { passive: true });
+			window.addEventListener('orientationchange', onViewportChange);
+		}
+		function close() {
+			if (closed) { return; }
+			closed = true;
+			mini.classList.remove('op-fc-mini-visible');
+			var miniUntil = now() + (T.miniSuppressMs || 0);
+			lsSet(K_MINI_UNTIL, String(miniUntil));
+			// 旧LBO CTA（v3系）が読む op_cp2_dismiss_until をミラー書き込みする（互換維持）。
+			lsSet('op_cp2_dismiss_until', String(miniUntil));
+			emit('finance_course_mini_banner_close', idFor('mini'), '', '', {});
+			window.removeEventListener('resize', onViewportChange);
+			window.removeEventListener('scroll', onViewportChange);
+			window.removeEventListener('orientationchange', onViewportChange);
+			if (liftThrottle) { window.clearTimeout(liftThrottle); liftThrottle = null; }
+			window.setTimeout(function () { mini.hidden = true; }, 200);
+		}
+		function maybeShow() {
+			if (shown || closed) { return; }
+			if (!eligible()) { return; }
+			show();
+		}
+		function arm() {
+			if (shown || closed) { return; }
+			if (delayTimer) { window.clearTimeout(delayTimer); delayTimer = null; }
+			var da = num(lsGet(K_DISMISSED_AT));
+			if (!da) { return; }
+			var elapsed = now() - da;
+			var wait = (elapsed >= (T.miniDelayMs || 0)) ? 600 : ((T.miniDelayMs || 0) - elapsed);
+			delayTimer = window.setTimeout(maybeShow, wait);
+		}
+
+		if (closeBtn) { closeBtn.addEventListener('click', function (e) { e.preventDefault(); close(); }); }
+		if (link) {
+			link.addEventListener('click', function () {
+				var miniUntil = now() + (T.miniSuppressMs || 0);
+				lsSet(K_MINI_UNTIL, String(miniUntil));
+				// 旧LBO CTA（v3系）が読む op_cp2_dismiss_until をミラー書き込みする（互換維持）。
+				lsSet('op_cp2_dismiss_until', String(miniUntil));
+				try {
+					lsSet(K_ATTR, JSON.stringify({
+						popup_id: idFor('mini'),
+						variant: '',
+						page_type: (CFG.page && CFG.page.pageType) || '',
+						article_category: (CFG.page && CFG.page.articleCategory) || '',
+						cta: 'mini',
+						trigger_type: '',
+						ts: now()
+					}));
+				} catch (e) {}
+				emit('finance_course_mini_banner_click', idFor('mini'), '', '', { cta_destination: link.getAttribute('href') || '' });
+			});
+		}
+		window.addEventListener('storage', function (ev) {
+			if (!ev || ev.key !== K_MINI_UNTIL) { return; }
+			if (suppressedMini() && !shown) {
+				closed = true;
+				if (delayTimer) { window.clearTimeout(delayTimer); delayTimer = null; }
+			}
+		});
+
+		return { arm: arm };
+	}
+
+	/* ================================================================
+	 * ブート: mode='popup'
+	 * ==============================================================*/
+	function bootPopup() {
+		// first_seen（再訪者=教材一覧カード判定の起点）はpopupモードの初回ロードでのみ設定する
+		// （SPEC §5: trackモードのページ閲覧だけでは初回接触とみなさない）。
+		ensureFirstSeen();
+		cleanupStaleDismissedAt();
+		var miniApi = buildMini();
+		buildModal(miniApi);
+		if (miniApi) { miniApi.arm(); }
+	}
+
+	/**
+	 * op_fc_modal_until が無い、または期限切れの状態で op_fc_dismissed_at だけが
+	 * 残っていると、7日の抑制期間が過ぎた「新規訪問」相当のセッションでも
+	 * ミニバナーの90秒条件だけが古い値のまま成立してしまう。
+	 * その場合は dismissed_at を消し、新たな「閉じる」操作がない限りミニは出さない。
+	 */
+	function cleanupStaleDismissedAt() {
+		var mu = num(lsGet(K_MODAL_UNTIL));
+		if (!mu || now() >= mu) {
+			lsRemove(K_DISMISSED_AT);
+		}
+	}
+
+	/* ================================================================
+	 * ブート: mode='track'（遷移先ページ到達・登録完了・購入のアトリビューション）
+	 * ==============================================================*/
+	function readAttr() {
+		var raw = lsGet(K_ATTR);
+		if (!raw) { return null; }
+		try { return JSON.parse(raw); } catch (e) { return null; }
+	}
+	function bootTrack() {
+		var page = CFG.page || {};
+		var attr = readAttr();
+
+		function attrFreshWithin(windowMs) {
+			if (!attr || !attr.ts) { return false; }
+			return (now() - Number(attr.ts)) <= windowMs;
+		}
+
+		if (page.isRegister && attr && attrFreshWithin(T.signupStartWindowMs || 0) && num(ssGet(K_SIGNUP_START_SENT)) < 1) {
+			ssSet(K_SIGNUP_START_SENT, '1');
+			emit('finance_course_popup_signup_start', (attr.popup_id || ''), (attr.variant || ''), (attr.trigger_type || ''), {});
+		}
+
+		var loginState = (CFG.state && CFG.state.loginState) || 'guest';
+		if (loginState !== 'guest' && attr && attrFreshWithin(T.attrTtlMs || 0) && lsGet(K_SIGNUP_DONE) !== '1') {
+			lsSet(K_SIGNUP_DONE, '1');
+			emit('finance_course_popup_signup_complete', (attr.popup_id || ''), (attr.variant || ''), (attr.trigger_type || ''), {});
+		}
+
+		if (page.isMaterials && attr && num(ssGet(K_MATERIALS_VIEW_SENT)) < 1) {
+			ssSet(K_MATERIALS_VIEW_SENT, '1');
+			emit('finance_course_popup_materials_view', (attr.popup_id || ''), (attr.variant || ''), (attr.trigger_type || ''), {});
+		}
+
+		var isReceived = !!page.isOrderReceived;
+		if (!isReceived) {
+			try {
+				var cls = document.body ? document.body.className : '';
+				var href = (window.location && window.location.href) || '';
+				isReceived = (String(cls).indexOf('woocommerce-order-received') > -1) || (String(href).indexOf('order-received') > -1);
+			} catch (e) {}
+		}
+		if (isReceived && attr) {
+			var orderId = '';
+			try {
+				var href2 = (window.location && window.location.href) || '';
+				var m = href2.match(/order-received\/(\d+)/);
+				if (m) { orderId = m[1]; }
+			} catch (e2) {}
+			emit('finance_course_popup_purchase', (attr.popup_id || ''), (attr.variant || ''), (attr.trigger_type || ''), { op_order_id: orderId });
+			lsRemove(K_ATTR);
+		}
+
+		legacyTrack(isReceived);
+	}
+
+	/* ================================================================
+	 * 旧v3ポップアップ（記事のLBOモデルCTA・op-lbo-cta.php）との計測互換。
+	 * v3は sessionStorage の op_cp_attribution（{popup_id, context, variant,
+	 * page_type, fund_slug, track, ts}）を自分で書き込み、遷移先到達と購入完了を
+	 * 自分のemit()（op_popup_destination_view / op_popup_purchase）で計測していた。
+	 * op-lbo-cta.php は現役で併存しているため、そちらの遷移も同じ形で計測を続ける。
+	 * ==============================================================*/
+	function legacyTrack(isReceived) {
+		var raw = null;
+		try { raw = window.sessionStorage.getItem('op_cp_attribution'); } catch (e) { raw = null; }
+		if (!raw) { return; }
+		var attr = null;
+		try { attr = JSON.parse(raw); } catch (e2) { attr = null; }
+		if (!attr || typeof attr !== 'object') { return; }
+
+		var search = '';
+		try { search = (window.location && window.location.search) || ''; } catch (e3) {}
+		var pathname = '';
+		try { pathname = (window.location && window.location.pathname) || ''; } catch (e4) {}
+
+		function legacyEmit(eventName) {
+			var payload = {
+				event: eventName,
+				popup_id: attr.popup_id || '',
+				copy_variant: attr.variant || '',
+				page_type: attr.page_type || '',
+				content_category: attr.context || '',
+				fund_slug: attr.fund_slug || '',
+				cta_destination: pathname,
+				device_type: deviceType(),
+				login_state: (CFG.state && CFG.state.loginState) || 'guest'
+			};
+			try {
+				if (typeof window.opmTrack === 'function') { window.opmTrack(payload); }
+				else { window.dataLayer = window.dataLayer || []; window.dataLayer.push(payload); }
+			} catch (e5) {}
+			try { document.dispatchEvent(new CustomEvent('op_contextual_popup', { detail: payload })); } catch (e6) {}
+		}
+
+		if (search.indexOf('source=contextual-popup') !== -1) {
+			legacyEmit('op_popup_destination_view');
+		}
+		if (isReceived) {
+			legacyEmit('op_popup_purchase');
+			try { window.sessionStorage.removeItem('op_cp_attribution'); } catch (e7) {}
+		}
+	}
+
+	/* ---------- ブート ---------- */
+	function boot() {
+		try { cleanupLegacyKeys(); } catch (e0) {}
+		try { incrementPv(); } catch (e2) {}
+		try { ensureRef(); } catch (e3) {}
+		try {
+			if (CFG.mode === 'popup') { bootPopup(); }
+			else if (CFG.mode === 'track') { bootTrack(); }
+		} catch (e) { /* 閲覧を妨げない */ }
+	}
+
+	if (document.readyState === 'loading') {
+		document.addEventListener('DOMContentLoaded', boot);
+	} else {
+		boot();
+	}
+})();</script>
+<script id="op-meganav-inline">
+/*!
+ * op-meganav.js — 大手町プレップ ヘッダー「分野別記事」メガメニュー（v2 / 3層バンド構成）
+ * 単一データソース方式。#nv-cat の中身を作り替え、全テンプレ共通で適用（19テンプレ非改変）。
+ * 表示名のみ変更・URLは既存維持（404回避）。計測は dataLayer.push（無害・GA4/GTM接続時に流れる）。
+ * v2.1.0 2026-08-02（AI×ファイナンス/Excel・PPT/データ・テクノロジーを追加・件数を実数に更新）
+ */
+(function () {
+  'use strict';
+  if (window.__opMegaNavInit) return;
+  window.__opMegaNavInit = true;
+
+  var A = '/articles/';
+
+  /* ---- 単一データソース（表示名とURLを一元管理・件数は表示用） ---------------- */
+  var DATA = {
+    popular: [
+      { label: '業界研究', icon: 'net',    title: 'PEファンド一覧・業界マップ', desc: '国内PEファンドを一覧＋業界マップで', href: '/pe-funds/', ev: 'popular:pe-funds' },
+      { label: '業界研究', icon: 'rocket', title: 'VC・CVC一覧・業界マップ',   desc: "VC\/CVC 846組織のデータベース",   href: '/vc-funds/', ev: 'popular:vc-funds' },
+      { label: '実務辞典', icon: 'book',   title: 'ファイナンス実務用語集',     desc: '実務1000用語をやさしく解説',       href: '/glossary/', ev: 'popular:glossary', note: '1000' },
+      { label: '人気',     icon: 'case',   title: 'キャリア・面接対策',         desc: 'IB・PE・FAS の選考／面接対策',    href: A + '#g6',    ev: 'popular:career',   note: '42' }
+    ],
+    colLeft: {
+      head: '業界研究・キャリア',
+      items: [
+        { t: 'PEファンド一覧・業界マップ',    h: '/pe-funds/', tag: '業界研究', ev: 'left:pe-funds' },
+        { t: 'VC・CVC一覧・業界マップ',      h: '/vc-funds/', tag: '業界研究', ev: 'left:vc-funds' },
+        { t: 'キャリア・面接対策',           h: A + '#g6',  n: '42', tag: '人気', ev: 'left:career' },
+        { t: '投資銀行・FAS・M&A',           h: A + '#g4',  n: '22', ev: 'left:ib-fas-ma' },
+        { t: 'プライベートエクイティ・LBO',  h: A + '#g5',  n: '31', ev: 'left:pe-lbo' },
+        { t: 'ベンチャーキャピタル実務',     h: A + '#g11', n: '8',  ev: 'left:vc' },
+        { t: '資本市場・クレジット',         h: A + '#g10', n: '25', ev: 'left:capmkt' },
+        { t: '事業再生・リストラクチャリング', h: A + '#g9', n: '8', ev: 'left:restructuring' },
+        { t: '不動産・REIT',                h: A + '#g12', n: '3',  ev: 'left:re-reit' }
+      ]
+    },
+    colRight: {
+      head: '財務・モデリング実務',
+      items: [
+        { t: 'ファイナンス実務用語集',       h: '/glossary/', n: '1000', tag: '辞典', ev: 'right:glossary' },
+        { t: '財務モデリング',               h: A + '#g2',  n: '22', ev: 'right:modeling' },
+        { t: '会計・財務三表・財務分析',     h: A + '#g1',  n: '36', ev: 'right:accounting' },
+        { t: 'バリュエーション',             h: A + '#g3',  n: '22', ev: 'right:valuation' },
+        { t: '経営企画・FP&A',               h: A + '#g7',  n: '19',  ev: 'right:fpa' },
+        { t: 'AI×ファイナンス',              h: A + '#g16', n: '12', tag: 'NEW', ev: 'right:ai-finance' },
+        { t: '投資分析・エクイティリサーチ', h: A + '#g13', n: '9',  ev: 'right:er' },
+        { t: '業種別モデリング',             h: A + '#g8',  n: '12',  ev: 'right:industry' },
+        { t: 'Excel・PowerPoint実務',         h: A + '#g15', n: '19', ev: 'right:excel-ppt' },
+        { t: 'データ・テクノロジー',           h: A + '#g14', n: '7',  ev: 'right:data-tech' },
+        { t: '財務モデル構築チュートリアル', h: A + '#g0',  n: '12',  ev: 'right:tutorial' },
+        { t: '財務・投資指標の早見辞典',     h: '/reference/', n: '31', ev: 'right:reference' }
+      ]
+    },
+    cta: [
+      { t: '無料記事をすべて見る',     h: '/articles/',   kind: 'primary',   ev: 'cta:free-articles' },
+      { t: '教材で体系的に学ぶ',       h: '/materials/',  kind: 'secondary', ev: 'cta:materials' },
+      { t: '学習ロードマップ',         h: '/#roadmap',    kind: 'link',      ev: 'cta:roadmap' },
+      { t: 'アセスメントで実力を確認', h: '/assessment/', kind: 'link',      ev: 'cta:assessment' }
+    ]
+  };
+
+  var ICON = {
+    net:    '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="6" cy="7" r="2.2"/><circle cx="18" cy="7" r="2.2"/><circle cx="12" cy="17" r="2.2"/><path d="M7.6 8.4 11 15M16.4 8.4 13 15M8 7h8"/></svg>',
+    rocket: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 15c-1 2-1 4-1 4s2 0 4-1M14 5c3-1 5-1 5-1s0 2-1 5c-1 3-4 6-8 8l-3-3c2-4 5-7 7-9z"/><circle cx="14.5" cy="9.5" r="1.3"/></svg>',
+    book:   '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 5.5A1.5 1.5 0 0 1 6.5 4H18v14H6.5A1.5 1.5 0 0 0 5 19.5zM18 18v2H6.5A1.5 1.5 0 0 1 5 18.5"/><path d="M8.5 8h6M8.5 11h6"/></svg>',
+    case:   '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="7.5" width="17" height="11" rx="1.6"/><path d="M9 7.5V6a1.5 1.5 0 0 1 1.5-1.5h3A1.5 1.5 0 0 1 15 6v1.5M3.5 12.5h17"/></svg>'
+  };
+
+  function e(s) { return String(s).replace(/[&<>"]/g, function (c) { return ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]; }); }
+
+  function card(c) {
+    return '<a class="opmm-card" href="' + e(c.href) + '" data-opnav="' + e(c.ev) + '">' +
+      '<span class="opmm-card-ic">' + (ICON[c.icon] || '') + '</span>' +
+      '<span class="opmm-card-b"><span class="opmm-card-t">' + e(c.title) + '</span>' +
+      '<span class="opmm-card-d">' + e(c.desc) + (c.note ? '<span class="opmm-n">' + e(c.note) + '</span>' : '') + '</span></span>' +
+      '<span class="opmm-tag">' + e(c.label) + '</span><span class="opmm-go" aria-hidden="true">→</span></a>';
+  }
+  function row(it) {
+    return '<li><a href="' + e(it.h) + '" data-opnav="' + e(it.ev) + '">' +
+      '<span class="opmm-rt">' + e(it.t) + '</span>' +
+      (it.tag ? '<span class="opmm-rtag">' + e(it.tag) + '</span>' : '') +
+      (it.n ? '<span class="opmm-ct">' + e(it.n) + '</span>' : '') + '</a></li>';
+  }
+  function col(c) {
+    return '<div class="opmm-col"><p class="opmm-ch">' + e(c.head) + '</p><ul>' + c.items.map(row).join('') + '</ul></div>';
+  }
+  function cta(c) {
+    var ar = c.kind === 'link' ? ' <span class="opmm-ar" aria-hidden="true">→</span>' : '';
+    return '<a class="opmm-cta-' + c.kind + '" href="' + e(c.h) + '" data-opnav="' + e(c.ev) + '">' + e(c.t) + ar + '</a>';
+  }
+  function buildHTML() {
+    return '<div class="opmm">' +
+      '<section class="opmm-pop" aria-label="人気コンテンツ"><p class="opmm-h">人気コンテンツ</p>' +
+        '<div class="opmm-cards">' + DATA.popular.map(card).join('') + '</div></section>' +
+      '<div class="opmm-cols">' + col(DATA.colLeft) + col(DATA.colRight) + '</div>' +
+      '<div class="opmm-cta">' + DATA.cta.map(cta).join('') + '</div></div>';
+  }
+
+  /* ---- CSS（#nv-cat配下にスコープ・ブランド配色 navy#14355F / gold#B08A3C） ---- */
+  var CSS = [
+    'body #nv-cat.nv-mega{width:704px!important;min-width:704px!important;padding:0!important;overflow:hidden;border-radius:0 0 10px 10px;}',
+    '#nv-cat .opmm{width:100%;box-sizing:border-box;color:#1B2838;font-size:14px;line-height:1.5;}',
+    '#nv-cat .opmm *{box-sizing:border-box;}',
+    '#nv-cat .opmm-h,#nv-cat .opmm-ch{display:flex;align-items:center;gap:8px;font-size:11px;letter-spacing:.09em;font-weight:700;color:#41546A;margin:0 0 10px;}',
+    '#nv-cat .opmm-h::before,#nv-cat .opmm-ch::before{content:"";width:3px;height:13px;background:#B08A3C;border-radius:1px;flex:0 0 auto;}',
+    '#nv-cat .opmm-pop{padding:15px 18px 16px;background:#F6F8FB;border-bottom:1px solid #E7ECF2;}',
+    '#nv-cat .opmm-cards{display:grid;grid-template-columns:1fr 1fr;gap:9px;}',
+    '#nv-cat .opmm-card{position:relative;display:flex;align-items:flex-start;gap:11px;padding:12px 13px;border:1px solid #E7ECF2;border-radius:9px;background:#fff;text-decoration:none;transition:transform .18s ease,box-shadow .18s ease,border-color .18s ease;}',
+    '#nv-cat .opmm-card:hover,#nv-cat .opmm-card:focus-visible{border-color:#B08A3C;transform:translateY(-1px);box-shadow:0 5px 16px rgba(20,53,95,.10);outline:none;}',
+    '#nv-cat .opmm-card-ic{flex:0 0 auto;width:36px;height:36px;display:flex;align-items:center;justify-content:center;border-radius:8px;background:#EEF2F8;transition:background .18s ease;}',
+    '#nv-cat .opmm-card-ic svg{width:20px;height:20px;fill:none;stroke:#14355F;stroke-width:1.55;stroke-linecap:round;stroke-linejoin:round;transition:stroke .18s ease;}',
+    '#nv-cat .opmm-card:hover .opmm-card-ic{background:#F3EBD9;}#nv-cat .opmm-card:hover .opmm-card-ic svg{stroke:#B08A3C;}',
+    '#nv-cat .opmm-card-b{display:flex;flex-direction:column;min-width:0;}',
+    '#nv-cat .opmm-card-t{font-weight:700;color:#14355F;font-size:13.5px;line-height:1.35;letter-spacing:.01em;}',
+    '#nv-cat .opmm-card-d{color:#5B6B7F;font-size:12px;margin-top:3px;}',
+    '#nv-cat .opmm-n{display:inline-block;margin-left:6px;padding:0 5px;font-size:10px;font-weight:700;color:#8A6A28;background:#F3EBD9;border-radius:9px;vertical-align:middle;}',
+    '#nv-cat .opmm-tag{position:absolute;top:11px;right:12px;font-size:9.5px;font-weight:700;letter-spacing:.03em;color:#B08A3C;text-transform:uppercase;}',
+    '#nv-cat .opmm-go{position:absolute;right:12px;bottom:10px;color:#B08A3C;font-size:14px;opacity:0;transform:translateX(-3px);transition:opacity .18s ease,transform .18s ease;}',
+    '#nv-cat .opmm-card:hover .opmm-go,#nv-cat .opmm-card:focus-visible .opmm-go{opacity:1;transform:translateX(0);}',
+    '#nv-cat .opmm-cols{display:grid;grid-template-columns:1fr 1fr;padding:15px 18px 6px;}',
+    '#nv-cat .opmm-col:first-child{padding-right:22px;border-right:1px solid #EBEFF4;}',
+    '#nv-cat .opmm-col:last-child{padding-left:22px;}',
+    '#nv-cat .opmm-col ul{list-style:none;margin:0;padding:0;}',
+    '#nv-cat .opmm-col a{position:relative;display:flex;align-items:center;gap:8px;padding:7px 9px;border-radius:6px;text-decoration:none;color:#25384C;transition:background .16s ease,color .16s ease,box-shadow .16s ease;}',
+    '#nv-cat .opmm-col a:hover,#nv-cat .opmm-col a:focus-visible{background:#EEF3F8;color:#14355F;box-shadow:inset 2px 0 0 #B08A3C;outline:none;}',
+    '#nv-cat .opmm-rt{flex:1 1 auto;min-width:0;font-size:13.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}',
+    '#nv-cat .opmm-rtag{flex:0 0 auto;font-size:9.5px;font-weight:700;color:#B08A3C;text-transform:uppercase;letter-spacing:.03em;}',
+    '#nv-cat .opmm-ct{flex:0 0 auto;font-size:11px;color:#8695A6;font-variant-numeric:tabular-nums;min-width:22px;text-align:right;}',
+    '#nv-cat .opmm-col a:hover .opmm-ct{color:#14355F;}',
+    '#nv-cat .opmm-cta{display:flex;flex-wrap:wrap;align-items:center;gap:9px 14px;padding:13px 18px;background:#F6F8FB;border-top:1px solid #E7ECF2;}',
+    '#nv-cat .opmm-cta-primary,#nv-cat .opmm-cta-secondary{display:inline-flex;align-items:center;justify-content:center;padding:9px 17px;border-radius:8px;font-weight:700;font-size:13px;text-decoration:none;transition:background .18s ease,border-color .18s ease;}',
+    '#nv-cat .opmm-cta-primary{background:#14355F;color:#fff;box-shadow:0 1px 2px rgba(20,53,95,.2);}',
+    '#nv-cat .opmm-cta-primary:hover,#nv-cat .opmm-cta-primary:focus-visible{background:#0F2848;outline:none;}',
+    '#nv-cat .opmm-cta-secondary{background:#fff;color:#14355F;border:1px solid #C9A24A;}',
+    '#nv-cat .opmm-cta-secondary:hover,#nv-cat .opmm-cta-secondary:focus-visible{background:#FBF6EC;border-color:#B08A3C;outline:none;}',
+    '#nv-cat .opmm-cta-link{color:#41546A;text-decoration:none;font-size:12.5px;font-weight:600;padding:6px 2px;transition:color .16s ease;}',
+    '#nv-cat .opmm-cta-link:hover,#nv-cat .opmm-cta-link:focus-visible{color:#B08A3C;outline:none;}',
+    '#nv-cat .opmm-ar{display:inline-block;transition:transform .18s ease;}#nv-cat .opmm-cta-link:hover .opmm-ar{transform:translateX(3px);}',
+    '#nv-cat .opmm-cta .opmm-cta-link:first-of-type{margin-left:auto;}',
+    '#nv-cat .opmm a:focus-visible{box-shadow:0 0 0 2px #D9B36A;}',
+    /* ---- narrow / mobile (<=980px): 積み上げ・44px・全幅 ---- */
+    '@media (max-width:980px){',
+      'body #nv-cat.nv-mega{width:100%!important;min-width:0!important;border-radius:0;}',
+      '#nv-cat .opmm-pop{padding:10px 10px 12px;}',
+      '#nv-cat .opmm-cards{grid-template-columns:1fr;gap:8px;}',
+      '#nv-cat .opmm-cols{grid-template-columns:1fr;padding:10px 10px 2px;}',
+      '#nv-cat .opmm-col:first-child{padding-right:0;border-right:0;}',
+      '#nv-cat .opmm-col:last-child{padding-left:0;border-top:1px solid #EBEFF4;margin-top:8px;padding-top:10px;}',
+      '#nv-cat .opmm-col a,#nv-cat .opmm-card{min-height:44px;}',
+      '#nv-cat .opmm-rt{white-space:normal;}',
+      '#nv-cat .opmm-cta{flex-direction:column;align-items:stretch;padding:12px 10px;}',
+      '#nv-cat .opmm-cta-primary,#nv-cat .opmm-cta-secondary{width:100%;min-height:44px;}',
+      '#nv-cat .opmm-cta .opmm-cta-link:first-of-type{margin-left:0;}',
+      '#nv-cat .opmm-cta-link{min-height:40px;display:flex;align-items:center;}',
+    '}',
+    '@media (prefers-reduced-motion:reduce){#nv-cat .opmm *{transition:none!important;}}'
+  ].join('\n');
+
+  function injectCSS() {
+    if (document.getElementById('op-meganav-css')) return;
+    var st = document.createElement('style');
+    st.id = 'op-meganav-css';
+    st.textContent = CSS;
+    document.head.appendChild(st);
+  }
+
+  /* ---- 計測（dataLayer.push・無害。GA4/GTM未導入でも安全） ---- */
+  function track(ev, href) {
+    try { window.dataLayer = window.dataLayer || []; window.dataLayer.push({ event: 'mega_nav_click', nav_item: ev, nav_url: href }); } catch (x) {}
+  }
+
+  /* ---- a11y 補助（開閉はテーマ既存＝mouseenter/クリック。ここは属性・計測・Esc） ---- */
+  function wire(cat) {
+    var item = cat.closest('.nv-item');
+    var btn = item && item.querySelector('.nv-btn, button');
+    if (!cat.id) cat.id = 'nv-cat';
+    if (btn) {
+      btn.setAttribute('aria-controls', cat.id);
+      if (!btn.hasAttribute('aria-expanded')) btn.setAttribute('aria-expanded', 'false');
+    }
+    cat.addEventListener('click', function (ev) {
+      var a = ev.target.closest('a[data-opnav]');
+      if (a) track(a.getAttribute('data-opnav'), a.getAttribute('href'));
+    });
+    cat.addEventListener('keydown', function (ev) {
+      if (ev.key === 'Escape' && btn) { btn.focus(); }
+    });
+  }
+
+  function run() {
+    var cat = document.getElementById('nv-cat') || document.querySelector('.nv-sub.nv-mega');
+    if (!cat) return;
+    if (cat.querySelector('.opmm')) return;
+    injectCSS();
+    cat.innerHTML = buildHTML();
+    wire(cat);
+  }
+
+  if (document.readyState === 'loading') { document.addEventListener('DOMContentLoaded', run); } else { run(); }
+})();
+</script>
+    
+<script type="application/json" id="op-gt-data">{"v":1,"st":"article","terms":{"working-capital":{"t":"運転資本","e":"Working Capital","a":"WC","s":"事業運営に必要な短期資金。売上債権＋棚卸資産－仕入債務で算出するのが一般的な定義。","u":"\/acc-003-working-capital\/"},"cash-sweep":{"t":"キャッシュスイープ","e":"Cash Sweep","a":"","s":"余剰キャッシュを優先的に借入金の任意返済に充当する契約上の仕組み。LBOローン契約で多く見られる。","u":"\/mod-008-cash-sweep\/"},"circular-reference":{"t":"循環参照","e":"Circular Reference","a":"","s":"利息費用が借入残高に、借入残高が現金残高に依存し合い数式が循環する状態。反復計算等で対処する。","u":"\/mod-005-circular-reference\/"},"nol-tax-shield":{"t":"繰越欠損金","e":"Net Operating Loss \/ Tax Shield","a":"NOL","s":"過去の税務上の欠損金を将来の課税所得と相殺できる制度。将来の法人税負担を軽減する節税効果を生む。","u":"\/mod-016-tax-modeling\/"},"moic":{"t":"投資倍率","e":"Multiple on Invested Capital","a":"MOIC","s":"投下資本に対して回収総額が何倍かを示すPEのリターン指標。時間を含まないためIRRと併読し、LBOモデルの最終出力となる","u":"\/glossary\/moic\/"},"modeling-test":{"t":"モデルテスト","e":"Financial Modeling Test","a":"","s":"投資銀行やPEファンドの採用選考で課される、財務モデル構築力を測る実技試験。","u":"\/car-005-modeling-test\/"},"error-checks":{"t":"検算チェック","e":"Error Checks \/ Balance Checks","a":"","s":"財務モデルの貸借一致や数式整合性を自動検証する仕組み。誤りを早期に発見するための管理手法。","u":"\/xl-010-error-checks\/"},"boj-current-account-cds":{"t":"日銀当座預金と補完当座預金制度","e":"BOJ Current Account Balances \/ Complementary Deposit Facility","a":"補完当座預金","s":"日銀当座預金は民間金融機関が日本銀行に保有する口座であり、階層別の金利を付す補完当座預金制度（3層構造）が短期金利の形成に長く関わってきました。その仕組みを整数設例で検算し、量的緩和・金融正常化との関係、実務での位置づけまで丁寧に解説します。","u":"\/glossary\/boj-current-account-cds\/"},"paper-lbo":{"t":"ペーパーLBO","e":"Paper LBO","a":"","s":"電卓と紙のみで概算リターンを試算する、面接で頻出のLBO簡易計算演習。","u":"\/car-006-paper-lbo\/"},"lbo-model":{"t":"LBOモデル","e":"LBO Model","a":"","s":"LBO取引における買収後の返済・キャッシュフロー・IRRを試算する財務モデル。","u":"\/pe-002-lbo-model\/"},"financial-modeling":{"t":"財務モデリング","e":"Financial Modeling","a":"","s":"財務諸表や事業計画をExcel等で予測・分析可能な形に構造化する作業。バリュエーションやM\u0026Aの基礎となる。","u":"\/mod-001-modeling-guide\/"},"lbo":{"t":"レバレッジド・バイアウト","e":"Leveraged Buyout","a":"LBO","s":"借入金を活用し少ない自己資金で企業を買収する手法。PEファンドの代表的投資戦略。","u":"\/pe-001-lbo-basics\/"},"excel-error-types":{"t":"Excelのエラー値","e":"Excel Error Types (#REF!, #VALUE!, #DIV\/0! etc.)","a":"","s":"Excelが数式を計算できない時に表示する記号。#REF!は参照切れ、#VALUE!は型不一致、#DIV\/0!はゼロ除算など、原因ごとに対処法が異なる。","u":"\/glossary\/excel-error-types\/"},"paste-special-values":{"t":"形式を選択して貼り付け（値の貼り付け）","e":"Paste Special (Values Only)","a":"","s":"数式ではなく計算結果の数値だけをコピー先に貼り付ける操作。実績値の固定やモデルの一部を配布用に凍結する際に使う基本操作。","u":"\/glossary\/paste-special-values\/"},"enterprise-value":{"t":"エンタープライズバリュー","e":"Enterprise Value","a":"EV","s":"株主と債権者を含む資金の出し手全員に帰属する事業全体の価値。時価総額＋ネットデット＋非支配株主持分","u":"\/glossary\/enterprise-value\/"},"equity-value":{"t":"株式価値","e":"Equity Value","a":"","s":"会社の価値のうち株主に帰属する部分。EVからネットデット等を差し引いて算出し、1株価値の分子になる","u":"\/glossary\/equity-value\/"},"investment-committee":{"t":"投資委員会","e":"Investment Committee","a":"IC","s":"PEファンド内で投資実行や売却の可否を審議・承認する意思決定機関。","u":"\/pe-007-investment-thesis\/"},"capex-schedule":{"t":"Capex・減価償却スケジュール","e":"Capex and Depreciation Schedule","a":"","s":"設備投資額の推移とそれに伴う減価償却費を予測する財務モデル内の表。固定資産残高の推移も管理する。","u":"\/mod-015-capex-depreciation-schedule\/"},"cim":{"t":"インフォメーション・メモランダム","e":"Confidential Information Memorandum","a":"CIM","s":"M\u0026Aの売却プロセスでNDA締結後の買い手候補に配布される、対象会社の事業・財務の詳細説明資料","u":"\/glossary\/cim\/"},"debt-capacity":{"t":"デットキャパシティ","e":"Debt Capacity","a":"","s":"企業やLBO案件が無理なく返済できる範囲で調達可能な負債総額の上限。","u":"\/pe-004-debt-capacity\/"},"irr":{"t":"内部収益率","e":"Internal Rate of Return","a":"IRR","s":"投資キャッシュフローの現在価値合計をゼロにする割引率。投資収益率を測る代表指標。","u":"\/pe-005-irr-moic\/"}}}</script><script src="../wp-content/themes/otemachi-prep-child/assets/js/op-gltip.js" defer></script>
+</body>
+</html>
+<!--
+	generated in 1.896 seconds
+	239209 bytes batcached for 300 seconds
+-->

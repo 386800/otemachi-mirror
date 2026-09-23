@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="250.5" height="82.24" viewBox="0 0 250.5 82.24">
+  <defs>
+    <clipPath id="clip-path">
+      <path id="Pfad_461" data-name="Pfad 461" d="M0,35.763H250.5v-82.24H0Z" transform="translate(0 46.477)" fill="#0d3a6f"/>
+    </clipPath>
+  </defs>
+  <g id="Gruppe_946" data-name="Gruppe 946" transform="translate(-513.88 -37)">
+    <path id="Differenzmenge_39" data-name="Differenzmenge 39" d="M2.7,47.21H0L47.21,0h2.7L2.7,47.21Z" transform="translate(525.62 41.304)" fill="#0d3a6f"/>
+    <g id="Gruppe_593" data-name="Gruppe 593" transform="translate(648.29 63.306)">
+      <path id="Pfad_334" data-name="Pfad 334" d="M5.765,6.643H-1.782l2.87-7.688L1.973-4.7H2l.855,3.589ZM1.667-8.633-7.492,15.694h2.353l2.566-6.936H6.552l2.6,6.936h2.529L2.483-8.633Z" transform="translate(7.492 8.633)" fill="#0d3a6f"/>
+    </g>
+    <g id="Gruppe_596" data-name="Gruppe 596" transform="translate(513.88 37)" clip-path="url(#clip-path)">
+      <g id="Gruppe_594" data-name="Gruppe 594" transform="translate(114.082 26.717)">
+        <path id="Pfad_459" data-name="Pfad 459" d="M7.056,0H4.736V15.173c0,4.85-1.571,6.834-5.438,6.834-4.034,0-6.016-1.706-6.016-6.834V0H-9.17V16.61c0,5.089,2.9,7.58,8.44,7.58,4.719,0,7.791-2.426,7.791-8.127H7.056Z" transform="translate(9.17)" fill="#0d3a6f"/>
+      </g>
+      <g id="Gruppe_595" data-name="Gruppe 595" transform="translate(211.413 26.296)">
+        <path id="Pfad_460" data-name="Pfad 460" d="M3.921,6.036l5.71.687v7.147a8.281,8.281,0,0,1-3.865.858c-4.923,0-8.274-3.249-8.274-10.187,0-7.694,4.447-10.187,8.207-10.187a11.356,11.356,0,0,1,4.716.784l.649-2.15A14.749,14.749,0,0,0,5.529-7.83C.47-7.835-5.095-4.285-5.095,4.534-5.095,13.009-.723,16.9,5.324,16.9l-.007,0a11.682,11.682,0,0,0,6.423-1.739V4.672H3.921Z" transform="translate(5.095 7.844)" fill="#0d3a6f"/>
+      </g>
+    </g>
+    <path id="Pfad_462" data-name="Pfad 462" d="M114.416-7.465h2.453V-31.378h-2.453Z" transform="translate(601.92 95.095)" fill="#0d3a6f"/>
+    <g id="Gruppe_598" data-name="Gruppe 598" transform="translate(513.88 37)" clip-path="url(#clip-path)">
+      <g id="Gruppe_597" data-name="Gruppe 597" transform="translate(157.693 26.437)">
+        <path id="Pfad_463" data-name="Pfad 463" d="M2.584,9.708c-.511,0-3.008-.069-3.486-.134V-10.252a29.736,29.736,0,0,1,3.827-.172c6.494,0,8.409,5.264,8.409,9.881l.005-.005c0,5.3-2.088,10.256-8.755,10.256m.34-22.317a53.941,53.941,0,0,0-6.282.269V11.615c.885.138,4.505.276,5.942.276,8.14,0,11.346-6.014,11.346-12.439h-.005c0-7.113-3.514-12.061-11-12.061" transform="translate(3.358 12.616)" fill="#0d3a6f"/>
+      </g>
+    </g>
+    <g id="Gruppe_599" data-name="Gruppe 599" transform="translate(745.212 63.305)">
+      <path id="Pfad_341" data-name="Pfad 341" d="M3.982,0-5.175,24.329h2.357l2.562-6.936H8.862l2.6,6.936h2.53L4.8,0ZM3.4,7.588l.885-3.656H4.32L5.169,7.52l2.9,7.759H.53Z" transform="translate(5.175 0)" fill="#0d3a6f"/>
+    </g>
+    <g id="Gruppe_602" data-name="Gruppe 602" transform="translate(513.88 37)" clip-path="url(#clip-path)">
+      <g id="Gruppe_600" data-name="Gruppe 600" transform="translate(180.786 26.445)">
+        <path id="Pfad_465" data-name="Pfad 465" d="M2.288,5.022h-2.8V-4.209a19.835,19.835,0,0,1,3.488-.207C6.05-4.416,7.963-2.5,7.963.031c0,3.385-2.428,4.992-5.675,4.992M5.058,6.829a6.686,6.686,0,0,0,5.5-6.8c0-4.755-3.511-6.558-7.586-6.558a36.933,36.933,0,0,0-5.942.51V17.665H-.52V6.588L3,7.137,9.871,17.662h2.835L6.664,8.128Z" transform="translate(2.974 6.527)" fill="#0d3a6f"/>
+      </g>
+      <g id="Gruppe_601" data-name="Gruppe 601" transform="translate(88.893 57.6)">
+        <path id="Pfad_466" data-name="Pfad 466" d="M55.417,9.591H43.986V-12.044H41.543V11.768H55.417ZM26.067-4.9l.883-3.638h.032l.855,3.573,2.891,7.724H23.211Zm8.028,16.669h2.518L27.461-12.451h-.814L17.531,11.768h2.346L22.429,4.86h9.077ZM16.4-12.044h-17.4v2.175H6.475V11.768H8.922V-9.869H16.4ZM-9.11,11.768h2.444V-12.039H-9.11ZM-23-10.209c3.065,0,6.329,1.189,6.329,5.1,0,4.6-3.435,5.65-6.671,5.65a18.854,18.854,0,0,1-2.789-.17v-10.38a15.962,15.962,0,0,1,3.128-.2m-5.572,21.977h2.445V2.514a26.194,26.194,0,0,0,2.787.136c4.7,0,9.254-2.038,9.254-7.756,0-5.751-4.863-7.211-8.913-7.211a24.665,24.665,0,0,0-5.572.513ZM-43.051-4.9l.879-3.638h.032l.853,3.573,2.893,7.724H-45.91Zm8.023,16.669h2.52L-41.66-12.451h-.814l-9.118,24.219h2.348l2.55-6.908h9.083Zm-21.55-2.856A8.7,8.7,0,0,1-61.174,10C-65.7,10-69.439,6.769-69.439-.141c0-7.653,4.082-10.137,7.821-10.137a11.4,11.4,0,0,1,4.694.782l.651-2.138a14.7,14.7,0,0,0-5.51-.818c-5.034,0-10.236,3.534-10.236,12.31,0,8.44,4.555,12.316,10.236,12.316,2.346,0,4.489-.342,5.852-1.394Z" transform="translate(72.019 12.465)" fill="#0d3a6f"/>
+      </g>
+    </g>
+    <path id="Differenzmenge_40" data-name="Differenzmenge 40" d="M2.777,39.773H0L39.823,0H42.6L2.778,39.773Z" transform="translate(539.469 48.741)" fill="#0d3a6f"/>
+    <path id="Differenzmenge_41" data-name="Differenzmenge 41" d="M3.136,32.338H0L32.339,0h3.134L3.137,32.338Z" transform="translate(553.018 56.179)" fill="#0d3a6f"/>
+    <path id="Differenzmenge_42" data-name="Differenzmenge 42" d="M3.379,24.8H0L24.8,0h3.381L3.379,24.8Z" transform="translate(566.779 63.718)" fill="#0d3a6f"/>
+    <path id="Differenzmenge_43" data-name="Differenzmenge 43" d="M9.689,6.507H6.508L0,0H3.181L9.688,6.507Z" transform="translate(614.178 82.009)" fill="#be303b"/>
+    <g id="Gruppe_608" data-name="Gruppe 608" transform="translate(513.88 37)" clip-path="url(#clip-path)">
+      <g id="Gruppe_607" data-name="Gruppe 607" transform="translate(88.885 26.404)">
+        <path id="Pfad_472" data-name="Pfad 472" d="M8.045,8.191A16.474,16.474,0,0,0,9.31,1.607c0-7.381-3.1-12.252-9.9-12.252-6.278,0-9.865,4.4-9.865,12.252,0,7.381,3.1,12.252,9.865,12.252a10.754,10.754,0,0,0,3.254-.522L.916,11.587a6.952,6.952,0,0,1-1.506.177c-5.022,0-7.219-4.843-7.219-10.157C-7.81-5.234-5.053-8.552-.59-8.552c5.059,0,7.255,4.841,7.255,10.159a16.308,16.308,0,0,1-.628,4.579Z" transform="translate(10.455 10.645)" fill="#0d3a6f"/>
+      </g>
+    </g>
+  </g>
+</svg>

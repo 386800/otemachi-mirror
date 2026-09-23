@@ -1,0 +1,398 @@
+/* ==========================================================================
+   op-article-v2.css — 記事テンプレートv2
+   すべて body.op-art2 配下にスコープ。読み込み順は op-article.css (op-lp) の後。
+   !important は「本文/モジュールのインラインstyle（article content内の
+   <style id="...">）がこのファイルより後にDOM出現するため、同格では勝てない
+   場合」に限定して使用。使用箇所には理由コメントを付す。
+   ========================================================================== */
+
+/* ---------- 1. トークン ---------- */
+body.op-art2{
+  --ink:#1B2838;
+  --ink-2:#3A4A5E;
+  --mute:#5B6878;
+  --line:#DFE5EC;
+  --line-2:#C9D3DE;
+  --panel:#F5F7FA;
+  --navy:#14355F;
+  --link:#1D4E8A;
+  /* 2026-09-12: 教材・無料特典・会員登録CTAのアクセントは「無料会員登録」ボタン(.op-btn-green / opm.css)と同じ緑へ統一。
+     変数名はクラス名（art-btn--gold 等）との対応を保つため据え置くが、値は緑（.op-btn-green と同一値）。 */
+  --gold:#007A4D;
+  --gold-hover:#00663F;
+  --gold-active:#005634;
+  --gold-focus:#B79A5B; /* .op-btn-green の focus-visible と同じ配色（意図的にゴールド系） */
+  --gold-ink:#007A4D; /* ラベル文字色としても白/パネル背景でAA達成（コントラスト比5.0以上）を確認済み */
+  --a2-hdr:72px; /* JSが実測して上書き。既定72px */
+}
+
+/* ---------- 2. ユーティリティ ---------- */
+.op-art2 .art-sr{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.op-art2 .art-skip{position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden;z-index:9999}
+.op-art2 .art-skip:focus{position:fixed;left:16px;top:16px;width:auto;height:auto;padding:11px 20px;background:var(--navy);color:#fff;border-radius:3px;font-size:14px;font-weight:600;text-decoration:none;box-shadow:0 6px 20px rgba(20,53,95,.25)}
+.op-art2 :focus-visible{outline:2px solid #1D4E8A;outline-offset:2px}
+
+/* ---------- 3. 演出の無効化（本文フェード・遷移カーテン・記事一覧誘導バー） ---------- */
+html.js body.op-art2{animation:none}
+body.op-art2 #opCurtain{display:none}
+body.op-art2 #opMcta{display:none}
+
+/* ---------- 4. レイアウトグリッド ---------- */
+.op-art2 .wrap{max-width:1200px;margin:0 auto;padding:0 32px}
+@media (max-width:639px){.op-art2 .wrap{padding:0 18px}}
+
+.op-art2 .art-grid{display:grid;grid-template-columns:minmax(0,1fr);grid-template-areas:"head" "rail" "main";row-gap:0}
+.op-art2 .art-head{grid-area:head}
+.op-art2 .art-rail{grid-area:rail}
+.op-art2 .art-main{grid-area:main;min-width:0}
+
+@media (min-width:1024px){
+  .op-art2 .art-grid{
+    grid-template-columns:minmax(190px,232px) minmax(0,760px);
+    column-gap:clamp(36px,4vw,56px);
+    justify-content:start;
+    grid-template-areas:"rail head" "rail main";
+    align-items:start;
+  }
+  /* padding-top＝記事ヘッダーの上余白と揃える（「目次」をパンくずと同じ高さに置く）。
+     追従時は top を 28px 引き上げ、ヘッダー直下24pxの位置に「目次」が来るようにする */
+  .op-art2 .art-rail{
+    position:sticky;
+    top:calc(var(--a2-hdr,72px) - 4px);
+    max-height:calc(100vh - var(--a2-hdr,72px) - 20px);
+    padding-top:28px;
+    overflow-y:auto;
+    align-self:start;
+  }
+}
+@media (max-width:1023px){
+  .op-art2 .art-rail{position:static;max-height:none;overflow:visible;margin:0 0 4px}
+}
+
+/* 見出しへのスクロール時、固定ヘッダーの下に隠れないための余白 */
+.op-art2 .art-body h2[id],
+.op-art2 .art-body h3,
+.op-art2 .art-faq-q{scroll-margin-top:calc(var(--a2-hdr,72px) + 20px)}
+
+/* ---------- 5. 記事ヘッダー ---------- */
+.op-art2 .art-head{padding:28px 0 26px;border-bottom:1px solid var(--line)}
+.op-art2 .art-crumbs{margin:0 0 16px}
+.op-art2 .art-crumbs ol{display:flex;flex-wrap:wrap;align-items:center;list-style:none;margin:0;padding:0;font-size:12.5px;line-height:1.6;color:var(--mute)}
+.op-art2 .art-crumbs li{display:flex;align-items:center;min-width:0}
+.op-art2 .art-crumbs li:not(:last-child)::after{content:"/";margin:0 8px;color:var(--line-2)}
+.op-art2 .art-crumbs li[aria-current="page"]{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:100%;min-width:0;flex:1 1 auto}
+.op-art2 .art-crumbs a{color:var(--mute)}
+.op-art2 .art-crumbs a:hover{color:var(--navy)}
+.op-art2 .art-crumbs [aria-current="page"] span{color:var(--ink-2)}
+
+.op-art2 .art-cat{margin:0 0 12px;font-size:13px;line-height:1.5}
+.op-art2 .art-cat a{color:var(--navy);font-weight:700;text-decoration:none}
+.op-art2 .art-cat a:hover{text-decoration:underline}
+
+.op-art2 .art-title{margin:0 0 16px;font-weight:700;color:var(--navy);letter-spacing:.01em}
+.op-art2 .art-h1-main{display:block;font-size:clamp(1.625rem,1.25rem + 2vw,2.375rem);line-height:1.42}
+.op-art2 .art-h1-sub{display:block;margin-top:8px;font-size:.72em;font-weight:600;line-height:1.5;color:var(--ink-2)}
+.op-art2 .art-h1-main,.op-art2 .art-h1-sub{word-break:auto-phrase;text-wrap:balance} /* 「10 / 選」のような1字だけの行を防ぐ */
+@media (max-width:599px){
+  .op-art2 .art-crumbs li[aria-current="page"]{display:none} /* 直下のH1と同じ文字列で、狭い画面では途中で切れるため */
+  .op-art2 .art-crumbs li:nth-last-child(2)::after{display:none}
+}
+
+.op-art2 .art-lead{margin:0 0 16px;font-size:16.5px;line-height:1.85;color:var(--ink-2)}
+@media (max-width:599px){.op-art2 .art-lead{font-size:15.5px}}
+
+.op-art2 .art-meta{margin:0 0 10px;display:flex;flex-wrap:wrap;column-gap:16px;row-gap:4px;font-size:12.5px;line-height:1.6;color:var(--mute)}
+.op-art2 .art-byline{margin:0;display:flex;flex-wrap:wrap;column-gap:16px;row-gap:4px;font-size:12.5px;line-height:1.6;color:var(--mute)}
+.op-art2 .art-byline a{color:var(--link)}
+.op-art2 .art-policy{color:var(--link)}
+
+/* ---------- 6. 目次（レール） ---------- */
+.op-art2 .art-toc{border:none}
+.op-art2 .art-toc-title{margin:0 0 12px;font-size:12.5px;font-weight:700;letter-spacing:.04em;color:var(--mute)}
+.op-art2 .art-toc-btn{display:none;width:100%;align-items:center;gap:10px;padding:12px 14px;border:1px solid var(--line);border-radius:4px;background:#fff;color:var(--navy);font:inherit;font-size:14px;font-weight:700;line-height:1.4;cursor:pointer;text-align:left}
+.op-art2 .art-toc-btn-l{flex:0 0 auto}
+.op-art2 .art-toc-count{flex:1;font-size:12px;font-weight:400;color:var(--mute)}
+.op-art2 .art-toc-state{flex:0 0 auto;font-size:12.5px;font-weight:600;color:var(--link)}
+.op-art2 .art-toc-chev{flex:0 0 auto;width:7px;height:7px;border-right:2px solid var(--navy);border-bottom:2px solid var(--navy);transform:rotate(45deg);transition:transform .2s}
+.op-art2 .art-toc.is-open .art-toc-chev{transform:rotate(-135deg)}
+html:not(.js) .op-art2 .art-toc-btn{display:none}
+
+.op-art2 .art-toc-list{position:relative;list-style:none;margin:0;padding:0}
+.op-art2 .art-toc-list::before{content:"";position:absolute;left:0;top:2px;bottom:2px;width:1px;background:var(--line)}
+.op-art2 .art-toc-list li{margin:0}
+.op-art2 .art-toc-list a{position:relative;display:flex;gap:.5em;align-items:baseline;padding:6px 8px 6px 16px;margin:0;border-left:2px solid transparent;font-size:13.5px;line-height:1.6;color:var(--ink-2);text-decoration:none}
+.op-art2 .art-toc-list a:hover{color:var(--navy);background:var(--panel)}
+.op-art2 .art-toc-list a.is-active{color:var(--navy);font-weight:600;border-left-color:var(--navy)}
+.op-art2 .art-toc-n{flex:0 0 1.5em;font-variant-numeric:tabular-nums;font-size:.85em;color:var(--mute)}
+.op-art2 .art-toc-list a.is-active .art-toc-n{color:var(--navy)}
+.op-art2 .art-toc-t{flex:1;min-width:0;line-break:strict} /* 狭い列では文節改行より行を埋める方が短くなる */
+
+@media (min-width:1024px){
+  .op-art2 .art-toc-btn{display:none}
+  .op-art2 .art-toc-title{display:block}
+  .op-art2 .art-toc-list{display:block}
+}
+@media (max-width:1023px){
+  .op-art2 .art-toc-title{display:none}
+  html.js .op-art2 .art-toc-btn{display:flex}
+  .op-art2 .art-toc-list{display:block;padding-top:14px}
+  html.js .op-art2 .art-toc:not(.is-open) .art-toc-list{display:none}
+}
+
+/* PE-045: op-lbo-cta のチップ目次(モバイル)はv2独自目次と重複するため非表示。
+   側帯へ挿入される #op-lbo-cta-sticky(.is-side) はTOCの下に収める */
+.op-art2 .op-lbocta-mtoc{display:none}
+.op-art2 .art-rail .op-lbocta-sticky.is-side{margin-top:20px;max-width:100%;box-sizing:border-box;overflow-wrap:break-word}
+
+/* ---------- 7. 本文タイポグラフィ ---------- */
+.op-art2 .art-body{max-width:none;font-size:17px;line-height:1.85;letter-spacing:.01em;color:var(--ink)}
+/* :where() でこの一般段落ルールの詳細度をゼロにする。素の「.op-art2 .art-body p」(クラス2+要素1)
+   のままだと、後述のコンポーネント別ルール（例: .art-cta-eyebrow、クラス2のみ）より詳細度が高くなり、
+   ソース順で後にあっても負けてしまう（実機で発生していた不具合の原因）。 */
+.op-art2 .art-body :where(p){margin:0 0 1.4em;font-size:1em}
+@media (max-width:1023px) and (min-width:600px){.op-art2 .art-body{font-size:16.5px}}
+@media (max-width:599px){.op-art2 .art-body{font-size:16px;line-height:1.85}}
+
+/* :not()の引数はカンマ区切り1個のリストにする（別々に:not()を連ねると詳細度が加算されてしまい、
+   後続のコンポーネント別リンクルールより詳細度で勝ってしまうため = 単一リストなら最も詳細度の高い
+   要素1個分のみが加算される） */
+.op-art2 .art-body a:not(.op-gt, .art-btn, .art-src-a, .art-rel-card, .btn-gold){
+  color:var(--link);text-decoration-line:underline;text-decoration-thickness:1px;
+  text-underline-offset:3px;text-decoration-color:var(--line-2);
+}
+.op-art2 .art-body a:not(.op-gt, .art-btn, .art-src-a, .art-rel-card, .btn-gold):hover{text-decoration-color:currentColor}
+.op-art2 .art-body a[href^="http"]:not([href*="otemachiprep.com"])::after{content:"↗";display:inline-block;margin-left:.15em;font-size:.78em;text-decoration:none;color:var(--mute);transform:translateY(-.05em)}
+.op-art2 .art-body p,.op-art2 .art-body li{overflow-wrap:break-word}
+
+/* :where(h2)/:where(h3) でこの一般見出しルールの詳細度をゼロにする。素の要素セレクタのままだと
+   クラスのみで書いた .art-faq-q（h3要素）等のコンポーネント別ルールより詳細度が高くなってしまう
+   （.op-art2 .art-body h3 = クラス2+要素1 > .op-art2 .art-faq-q = クラス2+要素0）。 */
+.op-art2 .art-body :where(h2){
+  font-size:1.42em;line-height:1.5;font-weight:700;color:var(--navy);
+  margin:76px 0 22px;padding:0 0 12px;border-top:none;border-bottom:1px solid var(--line);
+  text-wrap:balance;word-break:auto-phrase;
+}
+.op-art2 .art-body :where(h2):first-of-type{margin-top:0}
+.op-art2 .art-body :where(h3){font-size:1.14em;line-height:1.6;font-weight:700;color:var(--ink);margin:44px 0 12px}
+@media (max-width:1023px){.op-art2 .art-body :where(h2){margin-top:64px}}
+@media (max-width:599px){
+  .op-art2 .art-body :where(h2){margin-top:56px;margin-bottom:18px}
+  .op-art2 .art-body :where(h3){margin-top:36px}
+}
+
+.op-art2 .art-body ul.disc{list-style:none;margin:0 0 1.4em;padding:0}
+.op-art2 .art-body ul.disc li{position:relative;padding:.4em 0 .4em 1.6em;font-size:1em;line-height:1.9}
+.op-art2 .art-body ul.disc li::before{content:"";position:absolute;left:.2em;top:1.05em;width:.55em;height:.55em;background:var(--navy);border-radius:1px}
+
+.op-art2 .art-note{margin:28px 0 0;font-size:13.5px;line-height:1.8;color:var(--mute)}
+
+/* ---------- 8. summary-box（バグ修正: 見出しを小さく・軽量パネル化） ---------- */
+.op-art2 .art-body .summary-box{background:var(--panel);border:none;border-left:3px solid var(--navy);border-radius:2px;padding:22px 26px;margin:32px 0}
+.op-art2 .art-body .summary-box h2{
+  border:none;border-top:none;padding:0;margin:0 0 10px;
+  font-size:15px;font-weight:700;letter-spacing:.02em;color:var(--navy);
+  text-wrap:initial;
+}
+.op-art2 .art-body .summary-box ul{margin:0;padding:0;list-style:none}
+.op-art2 .art-body .summary-box li{position:relative;padding:.35em 0 .35em 1.6em;font-size:15px;line-height:1.85;color:var(--ink-2)}
+.op-art2 .art-body .summary-box li::before{content:"";position:absolute;left:.1em;top:.9em;width:.85em;height:.48em;border-left:2px solid var(--navy);border-bottom:2px solid var(--navy);transform:rotate(-45deg)}
+@media (max-width:599px){.op-art2 .art-body .summary-box{padding:18px 18px}}
+
+/* ---------- 9. FAQ ---------- */
+.op-art2 .art-faq{margin:24px 0 4px}
+.op-art2 .art-faq-item{border-top:1px solid var(--line);padding:22px 0}
+.op-art2 .art-faq-item:first-child{border-top:1px solid var(--line)}
+.op-art2 .art-body :where(h2) + .art-faq > .art-faq-item:first-child{border-top:none;padding-top:6px} /* 見出しの下罫線と二重にしない */
+.op-art2 .art-faq-q{display:flex;gap:14px;align-items:baseline;margin:0;font-size:1em;font-weight:700;line-height:1.7;color:var(--ink)}
+.op-art2 .art-faq-a{display:flex;gap:14px;margin:12px 0 0}
+.op-art2 .art-faq-mk{flex:0 0 1.5em;font-weight:700;font-size:.9em;color:var(--navy)}
+.op-art2 .art-faq-a .art-faq-mk{color:var(--mute)}
+.op-art2 .art-faq-qt{flex:1;min-width:0}
+.op-art2 .art-faq-at{flex:1;min-width:0;color:var(--ink-2)}
+.op-art2 .art-faq-at p{margin:0 0 .8em;font-size:.95em;line-height:1.85}
+.op-art2 .art-faq-at p:last-child{margin-bottom:0}
+
+/* qa-box（旧型）をFAQと同じ言語に寄せる */
+.op-art2 .art-body .qa-box{border:none;background:none;margin:24px 0 4px}
+.op-art2 .art-body .qa-box .qa{border-top:1px solid var(--line);padding:20px 0}
+.op-art2 .art-body .qa-box .qa:first-child{border-top:1px solid var(--line)}
+.op-art2 .art-body .qa-box .q{color:var(--navy);font-size:1em;font-weight:700;line-height:1.8;margin:0 0 8px}
+.op-art2 .art-body .qa-box .a{color:var(--ink-2);font-size:.95em;line-height:1.85;margin:0}
+
+/* ---------- 10. コードブロック ---------- */
+.op-art2 .art-code{margin:26px 0;background:#F7F9FB;border:1px solid #DDE3EA;border-radius:6px;overflow:hidden}
+.op-art2 .art-code-head{display:flex;align-items:center;gap:10px;padding:8px 14px;border-bottom:1px solid #DDE3EA;background:#F1F4F8;font-size:12.5px;line-height:1.5}
+.op-art2 .art-code-lang{flex:0 0 auto;font-weight:700;color:var(--navy)}
+.op-art2 .art-code-name{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:var(--mute);font-family:ui-monospace,SFMono-Regular,Consolas,Menlo,monospace;font-size:12px}
+.op-art2 .art-code-copy{flex:0 0 auto;margin-left:auto;border:1px solid var(--line-2);background:#fff;color:var(--ink-2);font:inherit;font-size:12px;padding:4px 11px;border-radius:3px;cursor:pointer;line-height:1.5}
+.op-art2 .art-code-copy:hover{border-color:var(--navy);color:var(--navy)}
+.op-art2 .art-code-copy.is-copied{border-color:#1E7A46;color:#1E7A46}
+.op-art2 .art-code-copy[hidden]{display:none}
+.op-art2 .art-code-pre{margin:0;padding:16px 18px;overflow-x:auto;-webkit-overflow-scrolling:touch;font-family:ui-monospace,SFMono-Regular,Consolas,Menlo,monospace;font-size:13.5px;line-height:1.65;color:#24292F;tab-size:4}
+.op-art2 .art-code-pre code{white-space:inherit;font:inherit}
+.op-art2 .art-code--wrap .art-code-pre{white-space:pre-wrap;word-break:break-word;overflow-wrap:anywhere;overflow-x:hidden}
+.op-art2 .art-code .tk-c{color:#5E6D7F} /* 日本語コメントは合成斜体が崩れるため斜体にしない */
+.op-art2 .art-code .tk-s{color:#0B6E4F}
+.op-art2 .art-code .tk-n{color:#8C6D1F}
+.op-art2 .art-code .tk-k{color:#14355F;font-weight:600}
+
+/* ---------- 11. 表 ---------- */
+.op-art2 .art-tbl{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:24px 0}
+.op-art2 .art-tbl:focus-visible{outline:2px solid var(--link);outline-offset:2px}
+.op-art2 .art-tbl table{margin:0}
+.op-art2 .art-body table.data td.num,
+.op-art2 .art-body table.data td{font-variant-numeric:tabular-nums}
+
+/* base op-lp の.tbl-scroll(≥1025で+92px張り出し)とop-perank系(opr-wide-css/opr-details-css)は
+   article content内のインライン<style>で、我々のリンクCSSより後にDOM出現する。
+   一部は!important付きで左マージンを張り出すため、!important + 高い詳細度で無効化する。 */
+.op-art2 .art-main .tbl-scroll{width:100% !important;max-width:100% !important;margin-left:0 !important}
+.op-art2 .art-main .opr-details{width:100% !important;max-width:100% !important}
+.op-art2 .art-main .opr-details .tbl-scroll{margin-left:0 !important}
+@media (min-width:1280px){
+  /* v2では表の張り出しは右方向のみ許可（レールは左側にあるため左張り出しは不可） */
+  .op-art2 .art-main .tbl-scroll{width:calc(100% + 64px) !important;max-width:none !important}
+  .op-art2 .art-main .opr-details{width:calc(100% + 64px) !important;max-width:none !important}
+}
+@media (max-width:700px){
+  .op-art2 .art-main .tbl-scroll table.data{min-width:0}
+}
+
+/* ---------- 12. 文脈型CTA / 記事末CTA ---------- */
+.op-art2 .art-cta{margin:40px 0;padding:20px 28px;background:var(--panel);border-top:2px solid var(--navy);border-radius:2px}
+.op-art2 .art-cta-eyebrow{margin:0 0 6px;font-size:12.5px;line-height:1.3;font-weight:700;letter-spacing:.06em;color:var(--gold-ink)}
+.op-art2 .art-cta-title{margin:0 0 6px;font-size:17px;font-weight:700;line-height:1.45;color:var(--navy)}
+.op-art2 .art-cta-text{margin:0 0 14px;font-size:14.5px;line-height:1.75;color:var(--ink-2)}
+.op-art2 .art-cta-act{margin:0;display:flex;flex-wrap:wrap;align-items:center;gap:16px}
+.op-art2 .art-cta-item{margin:0 0 14px}
+.op-art2 .art-cta-name{margin:0 0 4px;font-size:16.5px;font-weight:700;line-height:1.5}
+.op-art2 .art-cta .art-cta-name a{color:var(--navy);text-decoration:none}
+.op-art2 .art-cta .art-cta-name a:hover{text-decoration:underline}
+.op-art2 .art-cta-facts{margin:0;display:flex;flex-wrap:wrap;font-size:13px;line-height:1.6;color:var(--mute)}
+.op-art2 .art-cta-facts span{position:relative;padding:0 .8em}
+.op-art2 .art-cta-facts span:first-child{padding-left:0}
+.op-art2 .art-cta-facts span+span::before{content:"";position:absolute;left:0;top:.25em;bottom:.25em;width:1px;background:var(--line-2)}
+.op-art2 .art-cta a.art-cta-sub{font-size:14px;font-weight:600;color:var(--link);text-decoration:underline;text-underline-offset:3px}
+.op-art2 .art-cta-free{margin:16px 0 0;padding-top:14px;border-top:1px solid var(--line);font-size:13px;line-height:1.8;color:var(--mute)}
+.op-art2 .art-cta .art-cta-free a{color:var(--link)}
+
+.op-art2 .art-btn{display:inline-flex;align-items:center;justify-content:center;gap:.5em;padding:.8em 1.7em;font-size:14.5px;font-weight:700;line-height:1.3;border-radius:3px;text-decoration:none;border:1px solid transparent;white-space:nowrap;transition:background .2s,color .2s,border-color .2s}
+/* クラス名は歴史的経緯で「gold」のままだが、2026-09-12 より「無料会員登録」ボタンと同じ緑（--gold系トークン）を使用 */
+.op-art2 .art-btn--gold{background:var(--gold);color:#fff}
+.op-art2 .art-btn--gold:hover{background:var(--gold-hover);color:#fff}
+.op-art2 .art-btn--gold:active{background:var(--gold-active)}
+.op-art2 .art-btn--gold:focus-visible{outline:3px solid var(--gold-focus);outline-offset:2px}
+@media (max-width:599px){
+  .op-art2 .art-cta{padding:20px 18px}
+  .op-art2 .art-cta-facts{flex-direction:column;row-gap:2px} /* 狭い画面では区切り線が行頭に来るため縦に並べる */
+  .op-art2 .art-cta-facts span{padding:0}
+  .op-art2 .art-cta-facts span+span::before{display:none}
+  .op-art2 .art-cta-act{flex-direction:column;align-items:stretch;gap:12px}
+  .op-art2 .art-btn{width:100%}
+  .op-art2 .art-cta-sub{text-align:center}
+}
+
+/* ---------- 13. 旧型 cta-inline / src-box / related-box ---------- */
+.op-art2 .art-body .cta-inline{margin:36px 0;padding:24px 28px;border:none;background:var(--panel);border-top:2px solid var(--navy)}
+.op-art2 .art-body .cta-inline.gold{background:var(--panel);border-color:var(--navy)}
+.op-art2 .art-body .cta-inline h3{color:var(--navy);font-size:16.5px;font-weight:700;margin:0 0 8px}
+.op-art2 .art-body .cta-inline p{color:var(--ink-2);font-size:14.5px;line-height:1.8;margin:0}
+.op-art2 .art-body .cta-inline > p{display:flex;align-items:center}
+/* 旧型インラインCTA（cta-inline.gold 内）のボタン。op-article.css 側でも .cta-inline.gold .btn-gold を緑化済みだが、
+   詳細度が同点（クラス3個）でこちらが後読込のため勝ってしまう→ここも同じ緑（--gold系トークン）に揃える */
+.op-art2 .art-body .btn-gold{background:var(--gold);color:#fff;box-shadow:none;border-radius:3px;font-weight:700}
+.op-art2 .art-body .btn-gold:hover{background:var(--gold-hover);color:#fff}
+.op-art2 .art-body .btn-gold:active{background:var(--gold-active)}
+.op-art2 .art-body .btn-gold:focus-visible{outline:3px solid var(--gold-focus);outline-offset:2px}
+@media (max-width:599px){.op-art2 .art-body .cta-inline{padding:18px 18px}}
+
+.op-art2 .art-body .related-box{margin:36px 0;padding-top:20px;border-top:1px solid var(--line);background:none}
+.op-art2 .art-body .related-box-h{margin:0 0 10px;font-size:13px;font-weight:700;letter-spacing:.04em;color:var(--mute)}
+.op-art2 .art-body .related-box ul{margin:0;padding:0;list-style:none}
+.op-art2 .art-body .related-box li{margin:0;padding:5px 0}
+.op-art2 .art-body .related-box a{font-size:14.5px;line-height:1.7;color:var(--link)}
+
+.op-art2 .art-body .src-box{margin:40px 0 0;padding:16px 0 0;background:none;border:none;border-top:1px solid var(--line);color:var(--mute)}
+.op-art2 .art-body .src-box h2{border:none;padding:0;margin:0 0 6px;font-size:13.5px;font-weight:700;color:var(--mute);text-wrap:initial}
+.op-art2 .art-body .src-box p{margin:0;font-size:13.5px;line-height:1.8;color:var(--mute)}
+
+/* 出典リスト */
+.op-art2 .art-body .art-src{margin:20px 0 8px;padding:0;list-style:none;font-size:14px}
+.op-art2 .art-body .art-src li{margin:0 0 8px;line-height:1.7}
+.op-art2 .art-body .art-src-a{color:var(--link);overflow-wrap:anywhere}
+.op-art2 .art-body .art-src-host{margin-left:6px;font-size:12.5px;color:var(--mute)}
+
+/* ---------- 14. op-ecd2c-cta モジュール（文言・箱の意匠は保持、ボタンは緑で統一） ---------- */
+.op-art2 .art-body .op-ecd2c-cta{background:var(--panel);border:none;border-left:none;border-top:2px solid var(--navy);border-radius:2px;padding:24px 28px;margin:40px 0 8px}
+.op-art2 .art-body .op-ecd2c-cta__eyebrow{color:var(--gold-ink)}
+.op-art2 .art-body .op-ecd2c-cta__lv{background:var(--navy);color:#fff}
+.op-art2 .art-body .op-ecd2c-cta__plan{background:#EDEFF3;color:var(--ink-2);border-color:var(--line-2)}
+.op-art2 .art-body .op-ecd2c-cta .op-ecd2c-cta__title a{color:var(--navy);text-decoration:none}
+.op-art2 .art-body .op-ecd2c-cta .op-ecd2c-cta__title a:hover{text-decoration:underline}
+.op-art2 .art-body .op-ecd2c-cta__hook{color:var(--ink)}
+.op-art2 .art-body .op-ecd2c-cta__desc{color:var(--ink-2)}
+/* !important: op-ecd2c-cta-css（article content内のインライン<style>、我々のCSSより後にDOM出現）が
+   __btn の background/color/text-decoration を !important で指定しているため。
+   モジュール自体が元々「無料会員登録」と同じ緑(#007A4D)を使っており、値としては一致している。
+   ここでは角丸(3px化)と、モジュール側に無い active/focus-visible の状態を、共通トークン経由で明示的に揃える。 */
+.op-art2 .art-body .op-ecd2c-cta__btn{background:var(--gold) !important;color:#fff !important;border-radius:3px !important;font-weight:700 !important}
+.op-art2 .art-body .op-ecd2c-cta__btn:hover{background:var(--gold-hover) !important;color:#fff !important}
+.op-art2 .art-body .op-ecd2c-cta__btn:active{background:var(--gold-active) !important}
+.op-art2 .art-body .op-ecd2c-cta__btn:focus-visible{outline:3px solid var(--gold-focus) !important;outline-offset:2px}
+.op-art2 .art-body .op-ecd2c-cta .op-ecd2c-cta__sub{color:var(--link)}
+
+/* ---------- 15. op-lbo-cta モジュール（幅の破綻防止のみ、装飾は不変） ---------- */
+.op-art2 .art-body .op-lbocta-box{max-width:100%;box-sizing:border-box}
+.op-art2 .art-body .op-lbocta-fig img{max-width:100%;height:auto}
+
+/* ---------- 16. 共有ボタン（モノクロ・アウトライン化） ---------- */
+/* !important: op-share-style（article content内のインライン<style>、我々のCSSより後にDOM出現）が
+   ホバー/コピー成功時にブランドカラー（金・緑）を!important無しで指定しているが、
+   同格セレクタでも出現順で負けるため、確実に上書きするために!importantを使用 */
+.op-art2 .art-share .op-share-h{font-size:13px !important;color:var(--mute) !important}
+.op-art2 .art-share .op-share-btn{border-color:var(--line-2) !important;color:var(--navy) !important;border-radius:3px !important;background:#fff !important}
+.op-art2 .art-share .op-share-btn:hover{border-color:var(--navy) !important;color:var(--navy) !important;background:var(--panel) !important}
+.op-art2 .art-share .op-share-copy.is-copied{border-color:var(--navy) !important;color:var(--navy) !important;background:var(--panel) !important}
+
+/* ---------- 17. 関連記事 ---------- */
+.op-art2 .art-related{border-top:1px solid var(--line);padding:40px 0 96px}
+.op-art2 .art-rel-h{margin:0 0 24px;font-size:20px;font-weight:700;line-height:1.5;color:var(--navy)}
+.op-art2 .art-rel-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;list-style:none;margin:0;padding:0}
+.op-art2 .art-rel-card{display:flex;flex-direction:column;height:100%;border:1px solid var(--line);border-radius:2px;overflow:hidden;text-decoration:none;color:inherit;transition:border-color .2s,transform .2s}
+.op-art2 .art-rel-card:hover{border-color:var(--navy);transform:translateY(-2px)}
+.op-art2 .art-rel-card:hover .art-rel-title{color:var(--navy)}
+.op-art2 .art-rel-thumb{display:block;position:relative;aspect-ratio:16/9;background:var(--panel);overflow:hidden}
+.op-art2 .art-rel-thumb img{display:block;width:100%;height:100%;object-fit:cover}
+.op-art2 .art-rel-fb{display:flex;align-items:center;justify-content:center;width:100%;height:100%;padding:0 16px;background:var(--panel);color:var(--navy);font-size:14px;font-weight:700;line-height:1.5;text-align:center}
+.op-art2 .art-rel-body{display:flex;flex-direction:column;flex:1;padding:16px 18px 18px}
+.op-art2 .art-rel-cat{display:block;margin:0 0 6px;font-size:12px;line-height:1.5;color:var(--mute)}
+.op-art2 .art-rel-title{display:block;flex:1;font-size:15px;font-weight:700;line-height:1.6;color:var(--ink)}
+.op-art2 .art-rel-more{display:block;margin-top:12px;font-size:13px;font-weight:600;color:var(--link)}
+.op-art2 .art-rel-card:focus-visible{outline:2px solid #1D4E8A;outline-offset:2px}
+
+@media (max-width:1023px){
+  .op-art2 .art-related{padding:32px 0 84px}
+  .op-art2 .art-rel-grid{grid-template-columns:repeat(2,1fr);gap:20px}
+}
+@media (max-width:599px){
+  .op-art2 .art-related{padding:28px 0 68px}
+  .op-art2 .art-rel-grid{grid-template-columns:1fr;gap:18px}
+}
+
+/* ---------- 18. ↑トップへ戻る（フッターと重ならないようにする） ---------- */
+body.op-art2 .to-top.is-over-footer{opacity:0 !important;visibility:hidden !important;pointer-events:none}
+
+/* ---------- 19. 印刷 ---------- */
+@media print{
+  /* 印刷時はレール・共有・CTA・関連記事・トップへ戻るを確実に非表示にする（display値に関わらず） */
+  body.op-art2 .art-rail,
+  body.op-art2 .art-share,
+  body.op-art2 .art-cta,
+  body.op-art2 .art-related,
+  body.op-art2 .to-top{display:none !important}
+}
+
+/* ---------- 20. 動き抑制設定 ---------- */
+@media (prefers-reduced-motion:reduce){
+  body.op-art2{scroll-behavior:auto}
+}

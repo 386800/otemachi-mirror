@@ -1,0 +1,1315 @@
+<!DOCTYPE html>
+<html lang="ja" class="js">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600&family=Inter:wght@400;500;600&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet" media="print" onload="this.media='all';this.onload=null"><noscript><link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600&family=Inter:wght@400;500;600&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet"></noscript>
+<link rel="icon" type="image/png" sizes="32x32" href="../wp-content/themes/otemachi-prep-child/assets/images/op-favicon.png">
+<link rel="icon" type="image/png" sizes="64x64" href="../wp-content/themes/otemachi-prep-child/assets/images/op-favicon-64.png">
+<link rel="apple-touch-icon" href="../wp-content/themes/otemachi-prep-child/assets/images/op-touch-icon.png">
+<meta name="theme-color" content="#14355F">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"財務モデリング講座は無料ですか？","acceptedAnswer":{"@type":"Answer","text":"無料の28章（記事）は会員登録なしで読めます。無料会員登録をすると、7日間の財務モデリング講座（メール配信）と無料Excelテンプレート集（Excel Starter Pack）を受け取れます。PDFテキストとBlank／Guide／CompletedのExcelで手を動かす有料講座は、シルバー・ゴールド・プラチナの買い切りプランで提供しています。"}},{"@type":"Question","name":"財務モデリングは独学で身につきますか？","acceptedAnswer":{"@type":"Answer","text":"順序を守って手を動かせば独学できます。本講座は「Excelの作法 → 財務三表 → DCF・Comps → M&A → LBO」の順に構成し、各段階に無料の記事と、白紙（Blank）から完成（Completed）まで段階的に組むExcel教材を用意しています。読むだけで終わらせず、必ず自分のExcelで再現することが上達の条件です。"}},{"@type":"Question","name":"会計やExcelの知識がなくても始められますか？","acceptedAnswer":{"@type":"Answer","text":"始められます。第1部で財務三表のつながり・運転資本・EBITDAとFCFを扱い、投資銀行のExcel作法（入力は青・計算式は黒、Cover→Assumptions→Checksの構造）から解説します。Excel操作に不安がある方は、財務モデリングのためのExcel実務講座（Excelモデリング講座）と無料のExcelテンプレートから始めてください。"}},{"@type":"Question","name":"講座で使うのはExcelですか。Googleスプレッドシートでも学べますか？","acceptedAnswer":{"@type":"Answer","text":"教材はExcel（.xlsx）で提供しています。数式の考え方はGoogleスプレッドシートでも同じですが、データテーブルによる感応度分析やショートカットの解説はExcelを前提にしています。"}},{"@type":"Question","name":"講座を終えると、どのようなExcelモデルを作れるようになりますか？","acceptedAnswer":{"@type":"Answer","text":"PL・BS・CFが連動しBSがバランスする財務三表モデル、FCF・WACC・ターミナルバリューから企業価値と株主価値を導くDCFモデル、類似会社・類似取引比較のCompsシート、買収対価・PPA・EPS希薄化を扱うM&Aモデル、Sources & Uses・Debt Schedule・Cash SweepからIRR・MOICを計算するLBOモデルです。各講座ページに完成イメージを掲載しています。"}},{"@type":"Question","name":"投資銀行・PEファンドの選考（モデルテスト・面接）対策になりますか？","acceptedAnswer":{"@type":"Answer","text":"なります。第6部でテクニカル面接の頻出質問と投資銀行・PEファンドの転職を扱い、無料記事にはモデリングテストの時間配分やペーパーLBOの解き方があります。有料のLBOモデリング講座（LBOマスター講座）はPaper LBOの手計算から統合LBOモデルまでを段階的に組む構成です。"}},{"@type":"Question","name":"どのプランを選べばよいですか？","acceptedAnswer":{"@type":"Answer","text":"財務三表とExcelの基礎から固めたい方はシルバー、DCF・Compsまで企業価値評価を体系的に学びたい方はゴールド、M&A・LBOまで主要モデルをまとめて学びたい方はプラチナが対象です。上位プランは下位プランの全教材を含みます。詳細は教材・受講プラン一覧をご覧ください。"}},{"@type":"Question","name":"教材の内容は誰が作り、どのように検証していますか？","acceptedAnswer":{"@type":"Answer","text":"記事・教材は大手町プレップ編集部が執筆し、運営者である監修者が計算例の検証、実務慣行との整合性、出典・制度記述の確認を行ったうえで公開しています。設例の数値は公開前に計算ツールで検証しています。編集方針とAI利用方針は運営者情報ページに公開しています。"}}]}</script>
+<script>document.documentElement.classList.add('js');</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-YL19Q40XV6"></script>
+<script id="opm-gtag">
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('set', 'user_properties', {op_member_level: "guest"});
+gtag('config', "G-YL19Q40XV6", {anonymize_ip: true});
+</script>
+		<title>財務モデリング講座｜Excel・財務三表・DCF・M&A・LBOを実践で学ぶ｜大手町プレップ</title>
+<meta name='robots' content='max-image-preview:large' />
+<script id="opm-datalayer">
+window.dataLayer = window.dataLayer || [];
+(function(){
+  var base = {"op_member_level":"guest"};
+  function push(o){
+    var d = {}; for (var k in base) d[k] = base[k];
+    for (var k2 in o) d[k2] = o[k2];
+    window.dataLayer.push(d);
+    if (typeof window.gtag === 'function' && d.event) {
+      var p = {}; for (var k3 in d) { if (k3 !== 'event') p[k3] = d[k3]; }
+      window.gtag('event', d.event, p);
+    }
+  }
+  window.opmTrack = push;
+  var evs = [];
+  for (var i = 0; i < evs.length; i++) push(evs[i]);
+})();
+</script>
+		<link rel="preload" href="https://otemachiprep.com/wp-content/themes/otemachi-prep-child/assets/fonts/inter/InterVariable.woff2" as="font" type="font/woff2" crossorigin>
+<link rel='dns-prefetch' href='//secure.gravatar.com' />
+<link rel='dns-prefetch' href='//widgets.wp.com' />
+<link rel='dns-prefetch' href='//jetpack.wordpress.com' />
+<link rel='dns-prefetch' href='//s0.wp.com' />
+<link rel='dns-prefetch' href='//public-api.wordpress.com' />
+<link rel='dns-prefetch' href='//0.gravatar.com' />
+<link rel='dns-prefetch' href='//1.gravatar.com' />
+<link rel='dns-prefetch' href='//2.gravatar.com' />
+<link rel='preconnect' href='//i0.wp.com' />
+<link rel='preconnect' href='//c0.wp.com' />
+<link rel="alternate" type="application/rss+xml" title="大手町プレップ &raquo; フィード" href="https://otemachiprep.com/feed/" />
+<link rel="alternate" type="application/rss+xml" title="大手町プレップ &raquo; コメントフィード" href="https://otemachiprep.com/comments/feed/" />
+<link rel="alternate" title="oEmbed (JSON)" type="application/json+oembed" href="https://otemachiprep.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fotemachiprep.com%2Fcourse%2F" />
+<link rel="alternate" title="oEmbed (XML)" type="text/xml+oembed" href="https://otemachiprep.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fotemachiprep.com%2Fcourse%2F&#038;format=xml" />
+
+<!-- op-seo-v1 -->
+<meta name="description" content="財務モデリング講座。Excelの基本操作から財務三表モデル、DCF、Comps、M&amp;A、LBOモデルまで、投資銀行・PEの実務手順で学びます。無料の28章カリキュラムと7日間の無料講座、Blank→Completedで組むExcel教材で、独学でも完走できる構成です。">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="大手町プレップ">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:title" content="財務モデリング講座｜Excel・財務三表・DCF・M&amp;A・LBOを実践で学ぶ｜大手町プレップ">
+<meta property="og:description" content="財務モデリング講座。Excelの基本操作から財務三表モデル、DCF、Comps、M&amp;A、LBOモデルまで、投資銀行・PEの実務手順で学びます。無料の28章カリキュラムと7日間の無料講座、Blank→Completedで組むExcel教材で、独学でも完走できる構成です。">
+<meta property="og:url" content="https://otemachiprep.com/course/">
+<meta property="og:image" content="https://otemachiprep.com/wp-content/uploads/2026/07/op-ogp-preview.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="大手町プレップ｜学ぶ。調べる。実践する。— M&amp;A・PE・投資銀行・財務モデリングの専門プラットフォーム">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="財務モデリング講座｜Excel・財務三表・DCF・M&amp;A・LBOを実践で学ぶ｜大手町プレップ">
+<meta name="twitter:description" content="財務モデリング講座。Excelの基本操作から財務三表モデル、DCF、Comps、M&amp;A、LBOモデルまで、投資銀行・PEの実務手順で学びます。無料の28章カリキュラムと7日間の無料講座、Blank→Completedで組むExcel教材で、独学でも完走できる構成です。">
+<meta name="twitter:image" content="https://otemachiprep.com/wp-content/uploads/2026/07/op-ogp-preview.jpg">
+<meta name="twitter:image:alt" content="大手町プレップ｜学ぶ。調べる。実践する。— M&amp;A・PE・投資銀行・財務モデリングの専門プラットフォーム">
+
+<!-- op-seo-v1 JSON-LD -->
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://otemachiprep.com/#organization","name":"大手町プレップ","alternateName":"OTEMACHI PREP","url":"https://otemachiprep.com/","logo":{"@type":"ImageObject","@id":"https://otemachiprep.com/#logo","url":"https://otemachiprep.com/wp-content/uploads/2026/07/op-site-icon-preview.png","width":512,"height":512,"caption":"大手町プレップ"},"image":{"@id":"https://otemachiprep.com/#logo"},"contactPoint":{"@type":"ContactPoint","email":"support@otemachiprep.com","contactType":"customer support","availableLanguage":["Japanese"]}},{"@type":"WebSite","@id":"https://otemachiprep.com/#website","url":"https://otemachiprep.com/","name":"大手町プレップ","alternateName":"OTEMACHI PREP","description":"DCF・LBO・M&A・バリュエーション・財務モデリングを日本語で学べる実務者向けファイナンス学習サイト","publisher":{"@id":"https://otemachiprep.com/#organization"},"inLanguage":"ja","potentialAction":{"@type":"SearchAction","target":{"@type":"EntryPoint","urlTemplate":"https://otemachiprep.com/?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@type":"BreadcrumbList","@id":"https://otemachiprep.com/course/#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"大手町プレップ","item":"https://otemachiprep.com/"},{"@type":"ListItem","position":2,"name":"財務モデリング講座（全28章）","item":"https://otemachiprep.com/course/"}]},{"@type":"Course","@id":"https://otemachiprep.com/course/#course","name":"財務モデリング講座（全28章）","description":"財務モデリング講座。Excelの基本操作から財務三表モデル、DCF、Comps、M&A、LBOモデルまで、投資銀行・PEの実務手順で学びます。無料の28章カリキュラムと7日間の無料講座、Blank→Completedで組むExcel教材で、独学でも完走できる構成です。","inLanguage":"ja","provider":{"@id":"https://otemachiprep.com/#organization"},"url":"https://otemachiprep.com/course/","hasCourseInstance":{"@type":"CourseInstance","courseMode":"online","courseWorkload":"PT10H"},"isAccessibleForFree":true}]}</script>
+<link rel='stylesheet' id='all-css-4828878b6ba734d2166f6eda8f4748d0' href='https://otemachiprep.com/_static/??-eJxdjEEOhCAQBD8kkvWgy2HjWxA7QOLghBnj98WTca9VqTrZhL0oilpNIIjdFeRDyoYrmkx5W60XgYoN0jQb9hGtOqqgb6g7nwdvR8zlf0KgBVVS5veJ7nym32f6Ojc5Nw4XYWE09A==' type='text/css' media='all' />
+<style id="jetpack-global-styles-frontend-style-inline-css">
+:root { --font-headings: unset; --font-base: unset; --font-headings-default: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif; --font-base-default: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif;}
+/*# sourceURL=jetpack-global-styles-frontend-style-inline-css */
+</style>
+<script id="jetpack-mu-wpcom-settings-js-before">
+var JETPACK_MU_WPCOM_SETTINGS = {"assetsUrl":"https://otemachiprep.com/wp-content/mu-plugins/wpcomsh/jetpack_vendor/automattic/jetpack-mu-wpcom/src/build/"};
+//# sourceURL=jetpack-mu-wpcom-settings-js-before
+</script>
+<link rel="https://api.w.org/" href="https://otemachiprep.com/wp-json/" /><link rel="alternate" title="JSON" type="application/json" href="https://otemachiprep.com/wp-json/wp/v2/pages/108" /><link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://otemachiprep.com/xmlrpc.php?rsd" />
+
+<link rel="canonical" href="index.html" />
+<link rel='shortlink' href='https://wp.me/PhjY2f-1K' />
+	<noscript><style>.woocommerce-product-gallery{ opacity: 1 !important; }</style></noscript>
+	<style id='wp-fonts-local'>
+@font-face{font-family:Inter;font-style:normal;font-weight:100 800;font-display:fallback;font-stretch:normal;src:url(../wp-content/themes/assembler/assets/fonts/inter/InterVariable.woff2) format('woff2');}
+@font-face{font-family:Inter;font-style:italic;font-weight:100 800;font-display:fallback;font-stretch:normal;src:url(../wp-content/themes/assembler/assets/fonts/inter/InterVariable-Italic.woff2) format('woff2');}
+</style>
+<link rel="icon" href="https://i0.wp.com/otemachiprep.com/wp-content/uploads/2026/07/op-site-icon-preview.png?fit=32%2C32&#038;ssl=1" sizes="32x32" />
+<link rel="icon" href="https://i0.wp.com/otemachiprep.com/wp-content/uploads/2026/07/op-site-icon-preview.png?fit=192%2C192&#038;ssl=1" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://i0.wp.com/otemachiprep.com/wp-content/uploads/2026/07/op-site-icon-preview.png?fit=180%2C180&#038;ssl=1" />
+<meta name="msapplication-TileImage" content="https://i0.wp.com/otemachiprep.com/wp-content/uploads/2026/07/op-site-icon-preview.png?fit=270%2C270&#038;ssl=1" />
+<style type="text/css" id="wp-custom-css">/* op-hide-jetpack-subscribe-modal 2026-07 */
+.jetpack-subscription-modal, .jetpack-subscription-modal__modal-content, .jetpack-subscription-modal-screen-overlay{display:none !important;}
+
+/* op-fix-vc-nav-hover 2026-07 : VC等の独自テンプレでヘッダーのドロップダウンが開かない不具合をCSSホバーで補完(マウス環境のみ) */
+@media (hover:hover) and (pointer:fine){
+  .nv-item:hover &gt; .nv-sub{display:block !important;}
+  .nv-item:hover &gt; .nv-sub.nv-mega{display:flex !important;}
+}
+
+/* op-gmw: hide Jetpack Likes unfilled %d dialog (2026-08-31) */
+#likes-other-gravatars{display:none !important;}</style>
+<link rel="stylesheet" id="op-gltip-css" href="../wp-content/themes/otemachi-prep-child/assets/css/op-gltip.css"></head>
+<body>
+
+
+<header class="site-header op-hdr2 op-hdr3" id="siteHeader" data-logged-in="0">
+
+  <!-- ===== 第1段：ロゴ・検索・会員導線（白） ===== -->
+  <div class="op-uh">
+    <div class="wrap op-uh-in">
+
+      <div class="brand op-uh-brand">
+		        <a href="../index.html" aria-label="大手町プレップ トップページ">
+          <img class="brand-mark" src="../wp-content/themes/otemachi-prep-child/assets/images/op-logo-mark.png" alt="" width="40" height="42" onerror="this.style.display='none'">
+          <span class="brand-text">
+            <span class="brand-en-main">OTEMACHI&nbsp;PREP</span>
+            <span class="brand-ja-sub">大手町プレップ</span>
+          </span>
+        </a>
+		      </div>
+
+      <form class="op-hs" role="search" method="get" action="../index.html">
+        <label class="screen-reader-text" for="opm-s">サイト内検索</label>
+        <span class="op-hs-ico" aria-hidden="true"><svg viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M8.5 15a6.5 6.5 0 1 1 0-13 6.5 6.5 0 0 1 0 13Zm0-1.8a4.7 4.7 0 1 0 0-9.4 4.7 4.7 0 0 0 0 9.4Z" fill="currentColor"/><path d="m13.2 12 4.5 4.5-1.3 1.3-4.5-4.5z" fill="currentColor"/></svg></span>
+        <input type="search" id="opm-s" name="s" value="" placeholder="キーワードを入力" autocomplete="off" maxlength="80">
+        <button type="submit" class="op-hs-btn">検索</button>
+      </form>
+
+      <div class="op-uh-actions">
+		          <a class="op-btn op-btn-ghost" href="../login/index.html" data-ga4="header_login_click">ログイン</a>
+          <a class="op-btn op-btn-green" href="../register/index.html" data-ga4="header_signup_click" data-opm-cta="header">無料会員登録</a>
+		      </div>
+
+      <button type="button" class="op-hs-toggle" aria-expanded="false" aria-controls="opm-hs-m" aria-label="検索を開く"><svg viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M8.5 15a6.5 6.5 0 1 1 0-13 6.5 6.5 0 0 1 0 13Zm0-1.8a4.7 4.7 0 1 0 0-9.4 4.7 4.7 0 0 0 0 9.4Z" fill="currentColor"/><path d="m13.2 12 4.5 4.5-1.3 1.3-4.5-4.5z" fill="currentColor"/></svg></button>
+		            <a class="op-btn op-btn-green op-uh-mreg" href="../register/index.html" data-ga4="header_signup_click" data-opm-cta="mobile_header">無料会員登録</a>
+		            <a class="op2-acct-ic" href="../login/index.html" aria-label="ログイン"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="8" r="3.4" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="M5.5 19.5c1.2-3.4 3.6-5 6.5-5s5.3 1.6 6.5 5" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg></a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="op2nav" aria-label="メニューを開く"><span></span></button>
+
+    </div>
+
+    <div class="op-hs-m" id="opm-hs-m" hidden>
+      <form class="op-hs-mform" role="search" method="get" action="../index.html">
+        <label class="screen-reader-text" for="opm-s-m">サイト内検索</label>
+        <input type="search" id="opm-s-m" name="s" value="" placeholder="キーワードを入力" autocomplete="off" maxlength="80">
+        <button type="submit" class="op-hs-btn">検索</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- ===== 第2段：グローバルナビ（白） ===== -->
+  <div class="op-gn-row">
+    <div class="wrap op-gn-in">
+
+      <span class="op2-mini-brand brand">        <a href="../index.html" aria-label="大手町プレップ トップページ">
+          <img class="brand-mark" src="../wp-content/themes/otemachi-prep-child/assets/images/op-logo-mark.png" alt="" width="40" height="42" onerror="this.style.display='none'">
+          <span class="brand-text">
+            <span class="brand-en-main">OTEMACHI&nbsp;PREP</span>
+            <span class="brand-ja-sub">大手町プレップ</span>
+          </span>
+        </a>
+		</span>
+
+      <nav id="op2nav" class="op2-nav" aria-label="グローバルナビゲーション">
+
+        <!-- ドロワー先頭の会員導線（モバイルのみ） -->
+        <div class="op2-drawer-auth">
+		          <a class="op-btn op-btn-green" href="../register/index.html" data-ga4="header_signup_click" data-opm-cta="drawer">無料会員登録</a>
+          <a class="op-btn op-btn-ghost" href="../login/index.html" data-ga4="header_login_click">ログイン</a>
+		        </div>
+
+        <ul class="op2-list">
+          <li class="op2-item op2-item--home"><a class="op2-link" href="../index.html">ホーム</a></li>
+
+          <li class="op2-item"><a class="op2-link" href="../whats-new/index.html" data-ga4="header_whatsnew_click">新着情報</a></li>
+
+          <li class="op2-item is-active op2-item--mega">
+            <button class="op2-btn" type="button" aria-expanded="false" aria-controls="op2-articles">記事・用語集<span class="op2-car" aria-hidden="true"></span></button>
+            <div class="op2-panel op2-panel--mega" id="op2-articles" aria-label="記事・用語集">
+              <div class="op2-cols">
+                <div class="op2-col">
+                  <p class="op2-ch">分野別記事</p>
+                  <ul>
+					<li><a href="../articles/index.html">会計・財務三表／財務分析</a></li>
+<li><a href="../articles/index.html">財務モデリング</a></li>
+<li><a href="../articles/index.html">バリュエーション</a></li>
+<li><a href="../articles/index.html">M&amp;A・投資銀行実務</a></li>
+<li><a href="../articles/index.html">PE・LBO</a></li>
+<li><a href="../articles/index.html">PEキャリア分析</a></li>
+<li><a href="../articles/index.html">ベンチャーキャピタル</a></li>
+<li><a href="../articles/index.html">資本市場・クレジット</a></li>
+<li><a href="../articles/index.html">事業再生・リストラクチャリング</a></li>
+<li><a href="../articles/index.html">不動産・REIT</a></li>
+<li><a href="../articles/index.html">業種別モデリング</a></li>
+<li><a href="../articles/index.html">投資分析・エクイティリサーチ</a></li>
+<li><a href="../articles/index.html">AI×ファイナンス</a></li>
+                  </ul>
+                </div>
+                <div class="op2-col">
+                  <p class="op2-ch">リファレンス</p>
+                  <ul>
+					<li><a href="../articles/index.html">構築チュートリアル（画面つき）</a></li>
+<li><a href="../articles/index.html">経営企画・FP&amp;A</a></li>
+<li><a href="../articles/index.html">Excel・PowerPoint実務</a></li>
+<li><a href="../articles/index.html">データ・テクノロジー</a></li>
+<li><a href="../glossary/index.html">ファイナンス実務用語集</a></li>
+<li><a href="../reference/index.html">財務・投資指標の早見辞典</a></li>
+<li><a href="index.html">財務モデリング講座（無料・全28章）</a></li>
+                  </ul>
+                </div>
+              </div>
+              <a class="op2-foot" href="../articles/index.html">すべての記事から探す <span class="ar" aria-hidden="true">→</span></a>
+            </div>
+          </li>
+
+          <li class="op2-item op2-item--mega">
+            <button class="op2-btn" type="button" aria-expanded="false" aria-controls="op2-funds">データベース<span class="op2-car" aria-hidden="true"></span></button>
+            <div class="op2-panel op2-panel--mega op2-panel--grid" id="op2-funds" aria-label="データベース">
+              <div class="op2-mcols">
+                <div class="op2-mcol">
+                  <p class="op2-mk">投資家</p>
+                  <p class="op2-mh">PEファンド一覧</p>
+                  <p class="op2-md">国内・海外のPEファンドを地域別・投資規模別に検索、比較できます。</p>
+                  <a class="op2-mlink" href="../pe-funds/index.html">一覧を見る <span class="ar" aria-hidden="true">→</span></a>
+                </div>
+                <div class="op2-mcol">
+                  <p class="op2-mk">投資家</p>
+                  <p class="op2-mh">VC・CVC一覧</p>
+                  <p class="op2-md">国内・海外のVC・CVCを地域別・投資分野別に確認できます。</p>
+                  <a class="op2-mlink" href="../vc-funds/index.html">一覧を見る <span class="ar" aria-hidden="true">→</span></a>
+                </div>
+                <div class="op2-mcol">
+                  <p class="op2-mk">投資家</p>
+                  <p class="op2-mh">アクティビストファンド一覧</p>
+                  <p class="op2-md">国内外の主要アクティビストファンドと活動事例をまとめています。</p>
+                  <a class="op2-mlink" href="../activist-funds/index.html">一覧を見る <span class="ar" aria-hidden="true">→</span></a>
+                </div>
+                <div class="op2-mcol">
+                  <p class="op2-mk">アドバイザー</p>
+                  <p class="op2-mh">FA・M&amp;A仲介会社DB</p>
+                  <p class="op2-md">FA・M&amp;A仲介会社を手数料・得意領域・クロスボーダー実績で比較できます。</p>
+                  <a class="op2-mlink" href="../ma-advisors/index.html">一覧を見る <span class="ar" aria-hidden="true">→</span></a>
+                </div>
+              </div>
+            </div>
+          </li>
+
+          <li class="op2-item op2-item--mega">
+            <button class="op2-btn" type="button" aria-expanded="false" aria-controls="op2-lab">モデリングラボ<span class="op2-car" aria-hidden="true"></span></button>
+            <div class="op2-panel op2-panel--mega" id="op2-lab" aria-label="モデリングラボ">
+              <div class="op2-cols">
+                <div class="op2-col">
+                  <p class="op2-ch">ブラウザで計算する</p>
+                  <ul>
+					<li><a href="../lab/index.html">財務指標分析</a></li>
+<li><a href="../lab/index.html">財務三表・オペレーティングモデル</a></li>
+<li><a href="../lab/index.html">DCFモデル</a></li>
+<li><a href="../lab/index.html">LBOモデル</a></li>
+<li><a href="../lab/index.html">類似会社比較</a></li>
+<li><a href="../lab/index.html">類似取引比較</a></li>
+<li><a href="../lab/index.html">M&amp;Aモデル</a></li>
+                  </ul>
+                </div>
+                <div class="op2-col">
+                  <p class="op2-ch">手を動かして組む</p>
+                  <ul>
+					<li><a href="../tut-ops-3stmt-build/index.html">3表連動モデルを組む</a></li>
+<li><a href="../tut-dcf-excel-build/index.html">DCFモデルを組む</a></li>
+<li><a href="../tut-ma-excel-build/index.html">M&amp;Aモデルを組む（S&amp;U含む）</a></li>
+<li><a href="../tut-lbo-excel-build/index.html">LBOモデルを組む</a></li>
+<li><a href="../tut-debt-debt-schedule-build/index.html">Debt Scheduleを組む</a></li>
+<li><a href="../tut-sens-sens-table-build/index.html">感応度分析を組む</a></li>
+<li><a href="../mod-001-modeling-guide/index.html">モデルQCチェックリスト</a></li>
+                  </ul>
+                </div>
+              </div>
+              <a class="op2-foot" href="../lab/index.html">モデリングラボを開く <span class="ar" aria-hidden="true">→</span></a>
+            </div>
+          </li>
+
+          <li class="op2-item">
+            <button class="op2-btn" type="button" aria-expanded="false" aria-controls="op2-career">キャリア<span class="op2-car" aria-hidden="true"></span></button>
+            <div class="op2-panel" id="op2-career" aria-label="キャリア">
+              <div class="op2-col">
+                <ul>
+					<li><a class="op2-hot" href="../career-fit/index.html">無料｜ファイナンスキャリア適性診断</a></li>
+<li><a href="../car-001-ib-career/index.html">投資銀行（IBD）を目指す</a></li>
+<li><a href="../car-002-pe-career/index.html">PEファンドを目指す</a></li>
+<li><a href="../car-012-ma-career-comparison/index.html">FAS・M&amp;Aアドバイザリーを目指す</a></li>
+<li><a href="../car-003-technical-interview/index.html">テクニカル面接の頻出質問</a></li>
+<li><a href="../articles/index.html">面接・モデルテスト対策の記事</a></li>
+                </ul>
+              </div>
+              <a class="op2-foot" href="../articles/index.html">キャリア・面接対策の記事をすべて見る <span class="ar" aria-hidden="true">→</span></a>
+            </div>
+          </li>
+
+          <li class="op2-item op2-item--mega op2-item--last">
+            <button class="op2-btn" type="button" aria-expanded="false" aria-controls="op2-program">講座・アセスメント<span class="op2-car" aria-hidden="true"></span></button>
+            <div class="op2-panel op2-panel--mega op2-panel--grid" id="op2-program" aria-label="講座・アセスメント">
+              <div class="op2-mcols">
+                <div class="op2-mcol">
+                  <p class="op2-mk">Input</p>
+                  <p class="op2-mh">講座・教材</p>
+                  <p class="op2-md">PDF、Excel、ケーススタディを通じて、会計、バリュエーション、M&amp;A、LBO、財務モデリングを体系的に学びます。</p>
+                  <a class="op2-mlink" href="../materials/index.html">講座・教材を見る <span class="ar" aria-hidden="true">→</span></a>
+                </div>
+                <div class="op2-mcol">
+                  <p class="op2-mk">Output</p>
+                  <p class="op2-mh">実践アセスメント</p>
+                  <p class="op2-md">課題を提出し、採点、レビュー、フィードバックを受けて、実務レベルのアウトプットへ改善します。</p>
+                  <a class="op2-mlink" href="../assessment/index.html">アセスメントを見る <span class="ar" aria-hidden="true">→</span></a>
+                </div>
+                <div class="op2-mcol">
+                  <p class="op2-mk">Plan</p>
+                  <p class="op2-mh">料金・プラン比較</p>
+                  <p class="op2-md">各講座プランとAssessmentの対象範囲、提供内容を比較できます。</p>
+                  <a class="op2-mlink" href="../pricing/index.html" data-ga4="pricing_nav_click">料金を比較する <span class="ar" aria-hidden="true">→</span></a>
+                </div>
+                <div class="op2-mcol">
+                  <p class="op2-mk">Complete</p>
+                  <p class="op2-mh">学習の進め方</p>
+                  <p class="op2-md">教材で学び（Input）、Assessmentで評価を受ける（Output）推奨学習フローを確認できます。</p>
+                  <a class="op2-mlink" href="../pricing/index.html">進め方を見る <span class="ar" aria-hidden="true">→</span></a>
+                </div>
+              </div>
+            </div>
+          </li>
+
+                    <li class="op2-item op2-item--drawer-only"><a class="op2-link" href="../about/index.html">大手町プレップについて</a></li>
+        </ul>
+      </nav>
+
+      <div class="op2-tools">
+        <button type="button" class="op2-c-search" aria-expanded="false" aria-controls="op2-c-panel" aria-label="検索を開く"><svg viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M8.5 15a6.5 6.5 0 1 1 0-13 6.5 6.5 0 0 1 0 13Zm0-1.8a4.7 4.7 0 1 0 0-9.4 4.7 4.7 0 0 0 0 9.4Z" fill="currentColor"/><path d="m13.2 12 4.5 4.5-1.3 1.3-4.5-4.5z" fill="currentColor"/></svg></button>
+		        <a class="op2-tool-link" href="../login/index.html">ログイン</a>
+        <a class="op-btn op-btn-green op-btn-sm op2-reg-mini" href="../register/index.html" data-ga4="header_signup_click" data-opm-cta="sticky">無料会員登録</a>
+		      </div>
+
+    </div>
+
+    <div class="op2-c-panel" id="op2-c-panel" hidden>
+      <form class="op2-c-form" role="search" method="get" action="../index.html">
+        <label class="screen-reader-text" for="op2-s-c">サイト内検索</label>
+        <input type="search" id="op2-s-c" name="s" value="" placeholder="キーワードを入力" autocomplete="off" maxlength="80">
+        <button type="submit" class="op-hs-btn">検索</button>
+      </form>
+    </div>
+  </div>
+</header>
+				
+
+<main id="main">
+<div class="wrap">
+  <nav class="crumbs" aria-label="パンくず"><a href="../index.html">ホーム</a><span class="sep">›</span><span>財務モデリング講座</span></nav>
+  <header class="fmc-hero">
+    <p class="eyebrow">Financial Modeling Course</p>
+    <h1 class="fmc-h1">財務モデリング講座<span class="fmc-h1__sub">Excelで学ぶ財務三表・DCF・M&amp;A・LBO</span></h1>
+    <p class="fmc-lead">財務モデリング（Financial Modeling）を、読むだけで終わらせず、Excelで白紙から組める状態へ。会計の土台からDCF・Comps・M&amp;A・LBOまで、投資銀行・PEの実務手順で学ぶ日本語の講座です。無料の28章と7日間の無料講座から始め、PDF＋Excel教材で仕上げます。</p>
+    <ul class="fmc-chips" aria-label="学べるテーマ"><li>Excel</li><li>財務三表</li><li>DCF</li><li>Comps</li><li>M&amp;A</li><li>LBO</li></ul>
+    <ul class="fmc-facts">
+      <li><strong>無料28章</strong><span>会員登録不要で読める学習カリキュラム</span></li>
+      <li><strong>7日間の無料講座</strong><span>無料会員登録後にメールで1日1通</span></li>
+      <li><strong>無料Excelテンプレート</strong><span>三表・DCF・LBO・M&amp;Aモデルなど9ファイル</span></li>
+      <li><strong>有料教材はBlank→Completed</strong><span>白紙から完成まで段階的に組む</span></li>
+    </ul>
+    <div class="fmc-cta">
+      <a class="btn btn-gold fmc-btn-main" href="../register/index.html" data-ga4="fm_course_cta_register">無料で財務モデリングを学ぶ（会員登録） <span class="ar">→</span></a>
+      <a class="btn btn-outline" href="#curriculum" data-ga4="fm_course_cta_curriculum">無料の28章から読む</a>
+      <a class="tlink" href="../materials/index.html" data-ga4="fm_course_cta_materials">有料講座・受講プランを見る <span class="ar">→</span></a>
+    </div>
+    <p class="fmc-note">無料会員登録は無料・クレジットカード不要です。7日間の無料講座は登録後にメールでお届けし、いつでも配信停止できます。</p>
+  </header>
+
+  <nav class="fmc-toc" aria-label="このページの内容">
+    <a href="#what">財務モデリングとは</a><a href="#why">学ぶメリット</a><a href="#models">学ぶ5つのモデル</a><a href="#roadmap">学ぶ順番</a><a href="#curriculum">無料28章</a><a href="#free">無料コンテンツ</a><a href="#paid">有料講座との違い</a><a href="#who">対象者</a><a href="#faq">FAQ</a>
+  </nav>
+
+  <div class="fmc-body">
+
+    <section id="what" class="fmc-sec">
+      <h2>財務モデリングとは</h2>
+      <p>財務モデリングとは、企業の過去実績と前提条件（売上成長率、利益率、投資、借入など）から、将来の損益計算書・貸借対照表・キャッシュフロー計算書をExcel上で連動させ、企業価値や投資リターンを計算できる「財務モデル」を組む技術です。英語では Financial Modeling（ファイナンシャルモデリング）と呼ばれます。</p>
+      <p>財務モデルの中心は、PL・BS・CFがつながった<strong>財務三表モデル</strong>です。そこにFCFの割引を加えると<strong>DCFモデル</strong>、市場の倍率で検証すると<strong>Comps</strong>、買収の条件を乗せると<strong>M&amp;Aモデル</strong>、借入と返済を組み込むと<strong>LBOモデル</strong>になります。投資銀行・FAS・PEファンドのほか、事業会社の経営企画・FP&amp;A、スタートアップの資金計画でも同じ考え方が使われます。</p>
+      <div class="summary-box">
+        <h2>この講座で身につくこと</h2>
+        <ul>
+          <li>前提から結論まで数字が一方向に流れる、壊れない財務モデルの組み方</li>
+          <li>財務三表 → DCF・Comps → M&amp;A → LBO の順で、主要モデルを白紙から再現する力</li>
+          <li>モデルテスト・面接・稟議で、前提と結果のつながりを説明する力</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="why" class="fmc-sec">
+      <h2>財務モデリングを学ぶメリット</h2>
+      <div class="fmc-grid fmc-grid--4">
+        <div class="fmc-card"><h3>選考で問われる</h3><p>投資銀行・FAS・PEファンドの選考では、財務三表やLBOのモデルテスト、DCFやペーパーLBOの面接問題が出ます。手を動かした経験があるかどうかが、そのまま差になります。</p></div>
+        <div class="fmc-card"><h3>実務でそのまま使う</h3><p>案件の価値評価、買収後のEPSへの影響、借入余力の確認、事業計画と予算の作成。数字で説明する場面の多くは、財務モデルの上で行われます。</p></div>
+        <div class="fmc-card"><h3>前提と結論をつなげて考えられる</h3><p>「成長率が1%変わると価値はいくら動くか」を自分のモデルで確かめると、会計・ファイナンスの知識が判断に使える形になります。</p></div>
+        <div class="fmc-card"><h3>職種を越えて持ち運べる</h3><p>三表連動の型は、投資銀行・PE・経営企画・スタートアップCFOのどこでも同じです。一度身につけると、業種別モデル（銀行・不動産・資源など）へも広げられます。</p></div>
+      </div>
+    </section>
+
+    <section id="models" class="fmc-sec">
+      <h2>何を学ぶか：財務三表・DCF・Comps・M&amp;A・LBO とExcel</h2>
+      <p class="fmc-sub">それぞれに「無料で読む章」と「Excelで組む有料講座」があります。まず無料の章で考え方を押さえ、教材で白紙から組んでください。</p>
+      <div class="fmc-models">
+        <article class="fmc-model">
+          <h3>財務三表モデル</h3>
+          <p class="fmc-model__what">PL・BS・CFを連動させ、BSがバランスし、CFの期末現金がBSの現金と一致する状態まで組みます。すべてのモデルの土台です。</p>
+          <p class="fmc-model__free"><span class="fmc-model__lbl">無料で読む</span>
+<a href="../acc-001-three-statements/index.html" class="op-gt" data-gt="three-statements">1-1　財務三表のつながり</a>　／　<a href="../mod-001-modeling-guide/index.html" class="op-gt" data-gt="financial-modeling">1-4　3表連動モデルの作り方（7ステップ）</a>          </p>
+          <p class="fmc-model__paid"><span class="fmc-model__lbl">Excelで組む講座</span><a href="../materials/3statement/index.html" data-ga4="fm_course_model_3statement">財務三表モデリング講座</a><span class="fmc-plan">シルバー以上</span><span class="fmc-model__inc">PDF＋Blank／Guide／Completed＋README（全17シート）</span></p>
+        </article>
+        <article class="fmc-model">
+          <h3>DCFモデル</h3>
+          <p class="fmc-model__what">FCF・WACC・ターミナルバリューから企業価値を求め、EVブリッジで株主価値・1株当たり価値まで導きます。感応度分析まで扱います。</p>
+          <p class="fmc-model__free"><span class="fmc-model__lbl">無料で読む</span>
+<a href="../tut-dcf-excel-build/index.html">2-2　【実践】DCFモデルをゼロから作る</a>　／　<a href="../val-002-dcf-guide/index.html" class="op-gt" data-gt="dcf">2-3　DCF法の理論と実務論点</a>          </p>
+          <p class="fmc-model__paid"><span class="fmc-model__lbl">Excelで組む講座</span><a href="../materials/dcf/index.html" data-ga4="fm_course_model_dcf">DCFモデリング講座</a><span class="fmc-plan">ゴールド以上</span><span class="fmc-model__inc">PDF＋Blank／Guide／Completed＋README（全15シート）</span></p>
+        </article>
+        <article class="fmc-model">
+          <h3>Comps（類似会社・類似取引比較）</h3>
+          <p class="fmc-model__what">倍率の選び方から価値レンジ（Football Field）まで、相対評価でDCFの結果を検証します。</p>
+          <p class="fmc-model__free"><span class="fmc-model__lbl">無料で読む</span>
+<a href="../val-005-comps/index.html" class="op-gt" data-gt="trading-comps">2-6　類似会社比較法（Comps）</a>　／　<a href="../val-006-ev-bridge/index.html" class="op-gt" data-gt="ev-bridge">2-7　EVからEquity Valueへ</a>          </p>
+          <p class="fmc-model__paid"><span class="fmc-model__lbl">Excelで組む講座</span><a href="../materials/comps/index.html" data-ga4="fm_course_model_comps">Compsモデリング講座</a><span class="fmc-plan">ゴールド以上</span><span class="fmc-model__inc">PDF＋Blank／Guide／Completed＋Glossary／CheatSheet／Case Brief（全30シート）</span></p>
+        </article>
+        <article class="fmc-model">
+          <h3>M&amp;Aモデル</h3>
+          <p class="fmc-model__what">買収対価とSources &amp; Uses、PPA・のれん、結合BS、プロフォーマEPS（Accretion/Dilution）で「買収後の数字」を説明します。</p>
+          <p class="fmc-model__free"><span class="fmc-model__lbl">無料で読む</span>
+<a href="../tut-ma-excel-build/index.html">5-2　【実践】M&amp;Aモデルをゼロから作る</a>　／　<a href="../ma-003-merger-model/index.html" class="op-gt" data-gt="accretion-dilution">5-3　Accretion/Dilution分析の理論</a>          </p>
+          <p class="fmc-model__paid"><span class="fmc-model__lbl">Excelで組む講座</span><a href="../materials/ma/index.html" data-ga4="fm_course_model_ma">M&amp;Aモデリング講座</a><span class="fmc-plan">プラチナ限定</span><span class="fmc-model__inc">PDF＋Blank／Guide／Completed＋README（全13シート）</span></p>
+        </article>
+        <article class="fmc-model">
+          <h3>LBOモデル</h3>
+          <p class="fmc-model__what">Sources &amp; Uses、Debt Schedule、Cash Sweepを組み、エグジット時のIRR・MOICを計算します。PE・レバレッジドファイナンスの中心となるモデルです。</p>
+          <p class="fmc-model__free"><span class="fmc-model__lbl">無料で読む</span>
+<a href="../tut-lbo-excel-build/index.html">4-2　【実践】LBOモデルをゼロから作る</a>　／　<a href="../pe-002-lbo-model/index.html" class="op-gt" data-gt="lbo-model">4-3　LBOモデルの理論（6ステップ）</a>          </p>
+          <p class="fmc-model__paid"><span class="fmc-model__lbl">Excelで組む講座</span><a href="../materials/lbo/index.html" data-ga4="fm_course_model_lbo">LBOマスター講座</a><span class="fmc-plan">プラチナ限定</span><span class="fmc-model__inc">PDF16冊（計102頁）＋Excel45ブック（Blank／Guided／Checkpoint／Completed）</span></p>
+        </article>
+        <article class="fmc-model">
+          <h3>Excelスキル</h3>
+          <p class="fmc-model__what">ショートカット・書式・参照・関数と、入力は青・計算式は黒、Cover→Assumptions→Checksの構造など、モデルを速く・壊れにくく組むための作法です。</p>
+          <p class="fmc-model__free"><span class="fmc-model__lbl">無料で読む</span>
+<a href="../xl-001-excel-shortcuts/index.html">1-5　投資銀行のExcel作法</a>　／　<a href="../mod-005-circular-reference/index.html" class="op-gt" data-gt="circular-reference">1-6　循環参照の対処</a>          </p>
+          <p class="fmc-model__paid"><span class="fmc-model__lbl">Excelで組む講座</span><a href="../materials/excel/index.html" data-ga4="fm_course_model_excel">財務モデリングのためのExcel実務</a><span class="fmc-plan">シルバー以上</span><span class="fmc-model__inc">PDF5冊（テキスト31頁＋早見表3冊）＋Excel3種（各15シート）</span></p>
+        </article>
+      </div>
+    </section>
+
+    <section id="roadmap" class="fmc-sec">
+      <h2>初心者向け学習ロードマップ：どの順番で学ぶか</h2>
+      <p>財務モデリングは積み上げ型です。上のモデルほど下のモデルを前提にするため、順番を守ると迷いません。</p>
+      <ol class="fmc-steps">
+        <li><strong>Excelの作法を先に決める</strong><span>入力は青・計算式は黒、Cover→Assumptions→Checksの構造、主要ショートカット。ここを飛ばすと後で全部組み直しになります。</span><em><a href="../xl-001-excel-shortcuts/index.html">1-5 投資銀行のExcel作法</a>・<a href="../materials/excel/index.html">Excelモデリング講座</a>・<a href="../materials/excel-starter-pack/index.html">無料Excelテンプレート</a></em></li>
+        <li><strong>財務三表を連動させる</strong><span>営業利益を起点にPL→CF→BSをつなぎ、BSがバランスするまで。運転資本の回転日数、減価償却、循環参照の対処もここで。</span><em><a href="../acc-001-three-statements/index.html" class="op-gt" data-gt="three-statements">1-1 財務三表のつながり</a>・<a href="../mod-001-modeling-guide/index.html" class="op-gt" data-gt="financial-modeling">1-4 3表連動モデルの作り方</a>・<a href="../materials/3statement/index.html">財務三表モデリング講座</a></em></li>
+        <li><strong>DCFとCompsで価値を出す</strong><span>FCF・WACC・ターミナルバリューから企業価値へ、EVブリッジで株主価値へ。倍率で検証し、感応度表で前提の影響を見ます。</span><em><a href="../tut-dcf-excel-build/index.html">2-2 DCFモデルをゼロから作る</a>・<a href="../materials/dcf/index.html">DCFモデリング講座</a>・<a href="../materials/comps/index.html">Compsモデリング講座</a></em></li>
+        <li><strong>M&amp;Aモデルで買収後を説明する</strong><span>買収対価、資金調達、PPA・のれん、結合BS、EPSの希薄化／増加。</span><em><a href="../tut-ma-excel-build/index.html">5-2 M&amp;Aモデルをゼロから作る</a>・<a href="../materials/ma/index.html">M&amp;Aモデリング講座</a></em></li>
+        <li><strong>LBOモデルでリターンを計算する</strong><span>Sources &amp; Uses、Debt Schedule、Cash Sweep、IRR・MOIC。PE選考のモデルテストはここが本番です。</span><em><a href="../pe-002-lbo-model/index.html" class="op-gt" data-gt="lbo-model">4-3 LBOモデルの理論</a>・<a href="../materials/lbo/index.html">LBOモデリング講座（LBOマスター講座）</a></em></li>
+        <li><strong>面接・実務へ接続する</strong><span>テクニカル面接の頻出質問、モデルテストの時間配分、投資銀行・PEファンドの選考プロセス。</span><em><a href="../car-003-technical-interview/index.html">6-1 テクニカル面接の頻出質問</a>・<a href="../car-026-model-test-time-strategy/index.html">モデリングテストの攻略法</a></em></li>
+      </ol>
+      <div class="cta-inline gold">
+        <div><h3>迷ったら、7日間の無料講座から</h3><p>Day 1のExcelの基本ルールからDay 6のM&amp;Aモデルまで、上のロードマップを7通のメールで一周します。無料会員登録で受け取れます。</p></div>
+        <a class="btn btn-gold" href="../register/index.html" data-ga4="fm_course_cta_register_mid">無料会員登録して始める <span class="ar">→</span></a>
+      </div>
+    </section>
+
+    <section id="curriculum" class="fmc-sec">
+      <h2>無料カリキュラム：財務モデリング講座 全28章</h2>
+      <p>会計の土台からDCF・LBO・M&amp;A・面接まで、この順に読めば独学で完走できます。全章が無料・会員登録不要です。【実践】の章はExcel画面つきで手を動かすチュートリアルです。Excelが初めての方は<a href="../tut-dcf-excel-build/index.html">2-2章のSTEP 0（Excel準備運動）</a>からどうぞ。各章の冒頭に「前の章／次の章」のナビがあります。</p>
+      <div class="fmc-paths">
+        <p class="eyebrow">Learning Paths</p>
+        <h3>目的別の最短ルート</h3>
+        <div class="fmc-grid fmc-grid--3">
+          <div class="fmc-card"><h4>① まずモデルを組めるようになる</h4><ol><li><a href="../tut-ops-3stmt-build/index.html">3表連動モデル</a></li><li><a href="../tut-dcf-excel-build/index.html">DCFをゼロから</a></li><li><a href="../tut-sens-sens-table-build/index.html">感応度テーブル</a></li><li><a href="../tut-lbo-excel-build/index.html">LBOをゼロから</a></li></ol></div>
+          <div class="fmc-card"><h4>② 面接まで2週間</h4><ol><li><a href="../car-004-technical-30questions/index.html">頻出30問で現在地</a></li><li><a href="../car-006-paper-lbo/index.html" class="op-gt" data-gt="paper-lbo">ペーパーLBO3問</a></li><li><a href="../car-005-modeling-test/index.html" class="op-gt" data-gt="modeling-test">モデルテスト対策</a></li><li><a href="../car-003-technical-interview/index.html">面接戦略の総仕上げ</a></li></ol></div>
+          <div class="fmc-card"><h4>③ 経営企画・FP&amp;Aで使う</h4><ol><li><a href="../tut-ops-3stmt-build/index.html">3表連動モデル</a></li><li><a href="../fp-001-budget-variance/index.html" class="op-gt" data-gt="budget-variance">予実と差異分析</a></li><li><a href="../fp-003-kpi-design/index.html" class="op-gt" data-gt="kpi-design">KPI設計</a></li><li><a href="../fp-004-capex-appraisal/index.html">社内投資評価</a></li></ol></div>
+        </div>
+      </div>
+      <div class="lib-group fmc-part" id="p1">
+        <h3>第1部　会計とオペレーティングモデルの土台</h3>
+        <p class="fmc-part__lead">三表のつながり・運転資本・EBITDAとFCF・3表連動モデル・Excel作法・循環参照</p>
+        <div>
+          <a class="lib-item fmc-item" href="../acc-001-three-statements/index.html"><span class="fmc-item__no">1-1</span><span class="fmc-item__t">財務三表のつながり</span><span class="fmc-item__ar" aria-hidden="true">→</span></a>
+          <a class="lib-item fmc-item" href="../acc-003-working-capital/index.html"><span class="fmc-item__no">1-2</span><span class="fmc-item__t">運転資本と回転日数</span><span class="fmc-item__ar" aria-hidden="true">→</span></a>
+          <a class="lib-item fmc-item" href="../fin-002-ebitda/index.html"><span class="fmc-item__no">1-3</span><span class="fmc-item__t">EBITDAとFCFの違い</span><span class="fmc-item__ar" aria-hidden="true">→</span></a>
+          <a class="lib-item fmc-item" href="../mod-001-modeling-guide/index.html"><span class="fmc-item__no">1-4</span><span class="fmc-item__t">3表連動モデルの作り方（7ステップ）</span><span class="fmc-item__ar" aria-hidden="true">→</span></a>
+          <a class="lib-item fmc-item" href="../xl-001-excel-shortcuts/index.html"><span class="fmc-item__no">1-5</span><span class="fmc-item__t">投資銀行のExcel作法</span><span class="fmc-item__ar" aria-hidden="true">→</span></a>
+          <a class="lib-item fmc-item" href="../mod-005-circular-reference/index.html"><span class="fmc-item__no">1-6</span><span class="fmc-item__t">循環参照の対処</span><span class="fmc-item__ar" aria-hidden="true">→</span></a>
+        </div>
+      </div>
+      <div class="lib-group fmc-part" id="p2">
+        <h3>第2部　バリュエーションとDCF</h3>
+        <p class="fmc-part__lead">企業価値評価の全体像・DCFの構築・WACC・ターミナルバリュー・Comps・EVブリッジ・感応度</p>
+        <div>
+          <a class="lib-item fmc-item" href="../val-001-valuation-overview/index.html"><span class="fmc-item__no">2-1</span><span class="fmc-item__t">企業価値評価の全体像</span><span class="fmc-item__ar" aria-hidden="true">→</span></a>
+          <a class="lib-item fmc-item fmc-item--practice" href="../tut-dcf-excel-build/index.html"><span class="fmc-item__no">2-2</span><span class="fmc-item__t">【実践】DCFモデルをゼロから作る</span><span class="fmc-item__ar" aria-hidden="true">→</span></a>
+          <a class="lib-item fmc-item" href="../val-002-dcf-guide/index.html"><span class="fmc-item__no">2-3</span><span class="fmc-item__t">DCF法の理論と実務論点</span><span class="fmc-item__ar" aria-hidden="true">→</span></a>
+          <a class="lib-item fmc-item" href="../val-003-wacc/index.html"><span class="fmc-item__no">2-4</span><span class="fmc-item__t">WACCの計算</span><span class="fmc-item__ar" aria-hidden="true">→</span></a>
+          <a class="lib-item fmc-item" href="../val-004-terminal-value/index.html"><span class="fmc-item__no">2-5</span><span class="fmc-item__t">ターミナルバリュー</span><span class="fmc-item__ar" aria-hidden="true">→</span></a>
+          <a class="lib-item fmc-item" href="../val-005-comps/index.html"><span class="fmc-item__no">2-6</span><span class="fmc-item__t">類似会社比較法（Comps）</span><span class="fmc-item__ar" aria-hidden="true">→</span></a>
+          <a class="lib-item fmc-item" href="../val-006-ev-bridge/index.html"><span class="fmc-item__no">2-7</span><span class="fmc-item__t">EVからEquity Valueへ</span><span class="fmc-item__ar" aria-hidden="true">→</span></a>
+          <a class="lib-item fmc-item" href="../mod-007-sensitivity/index.html"><span class="fmc-item__no">2-8</span><span class="fmc-item__t">感応度分析・シナリオ分析</span><span class="fmc-item__ar" aria-hidden="true">→</span></a>
+        </div>
+      </div>
+      <div class="lib-group fmc-part" id="p3">
+        <h3>第3部　デット・モデリング</h3>
+        <p class="fmc-part__lead">Debt Schedule・Cash Sweep・Debt Capacity</p>
+        <div>
+          <a class="lib-item fmc-item" href="../mod-004-debt-schedule/index.html"><span class="fmc-item__no">3-1</span><span class="fmc-item__t">Debt Schedule</span><span class="fmc-item__ar" aria-hidden="true">→</span></a>
+          <a class="lib-item fmc-item" href="../mod-008-cash-sweep/index.html"><span class="fmc-item__no">3-2</span><span class="fmc-item__t">Cash Sweep</span><span class="fmc-item__ar" aria-hidden="true">→</span></a>
+          <a class="lib-item fmc-item" href="../pe-004-debt-capacity/index.html"><span class="fmc-item__no">3-3</span><span class="fmc-item__t">Debt Capacityとレンダー視点</span><span class="fmc-item__ar" aria-hidden="true">→</span></a>
+        </div>
+      </div>
+      <div class="lib-group fmc-part" id="p4">
+        <h3>第4部　LBOモデル</h3>
+        <p class="fmc-part__lead">LBOの仕組み・LBOモデルの構築・IRRとMOIC・投資仮説</p>
+        <div>
+          <a class="lib-item fmc-item" href="../pe-001-lbo-basics/index.html"><span class="fmc-item__no">4-1</span><span class="fmc-item__t">LBOの仕組みとリターンの源泉</span><span class="fmc-item__ar" aria-hidden="true">→</span></a>
+          <a class="lib-item fmc-item fmc-item--practice" href="../tut-lbo-excel-build/index.html"><span class="fmc-item__no">4-2</span><span class="fmc-item__t">【実践】LBOモデルをゼロから作る</span><span class="fmc-item__ar" aria-hidden="true">→</span></a>
+          <a class="lib-item fmc-item" href="../pe-002-lbo-model/index.html"><span class="fmc-item__no">4-3</span><span class="fmc-item__t">LBOモデルの理論（6ステップ）</span><span class="fmc-item__ar" aria-hidden="true">→</span></a>
+          <a class="lib-item fmc-item" href="../pe-005-irr-moic/index.html"><span class="fmc-item__no">4-4</span><span class="fmc-item__t">IRRとMOIC</span><span class="fmc-item__ar" aria-hidden="true">→</span></a>
+          <a class="lib-item fmc-item" href="../pe-007-investment-thesis/index.html"><span class="fmc-item__no">4-5</span><span class="fmc-item__t">投資仮説とInvestment Committee</span><span class="fmc-item__ar" aria-hidden="true">→</span></a>
+        </div>
+      </div>
+      <div class="lib-group fmc-part" id="p5">
+        <h3>第5部　M&amp;Aモデル</h3>
+        <p class="fmc-part__lead">M&amp;Aプロセス・M&amp;Aモデルの構築・Accretion/Dilution</p>
+        <div>
+          <a class="lib-item fmc-item" href="../ma-001-ma-process/index.html"><span class="fmc-item__no">5-1</span><span class="fmc-item__t">M&amp;Aプロセスの全体像</span><span class="fmc-item__ar" aria-hidden="true">→</span></a>
+          <a class="lib-item fmc-item fmc-item--practice" href="../tut-ma-excel-build/index.html"><span class="fmc-item__no">5-2</span><span class="fmc-item__t">【実践】M&amp;Aモデルをゼロから作る</span><span class="fmc-item__ar" aria-hidden="true">→</span></a>
+          <a class="lib-item fmc-item" href="../ma-003-merger-model/index.html"><span class="fmc-item__no">5-3</span><span class="fmc-item__t">Accretion/Dilution分析の理論</span><span class="fmc-item__ar" aria-hidden="true">→</span></a>
+        </div>
+      </div>
+      <div class="lib-group fmc-part" id="p6">
+        <h3>第6部　面接・キャリアへの接続</h3>
+        <p class="fmc-part__lead">テクニカル面接・投資銀行／PEファンド転職</p>
+        <div>
+          <a class="lib-item fmc-item" href="../car-003-technical-interview/index.html"><span class="fmc-item__no">6-1</span><span class="fmc-item__t">テクニカル面接の頻出質問</span><span class="fmc-item__ar" aria-hidden="true">→</span></a>
+          <a class="lib-item fmc-item" href="../car-001-ib-career/index.html"><span class="fmc-item__no">6-2</span><span class="fmc-item__t">投資銀行への転職</span><span class="fmc-item__ar" aria-hidden="true">→</span></a>
+          <a class="lib-item fmc-item" href="../car-002-pe-career/index.html"><span class="fmc-item__no">6-3</span><span class="fmc-item__t">PEファンド転職</span><span class="fmc-item__ar" aria-hidden="true">→</span></a>
+        </div>
+      </div>
+    </section>
+
+    <section id="free" class="fmc-sec">
+      <h2>無料で学べるコンテンツ</h2>
+      <div class="fmc-grid fmc-grid--2">
+        <div class="fmc-card">
+          <h3>7日間の無料財務モデリング講座（メール）</h3>
+          <p>無料会員登録後、1日1通で7日間お届けします。</p>
+          <ol class="fmc-days">
+            <li><b>Day 1</b> Excel・財務モデルの基本ルール</li>
+            <li><b>Day 2</b> 財務三表のつながり</li>
+            <li><b>Day 3</b> 予測と運転資本</li>
+            <li><b>Day 4</b> DCF法による企業価値評価</li>
+            <li><b>Day 5</b> LBOモデルの基本</li>
+            <li><b>Day 6</b> M&amp;Aモデルの基本</li>
+            <li><b>Day 7</b> 現在地の確認と次の学習</li>
+          </ol>
+          <a class="tlink" href="../register/index.html" data-ga4="fm_course_free_7day">無料会員登録で受け取る <span class="ar">→</span></a>
+        </div>
+        <div class="fmc-card">
+          <h3>無料Excelテンプレート集（Excel Starter Pack）</h3>
+          <p>3表連動モデル・DCF・LBO・M&amp;Aモデル・Excel操作演習など、9つのExcelテンプレートを無料会員登録でまとめてダウンロードできます。記事で学んだ手順を、そのまま自分のExcelで再現するための出発点です。</p>
+          <a class="tlink" href="../materials/excel-starter-pack/index.html" data-ga4="fm_course_free_starter">テンプレートの内容を見る <span class="ar">→</span></a>
+        </div>
+        <div class="fmc-card">
+          <h3>モデリングラボ（ブラウザで動かす）</h3>
+          <p>財務情報と前提を入力すると、DCF・LBO・類似会社比較・M&amp;Aモデルなどの結果をその場で計算します。前提を動かすと価値がどう変わるかを、Excelを開く前に確かめられます。</p>
+          <a class="tlink" href="../lab/index.html" data-ga4="fm_course_free_lab">モデリングラボを開く <span class="ar">→</span></a>
+        </div>
+        <div class="fmc-card">
+          <h3>無料記事ライブラリ・実務用語集</h3>
+          <p>構築チュートリアル、財務モデリング、バリュエーション、M&amp;A、PE・LBOなど分野別の無料記事と、実務用語集を会員登録不要で公開しています。28章の先は、ここから広げてください。</p>
+          <a class="tlink" href="../articles/index.html" data-ga4="fm_course_free_articles">財務モデリングの記事一覧 <span class="ar">→</span></a>　<a class="tlink" href="../glossary/index.html">用語集 <span class="ar">→</span></a>
+        </div>
+      </div>
+    </section>
+
+    <section id="paid" class="fmc-sec">
+      <h2>無料コンテンツと有料講座の違い</h2>
+      <p>無料の記事と7日間講座は「考え方と手順」を学ぶためのものです。有料講座は、同じ手順を<strong>PDFテキスト＋Excel（Blank／Guide／Completed）</strong>で、白紙から完成モデルまで自分の手で組み切るための教材です。章立て・演習・Checks（検算）まで含み、投資銀行フォーマットで統一しています。</p>
+      <table class="data fmc-cmp">
+        <caption>無料コンテンツと有料講座の比較</caption>
+        <thead><tr><th scope="col"></th><th scope="col">無料（記事・7日間講座・テンプレート）</th><th scope="col">有料講座（受講プラン）</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">目的</th><td>考え方・手順の理解、学習順序の把握</td><td>白紙から完成モデルを自力で再現する</td></tr>
+          <tr><th scope="row">教材</th><td>記事28章、メール7通、Excelテンプレート9ファイル</td><td>PDFテキスト＋Blank／Guide／Completed のExcel（講座により4段階）、演習、Checks</td></tr>
+          <tr><th scope="row">範囲</th><td>Excel作法、三表、DCF、Comps、M&amp;A、LBOの基本</td><td>財務三表・DCF・Comps・M&amp;A・LBO・Excel実務・企業価値評価に加え、業種別モデルなど</td></tr>
+          <tr><th scope="row">費用</th><td>無料（会員登録も無料）</td><td>買い切り（税込・一括払い・自動更新なし）</td></tr>
+        </tbody>
+      </table>
+      <div class="fmc-plans">
+        <div class="fmc-planc">
+          <p class="fmc-planc__name">シルバー<span>基礎</span></p>
+          <p class="fmc-planc__price">¥34,800<small>税込・買い切り</small></p>
+          <p class="fmc-planc__count">5講座を収録</p>
+          <p class="fmc-planc__target">財務・会計・Excel・モデリングを基礎から固め、投資銀行・FAS・PE等の選考準備を始めたい方。</p>
+        </div>
+        <div class="fmc-planc">
+          <p class="fmc-planc__name">ゴールド<span>標準</span></p>
+          <p class="fmc-planc__price">¥54,800<small>税込・買い切り</small></p>
+          <p class="fmc-planc__count">12講座を収録</p>
+          <p class="fmc-planc__target">IBD・FAS・経営企画・M&amp;A担当など、バリュエーションを実務レベルまで体系的に学びたい方。</p>
+        </div>
+        <div class="fmc-planc">
+          <p class="fmc-planc__name">プラチナ<span>全領域</span></p>
+          <p class="fmc-planc__price">¥84,800<small>税込・買い切り</small></p>
+          <p class="fmc-planc__count">23講座を収録</p>
+          <p class="fmc-planc__target">IBD・FAS・PE・VC・投資業務・CFO/経営企画など、主要モデルと投資判断を包括的に学びたい方。</p>
+        </div>
+      </div>
+      <p class="fmc-actline"><a class="btn btn-outline" href="../materials/index.html" data-ga4="fm_course_paid_materials">教材・受講プランの詳細を見る <span class="ar">→</span></a>　<a class="tlink" href="../pricing/index.html">Assessment（添削・採点）を含む料金 <span class="ar">→</span></a></p>
+    </section>
+
+    <section id="who" class="fmc-sec">
+      <h2>こんな方に向いています</h2>
+      <ul class="disc fmc-who">
+        <li>投資銀行・FAS・PEファンド・VCを目指し、モデルテストやテクニカル面接に備えたい方</li>
+        <li>M&amp;A・投資・融資の実務で、価値評価や買収後の数字を自分で組んで説明したい方</li>
+        <li>経営企画・FP&amp;A・スタートアップで、事業計画・予算・資金計画を三表でつなげたい方</li>
+        <li>会計・ファイナンスを学んだが、Excelで手が動かない方。財務モデリングを独学で体系的に進めたい方</li>
+      </ul>
+      <div class="src-box fmc-trust">
+        <h2>制作方針・監修</h2>
+        <p>記事・教材は大手町プレップ編集部が執筆し、運営者である<a href="../about/index.html">監修者</a>が計算例の検証、実務慣行との整合性、出典・制度記述の確認を行ったうえで公開しています。設例の数値は公開前に計算ツールで検証しています。<a href="../about/index.html">編集方針・品質基準</a>と<a href="../about/index.html">運営者情報</a>をご確認ください。今後もReverse DCF・FCFF/FCFE・マルチプル選定などの章を追加予定です。</p>
+      </div>
+    </section>
+
+    <section id="faq" class="fmc-sec">
+      <h2>よくある質問</h2>
+      <div class="qa-box">
+        <div class="qa"><p class="q">Q. 財務モデリング講座は無料ですか？</p><p class="a">A. 無料の28章（記事）は会員登録なしで読めます。無料会員登録をすると、7日間の財務モデリング講座（メール配信）と無料Excelテンプレート集（Excel Starter Pack）を受け取れます。PDFテキストとBlank／Guide／CompletedのExcelで手を動かす有料講座は、シルバー・ゴールド・プラチナの買い切りプランで提供しています。</p></div>
+        <div class="qa"><p class="q">Q. 財務モデリングは独学で身につきますか？</p><p class="a">A. 順序を守って手を動かせば独学できます。本講座は「Excelの作法 → 財務三表 → DCF・Comps → M&amp;A → LBO」の順に構成し、各段階に無料の記事と、白紙（Blank）から完成（Completed）まで段階的に組むExcel教材を用意しています。読むだけで終わらせず、必ず自分のExcelで再現することが上達の条件です。</p></div>
+        <div class="qa"><p class="q">Q. 会計やExcelの知識がなくても始められますか？</p><p class="a">A. 始められます。第1部で財務三表のつながり・運転資本・EBITDAとFCFを扱い、投資銀行のExcel作法（入力は青・計算式は黒、Cover→Assumptions→Checksの構造）から解説します。Excel操作に不安がある方は、財務モデリングのためのExcel実務講座（Excelモデリング講座）と無料のExcelテンプレートから始めてください。</p></div>
+        <div class="qa"><p class="q">Q. 講座で使うのはExcelですか。Googleスプレッドシートでも学べますか？</p><p class="a">A. 教材はExcel（.xlsx）で提供しています。数式の考え方はGoogleスプレッドシートでも同じですが、データテーブルによる感応度分析やショートカットの解説はExcelを前提にしています。</p></div>
+        <div class="qa"><p class="q">Q. 講座を終えると、どのようなExcelモデルを作れるようになりますか？</p><p class="a">A. PL・BS・CFが連動しBSがバランスする財務三表モデル、FCF・WACC・ターミナルバリューから企業価値と株主価値を導くDCFモデル、類似会社・類似取引比較のCompsシート、買収対価・PPA・EPS希薄化を扱うM&amp;Aモデル、Sources &amp; Uses・Debt Schedule・Cash SweepからIRR・MOICを計算するLBOモデルです。各講座ページに完成イメージを掲載しています。</p></div>
+        <div class="qa"><p class="q">Q. 投資銀行・PEファンドの選考（モデルテスト・面接）対策になりますか？</p><p class="a">A. なります。第6部でテクニカル面接の頻出質問と投資銀行・PEファンドの転職を扱い、無料記事にはモデリングテストの時間配分やペーパーLBOの解き方があります。有料のLBOモデリング講座（LBOマスター講座）はPaper LBOの手計算から統合LBOモデルまでを段階的に組む構成です。</p></div>
+        <div class="qa"><p class="q">Q. どのプランを選べばよいですか？</p><p class="a">A. 財務三表とExcelの基礎から固めたい方はシルバー、DCF・Compsまで企業価値評価を体系的に学びたい方はゴールド、M&amp;A・LBOまで主要モデルをまとめて学びたい方はプラチナが対象です。上位プランは下位プランの全教材を含みます。詳細は教材・受講プラン一覧をご覧ください。</p></div>
+        <div class="qa"><p class="q">Q. 教材の内容は誰が作り、どのように検証していますか？</p><p class="a">A. 記事・教材は大手町プレップ編集部が執筆し、運営者である監修者が計算例の検証、実務慣行との整合性、出典・制度記述の確認を行ったうえで公開しています。設例の数値は公開前に計算ツールで検証しています。編集方針とAI利用方針は運営者情報ページに公開しています。</p></div>
+      </div>
+    </section>
+
+    <section class="fmc-final">
+      <p class="eyebrow">Start Free</p>
+      <h2>財務モデリングを、読むから組めるへ。</h2>
+      <p>無料の28章と7日間講座、Excelテンプレートで手を動かし、必要になったら教材で仕上げる。順番どおりに進めれば、独学でも完走できます。</p>
+      <div class="fmc-cta">
+        <a class="btn btn-gold fmc-btn-main" href="../register/index.html" data-ga4="fm_course_cta_register_end">無料で財務モデリングを学ぶ（会員登録） <span class="ar">→</span></a>
+        <a class="btn btn-outline" href="../materials/index.html" data-ga4="fm_course_cta_materials_end">有料講座・受講プランを見る</a>
+      </div>
+    </section>
+
+  </div>
+</div>
+</main>
+
+<footer class="site-footer op2-footer">
+
+  <!-- 中段：メインフッター（濃紺・ブランド行＋6分類） -->
+  <div class="op2-fmain op2-fv4">
+    <div class="wrap">
+      <div class="op2-fgrid">
+        <div class="op2-fbrand footer-brand">
+          <span class="brand-lockup">
+            <img class="footer-mark" src="../wp-content/themes/otemachi-prep-child/assets/images/op-logo-mark-white.png" alt="" width="44" height="46" onerror="this.style.display='none'">
+            <span class="brand-text">
+              <span class="brand-en-main">OTEMACHI&nbsp;PREP</span>
+              <span class="brand-ja-sub">大手町プレップ</span>
+            </span>
+          </span>
+          <p class="op2-fdesc">M&amp;A・PE・投資銀行・コーポレートファイナンスを、専門記事・一次情報データベース・モデリングラボ・専門講座で「学ぶ・調べる・実践する」。日本語で実務水準まで到達するためのファイナンス専門プラットフォームです。</p>
+        </div>
+
+        <nav class="op2-fcol" aria-label="記事・用語集">
+          <h3>記事・用語集</h3>
+          <ul>
+			<li><a href="../articles/index.html">分野別記事</a></li>
+<li><a href="../glossary/index.html">ファイナンス実務用語集</a></li>
+<li><a href="../reference/index.html">指標リファレンス</a></li>
+<li><a href="index.html">財務モデリング講座（無料）</a></li>
+<li><a href="../articles/index.html">AI×ファイナンス</a></li>
+<li><a href="../materials/excel-starter-pack/index.html">無料Excelテンプレート集（Starter Pack）</a></li>
+          </ul>
+        </nav>
+
+        <nav class="op2-fcol" aria-label="データベース">
+          <h3>データベース</h3>
+          <ul>
+			<li><a href="../pe-funds/index.html">PEファンド一覧</a></li>
+<li><a href="../vc-funds/index.html">VC・CVC一覧</a></li>
+<li><a href="../activist-funds/index.html">アクティビスト一覧</a></li>
+<li><a href="../ma-advisors/index.html">FA・M&amp;A仲介会社DB</a></li>
+<li><a href="../whats-new/index.html">データベース更新情報</a></li>
+          </ul>
+        </nav>
+
+        <nav class="op2-fcol" aria-label="モデリングラボ">
+          <h3>モデリングラボ</h3>
+          <ul>
+			<li><a href="../lab/index.html">モデリングラボ</a></li>
+<li><a href="../lab/index.html">財務三表モデル</a></li>
+<li><a href="../lab/index.html">DCFモデル</a></li>
+<li><a href="../lab/index.html">M&amp;Aモデル</a></li>
+<li><a href="../lab/index.html">LBOモデル</a></li>
+<li><a href="../articles/index.html">構築チュートリアル</a></li>
+          </ul>
+        </nav>
+
+        <nav class="op2-fcol" aria-label="キャリア">
+          <h3>キャリア</h3>
+          <ul>
+			<li><a href="../career-fit/index.html">キャリア適性診断（無料）</a></li>
+<li><a href="../car-001-ib-career/index.html">投資銀行（IBD）</a></li>
+<li><a href="../car-002-pe-career/index.html">PEファンド</a></li>
+<li><a href="../car-012-ma-career-comparison/index.html">FAS・M&amp;Aアドバイザリー</a></li>
+<li><a href="../articles/index.html">面接・選考対策の記事</a></li>
+          </ul>
+        </nav>
+
+        <nav class="op2-fcol" aria-label="講座・アセスメント">
+          <h3>講座・アセスメント</h3>
+          <ul>
+			<li><a href="../materials/index.html">講座・教材</a></li>
+<li><a href="../assessment/index.html">実践アセスメント</a></li>
+<li><a href="../pricing/index.html">料金・プラン比較</a></li>
+<li><a href="../pricing/index.html">学習の進め方</a></li>
+			            <li><a href="../register/index.html">無料会員登録</a></li>
+            <li><a href="../login/index.html">ログイン</a></li>
+			          </ul>
+        </nav>
+
+        <nav class="op2-fcol" aria-label="大手町プレップ">
+          <h3>大手町プレップ</h3>
+          <ul>
+			<li><a href="../about/index.html">大手町プレップとは</a></li>
+<li><a href="../about/index.html">運営者情報・編集方針</a></li>
+<li><a href="../index.html">よくある質問</a></li>
+<li><a href="../contact/index.html">お問い合わせ</a></li>
+<li><a href="../legal/index.html">利用規約</a></li>
+<li><a href="../legal/index.html">プライバシーポリシー</a></li>
+<li><a href="../legal/index.html">免責事項</a></li>
+<li><a href="../legal/index.html">特定商取引法に基づく表記（教材プラン）</a></li>
+<li><a href="../tokushoho/index.html">特定商取引法に基づく表記（月額アセスメント）</a></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </div>
+
+  <!-- 下段：リーガル -->
+  <div class="op2-flegal">
+    <div class="wrap op2-flegal-in">
+      <p class="op2-fnote">本サイトは特定の金融商品の勧誘・投資助言を行うものではありません。</p>
+      <p class="op2-fcopy">&copy; <span id="year">2026</span> OTEMACHI PREP</p>
+    </div>
+  </div>
+</footer>
+		
+
+<a class="to-top" href="#" aria-label="ページの先頭へ">↑</a>
+
+<!-- wpcom_wp_footer -->
+<script type="speculationrules">
+{"prefetch":[{"source":"document","where":{"and":[{"href_matches":"/*"},{"not":{"href_matches":["/wp-*.php","/wp-admin/*","/wp-content/uploads/*","/wp-content/*","/wp-content/plugins/*","/wp-content/themes/otemachi-prep-child/*","/wp-content/themes/assembler/*","/*\\?(.+)"]}},{"not":{"selector_matches":"a[rel~=\"nofollow\"]"}},{"not":{"selector_matches":".no-prefetch, .no-prefetch a"}}]},"eagerness":"conservative"}]}
+</script>
+<meta id="bilmur" property="bilmur:data" content="" data-customproperties="{&quot;woo_active&quot;:&quot;1&quot;,&quot;logged_in&quot;:&quot;0&quot;,&quot;wptheme&quot;:&quot;otemachi-prep-child&quot;,&quot;wptheme_is_block&quot;:&quot;1&quot;}" data-provider="wordpress.com" data-service="atomic"  data-site-tz="Asia/Tokyo"  >
+<script defer src="https://s0.wp.com/wp-content/js/bilmur.min.js?m=202639"></script>
+<link rel='stylesheet' id='all-css-02e62cf3b6d888714ec6fdd45820a25c' href='https://otemachiprep.com/wp-content/plugins/woocommerce/assets/client/blocks/wc-blocks.css?m=1790088002' type='text/css' media='all' />
+<script type='text/javascript'  src='https://otemachiprep.com/_static/??wp-content/plugins/woocommerce/assets/js/sourcebuster/sourcebuster.min.js,wp-content/themes/otemachi-prep-child/assets/js/op-page-course.js?m=1790088002'></script>
+<script id="op-act-meganav-card-js-after">
+(function(){var C={"label":"NEW","title":"\u30a2\u30af\u30c6\u30a3\u30d3\u30b9\u30c8\u30d5\u30a1\u30f3\u30c9\u5206\u6790","desc":"\u65e5\u672c\u682a\u306e\u4fdd\u6709\u30fb\u63d0\u6848\u30fb\u8b70\u6c7a\u7d50\u679c\u3092\u8ffd\u8de1","href":"/activist-funds/","ev":"popular:activist-funds","note":"109","icon":"<svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M4 5v14h16\"/><path d=\"M6.5 14.5 10 10.5l3 2.5 4.5-5.5\"/><circle cx=\"17.5\" cy=\"7.5\" r=\"2.1\"/><path d=\"M17.5 4.6v1.2M17.5 9.2v1.2M14.6 7.5h1.2M19.2 7.5h1.2\"/></svg>"};function esc(s){return String(s).replace(/[&<>"]/g,function(c){return({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;"})[c];});}function build(){return '<span class="opmm-card-ic">'+C.icon+'</span>'+'<span class="opmm-card-b"><span class="opmm-card-t">'+esc(C.title)+'</span>'+'<span class="opmm-card-d">'+esc(C.desc)+(C.note?'<span class="opmm-n">'+esc(C.note)+'</span>':'')+'</span></span>'+'<span class="opmm-tag">'+esc(C.label)+'</span><span class="opmm-go" aria-hidden="true">→</span>';}function fix(){var root=document.getElementById("nv-cat");if(!root){return;}var a=root.querySelector('a.opmm-card[data-opnav="popular:career"]');if(!a){return;}a.setAttribute("href",C.href);a.setAttribute("data-opnav",C.ev);a.innerHTML=build();}fix();if("MutationObserver" in window){var mo=new MutationObserver(function(){fix();});mo.observe(document.body,{childList:true,subtree:true});}window.addEventListener("load",fix);if(document.readyState==="loading"){document.addEventListener("DOMContentLoaded",fix);}setTimeout(fix,300);setTimeout(fix,1000);setTimeout(fix,2500);})();
+//# sourceURL=op-act-meganav-card-js-after
+</script>
+<script id="jetpack-stats-js-before">
+_stq = window._stq || [];
+_stq.push([ "view", {"v":"ext","blog":"255956723","post":"108","tz":"9","srv":"otemachiprep.com","hp":"atomic","ac":"2","amp":"0","j":"1:16.3-a.3"} ]);
+_stq.push([ "clickTrackerInit", "255956723", "108" ]);
+//# sourceURL=jetpack-stats-js-before
+</script>
+<script data-wp-strategy="defer" defer fetchpriority="low" id="jetpack-stats-js" src="https://stats.wp.com/e-202639.js"></script>
+<script id="opm-js" src="../wp-content/plugins/otemachi-prep-membership/assets/js/opm.js"></script>
+<script id="opm-js-after">
+(function () {
+  var d = document;
+  if (window.__opmNav2) { return; }
+  window.__opmNav2 = true;
+
+  var hdr   = d.getElementById('siteHeader');
+  var nav   = d.getElementById('op2nav');
+  var mBtn  = d.querySelector('.op-hdr3 .menu-toggle');
+  var uh    = d.querySelector('.op-hdr3 .op-uh');
+  var cBtn  = d.querySelector('.op2-c-search');
+  var cPane = d.getElementById('op2-c-panel');
+  var mqPc    = window.matchMedia('(min-width: 901px)');
+  var mqHover = window.matchMedia('(hover: hover) and (pointer: fine)');
+
+  function closeCPanel() {
+    if (cPane && !cPane.hasAttribute('hidden')) {
+      cPane.setAttribute('hidden', '');
+      if (cBtn) { cBtn.setAttribute('aria-expanded', 'false'); }
+    }
+  }
+
+  /* ---- scrolled ＋ コンパクト固定（.is-stuck） ---- */
+  if (hdr) {
+    var stuckAt = 60;
+    var measure = function () {
+      if (uh) {
+        var h = Math.round(uh.getBoundingClientRect().height);
+        if (h > 0) { stuckAt = h; }
+      }
+    };
+    measure();
+    window.addEventListener('resize', measure, { passive: true });
+    window.addEventListener('load', measure);
+
+    var onScroll = function () {
+      var y = window.scrollY || 0;
+      hdr.classList.toggle('scrolled', y > 10);
+      if (mqPc.matches) {
+        if (y > stuckAt + 8) { hdr.classList.add('is-stuck'); }
+        else if (y < stuckAt - 8) { hdr.classList.remove('is-stuck'); closeCPanel(); }
+      } else if (hdr.classList.contains('is-stuck')) {
+        hdr.classList.remove('is-stuck');
+        closeCPanel();
+      }
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+  }
+
+  /* ---- コンパクト検索 ---- */
+  if (cBtn && cPane) {
+    cBtn.addEventListener('click', function () {
+      if (cPane.hasAttribute('hidden')) {
+        cPane.removeAttribute('hidden');
+        cBtn.setAttribute('aria-expanded', 'true');
+        var f = cPane.querySelector('input[type="search"]');
+        if (f) { f.focus(); }
+      } else {
+        closeCPanel();
+      }
+    });
+  }
+
+  if (!nav) { return; }
+
+  /* ---- ドロワー（〜900px） ---- */
+  function drawerOpen() { return nav.classList.contains('open'); }
+  function setDrawer(open) {
+    nav.classList.toggle('open', open);
+    d.documentElement.classList.toggle('op2-lock', open && !mqPc.matches);
+    if (mBtn) {
+      mBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+      mBtn.setAttribute('aria-label', open ? 'メニューを閉じる' : 'メニューを開く');
+    }
+    if (!open) { closeAll(null); }
+  }
+  if (mBtn) {
+    mBtn.addEventListener('click', function () { setDrawer(!drawerOpen()); });
+  }
+
+  /* ---- ドロップダウン／アコーディオン ---- */
+  var items = Array.prototype.slice.call(nav.querySelectorAll('.op2-item'));
+  function setOpen(it, on) {
+    it.setAttribute('data-open', on ? 'true' : 'false');
+    var b = it.querySelector('.op2-btn');
+    if (b) { b.setAttribute('aria-expanded', on ? 'true' : 'false'); }
+  }
+  function closeAll(except) {
+    items.forEach(function (o) { if (o !== except) { setOpen(o, false); } });
+  }
+
+  items.forEach(function (it) {
+    var b = it.querySelector('.op2-btn');
+    if (!b) { return; }
+
+    b.addEventListener('click', function () {
+      var was = it.getAttribute('data-open') === 'true';
+      closeAll(it);
+      setOpen(it, !was);
+    });
+
+    b.addEventListener('keydown', function (e) {
+      if (e.key === 'ArrowDown') {
+        e.preventDefault();
+        if (it.getAttribute('data-open') !== 'true') { closeAll(it); setOpen(it, true); }
+        var f = it.querySelector('.op2-panel a');
+        if (f) { f.focus(); }
+      }
+    });
+
+    /* fine pointer のPCのみホバーで開閉（タッチではクリックのみ） */
+    var tm = null;
+    it.addEventListener('mouseenter', function () {
+      if (!mqPc.matches || !mqHover.matches) { return; }
+      if (tm) { clearTimeout(tm); tm = null; }
+      closeAll(it);
+      setOpen(it, true);
+    });
+    it.addEventListener('mouseleave', function () {
+      if (!mqPc.matches || !mqHover.matches) { return; }
+      tm = setTimeout(function () { setOpen(it, false); }, 140);
+    });
+  });
+
+  /* 外側クリックで閉じる */
+  d.addEventListener('click', function (e) {
+    var t = e.target;
+    if (!nav.contains(t) && !(mBtn && mBtn.contains(t))) {
+      closeAll(null);
+      if (drawerOpen() && !mqPc.matches && hdr && !hdr.contains(t)) { setDrawer(false); }
+    }
+    if (cPane && cBtn && !cPane.contains(t) && !cBtn.contains(t)) {
+      // コンパクト検索はフォーム操作中を除き閉じる
+      if (!cPane.hasAttribute('hidden') && !(t.closest && t.closest('#op2-c-panel'))) { closeCPanel(); }
+    }
+  });
+
+  /* Esc で閉じ、開いていた項目のボタンへフォーカスを戻す */
+  d.addEventListener('keydown', function (e) {
+    if (e.key !== 'Escape') { return; }
+    var open = null;
+    items.some(function (o) { if (o.getAttribute('data-open') === 'true') { open = o; return true; } return false; });
+    closeAll(null);
+    closeCPanel();
+    if (open) {
+      var b = open.querySelector('.op2-btn');
+      if (b) { b.focus(); }
+    }
+    if (drawerOpen() && !mqPc.matches) {
+      setDrawer(false);
+      if (mBtn) { mBtn.focus(); }
+    }
+  });
+
+  /* フォーカスがナビ外へ出たら閉じる（PCのみ） */
+  nav.addEventListener('focusout', function () {
+    window.setTimeout(function () {
+      if (mqPc.matches && !nav.contains(d.activeElement)) { closeAll(null); }
+    }, 10);
+  });
+
+  /* ドロワー展開中のフォーカストラップ（Tabをヘッダー内で循環させる） */
+  d.addEventListener('keydown', function (e) {
+    if (e.key !== 'Tab') { return; }
+    if (!drawerOpen() || mqPc.matches || !hdr) { return; }
+    var fs = hdr.querySelectorAll('a[href], button:not([disabled]), input:not([disabled])');
+    var list = [];
+    for (var i = 0; i < fs.length; i++) {
+      var el = fs[i];
+      if (el.offsetParent !== null) { list.push(el); }
+    }
+    if (!list.length) { return; }
+    var first = list[0], last = list[list.length - 1];
+    if (e.shiftKey && d.activeElement === first) { e.preventDefault(); last.focus(); }
+    else if (!e.shiftKey && d.activeElement === last) { e.preventDefault(); first.focus(); }
+    else if (!hdr.contains(d.activeElement)) { e.preventDefault(); first.focus(); }
+  });
+
+  /* 画面幅がPCへ変わったらドロワー状態とスクロール固定を解除 */
+  function onMq() {
+    if (mqPc.matches) {
+      setDrawer(false);
+      d.documentElement.classList.remove('op2-lock');
+    } else if (hdr) {
+      hdr.classList.remove('is-stuck');
+      closeCPanel();
+    }
+  }
+  if (mqPc.addEventListener) { mqPc.addEventListener('change', onMq); }
+  else if (mqPc.addListener) { mqPc.addListener(onMq); }
+})();
+(function () {
+  var d = document;
+  var f = d.querySelector('[data-opm-form="register"]');
+  if (!f || window.__opmFormLive) { return; }
+  window.__opmFormLive = true;
+
+  function paint(id, key, msg) {
+    var input = d.getElementById(id);
+    if (!input) { return; }
+    var wrap = input.closest('.op-field');
+    var box  = d.getElementById('opm-err-' + key);
+    if (msg) {
+      if (wrap) { wrap.classList.add('has-error'); }
+      input.setAttribute('aria-invalid', 'true');
+      if (box) {
+        box.textContent = '';
+        var ic = d.createElement('span');
+        ic.className = 'op-err-ico';
+        ic.setAttribute('aria-hidden', 'true');
+        ic.textContent = '!';
+        box.appendChild(ic);
+        box.appendChild(d.createTextNode(msg));
+        box.removeAttribute('hidden');
+        box.setAttribute('role', 'alert');
+      }
+    } else {
+      if (wrap) { wrap.classList.remove('has-error'); }
+      input.removeAttribute('aria-invalid');
+      if (box) { box.textContent = ''; box.setAttribute('hidden', ''); }
+    }
+  }
+
+  var email  = d.getElementById('opm-reg-email');
+  var pass   = d.getElementById('opm-reg-pass');
+  var pass2  = d.getElementById('opm-reg-pass2');
+
+  function checkEmail() {
+    var v = email ? email.value.trim() : '';
+    if (!v) { paint('opm-reg-email', 'email', ''); return; }
+    paint('opm-reg-email', 'email', /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v) ? '' : 'メールアドレスの形式が正しくありません');
+  }
+  function checkPass() {
+    if (!pass || !pass.value) { paint('opm-reg-pass', 'pass', ''); return; }
+    paint('opm-reg-pass', 'pass', pass.value.length >= 8 ? '' : 'パスワードは8文字以上で設定してください');
+  }
+  function checkPass2() {
+    if (!pass2 || !pass2.value) { paint('opm-reg-pass2', 'pass2', ''); return; }
+    paint('opm-reg-pass2', 'pass2', pass.value === pass2.value ? '' : 'パスワードが一致していません');
+  }
+
+  // 確認欄は入力中も判定する（詳細は v1 と同じ3段階ロジック）。
+  var tp2 = null;
+  function livePass2( force ) {
+    if (!pass2) { return; }
+    clearTimeout(tp2);
+    var s = pass ? pass.value : '';
+    var c = pass2.value;
+    if (!c || c === s) { paint('opm-reg-pass2', 'pass2', ''); return; }
+    var typing = s.indexOf(c) === 0 && !force;
+    paint('opm-reg-pass2', 'pass2', typing ? '' : 'パスワードが一致していません');
+    if (typing) { tp2 = setTimeout(function () { livePass2(true); }, 700); }
+  }
+  function onPass2() { livePass2(false); }
+
+  if (email)  { email.addEventListener('blur', checkEmail); }
+  if (pass)   { pass.addEventListener('blur', function () { checkPass(); checkPass2(); }); pass.addEventListener('input', onPass2); }
+  if (pass2)  { pass2.addEventListener('input', onPass2); pass2.addEventListener('blur', checkPass2); }
+})();
+(function () {
+  var box = document.querySelector('[data-opm-ev="register_mail_sent"]');
+  if (!box || window.__opmVerifyPoll) { return; }
+  window.__opmVerifyPoll = true;
+
+  var tries = 0, busy = false, done = false, timer = null;
+
+  function check() {
+    if (busy || done) { return; }
+    busy = true;
+    fetch('https://otemachiprep.com/wp-admin/admin-ajax.php', {
+      method: 'POST',
+      credentials: 'same-origin',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: 'action=opm_verify_status'
+    })
+      .then(function (r) { return r.json(); })
+      .then(function (j) {
+        busy = false;
+        if (j && j.data && j.data.verified && j.data.redirect) {
+          done = true;
+          if (timer) { clearInterval(timer); }
+          window.location.href = j.data.redirect;
+        }
+      })
+      .catch(function () { busy = false; });  // 通信失敗時は次の機会に再試行
+  }
+
+  timer = setInterval(function () {
+    tries++;
+    if (tries > 150) { clearInterval(timer); return; }  // 約10分で打ち切り
+    check();
+  }, 4000);
+
+  // 非表示タブの setInterval は間引かれるため、タブ復帰時に必ず確認する。
+  document.addEventListener('visibilitychange', function () {
+    if (!document.hidden) { check(); }
+  });
+  window.addEventListener('focus', check);
+  window.addEventListener('pageshow', check);
+})();
+//# sourceURL=opm-js-after
+</script>
+<script id="wp-emoji-settings" type="application/json">
+{"baseUrl":"https://s.w.org/images/core/emoji/17.0.2/72x72/","ext":".png","svgUrl":"https://s.w.org/images/core/emoji/17.0.2/svg/","svgExt":".svg","source":{"concatemoji":"https://otemachiprep.com/wp-includes/js/wp-emoji-release.min.js?ver=7.1.2"}}
+</script>
+<script type="module">
+/*! This file is auto-generated */
+var e="script#wp-emoji-settings",t=document.querySelector(e);if(!(t instanceof HTMLScriptElement))throw new Error("Element missing: "+e);const r=JSON.parse(t.text),s=(window._wpemojiSettings=r,"wpEmojiSettingsSupports"),o=["flag","emoji"];function i(e){try{var t={supportTests:e,timestamp:(new Date).valueOf()};sessionStorage.setItem(s,JSON.stringify(t))}catch(e){}}function c(e,t,n){e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(t,0,0);t=new Uint32Array(e.getImageData(0,0,e.canvas.width,e.canvas.height).data);e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(n,0,0);const r=new Uint32Array(e.getImageData(0,0,e.canvas.width,e.canvas.height).data);return t.every((e,t)=>e===r[t])}function p(e,t){e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(t,0,0);var n=e.getImageData(16,16,1,1);for(let e=0;e<n.data.length;e++)if(0!==n.data[e])return!1;return!0}function u(e,t,n,r){switch(t){case"flag":return n(e,"\ud83c\udff3\ufe0f\u200d\u26a7\ufe0f","\ud83c\udff3\ufe0f\u200b\u26a7\ufe0f")?!1:!n(e,"\ud83c\udde8\ud83c\uddf6","\ud83c\udde8\u200b\ud83c\uddf6")&&!n(e,"\ud83c\udff4\udb40\udc67\udb40\udc62\udb40\udc65\udb40\udc6e\udb40\udc67\udb40\udc7f","\ud83c\udff4\u200b\udb40\udc67\u200b\udb40\udc62\u200b\udb40\udc65\u200b\udb40\udc6e\u200b\udb40\udc67\u200b\udb40\udc7f");case"emoji":return!r(e,"\ud83e\u1fac8")}return!1}function f(e,t,n,r){let a;const s=(a="undefined"!=typeof WorkerGlobalScope&&self instanceof WorkerGlobalScope?new OffscreenCanvas(300,150):document.createElement("canvas")).getContext("2d",{willReadFrequently:!0}),o=(s.textBaseline="top",s.font="600 32px Arial",{});return e.forEach(e=>{o[e]=t(s,e,n,r)}),o}function a(e){var t=document.createElement("script");t.src=e,t.defer=!0,document.head.appendChild(t)}r.supports={everything:!0,everythingExceptFlag:!0},new Promise(t=>{let n=function(){try{var e=JSON.parse(sessionStorage.getItem(s));if("object"==typeof e&&"number"==typeof e.timestamp&&(new Date).valueOf()<e.timestamp+604800&&"object"==typeof e.supportTests)return e.supportTests}catch(e){}return null}();if(!n){if("undefined"!=typeof Worker&&"undefined"!=typeof OffscreenCanvas&&"undefined"!=typeof URL&&URL.createObjectURL&&"undefined"!=typeof Blob)try{var e="postMessage("+f.toString()+"("+[JSON.stringify(o),u.toString(),c.toString(),p.toString()].join(",")+"));",r=new Blob([e],{type:"text/javascript"});const a=new Worker(URL.createObjectURL(r),{name:"wpTestEmojiSupports"});return void(a.onmessage=e=>{i(n=e.data),a.terminate(),t(n)})}catch(e){}i(n=f(o,u,c,p))}t(n)}).then(e=>{for(const n in e)r.supports[n]=e[n],r.supports.everything=r.supports.everything&&r.supports[n],"flag"!==n&&(r.supports.everythingExceptFlag=r.supports.everythingExceptFlag&&r.supports[n]);var t;r.supports.everythingExceptFlag=r.supports.everythingExceptFlag&&!r.supports.flag,r.supports.everything||((t=r.source||{}).concatemoji?a(t.concatemoji):t.wpemoji&&t.twemoji&&(a(t.twemoji),a(t.wpemoji)))});
+//# sourceURL=https://otemachiprep.com/wp-includes/js/wp-emoji-loader.min.js
+</script>
+<script id="op-meganav-inline">
+/*!
+ * op-meganav.js — 大手町プレップ ヘッダー「分野別記事」メガメニュー（v2 / 3層バンド構成）
+ * 単一データソース方式。#nv-cat の中身を作り替え、全テンプレ共通で適用（19テンプレ非改変）。
+ * 表示名のみ変更・URLは既存維持（404回避）。計測は dataLayer.push（無害・GA4/GTM接続時に流れる）。
+ * v2.1.0 2026-08-02（AI×ファイナンス/Excel・PPT/データ・テクノロジーを追加・件数を実数に更新）
+ */
+(function () {
+  'use strict';
+  if (window.__opMegaNavInit) return;
+  window.__opMegaNavInit = true;
+
+  var A = '/articles/';
+
+  /* ---- 単一データソース（表示名とURLを一元管理・件数は表示用） ---------------- */
+  var DATA = {
+    popular: [
+      { label: '業界研究', icon: 'net',    title: 'PEファンド一覧・業界マップ', desc: '国内PEファンドを一覧＋業界マップで', href: '/pe-funds/', ev: 'popular:pe-funds' },
+      { label: '業界研究', icon: 'rocket', title: 'VC・CVC一覧・業界マップ',   desc: "VC\/CVC 846組織のデータベース",   href: '/vc-funds/', ev: 'popular:vc-funds' },
+      { label: '実務辞典', icon: 'book',   title: 'ファイナンス実務用語集',     desc: '実務1000用語をやさしく解説',       href: '/glossary/', ev: 'popular:glossary', note: '1000' },
+      { label: '人気',     icon: 'case',   title: 'キャリア・面接対策',         desc: 'IB・PE・FAS の選考／面接対策',    href: A + '#g6',    ev: 'popular:career',   note: '42' }
+    ],
+    colLeft: {
+      head: '業界研究・キャリア',
+      items: [
+        { t: 'PEファンド一覧・業界マップ',    h: '/pe-funds/', tag: '業界研究', ev: 'left:pe-funds' },
+        { t: 'VC・CVC一覧・業界マップ',      h: '/vc-funds/', tag: '業界研究', ev: 'left:vc-funds' },
+        { t: 'キャリア・面接対策',           h: A + '#g6',  n: '42', tag: '人気', ev: 'left:career' },
+        { t: '投資銀行・FAS・M&A',           h: A + '#g4',  n: '22', ev: 'left:ib-fas-ma' },
+        { t: 'プライベートエクイティ・LBO',  h: A + '#g5',  n: '31', ev: 'left:pe-lbo' },
+        { t: 'ベンチャーキャピタル実務',     h: A + '#g11', n: '8',  ev: 'left:vc' },
+        { t: '資本市場・クレジット',         h: A + '#g10', n: '25', ev: 'left:capmkt' },
+        { t: '事業再生・リストラクチャリング', h: A + '#g9', n: '8', ev: 'left:restructuring' },
+        { t: '不動産・REIT',                h: A + '#g12', n: '3',  ev: 'left:re-reit' }
+      ]
+    },
+    colRight: {
+      head: '財務・モデリング実務',
+      items: [
+        { t: 'ファイナンス実務用語集',       h: '/glossary/', n: '1000', tag: '辞典', ev: 'right:glossary' },
+        { t: '財務モデリング',               h: A + '#g2',  n: '22', ev: 'right:modeling' },
+        { t: '会計・財務三表・財務分析',     h: A + '#g1',  n: '36', ev: 'right:accounting' },
+        { t: 'バリュエーション',             h: A + '#g3',  n: '22', ev: 'right:valuation' },
+        { t: '経営企画・FP&A',               h: A + '#g7',  n: '19',  ev: 'right:fpa' },
+        { t: 'AI×ファイナンス',              h: A + '#g16', n: '12', tag: 'NEW', ev: 'right:ai-finance' },
+        { t: '投資分析・エクイティリサーチ', h: A + '#g13', n: '9',  ev: 'right:er' },
+        { t: '業種別モデリング',             h: A + '#g8',  n: '12',  ev: 'right:industry' },
+        { t: 'Excel・PowerPoint実務',         h: A + '#g15', n: '19', ev: 'right:excel-ppt' },
+        { t: 'データ・テクノロジー',           h: A + '#g14', n: '7',  ev: 'right:data-tech' },
+        { t: '財務モデル構築チュートリアル', h: A + '#g0',  n: '12',  ev: 'right:tutorial' },
+        { t: '財務・投資指標の早見辞典',     h: '/reference/', n: '31', ev: 'right:reference' }
+      ]
+    },
+    cta: [
+      { t: '無料記事をすべて見る',     h: '/articles/',   kind: 'primary',   ev: 'cta:free-articles' },
+      { t: '教材で体系的に学ぶ',       h: '/materials/',  kind: 'secondary', ev: 'cta:materials' },
+      { t: '学習ロードマップ',         h: '/#roadmap',    kind: 'link',      ev: 'cta:roadmap' },
+      { t: 'アセスメントで実力を確認', h: '/assessment/', kind: 'link',      ev: 'cta:assessment' }
+    ]
+  };
+
+  var ICON = {
+    net:    '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="6" cy="7" r="2.2"/><circle cx="18" cy="7" r="2.2"/><circle cx="12" cy="17" r="2.2"/><path d="M7.6 8.4 11 15M16.4 8.4 13 15M8 7h8"/></svg>',
+    rocket: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 15c-1 2-1 4-1 4s2 0 4-1M14 5c3-1 5-1 5-1s0 2-1 5c-1 3-4 6-8 8l-3-3c2-4 5-7 7-9z"/><circle cx="14.5" cy="9.5" r="1.3"/></svg>',
+    book:   '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 5.5A1.5 1.5 0 0 1 6.5 4H18v14H6.5A1.5 1.5 0 0 0 5 19.5zM18 18v2H6.5A1.5 1.5 0 0 1 5 18.5"/><path d="M8.5 8h6M8.5 11h6"/></svg>',
+    case:   '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="7.5" width="17" height="11" rx="1.6"/><path d="M9 7.5V6a1.5 1.5 0 0 1 1.5-1.5h3A1.5 1.5 0 0 1 15 6v1.5M3.5 12.5h17"/></svg>'
+  };
+
+  function e(s) { return String(s).replace(/[&<>"]/g, function (c) { return ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]; }); }
+
+  function card(c) {
+    return '<a class="opmm-card" href="' + e(c.href) + '" data-opnav="' + e(c.ev) + '">' +
+      '<span class="opmm-card-ic">' + (ICON[c.icon] || '') + '</span>' +
+      '<span class="opmm-card-b"><span class="opmm-card-t">' + e(c.title) + '</span>' +
+      '<span class="opmm-card-d">' + e(c.desc) + (c.note ? '<span class="opmm-n">' + e(c.note) + '</span>' : '') + '</span></span>' +
+      '<span class="opmm-tag">' + e(c.label) + '</span><span class="opmm-go" aria-hidden="true">→</span></a>';
+  }
+  function row(it) {
+    return '<li><a href="' + e(it.h) + '" data-opnav="' + e(it.ev) + '">' +
+      '<span class="opmm-rt">' + e(it.t) + '</span>' +
+      (it.tag ? '<span class="opmm-rtag">' + e(it.tag) + '</span>' : '') +
+      (it.n ? '<span class="opmm-ct">' + e(it.n) + '</span>' : '') + '</a></li>';
+  }
+  function col(c) {
+    return '<div class="opmm-col"><p class="opmm-ch">' + e(c.head) + '</p><ul>' + c.items.map(row).join('') + '</ul></div>';
+  }
+  function cta(c) {
+    var ar = c.kind === 'link' ? ' <span class="opmm-ar" aria-hidden="true">→</span>' : '';
+    return '<a class="opmm-cta-' + c.kind + '" href="' + e(c.h) + '" data-opnav="' + e(c.ev) + '">' + e(c.t) + ar + '</a>';
+  }
+  function buildHTML() {
+    return '<div class="opmm">' +
+      '<section class="opmm-pop" aria-label="人気コンテンツ"><p class="opmm-h">人気コンテンツ</p>' +
+        '<div class="opmm-cards">' + DATA.popular.map(card).join('') + '</div></section>' +
+      '<div class="opmm-cols">' + col(DATA.colLeft) + col(DATA.colRight) + '</div>' +
+      '<div class="opmm-cta">' + DATA.cta.map(cta).join('') + '</div></div>';
+  }
+
+  /* ---- CSS（#nv-cat配下にスコープ・ブランド配色 navy#14355F / gold#B08A3C） ---- */
+  var CSS = [
+    'body #nv-cat.nv-mega{width:704px!important;min-width:704px!important;padding:0!important;overflow:hidden;border-radius:0 0 10px 10px;}',
+    '#nv-cat .opmm{width:100%;box-sizing:border-box;color:#1B2838;font-size:14px;line-height:1.5;}',
+    '#nv-cat .opmm *{box-sizing:border-box;}',
+    '#nv-cat .opmm-h,#nv-cat .opmm-ch{display:flex;align-items:center;gap:8px;font-size:11px;letter-spacing:.09em;font-weight:700;color:#41546A;margin:0 0 10px;}',
+    '#nv-cat .opmm-h::before,#nv-cat .opmm-ch::before{content:"";width:3px;height:13px;background:#B08A3C;border-radius:1px;flex:0 0 auto;}',
+    '#nv-cat .opmm-pop{padding:15px 18px 16px;background:#F6F8FB;border-bottom:1px solid #E7ECF2;}',
+    '#nv-cat .opmm-cards{display:grid;grid-template-columns:1fr 1fr;gap:9px;}',
+    '#nv-cat .opmm-card{position:relative;display:flex;align-items:flex-start;gap:11px;padding:12px 13px;border:1px solid #E7ECF2;border-radius:9px;background:#fff;text-decoration:none;transition:transform .18s ease,box-shadow .18s ease,border-color .18s ease;}',
+    '#nv-cat .opmm-card:hover,#nv-cat .opmm-card:focus-visible{border-color:#B08A3C;transform:translateY(-1px);box-shadow:0 5px 16px rgba(20,53,95,.10);outline:none;}',
+    '#nv-cat .opmm-card-ic{flex:0 0 auto;width:36px;height:36px;display:flex;align-items:center;justify-content:center;border-radius:8px;background:#EEF2F8;transition:background .18s ease;}',
+    '#nv-cat .opmm-card-ic svg{width:20px;height:20px;fill:none;stroke:#14355F;stroke-width:1.55;stroke-linecap:round;stroke-linejoin:round;transition:stroke .18s ease;}',
+    '#nv-cat .opmm-card:hover .opmm-card-ic{background:#F3EBD9;}#nv-cat .opmm-card:hover .opmm-card-ic svg{stroke:#B08A3C;}',
+    '#nv-cat .opmm-card-b{display:flex;flex-direction:column;min-width:0;}',
+    '#nv-cat .opmm-card-t{font-weight:700;color:#14355F;font-size:13.5px;line-height:1.35;letter-spacing:.01em;}',
+    '#nv-cat .opmm-card-d{color:#5B6B7F;font-size:12px;margin-top:3px;}',
+    '#nv-cat .opmm-n{display:inline-block;margin-left:6px;padding:0 5px;font-size:10px;font-weight:700;color:#8A6A28;background:#F3EBD9;border-radius:9px;vertical-align:middle;}',
+    '#nv-cat .opmm-tag{position:absolute;top:11px;right:12px;font-size:9.5px;font-weight:700;letter-spacing:.03em;color:#B08A3C;text-transform:uppercase;}',
+    '#nv-cat .opmm-go{position:absolute;right:12px;bottom:10px;color:#B08A3C;font-size:14px;opacity:0;transform:translateX(-3px);transition:opacity .18s ease,transform .18s ease;}',
+    '#nv-cat .opmm-card:hover .opmm-go,#nv-cat .opmm-card:focus-visible .opmm-go{opacity:1;transform:translateX(0);}',
+    '#nv-cat .opmm-cols{display:grid;grid-template-columns:1fr 1fr;padding:15px 18px 6px;}',
+    '#nv-cat .opmm-col:first-child{padding-right:22px;border-right:1px solid #EBEFF4;}',
+    '#nv-cat .opmm-col:last-child{padding-left:22px;}',
+    '#nv-cat .opmm-col ul{list-style:none;margin:0;padding:0;}',
+    '#nv-cat .opmm-col a{position:relative;display:flex;align-items:center;gap:8px;padding:7px 9px;border-radius:6px;text-decoration:none;color:#25384C;transition:background .16s ease,color .16s ease,box-shadow .16s ease;}',
+    '#nv-cat .opmm-col a:hover,#nv-cat .opmm-col a:focus-visible{background:#EEF3F8;color:#14355F;box-shadow:inset 2px 0 0 #B08A3C;outline:none;}',
+    '#nv-cat .opmm-rt{flex:1 1 auto;min-width:0;font-size:13.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}',
+    '#nv-cat .opmm-rtag{flex:0 0 auto;font-size:9.5px;font-weight:700;color:#B08A3C;text-transform:uppercase;letter-spacing:.03em;}',
+    '#nv-cat .opmm-ct{flex:0 0 auto;font-size:11px;color:#8695A6;font-variant-numeric:tabular-nums;min-width:22px;text-align:right;}',
+    '#nv-cat .opmm-col a:hover .opmm-ct{color:#14355F;}',
+    '#nv-cat .opmm-cta{display:flex;flex-wrap:wrap;align-items:center;gap:9px 14px;padding:13px 18px;background:#F6F8FB;border-top:1px solid #E7ECF2;}',
+    '#nv-cat .opmm-cta-primary,#nv-cat .opmm-cta-secondary{display:inline-flex;align-items:center;justify-content:center;padding:9px 17px;border-radius:8px;font-weight:700;font-size:13px;text-decoration:none;transition:background .18s ease,border-color .18s ease;}',
+    '#nv-cat .opmm-cta-primary{background:#14355F;color:#fff;box-shadow:0 1px 2px rgba(20,53,95,.2);}',
+    '#nv-cat .opmm-cta-primary:hover,#nv-cat .opmm-cta-primary:focus-visible{background:#0F2848;outline:none;}',
+    '#nv-cat .opmm-cta-secondary{background:#fff;color:#14355F;border:1px solid #C9A24A;}',
+    '#nv-cat .opmm-cta-secondary:hover,#nv-cat .opmm-cta-secondary:focus-visible{background:#FBF6EC;border-color:#B08A3C;outline:none;}',
+    '#nv-cat .opmm-cta-link{color:#41546A;text-decoration:none;font-size:12.5px;font-weight:600;padding:6px 2px;transition:color .16s ease;}',
+    '#nv-cat .opmm-cta-link:hover,#nv-cat .opmm-cta-link:focus-visible{color:#B08A3C;outline:none;}',
+    '#nv-cat .opmm-ar{display:inline-block;transition:transform .18s ease;}#nv-cat .opmm-cta-link:hover .opmm-ar{transform:translateX(3px);}',
+    '#nv-cat .opmm-cta .opmm-cta-link:first-of-type{margin-left:auto;}',
+    '#nv-cat .opmm a:focus-visible{box-shadow:0 0 0 2px #D9B36A;}',
+    /* ---- narrow / mobile (<=980px): 積み上げ・44px・全幅 ---- */
+    '@media (max-width:980px){',
+      'body #nv-cat.nv-mega{width:100%!important;min-width:0!important;border-radius:0;}',
+      '#nv-cat .opmm-pop{padding:10px 10px 12px;}',
+      '#nv-cat .opmm-cards{grid-template-columns:1fr;gap:8px;}',
+      '#nv-cat .opmm-cols{grid-template-columns:1fr;padding:10px 10px 2px;}',
+      '#nv-cat .opmm-col:first-child{padding-right:0;border-right:0;}',
+      '#nv-cat .opmm-col:last-child{padding-left:0;border-top:1px solid #EBEFF4;margin-top:8px;padding-top:10px;}',
+      '#nv-cat .opmm-col a,#nv-cat .opmm-card{min-height:44px;}',
+      '#nv-cat .opmm-rt{white-space:normal;}',
+      '#nv-cat .opmm-cta{flex-direction:column;align-items:stretch;padding:12px 10px;}',
+      '#nv-cat .opmm-cta-primary,#nv-cat .opmm-cta-secondary{width:100%;min-height:44px;}',
+      '#nv-cat .opmm-cta .opmm-cta-link:first-of-type{margin-left:0;}',
+      '#nv-cat .opmm-cta-link{min-height:40px;display:flex;align-items:center;}',
+    '}',
+    '@media (prefers-reduced-motion:reduce){#nv-cat .opmm *{transition:none!important;}}'
+  ].join('\n');
+
+  function injectCSS() {
+    if (document.getElementById('op-meganav-css')) return;
+    var st = document.createElement('style');
+    st.id = 'op-meganav-css';
+    st.textContent = CSS;
+    document.head.appendChild(st);
+  }
+
+  /* ---- 計測（dataLayer.push・無害。GA4/GTM未導入でも安全） ---- */
+  function track(ev, href) {
+    try { window.dataLayer = window.dataLayer || []; window.dataLayer.push({ event: 'mega_nav_click', nav_item: ev, nav_url: href }); } catch (x) {}
+  }
+
+  /* ---- a11y 補助（開閉はテーマ既存＝mouseenter/クリック。ここは属性・計測・Esc） ---- */
+  function wire(cat) {
+    var item = cat.closest('.nv-item');
+    var btn = item && item.querySelector('.nv-btn, button');
+    if (!cat.id) cat.id = 'nv-cat';
+    if (btn) {
+      btn.setAttribute('aria-controls', cat.id);
+      if (!btn.hasAttribute('aria-expanded')) btn.setAttribute('aria-expanded', 'false');
+    }
+    cat.addEventListener('click', function (ev) {
+      var a = ev.target.closest('a[data-opnav]');
+      if (a) track(a.getAttribute('data-opnav'), a.getAttribute('href'));
+    });
+    cat.addEventListener('keydown', function (ev) {
+      if (ev.key === 'Escape' && btn) { btn.focus(); }
+    });
+  }
+
+  function run() {
+    var cat = document.getElementById('nv-cat') || document.querySelector('.nv-sub.nv-mega');
+    if (!cat) return;
+    if (cat.querySelector('.opmm')) return;
+    injectCSS();
+    cat.innerHTML = buildHTML();
+    wire(cat);
+  }
+
+  if (document.readyState === 'loading') { document.addEventListener('DOMContentLoaded', run); } else { run(); }
+})();
+</script>
+    
+<script type="application/json" id="op-gt-data">{"v":1,"st":"page","terms":{"three-statements":{"t":"財務三表","e":"Three Financial Statements","a":"","s":"貸借対照表・損益計算書・キャッシュフロー計算書の3表を指す財務諸表の総称。企業分析の基礎資料となる。","u":"\/acc-001-three-statements\/"},"financial-modeling":{"t":"財務モデリング","e":"Financial Modeling","a":"","s":"財務諸表や事業計画をExcel等で予測・分析可能な形に構造化する作業。バリュエーションやM\u0026Aの基礎となる。","u":"\/mod-001-modeling-guide\/"},"dcf":{"t":"DCF法","e":"Discounted Cash Flow Analysis","a":"DCF","s":"将来キャッシュフローを割引率（WACC等）で現在価値に割り引き、企業価値を算定する評価手法。","u":"\/val-002-dcf-guide\/"},"trading-comps":{"t":"類似会社比較法","e":"Comparable Company Analysis","a":"Comps","s":"上場している類似企業の株価倍率（EV\/EBITDA等）を用いて対象企業の価値を推計する評価手法。","u":"\/val-005-comps\/"},"ev-bridge":{"t":"EVブリッジ","e":"Enterprise Value to Equity Value Bridge","a":"","s":"企業価値（EV）から純有利子負債等の非事業性項目を控除し、株主価値へ調整する計算過程。","u":"\/val-006-ev-bridge\/"},"accretion-dilution":{"t":"増減益分析","e":"Accretion \/ Dilution Analysis","a":"A\/D","s":"M\u0026Aが買収企業の1株当たり利益を増加させるか希薄化させるかを検証する分析。","u":"\/ma-003-merger-model\/"},"lbo-model":{"t":"LBOモデル","e":"LBO Model","a":"","s":"LBO取引における買収後の返済・キャッシュフロー・IRRを試算する財務モデル。","u":"\/pe-002-lbo-model\/"},"circular-reference":{"t":"循環参照","e":"Circular Reference","a":"","s":"利息費用が借入残高に、借入残高が現金残高に依存し合い数式が循環する状態。反復計算等で対処する。","u":"\/mod-005-circular-reference\/"},"paper-lbo":{"t":"ペーパーLBO","e":"Paper LBO","a":"","s":"電卓と紙のみで概算リターンを試算する、面接で頻出のLBO簡易計算演習。","u":"\/car-006-paper-lbo\/"},"modeling-test":{"t":"モデルテスト","e":"Financial Modeling Test","a":"","s":"投資銀行やPEファンドの採用選考で課される、財務モデル構築力を測る実技試験。","u":"\/car-005-modeling-test\/"},"budget-variance":{"t":"予実差異分析","e":"Budget Variance Analysis","a":"","s":"予算と実績の差異を項目別に分解し、要因を特定・分析する経営管理手法。","u":"\/fp-001-budget-variance\/"},"kpi-design":{"t":"KPI（重要業績評価指標）","e":"Key Performance Indicator","a":"KPI","s":"経営目標の達成度を測定・管理するために設定する、定量的な業績評価指標。","u":"\/fp-003-kpi-design\/"}}}</script><script src="../wp-content/themes/otemachi-prep-child/assets/js/op-gltip.js" defer></script>
+</body>
+</html>
+<!--
+	generated in 0.918 seconds
+	112196 bytes batcached for 300 seconds
+-->

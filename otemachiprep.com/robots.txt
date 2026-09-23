@@ -1,0 +1,21 @@
+Sitemap: https://otemachiprep.com/sitemap.xml
+Sitemap: https://otemachiprep.com/news-sitemap.xml
+User-agent: *
+Disallow: /wp-content/uploads/wc-logs/
+Disallow: /wp-content/uploads/woocommerce_transient_files/
+Disallow: /wp-content/uploads/woocommerce_uploads/
+Disallow: /*?add-to-cart=
+Disallow: /*?*add-to-cart=
+Disallow: /wp-admin/
+Allow: /wp-admin/admin-ajax.php
+
+Sitemap: https://otemachiprep.com/sitemap-ma-advisors.xml
+
+Sitemap: https://otemachiprep.com/sitemap-ma-insights.xml
+
+Sitemap: https://otemachiprep.com/sitemap-pe-vc.xml
+
+Sitemap: https://otemachiprep.com/sitemap-glossary.xml
+
+Sitemap: https://otemachiprep.com/sitemap-activist-funds.xml
+Sitemap: https://otemachiprep.com/sitemap-pe-market.xml

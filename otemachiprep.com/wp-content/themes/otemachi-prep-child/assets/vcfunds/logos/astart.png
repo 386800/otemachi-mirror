@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" />
+    <meta name="format-detection" content="telephone=no" />
+
+    <meta name="description" content="エースタートは、起業家と共に伴走する事業家系VCとして、宇宙、ESG、AI、IoT、DX、Medi-tech等、先端技術を活用するベンチャー企業への投資を通じて、ベンチャー業界に貢献していきます。" />
+    <meta name="keywords" content="ベンチャーキャピタル,ベンチャー投資ファンド,次世代ホームネットファンド,ライドオンエクスプレス,ベンチャーキャピタル,在宅サービス,ビッグデータ,宅配物流ネットワーク" />
+
+    <meta property="og:title" content="株式会社エースタート" />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://www.astart.co.jp/" />
+    <meta property="og:image" content="https://www.astart.co.jp/common/img/ogp.jpg" />
+    <meta property="og:site_name" content="株式会社エースタート" />
+    <meta property="og:description" content="エースタートは、起業家と共に伴走する事業家系VCとして、宇宙、ESG、AI、IoT、DX、Medi-tech等、先端技術を活用するベンチャー企業への投資を通じて、ベンチャー業界に貢献していきます。" />
+
+    <!--================= favicon =================-->
+    <link rel="apple-touch-icon" href="https://otemachiprep.com/common/img/webclipicon.png" />
+    <link rel="shortcut icon" href="https://otemachiprep.com/common/img/favicon.ico" />
+
+    <!--================= css / js ================= -->
+    <link type="text/css" rel="stylesheet" href="https://otemachiprep.com/common/css/reset.css" media="all" />
+    <link type="text/css" rel="stylesheet" href="https://otemachiprep.com/common/css/style.css" media="all" />
+    <link type="text/css" rel="stylesheet" href="https://otemachiprep.com/common/css/effect.css" media="all" />
+    <script type="text/javascript" src="https://otemachiprep.com/common/js/jquery.min.js"></script>
+    <script type="text/javascript" src="https://otemachiprep.com/common/js/script.js"></script>
+
+    <title>株式会社エースタート</title>
+  </head>
+
+  <body id="homePage">
+    <div id="openingBlock">
+      <img src="https://otemachiprep.com/common/img/logo_open.svg" alt="@START" />
+    </div>
+
+    <header>
+      <h1>
+        <a href="./">
+          <svg class="logo"><use xlink:href="https://otemachiprep.com/common/img/logo.svg#logo"></use></svg>
+        </a>
+      </h1>
+      <nav>
+        <ul>
+          <li><a href="../../../../../../index.html">TOP</a></li>
+          <li><a href="../../../../../../about/index.html">ABOUT</a></li>
+          <li><a href="https://otemachiprep.com/fund/">FUND</a></li>
+          <li><a href="https://otemachiprep.com/team/">TEAM</a></li>
+          <li><a href="https://otemachiprep.com/interview/top/">INTERVIEW</a></li>
+          <li><a href="https://otemachiprep.com/portfolio/">PORTFOLIO</a></li>
+          <li><a href="https://otemachiprep.com/news/">NEWS</a></li>
+          <li><a href="../../../../../../contact/index.html">CONTACT</a></li>
+        </ul>
+      </nav>
+      <div id="spMenuBut"><span></span><span></span><span></span></div>
+    </header>
+
+    <main>
+      <div id="keyVisualBlock">
+        <div class="container scroll_element see_lead_box_in">
+          <section class="container_inner">
+            <h2>起業家と共に伴走する<br />事業家系VCとして</h2>
+            <p>私達自身も事業家としての経験をしてきたから…<br />同じ目線で問題解決し、ベンチャーの成長を加速</p>
+          </section>
+          <div class="img_box"><img src="https://otemachiprep.com/common/img/ill_key.svg" /></div>
+        </div>
+      </div>
+
+      <div id="philosophyBlock">
+        <div class="container scroll_element see_lead_box_in">
+          <section class="lead_box container_inner">
+            <h4>哲学</h4>
+            <h3>PHILOSOPHY</h3>
+            <p>ベンチャーキャピタル（VC）業界には、金融系、大学系、政府系、独立系など様々な種類のVCがあります。<br />エースタートは、独立系の中でもさらに「事業家系VC」という特徴的なポジションをとっています。<br />出資先の経営者の方々が、今悩んでいること、感じている経営課題、上場前後に対応すべき準備などを、実際に私達自身も事業家として経験してきたことをベースに、同じ目線で伴走しながら解決し、共に成長していく、エースタートはそんな存在でありたいと思っています。</p>
+            <div class="but_more"><a href="../../../../../../about/index.html">エースタートについてはこちら</a></div>
+          </section>
+          <div class="img_box"><img src="https://otemachiprep.com/common/img/ill_philosophy.svg" /></div>
+        </div>
+      </div>
+
+      <div id="strategyBlock">
+        <div class="container scroll_element see_lead_box_in">
+          <section class="lead_box container_inner">
+            <h4>投資方針</h4>
+            <h3>STRATEGY</h3>
+            <p>それぞれの分野の先進技術を駆使して新たなサービスやコンテンツ、商品などの展開に可能性を持つ「Tech 系ベンチャー企業」に対して投資。シードからレイターまで全ての投資ステージに対応。</p>
+            <div class="but_more"><a href="https://otemachiprep.com/fund/">運用ファンドはこちら</a></div>
+          </section>
+          <div class="img_box"><img src="https://otemachiprep.com/common/img/ill_strategy.svg" /></div>
+        </div>
+      </div>
+
+      <div id="teamBlock">
+        <div class="container scroll_element see_lead_box_in">
+          <section class="lead_box container_inner">
+            <h4>チーム</h4>
+            <h3>CAPITALIST<br />TEAM</h3>
+            <p>IPO やベンチャー経営など、<br class="spNoBr" />実業を経験してきたキャピタリストのチームをご紹介。</p>
+            <div class="but_more"><a href="https://otemachiprep.com/team/">キャピタリストチームはこちら</a></div>
+          </section>
+          <div class="img_box"><img src="https://otemachiprep.com/common/img/ill_team.svg" /></div>
+        </div>
+      </div>
+
+      <div id="companyBlock">
+        <div class="container scroll_element see_lead_box_in">
+          <section class="lead_box container_inner">
+            <h4>会社概要</h4>
+            <h3>COMPANY</h3>
+            <table>
+              <tr>
+                <th>社名</th>
+                <td>株式会社エースタート(ａSTART Co.,Ltd.)</td>
+              </tr>
+              <tr>
+                <th>設立</th>
+                <td>2015年1月</td>
+              </tr>
+              <tr>
+                <th>代表者</th>
+                <td>代表取締役 CEO　渡邊 一正</td>
+              </tr>
+              <tr>
+                <th>事業内容</th>
+                <td>ベンチャーキャピタル事業</td>
+              </tr>
+              <tr>
+                <th>住所</th>
+                <td>〒108-6317 <br class="spNoBr" />東京都港区三田3-5-27 <br class="spBr" />住友不動産東京三田サウスタワー17階</td>
+              </tr>
+            </table>
+          </section>
+          <div class="img_box"><img src="https://otemachiprep.com/common/img/ill_company.svg" /></div>
+        </div>
+      </div>
+
+      <div id="contactBlock">
+        <div class="container">
+          <section class="container_inner">
+            <h3>CONTACT</h3>
+            <div class="but_more"><a href="../../../../../../contact/index.html">投資に関するお問合せはこちら</a></div>
+          </section>
+        </div>
+      </div>
+    </main>
+
+    <div id="pageTop"></div>
+    <footer>
+      <div id="privacy"><a href="https://otemachiprep.com/privacypolicy/">プライバシー&DEIポリシー</a></div>
+      <div id="copyright">Copyright &copy; ａSTART Co.,Ltd. All Rights Reserved.</div>
+    </footer>
+    <script type="text/javascript">
+      function redirect() {
+        if (location.hash === '#news') {
+          location.href = 'https://www.astart.co.jp/news/';
+        } else if (location.hash === '#contact') {
+          location.href = 'https://www.astart.co.jp/contact/';
+        }
+      }
+
+      setTimeout(redirect(), 0);
+    </script>
+  </body>
+</html>

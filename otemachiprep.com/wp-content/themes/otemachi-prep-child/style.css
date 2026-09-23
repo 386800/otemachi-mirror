@@ -1,0 +1,24 @@
+/*
+Theme Name: Assembler Child — OTEMACHI PREP
+Template: assembler
+Version: 9.5
+Description: 大手町プレップ専用の子テーマ。LPテンプレート（page-otemachi-prep.php）と資産一式を含む。
+*/
+/* op-materials-v9.5: 新4講座の図表を、生成グラフから「完成版Excelモデル（Completed）の実画面スクショ」に差し替え（LBO講座と同様の見せ方）。デット=年次DS/月次OL/格付/Checks、PF=30年モデル全景/CAPEX/感応度/Checks、不動産=ディールサマリー/土地ローン/建設ローン/Checks、買い手リスト=事業会社リスト/買収余力試算/PEリスト/Checks。outputsのみ更新。 */
+/* op-materials-v9.4: 新4講座（デット／PF／不動産／M&A買い手リスト）の紹介文をLBO講座水準に増補。教材の実測値（頁数・シート数・Checks項目数・検算値・QA）を全セクションに反映。データのみ変更。 */
+/* op-materials-v9.3: 教材ラインナップに M&A買い手リスト作成講座（Lv3・案件ソーシング）を追加。データ・画像（assets/materials/buyerlist/）・詳細ページslug（ma-buyer-list）を同梱。既存講座・会員・決済には非干渉。 */
+/* op-materials-v9.2: 教材ラインナップに3講座を追加。デットモデリング（コマーシャルバンキング／Lv4）、太陽光プロジェクトファイナンス（Lv5）、不動産開発ファイナンス分譲（Lv5）。データ（inc/op-materials-v6-data.php）・画像（assets/materials/{debt,pf,refm}/）・詳細ページslug（functions.php）を同梱。既存講座・会員・決済には非干渉。 */
+/* op-materials-v9.1: PEディールプロセス実務入門（Lv3・プラチナ）をラインナップに常設。 */
+/* op-pefunds-v1 (8.4): PEファンド一覧・業界マップ・個別ページ /pe-funds/ を新設（inc/op-pefunds.php＋データ＋page-pe-funds.php＋rewrite）。既存ページ・ヘッダー・会員・決済・SEOには非干渉。 */
+/* op-pefunds-logos (8.7): 公式ロゴ105社を assets/pefunds/logos/ に設置（Claude Code収集・公式サイト100+LinkedIn5・SVG52/WebP53）。残38社はテキストmono維持（白抜き専用/JS描画/未特定）。_logo_manifest.csv同梱。 */
+/* op-pefunds-v1.1 (8.6): 個別ページ /pe-funds/{slug}/ の404＋CSS未読込を修正。リライト未フラッシュ環境でも template_redirect でURLパスを直接判定して個別ページを描画する保険ルートを追加＋リライト再フラッシュ(op_pefunds_rw=v86)。 */
+/* op-pefunds-v1 (8.5): 全テンプレの分野別記事メニューに /pe-funds/ 導線追加、記事一覧(page-articles)にPE業界研究DBバナー設置、ロゴ差し替えインフラ(assets/pefunds/logos/)を実装（無い場合はテキストmonoにフォールバック）。 */
+/* op-hdr-v83 (8.3): 「新規受講登録」ボタンを撤去し単一CTAへ戻す（ロゴ重なり解消・実測: ロゴ181+ナビ955=内寸1136で接触→撤去でナビ814/余白141px）。未ログイン時のボタンを「会員登録(→/my-account/)」から「受講申込(→/materials/ 教材紹介)」へ変更。ログイン時はMy Page(→/my-account/)。 */
+/* op-navfit-v2 (8.2): ヘッダーCTA2個化に伴い、ナビ畳み込み閾値を1200pxへ統一（全ページCSS）。≤1200=ドロワー、≥1201=1行維持＋CTA微コンパクト。マイアカウント等での項目折返しを解消。 */
+/* op-hdr-v81 (8.1): ヘッダーCTAを刷新。「マイページ」→「My Page」に改称し、右横にゴールドの「新規受講登録」ボタン（→/materials/ 講座紹介一覧）を追加。全ページテンプレート＋全ページCSSに反映。 */
+/* 通常ページには影響を与えない。LP用CSSは assets/css/otemachi-prep.css をテンプレート経由で読み込む。 */
+/* op-material-detail-v1 (4.1): 個別教材紹介LP /materials/investment-banking-interview-160/ を追加（page-materials.php分岐＋functions.php集約）。 */
+/* op-lp-v5 (5.0): トップLPメッセージ設計刷新（読む。組む。説明できる。／What・Outcomes新設／Method 4段EXPLAIN／なぜ当サイト＋信頼性統合）＋日本語改行制御＋数値静的化＋SEO更新。ヒーローはピッチブック図を撤去し東京駅写真に一本化。 */
+/* op-v64 (6.4): /articles/ カテゴリカードの透かしロゴを、11分野それぞれの内容に合わせたラインアイコン（SVG）へ差し替え（mi-ic）。 */
+/* op-v65 (6.5): メール署名のブランド統一に伴い、お問い合わせ自動返信の旧テキスト署名を削除（ロゴ入りHTML署名はOPCC v1.1.1のwp_mailフィルタで全メールに付与）。 */
+/* op-v66 (6.6): マイページを左サイドバー型ポータルへ再設計（学習/サポート/アカウントのグループナビ・sticky・モバイルはチップ維持）。プラグインv1.2.0（お知らせ・質問相談・ダッシュボード刷新）に対応。 */

@@ -1,0 +1,175 @@
+/* op-mainsights-v1: FA・M&A仲介市場 分析記事群の追加スタイル。
+   土台は op-page-ma-advisors.css（tokens・chrome・article layout）。濃紺×白×控えめゴールド。 */
+
+.mi-head{padding-bottom:30px}
+.mi-head h1{max-width:960px}
+.mi-layout{gap:56px}
+.mi-body{max-width:760px}
+.mi-body h2{scroll-margin-top:96px}
+.mi-body p{color:var(--ink)}
+.mi-body .lead{font-size:1rem;color:var(--gray)}
+.mi-body td a,.mi-body th a{color:var(--link)}
+
+/* ---------- KPIカード ---------- */
+.mi-kpiwrap{margin:30px 0 8px}
+.mi-kpihead{font-family:var(--font-en);font-size:.68rem;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--soft);margin-bottom:12px}
+.mi-kpis{display:grid;grid-template-columns:repeat(auto-fill,minmax(158px,1fr));gap:1px;background:var(--line);border:1px solid var(--line)}
+.mi-kpi{background:#fff;padding:16px 16px 14px;display:flex;flex-direction:column;gap:2px}
+.mi-kpi .k-label{font-size:.7rem;color:var(--gray);letter-spacing:.02em}
+.mi-kpi .k-value{font-family:var(--font-en);font-size:1.5rem;font-weight:700;color:var(--navy);font-variant-numeric:tabular-nums;line-height:1.3}
+.mi-kpi .k-value small{font-size:.75rem;font-weight:600;color:var(--gray);margin-left:2px}
+.mi-kpi .k-sub{font-size:.66rem;color:var(--soft)}
+
+/* ---------- 横棒グラフ ---------- */
+.mi-bars{margin:20px 0 8px;border-top:1px solid var(--line)}
+.mi-bar-row{display:grid;grid-template-columns:minmax(120px,220px) 1fr minmax(86px,auto);align-items:center;gap:12px;padding:7px 0;border-bottom:1px solid var(--line)}
+.mi-bar-row .b-label{font-size:.82rem;line-height:1.5;overflow-wrap:anywhere}
+.mi-bar-row .b-track{background:var(--panel);height:14px;position:relative}
+.mi-bar-row .b-fill{position:absolute;left:0;top:0;bottom:0;background:linear-gradient(90deg,var(--navy),var(--navy-2))}
+.mi-bar-row .b-val{font-family:var(--font-en);font-size:.8rem;font-weight:600;color:var(--navy);text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+.mi-bar-row .b-note{font-family:var(--font-sans);font-weight:400;color:var(--soft);font-size:.68rem}
+
+/* ---------- ヒストグラム（縦棒） ---------- */
+.mi-hist{margin:26px 0 10px}
+.mi-hist .h-cols{display:flex;align-items:stretch;gap:10px;border-bottom:2px solid var(--navy);padding:0 4px}
+.mi-hist .h-col{flex:1;display:flex;flex-direction:column;align-items:center;min-width:0}
+.mi-hist .h-val{font-family:var(--font-en);font-size:.78rem;font-weight:600;color:var(--navy);font-variant-numeric:tabular-nums}
+.mi-hist .h-barzone{height:170px;width:100%;display:flex;align-items:flex-end;justify-content:center;margin-top:4px}
+.mi-hist .h-bar{width:72%;max-width:64px;background:linear-gradient(180deg,var(--navy-2),var(--navy))}
+.mi-hist .h-label{font-size:.68rem;color:var(--gray);margin-top:8px;text-align:center;line-height:1.4;white-space:nowrap}
+.mi-figcap{font-size:.72rem;color:var(--soft);margin:10px 0 0}
+
+/* ---------- テーブル ---------- */
+.mi-tablewrap{overflow-x:auto;margin:22px 0 6px;border:1px solid var(--line);-webkit-overflow-scrolling:touch}
+.mi-table{width:100%;border-collapse:collapse;font-size:.82rem;min-width:560px}
+.mi-table th,.mi-table td{padding:9px 12px;border-bottom:1px solid var(--line);text-align:left;line-height:1.6;vertical-align:top}
+.mi-table thead th{background:var(--navy);color:#fff;font-size:.72rem;font-weight:600;letter-spacing:.04em;white-space:nowrap;position:sticky;top:0}
+.mi-table tbody tr:nth-child(even){background:#FAFCFE}
+.mi-table td.num,.mi-table th.num{text-align:right;font-family:var(--font-en);font-variant-numeric:tabular-nums;white-space:nowrap}
+.mi-table td.ctr{text-align:center}
+.mi-table .rank{font-family:var(--font-en);font-weight:700;color:var(--soft);text-align:center;white-space:nowrap}
+.mi-table tr.hl td{background:#FBF7EC}
+.mi-table .tag{display:inline-block;font-size:.66rem;font-weight:600;padding:.1em .6em;background:var(--panel);color:var(--navy);border-radius:2px;margin:0 4px 2px 0;white-space:nowrap}
+
+/* ---------- ヒートマップ ---------- */
+.mi-heatwrap{border:1px solid var(--line)}
+.mi-heat{border-collapse:collapse;font-size:.76rem;min-width:760px;width:100%}
+.mi-heat th.hm-co{position:sticky;left:0;background:#fff;text-align:left;padding:6px 10px;border-bottom:1px solid var(--line);border-right:1px solid var(--line);font-weight:500;min-width:170px;z-index:2}
+.mi-heat thead th{background:var(--navy);color:#fff;font-weight:600;font-size:.66rem;padding:8px 2px;border-bottom:1px solid var(--line)}
+.mi-heat thead th.hm-co{background:var(--navy);color:#fff;z-index:3}
+.mi-heat thead th.hm-ind span{writing-mode:vertical-rl;text-orientation:mixed;display:inline-block;min-height:64px;letter-spacing:.12em}
+.mi-heat td{width:34px;height:30px;border:1px solid #EDF1F5;text-align:center}
+.mi-heat td .sr,.mi-heatlegend .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+.mi-heat td.c0{background:#fff}
+.mi-heat td.c1{background:#D8E4F2}
+.mi-heat td.c2{background:#5E81AF}
+.mi-heat td.c3{background:var(--navy)}
+.mi-heatlegend{display:flex;flex-wrap:wrap;gap:14px;margin:12px 0 0;font-size:.7rem;color:var(--gray)}
+.mi-heatlegend i{display:inline-block;width:12px;height:12px;margin-right:5px;vertical-align:-1px;border:1px solid var(--line)}
+.mi-heatlegend i.c1{background:#D8E4F2}
+.mi-heatlegend i.c2{background:#5E81AF}
+.mi-heatlegend i.c3{background:var(--navy)}
+.mi-heatlegend i.c0{background:#fff}
+
+/* ---------- ポジショニング（カテゴリマトリクス） ---------- */
+.mi-posmap{margin:26px 0 8px;border:1px solid var(--line)}
+.mi-posmap .pm-grid{display:grid;grid-template-columns:96px repeat(3,1fr)}
+.mi-posmap .pm-cell{border:1px solid #EDF1F5;min-height:74px;padding:8px;display:flex;flex-wrap:wrap;gap:5px;align-content:flex-start}
+.mi-posmap .pm-ylab{display:flex;align-items:center;justify-content:center;background:var(--panel);font-size:.7rem;font-weight:600;color:var(--navy);text-align:center;line-height:1.5;padding:6px}
+.mi-posmap .pm-xlab{background:var(--navy);color:#fff;font-size:.7rem;font-weight:600;text-align:center;padding:8px 4px;letter-spacing:.04em}
+.mi-posmap .pm-corner{background:var(--navy)}
+.mi-posmap .pm-chip{font-size:.68rem;line-height:1.4;background:var(--panel);padding:.2em .55em;border-radius:2px;white-space:nowrap}
+.mi-posmap .pm-chip a{color:var(--navy)}
+.mi-posmap .pm-chip.big{background:#EAF0E7;font-weight:600}
+
+/* ---------- フロー図（エコシステム） ---------- */
+.mi-flow{margin:28px 0 10px}
+.mi-flow .f-step{border:1px solid var(--line);border-left:3px solid var(--navy);background:#fff;padding:16px 20px;position:relative}
+.mi-flow .f-step + .f-step{margin-top:34px}
+.mi-flow .f-step + .f-step::before{content:"";position:absolute;top:-27px;left:50%;width:2px;height:20px;background:var(--navy)}
+.mi-flow .f-step + .f-step::after{content:"";position:absolute;top:-10px;left:50%;transform:translateX(-50%);border:6px solid transparent;border-top-color:var(--navy)}
+.mi-flow .f-title{font-weight:700;color:var(--navy);font-size:.92rem;display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+.mi-flow .f-title .en{font-family:var(--font-en);font-size:.64rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--soft)}
+.mi-flow .f-body{font-size:.83rem;color:var(--gray);margin-top:6px;line-height:1.8}
+.mi-flow .f-links{margin-top:8px;display:flex;flex-wrap:wrap;gap:10px;font-size:.76rem}
+.mi-flow .f-branch{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:12px}
+.mi-flow .f-sub{border:1px solid var(--line);background:var(--panel);padding:12px 14px;font-size:.8rem}
+.mi-flow .f-sub b{color:var(--navy)}
+
+/* ---------- 定義ボックス ---------- */
+.mi-defbox{background:var(--panel);border:1px solid var(--line);padding:26px 30px;margin:48px 0 0}
+.mi-defbox h2{border:none;margin:0 0 14px;padding:0;font-size:1rem}
+.mi-defbox dl{display:flex;flex-direction:column;gap:0}
+.mi-defbox .d-row{display:grid;grid-template-columns:180px 1fr;gap:14px;padding:9px 0;border-top:1px solid var(--line);font-size:.82rem}
+.mi-defbox dt{font-weight:600;color:var(--navy)}
+.mi-defbox dd{color:var(--gray);line-height:1.8}
+.mi-note{font-size:.74rem;color:var(--soft);margin-top:16px;line-height:1.9}
+
+/* ---------- FAQ ---------- */
+.mi-faq{margin-top:48px}
+.mi-faq-item{border:1px solid var(--line);border-bottom:none}
+.mi-faq-item:last-of-type{border-bottom:1px solid var(--line)}
+.mi-faq-item summary{cursor:pointer;padding:14px 18px;font-weight:600;font-size:.9rem;color:var(--navy);list-style:none;position:relative;padding-right:44px}
+.mi-faq-item summary::-webkit-details-marker{display:none}
+.mi-faq-item summary::after{content:"+";position:absolute;right:18px;top:50%;transform:translateY(-50%);font-family:var(--font-en);font-size:1.1rem;color:var(--soft)}
+.mi-faq-item[open] summary::after{content:"−"}
+.mi-faq-item .a{padding:0 18px 16px;font-size:.86rem;color:var(--gray);line-height:1.95}
+
+/* ---------- 回遊ナビ ---------- */
+.mi-next{margin-top:48px}
+.mi-next-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:14px;margin-top:6px}
+.mi-next-card{border:1px solid var(--line);background:#fff;padding:16px 18px;display:flex;flex-direction:column;gap:8px;transition:border-color .25s,box-shadow .25s;text-decoration:none}
+.mi-next-card:hover{border-color:#B9C7D8;box-shadow:0 10px 26px rgba(14,36,64,.08);text-decoration:none}
+.mi-next-card .q{font-size:.78rem;color:var(--gray);line-height:1.7}
+.mi-next-card .t{font-weight:700;font-size:.86rem;color:var(--navy)}
+.mi-next-card .ar{font-family:var(--font-en)}
+
+/* ---------- 教材CTA ---------- */
+.mi-cta{margin-top:48px;border:1px solid #D9CBA8;background:linear-gradient(135deg,#FDFBF5,#F7F1E2);padding:28px 30px}
+.mi-cta h2{border:none;margin:0 0 10px;padding:0;font-size:1.05rem;color:var(--navy)}
+.mi-cta p{font-size:.88rem;color:var(--gray);margin-bottom:16px}
+.mi-cta-links{display:flex;flex-wrap:wrap;gap:12px}
+
+/* ---------- サイドバー ---------- */
+.mi-side{position:sticky;top:96px;display:flex;flex-direction:column;gap:26px;font-size:.82rem}
+.mi-side .s-head{font-family:var(--font-en);font-size:.64rem;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--soft);margin-bottom:10px}
+.mi-toc ol{counter-reset:toc;border-left:2px solid var(--line)}
+.mi-toc li{counter-increment:toc;padding:4px 0 4px 14px}
+.mi-toc a{color:var(--gray)}
+.mi-toc a::before{content:counter(toc,decimal-leading-zero) " ";font-family:var(--font-en);font-size:.68rem;color:var(--soft);margin-right:4px}
+.mi-toc a:hover{color:var(--navy);text-decoration:none}
+.mi-series ul,.mi-dbs ul{border-top:1px solid var(--line)}
+.mi-series li,.mi-dbs li{border-bottom:1px solid var(--line);padding:7px 2px}
+.mi-series li.cur span{font-weight:700;color:var(--navy)}
+.mi-series a,.mi-dbs a{color:var(--gray)}
+.mi-series a:hover,.mi-dbs a:hover{color:var(--navy)}
+
+/* ---------- インライン強調 ---------- */
+.mi-body .stat-em{font-family:var(--font-en);font-weight:700;color:var(--navy);font-variant-numeric:tabular-nums}
+.mi-body .src-note{font-size:.74rem;color:var(--soft)}
+
+/* ---------- レスポンシブ ---------- */
+@media (max-width:1020px){
+/* minmax(0,1fr)必須: 素の1frはmin=autoのため、min-width付きテーブル等の
+   min-contentでトラックが355px超に膨張し本文が右端で切れる（2026-08-16実測） */
+.mi-layout{grid-template-columns:minmax(0,1fr);gap:40px}
+.mi-layout>*{min-width:0}
+.mi-side{position:static;flex-direction:row;flex-wrap:wrap;gap:32px;border-top:1px solid var(--line);padding-top:26px}
+.mi-side>nav{flex:1 1 240px}
+}
+@media (max-width:640px){
+.mi-kpis{grid-template-columns:repeat(2,1fr)}
+.mi-kpi .k-value{font-size:1.25rem}
+.mi-bar-row{grid-template-columns:minmax(96px,140px) 1fr minmax(64px,auto);gap:8px}
+.mi-bar-row .b-label{font-size:.74rem}
+.mi-hist .h-cols{gap:5px}
+.mi-hist .h-barzone{height:120px}
+.mi-hist .h-label{font-size:.58rem;white-space:normal}
+.mi-defbox{padding:20px 18px}
+.mi-defbox .d-row{grid-template-columns:1fr;gap:2px}
+.mi-cta{padding:22px 18px}
+.mi-posmap .pm-grid{grid-template-columns:64px repeat(3,1fr)}
+.mi-posmap .pm-ylab{font-size:.62rem;padding:4px}
+.mi-posmap .pm-chip{white-space:normal}
+.mi-flow .f-branch{grid-template-columns:1fr}
+}

@@ -1,0 +1,2581 @@
+<!DOCTYPE html>
+<html lang="ja" class="js">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600&family=Inter:wght@400;500;600&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet" media="print" onload="this.media='all';this.onload=null"><noscript><link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600&family=Inter:wght@400;500;600&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet"></noscript>
+<link rel="icon" type="image/png" sizes="32x32" href="../wp-content/themes/otemachi-prep-child/assets/images/op-favicon.png">
+<link rel="icon" type="image/png" sizes="64x64" href="../wp-content/themes/otemachi-prep-child/assets/images/op-favicon-64.png">
+<link rel="apple-touch-icon" href="../wp-content/themes/otemachi-prep-child/assets/images/op-touch-icon.png">
+<meta name="theme-color" content="#14355F">
+<script>document.documentElement.classList.add('js');</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-YL19Q40XV6"></script>
+<script id="opm-gtag">
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('set', 'user_properties', {op_member_level: "guest"});
+gtag('config', "G-YL19Q40XV6", {anonymize_ip: true});
+</script>
+		<title>財務モデルのためのHistorical Data Cleaning｜モデルを組む前のデータ整形｜大手町プレップ</title>
+<meta name='robots' content='max-image-preview:large' />
+<script id="opm-datalayer">
+window.dataLayer = window.dataLayer || [];
+(function(){
+  var base = {"op_member_level":"guest"};
+  function push(o){
+    var d = {}; for (var k in base) d[k] = base[k];
+    for (var k2 in o) d[k2] = o[k2];
+    window.dataLayer.push(d);
+    if (typeof window.gtag === 'function' && d.event) {
+      var p = {}; for (var k3 in d) { if (k3 !== 'event') p[k3] = d[k3]; }
+      window.gtag('event', d.event, p);
+    }
+  }
+  window.opmTrack = push;
+  var evs = [{"event":"op_free_content_view","op_visibility":"public"}];
+  for (var i = 0; i < evs.length; i++) push(evs[i]);
+})();
+</script>
+		<link rel="preload" href="https://otemachiprep.com/wp-content/themes/otemachi-prep-child/assets/fonts/inter/InterVariable.woff2" as="font" type="font/woff2" crossorigin>
+<link rel='dns-prefetch' href='//secure.gravatar.com' />
+<link rel='dns-prefetch' href='//widgets.wp.com' />
+<link rel='dns-prefetch' href='//jetpack.wordpress.com' />
+<link rel='dns-prefetch' href='//s0.wp.com' />
+<link rel='dns-prefetch' href='//public-api.wordpress.com' />
+<link rel='dns-prefetch' href='//0.gravatar.com' />
+<link rel='dns-prefetch' href='//1.gravatar.com' />
+<link rel='dns-prefetch' href='//2.gravatar.com' />
+<link rel='preconnect' href='//i0.wp.com' />
+<link rel='preconnect' href='//c0.wp.com' />
+<link rel="alternate" type="application/rss+xml" title="大手町プレップ &raquo; フィード" href="https://otemachiprep.com/feed/" />
+<link rel="alternate" type="application/rss+xml" title="大手町プレップ &raquo; コメントフィード" href="https://otemachiprep.com/comments/feed/" />
+<link rel="alternate" type="application/rss+xml" title="大手町プレップ &raquo; 財務モデルのためのHistorical Data Cleaning｜モデルを組む前のデータ整形 のコメントのフィード" href="https://otemachiprep.com/mod-026-historical-data-cleaning/feed/" />
+<link rel="alternate" title="oEmbed (JSON)" type="application/json+oembed" href="https://otemachiprep.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fotemachiprep.com%2Fmod-026-historical-data-cleaning%2F" />
+<link rel="alternate" title="oEmbed (XML)" type="text/xml+oembed" href="https://otemachiprep.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fotemachiprep.com%2Fmod-026-historical-data-cleaning%2F&#038;format=xml" />
+
+<!-- op-seo-v1 -->
+<meta name="description" content="財務モデルの実績データ整形（Historical Data Cleaning）を解説。会計方針変更・決算期変更・期中M&amp;Aによる断絶の繋ぎ方、異常値・欠損値の判断基準、Adjustment Logによる調整記録の型まで実務目線でまとめます。">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="大手町プレップ">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:title" content="財務モデルのためのHistorical Data Cleaning｜モデルを組む前のデータ整形｜大手町プレップ">
+<meta property="og:description" content="財務モデルの実績データ整形（Historical Data Cleaning）を解説。会計方針変更・決算期変更・期中M&amp;Aによる断絶の繋ぎ方、異常値・欠損値の判断基準、Adjustment Logによる調整記録の型まで実務目線でまとめます。">
+<meta property="og:url" content="https://otemachiprep.com/mod-026-historical-data-cleaning/">
+<meta property="og:image" content="https://i0.wp.com/otemachiprep.com/wp-content/uploads/thumbnails/2026-08-22/mod-026-historical-data-cleaning.webp?fit=1600%2C900&#038;ssl=1">
+<meta property="og:image:width" content="1600">
+<meta property="og:image:height" content="900">
+<meta property="og:image:alt" content="大手町プレップ｜学ぶ。調べる。実践する。— M&amp;A・PE・投資銀行・財務モデリングの専門プラットフォーム">
+<meta property="article:published_time" content="2026-08-17T00:36:54+09:00">
+<meta property="article:modified_time" content="2026-08-16T15:36:54+09:00">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="財務モデルのためのHistorical Data Cleaning｜モデルを組む前のデータ整形｜大手町プレップ">
+<meta name="twitter:description" content="財務モデルの実績データ整形（Historical Data Cleaning）を解説。会計方針変更・決算期変更・期中M&amp;Aによる断絶の繋ぎ方、異常値・欠損値の判断基準、Adjustment Logによる調整記録の型まで実務目線でまとめます。">
+<meta name="twitter:image" content="https://i0.wp.com/otemachiprep.com/wp-content/uploads/thumbnails/2026-08-22/mod-026-historical-data-cleaning.webp?fit=1600%2C900&#038;ssl=1">
+<meta name="twitter:image:alt" content="大手町プレップ｜学ぶ。調べる。実践する。— M&amp;A・PE・投資銀行・財務モデリングの専門プラットフォーム">
+
+<!-- op-seo-v1 JSON-LD -->
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://otemachiprep.com/#organization","name":"大手町プレップ","alternateName":"OTEMACHI PREP","url":"https://otemachiprep.com/","logo":{"@type":"ImageObject","@id":"https://otemachiprep.com/#logo","url":"https://otemachiprep.com/wp-content/uploads/2026/07/op-site-icon-preview.png","width":512,"height":512,"caption":"大手町プレップ"},"image":{"@id":"https://otemachiprep.com/#logo"},"contactPoint":{"@type":"ContactPoint","email":"support@otemachiprep.com","contactType":"customer support","availableLanguage":["Japanese"]}},{"@type":"WebSite","@id":"https://otemachiprep.com/#website","url":"https://otemachiprep.com/","name":"大手町プレップ","alternateName":"OTEMACHI PREP","description":"DCF・LBO・M&A・バリュエーション・財務モデリングを日本語で学べる実務者向けファイナンス学習サイト","publisher":{"@id":"https://otemachiprep.com/#organization"},"inLanguage":"ja","potentialAction":{"@type":"SearchAction","target":{"@type":"EntryPoint","urlTemplate":"https://otemachiprep.com/?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@type":"BreadcrumbList","@id":"https://otemachiprep.com/mod-026-historical-data-cleaning/#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"大手町プレップ","item":"https://otemachiprep.com/"},{"@type":"ListItem","position":2,"name":"財務モデリング","item":"https://otemachiprep.com/category/%e8%b2%a1%e5%8b%99%e3%83%a2%e3%83%87%e3%83%aa%e3%83%b3%e3%82%b0/"},{"@type":"ListItem","position":3,"name":"財務モデルのためのHistorical Data Cleaning｜モデルを組む前のデータ整形","item":"https://otemachiprep.com/mod-026-historical-data-cleaning/"}]},{"@type":"Article","@id":"https://otemachiprep.com/mod-026-historical-data-cleaning/#article","headline":"財務モデルのためのHistorical Data Cleaning｜モデルを組む前のデータ整形","description":"財務モデルの実績データ整形（Historical Data Cleaning）を解説。会計方針変更・決算期変更・期中M&Aによる断絶の繋ぎ方、異常値・欠損値の判断基準、Adjustment Logによる調整記録の型まで実務目線でまとめます。","inLanguage":"ja","datePublished":"2026-08-17T00:36:54+09:00","dateModified":"2026-08-16T15:36:54+09:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://otemachiprep.com/mod-026-historical-data-cleaning/"},"image":{"@type":"ImageObject","url":"https://i0.wp.com/otemachiprep.com/wp-content/uploads/thumbnails/2026-08-22/mod-026-historical-data-cleaning.webp?fit=1600%2C900&ssl=1"},"author":{"@type":"Organization","name":"大手町プレップ編集部","@id":"https://otemachiprep.com/#organization","url":"https://otemachiprep.com/about/"},"editor":{"@type":"Person","name":"西","url":"https://otemachiprep.com/about/#supervisor"},"publisher":{"@id":"https://otemachiprep.com/#organization"},"isPartOf":{"@id":"https://otemachiprep.com/#website"}},{"@type":"FAQPage","@id":"https://otemachiprep.com/mod-026-historical-data-cleaning/#faq","mainEntity":[{"@type":"Question","name":"異常値は必ず除外すべきですか。","acceptedAnswer":{"@type":"Answer","text":"いいえ。金額が大きいという理由だけで除外するのは危険です。開示情報から一時的要因であることが確認できる場合に限り調整し、理由をログに残してください。毎期発生しているコストは実質的に経常的である可能性を疑ってください。"}},{"@type":"Question","name":"欠損値を補間すると、モデルの信頼性は落ちませんか。","acceptedAnswer":{"@type":"Answer","text":"補間した箇所を明示し、重要な前提（成長率の起点など）には使わない、という運用を徹底すれば実務上は許容されます。補間したことを隠すと信頼性を損ないますが、注記した補間はむしろ透明性の担保になります。"}},{"@type":"Question","name":"Adjustment Logは社内向けだけで十分ですか。","acceptedAnswer":{"@type":"Answer","text":"デューデリジェンスやIMに添付する場合は、外部の読み手が調整の妥当性を検証できる粒度で記載する必要があります。社内検討用の粗いログとは別に、開示用に整理し直すことも多くあります。"}},{"@type":"Question","name":"mod-025で作ったHistoricalsに対して、本記事の調整はいつ行うべきですか。","acceptedAnswer":{"@type":"Answer","text":"勘定科目マッピング（mod-025の範囲）が終わった後、モデルの前提設定（成長率・マージンの過去トレンド算出）に着手する前に行うのが基本です。マッピングと整形を同時並行で進めると、どちらの調整か分からなくなりやすいため注意してください。"}}]}]}</script>
+<link rel='stylesheet' id='all-css-1368889a98bef45a99d69428d25a3303' href='https://otemachiprep.com/_static/??wp-content/themes/otemachi-prep-child/assets/css/op-article.css,wp-content/plugins/otemachi-prep-membership/assets/css/opm.css?m=1789961453' type='text/css' media='all' />
+<style id="jetpack-global-styles-frontend-style-inline-css">
+:root { --font-headings: unset; --font-base: unset; --font-headings-default: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif; --font-base-default: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif;}
+/*# sourceURL=jetpack-global-styles-frontend-style-inline-css */
+</style>
+<link rel='stylesheet' id='all-css-d83ba1559ad7b211576588f2cd1b94bb' href='https://otemachiprep.com/wp-content/themes/otemachi-prep-child/assets/css/op-article-v2.css?m=1789194615' type='text/css' media='all' />
+<script id="jetpack-mu-wpcom-settings-js-before">
+var JETPACK_MU_WPCOM_SETTINGS = {"assetsUrl":"https://otemachiprep.com/wp-content/mu-plugins/wpcomsh/jetpack_vendor/automattic/jetpack-mu-wpcom/src/build/"};
+//# sourceURL=jetpack-mu-wpcom-settings-js-before
+</script>
+<link rel="https://api.w.org/" href="https://otemachiprep.com/wp-json/" /><link rel="alternate" title="JSON" type="application/json" href="https://otemachiprep.com/wp-json/wp/v2/posts/3905" /><link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://otemachiprep.com/xmlrpc.php?rsd" />
+
+<link rel="canonical" href="index.html" />
+<link rel='shortlink' href='https://wp.me/phjY2f-10Z' />
+<meta name="pinterest-rich-pin" content="false" />	<noscript><style>.woocommerce-product-gallery{ opacity: 1 !important; }</style></noscript>
+	<style id="op-fm-links-css">
+.op-fml-nav{margin:0 0 26px;padding:12px 16px;background:#F7F9FB;border:1px solid #DDE4EC;border-left:3px solid #14355F;border-radius:10px;font-size:.84rem;line-height:1.7}
+.op-fml-nav__crumb{margin:0 0 6px;display:flex;flex-wrap:wrap;gap:6px 8px;align-items:center;color:#41505F}
+.op-fml-nav__crumb a{color:#14355F;font-weight:700;text-decoration:none}
+.op-fml-nav__crumb a:hover{text-decoration:underline}
+.op-fml-nav__no{font-family:Inter,sans-serif;font-weight:700;color:#14355F}
+.op-fml-nav__pn{margin:0;display:grid;grid-template-columns:1fr 1fr;gap:10px 18px}
+.op-fml-nav__pn a,.op-fml-nav__none{display:block;color:#1D2B3A;text-decoration:none;font-weight:600}
+.op-fml-nav__pn a:hover{text-decoration:underline}
+.op-fml-nav__next{text-align:right}
+.op-fml-nav__none{color:#8792A2;font-weight:500}
+.op-fml-nav__lbl{display:block;font-size:.68rem;font-weight:700;letter-spacing:.08em;color:#6B7A8C}
+.op-fml{margin:36px 0 8px;padding:18px 20px;background:#fff;border:1px solid #DDE4EC;border-radius:10px}
+.op-fml__h{margin:0 0 10px;font-size:.78rem;font-weight:700;letter-spacing:.08em;color:#6B7A8C}
+.op-fml__list{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+.op-fml__list li{margin:0;padding:0 0 0 1.1em;position:relative;font-size:.9rem;line-height:1.75}
+.op-fml__list li::before{content:"→";position:absolute;left:0;top:0;color:#B08A3C;font-weight:700}
+.op-fml__list a{color:#14355F;font-weight:700;text-decoration:underline;text-underline-offset:3px}
+.op-fml__note{display:block;font-size:.8rem;color:#5B6B7C}
+@media(max-width:600px){.op-fml-nav__pn{grid-template-columns:1fr}.op-fml-nav__next{text-align:left}}
+</style>
+	<style id='wp-fonts-local'>
+@font-face{font-family:Inter;font-style:normal;font-weight:100 800;font-display:fallback;font-stretch:normal;src:url(../wp-content/themes/assembler/assets/fonts/inter/InterVariable.woff2) format('woff2');}
+@font-face{font-family:Inter;font-style:italic;font-weight:100 800;font-display:fallback;font-stretch:normal;src:url(../wp-content/themes/assembler/assets/fonts/inter/InterVariable-Italic.woff2) format('woff2');}
+</style>
+<link rel="icon" href="https://i0.wp.com/otemachiprep.com/wp-content/uploads/2026/07/op-site-icon-preview.png?fit=32%2C32&#038;ssl=1" sizes="32x32" />
+<link rel="icon" href="https://i0.wp.com/otemachiprep.com/wp-content/uploads/2026/07/op-site-icon-preview.png?fit=192%2C192&#038;ssl=1" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://i0.wp.com/otemachiprep.com/wp-content/uploads/2026/07/op-site-icon-preview.png?fit=180%2C180&#038;ssl=1" />
+<meta name="msapplication-TileImage" content="https://i0.wp.com/otemachiprep.com/wp-content/uploads/2026/07/op-site-icon-preview.png?fit=270%2C270&#038;ssl=1" />
+
+<style id="op-cp-style">/* =====================================================================
+   op-fc v4.0.0 — 無料・7日間 財務モデリング講座ポップアップ
+   トークンは :root に定義。フォールバック付き var() を使う（wp.com のCSS結合で
+   カスタムプロパティが落ちた事例があるため）。
+   ===================================================================*/
+:root{
+  --op-fc-navy:#14355F;
+  --op-fc-navy-deep:#0D2440;
+  --op-fc-gold:#C8A24B;
+  --op-fc-gold-deep:#A9853A;
+  --op-fc-green:#007A4D;
+  --op-fc-green-hover:#00663F;
+  --op-fc-green-active:#005B38;
+  --op-fc-ink:#24384E;
+  --op-fc-soft:#5A6A7C;
+  --op-fc-line:#DCE3EC;
+  --op-fc-panel:#F5F7FA;
+}
+.op-fc-root[hidden],.op-fc-mini[hidden],.op-fc-card[hidden]{display:none!important}
+.op-fc-root,.op-fc-root *,.op-fc-mini,.op-fc-mini *{box-sizing:border-box}
+
+/* ---------- overlay ---------- */
+.op-fc-root{position:fixed;inset:0;z-index:99990;display:flex;align-items:center;justify-content:center;padding:24px 16px;font-family:"Noto Sans JP","Inter",system-ui,-apple-system,"Segoe UI",sans-serif;-webkit-font-smoothing:antialiased}
+.op-fc-backdrop{position:absolute;inset:0;background:rgba(13,36,64,.55);opacity:0;transition:opacity .22s ease}
+.op-fc-root.op-fc-visible .op-fc-backdrop{opacity:1}
+
+/* ---------- card ---------- */
+.op-fc-card{position:relative;width:100%;max-width:880px;max-height:calc(100vh - 48px);overflow-y:auto;overscroll-behavior:contain;-webkit-overflow-scrolling:touch;
+  display:grid;grid-template-columns:minmax(0,1fr) minmax(0,.92fr);
+  background:#fff;border:1px solid var(--op-fc-line,#DCE3EC);border-top:3px solid var(--op-fc-navy,#14355F);border-radius:16px;
+  box-shadow:0 24px 60px rgba(13,36,64,.22);
+  opacity:0;transform:translateY(8px);transition:opacity .22s ease-out,transform .22s ease-out;
+  color:var(--op-fc-ink,#24384E);line-height:1.6;text-align:left}
+.op-fc-root.op-fc-visible .op-fc-card{opacity:1;transform:translateY(0)}
+.op-fc-card:focus{outline:none}
+.op-fc-card:focus-visible{outline:3px solid var(--op-fc-gold,#C8A24B);outline-offset:3px}
+
+/* ---------- close ---------- */
+.op-fc-close{position:absolute;top:12px;right:12px;z-index:3;width:44px;height:44px;display:inline-flex;align-items:center;justify-content:center;
+  background:#fff;border:1px solid var(--op-fc-line,#DCE3EC);border-radius:999px;color:var(--op-fc-soft,#5A6A7C);cursor:pointer;padding:0;margin:0;
+  box-shadow:0 2px 6px rgba(13,36,64,.08);transition:background-color .15s ease,color .15s ease}
+.op-fc-close:hover{background:#F0F3F7;color:var(--op-fc-navy,#14355F)}
+.op-fc-close:focus-visible{outline:3px solid var(--op-fc-gold,#C8A24B);outline-offset:2px}
+
+/* ---------- main column ---------- */
+.op-fc-main{padding:34px 30px 28px 32px;min-width:0;display:flex;flex-direction:column;justify-content:center}
+.op-fc-facts{list-style:none;margin:0 0 12px;padding:0;display:flex;flex-wrap:wrap;gap:6px 14px}
+.op-fc-facts li{position:relative;padding-left:18px;font-size:12px;font-weight:600;color:var(--op-fc-navy,#14355F);line-height:1.6;white-space:nowrap}
+.op-fc-facts li::before{content:"";position:absolute;left:0;top:.42em;width:12px;height:12px;border-radius:999px;background:var(--op-fc-green,#007A4D);-webkit-mask:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><circle cx='12' cy='12' r='12' fill='black'/><path d='M7 12.5l3.2 3.2L17 9' stroke='white' stroke-width='2.4' fill='none' stroke-linecap='round' stroke-linejoin='round'/></svg>") center/contain no-repeat;mask:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><circle cx='12' cy='12' r='12' fill='black'/><path d='M7 12.5l3.2 3.2L17 9' stroke='white' stroke-width='2.4' fill='none' stroke-linecap='round' stroke-linejoin='round'/></svg>") center/contain no-repeat}
+.op-fc-eyebrow{margin:0 0 12px;font-size:12.5px;font-weight:700;letter-spacing:.06em;color:var(--op-fc-gold-deep,#A9853A);display:flex;align-items:center;gap:8px;flex-wrap:wrap;padding-right:44px}
+.op-fc-eyebrow-free{display:inline-block;background:var(--op-fc-gold,#C8A24B);color:#fff;font-size:11px;line-height:1;padding:5px 8px 4px;border-radius:999px;letter-spacing:.12em}
+.op-fc-eyebrow::after{content:"";display:block;width:100%;height:0;flex-basis:100%}
+.op-fc-eyebrow-line{display:block;width:32px;height:2px;background:var(--op-fc-gold,#C8A24B);margin:2px 0 0;border-radius:2px}
+.op-fc-h{margin:0 0 12px;font-size:25px;line-height:1.4;font-weight:700;color:var(--op-fc-navy,#14355F);letter-spacing:.01em}
+.op-fc-h br{display:inline}
+.op-fc-sub{margin:0 0 20px;font-size:15px;line-height:1.75;color:var(--op-fc-ink,#24384E)}
+.op-fc-actions{display:flex;flex-direction:column;gap:10px;margin:0 0 14px}
+.op-fc-cta1,.op-fc-cta2{display:inline-flex;align-items:center;justify-content:center;gap:8px;width:100%;min-height:52px;padding:12px 18px;border-radius:10px;
+  font-size:16px;font-weight:700;text-decoration:none;line-height:1.3;cursor:pointer;transition:background-color .15s ease,color .15s ease,border-color .15s ease,transform .15s ease}
+.op-fc-cta1{background:var(--op-fc-green,#007A4D);color:#fff;border:1.5px solid var(--op-fc-green,#007A4D);box-shadow:0 6px 16px rgba(0,122,77,.22)}
+.op-fc-cta1:hover{background:var(--op-fc-green-hover,#00663F);border-color:var(--op-fc-green-hover,#00663F);color:#fff}
+.op-fc-cta1:active{background:var(--op-fc-green-active,#005B38)}
+.op-fc-cta2{background:#fff;color:var(--op-fc-green,#007A4D);border:1.5px solid var(--op-fc-green,#007A4D);min-height:48px;font-size:15px;font-weight:600;box-shadow:none}
+.op-fc-cta2:hover{background:#F1F8F4;color:var(--op-fc-green-hover,#00663F)}
+.op-fc-cta1:focus-visible,.op-fc-cta2:focus-visible{outline:3px solid var(--op-fc-gold,#C8A24B);outline-offset:2px}
+.op-fc-ar{display:inline-block;font-weight:700}
+.op-fc-note{margin:0;font-size:12px;line-height:1.7;color:var(--op-fc-soft,#5A6A7C)}
+
+/* ---------- side panel ---------- */
+.op-fc-side{position:relative;background:var(--op-fc-panel,#F5F7FA);border-left:1px solid var(--op-fc-line,#DCE3EC);padding:30px 26px 24px;min-width:0;border-radius:0 13px 13px 0}
+.op-fc-side::before{content:"";position:absolute;left:0;right:0;top:0;height:2px;background:linear-gradient(90deg,var(--op-fc-gold,#C8A24B),rgba(200,162,75,.15));border-radius:0 13px 0 0}
+.op-fc-chips{list-style:none;margin:0 0 16px;padding:0;display:flex;flex-wrap:wrap;gap:6px}
+.op-fc-chips li{font-size:12px;font-weight:600;color:var(--op-fc-navy,#14355F);background:#fff;border:1px solid var(--op-fc-line,#DCE3EC);border-radius:999px;padding:4px 10px;line-height:1.4;white-space:nowrap}
+.op-fc-chips--m{display:none}
+.op-fc-days{margin:0 0 16px;border:0}
+.op-fc-days-t{list-style:none;display:flex;align-items:center;justify-content:space-between;font-size:13px;font-weight:700;color:var(--op-fc-navy,#14355F);letter-spacing:.02em;margin:0 0 10px;padding:0;cursor:default}
+.op-fc-days-t::-webkit-details-marker{display:none}
+.op-fc-days-ic{display:none;width:20px;height:20px;border-radius:999px;border:1px solid var(--op-fc-line,#DCE3EC);background:#fff;position:relative}
+.op-fc-days-ic::before,.op-fc-days-ic::after{content:"";position:absolute;left:50%;top:50%;background:var(--op-fc-navy,#14355F);transform:translate(-50%,-50%)}
+.op-fc-days-ic::before{width:8px;height:1.5px}
+.op-fc-days-ic::after{width:1.5px;height:8px;transition:opacity .15s}
+.op-fc-days[open] .op-fc-days-ic::after{opacity:0}
+.op-fc-days-l{list-style:none;margin:0;padding:0;display:grid;gap:7px}
+.op-fc-days-l li{display:grid;grid-template-columns:44px minmax(0,1fr);gap:8px;align-items:baseline;padding:0 0 7px;border-bottom:1px solid rgba(220,227,236,.8)}
+.op-fc-days-l li:last-child{border-bottom:0;padding-bottom:0}
+.op-fc-day{font-family:"Inter","Noto Sans JP",system-ui,sans-serif;font-size:11px;font-weight:700;color:var(--op-fc-gold-deep,#A9853A);letter-spacing:.04em;white-space:nowrap}
+.op-fc-day-b{display:block;min-width:0}
+.op-fc-day-b strong{display:block;font-size:13.5px;font-weight:700;color:var(--op-fc-navy,#14355F);line-height:1.45}
+.op-fc-day-b span{display:block;font-size:12px;line-height:1.55;color:var(--op-fc-soft,#5A6A7C)}
+.op-fc-perk{display:flex;gap:12px;align-items:center;padding:12px;background:#fff;border:1px solid var(--op-fc-line,#DCE3EC);border-radius:10px}
+.op-fc-perk-img{width:88px;height:auto;flex:0 0 88px;border:1px solid var(--op-fc-line,#DCE3EC);border-radius:6px;background:#fff;display:block}
+.op-fc-perk-t{margin:0;font-size:12px;line-height:1.6;color:var(--op-fc-ink,#24384E)}
+.op-fc-perk-t strong{color:var(--op-fc-navy,#14355F)}
+.op-fc-list{list-style:none;margin:0 0 12px;padding:0;display:grid;gap:8px}
+.op-fc-list li{position:relative;padding-left:16px;font-size:13.5px;line-height:1.5;color:var(--op-fc-navy,#14355F);font-weight:600}
+.op-fc-list li::before{content:"";position:absolute;left:0;top:.62em;width:7px;height:7px;border-radius:999px;background:var(--op-fc-gold,#C8A24B)}
+.op-fc-list li small{display:block;font-size:11.5px;font-weight:400;color:var(--op-fc-soft,#5A6A7C)}
+.op-fc-side-t{margin:0 0 12px;font-size:13px;font-weight:700;color:var(--op-fc-navy,#14355F)}
+.op-fc-side-note{margin:0;font-size:12px;line-height:1.6;color:var(--op-fc-soft,#5A6A7C)}
+
+/* ---------- attention (2回だけ・1秒後) ---------- */
+@keyframes opFcPulse{0%{transform:scale(1)}50%{transform:scale(1.025)}100%{transform:scale(1)}}
+@keyframes opFcArrow{0%{transform:translateX(0)}50%{transform:translateX(3px)}100%{transform:translateX(0)}}
+@keyframes opFcFade{from{opacity:0}to{opacity:1}}
+.op-fc-root.op-fc-visible .op-fc-cta1{animation:opFcPulse .6s ease-in-out 1s 2}
+.op-fc-root.op-fc-visible .op-fc-cta1 .op-fc-ar{animation:opFcArrow .6s ease-in-out 1s 2}
+.op-fc-root.op-fc-visible .op-fc-days-l li{animation:opFcFade .24s ease-out both}
+.op-fc-root.op-fc-visible .op-fc-days-l li:nth-child(2){animation-delay:.04s}
+.op-fc-root.op-fc-visible .op-fc-days-l li:nth-child(3){animation-delay:.08s}
+.op-fc-root.op-fc-visible .op-fc-days-l li:nth-child(4){animation-delay:.12s}
+.op-fc-root.op-fc-visible .op-fc-days-l li:nth-child(5){animation-delay:.16s}
+.op-fc-root.op-fc-visible .op-fc-days-l li:nth-child(6){animation-delay:.20s}
+.op-fc-root.op-fc-visible .op-fc-days-l li:nth-child(7){animation-delay:.24s}
+
+/* ---------- scroll lock ---------- */
+html.op-fc-lock,body.op-fc-lock{overflow:hidden!important}
+
+/* ---------- tablet: 1 column ---------- */
+@media (max-width:860px){
+  .op-fc-card{grid-template-columns:minmax(0,1fr);max-width:560px}
+  .op-fc-side{border-left:0;border-top:1px solid var(--op-fc-line,#DCE3EC);border-radius:0 0 13px 13px;padding:22px 26px 24px}
+  .op-fc-side::before{border-radius:0}
+  .op-fc-main{padding:30px 26px 22px}
+}
+
+/* ---------- mobile: bottom sheet ---------- */
+@media (max-width:640px){
+  .op-fc-root{align-items:flex-end;padding:0}
+  .op-fc-card{max-width:none;max-height:92dvh;border-radius:16px 16px 0 0;border-left:0;border-right:0;border-bottom:0;transform:translateY(12px);
+    display:flex;flex-direction:column}
+  .op-fc-close{position:sticky;top:10px;align-self:flex-end;margin:10px 12px -44px 0;width:44px;height:44px}
+  .op-fc-main{padding:26px 20px 14px;display:flex;flex-direction:column}
+  .op-fc-eyebrow{font-size:12px;padding-right:48px}
+  .op-fc-h{font-size:21px;line-height:1.42}
+  .op-fc-sub{font-size:14px;margin-bottom:12px}
+  .op-fc-chips--m{display:flex;margin:0 0 16px}
+  .op-fc-actions{margin-bottom:10px}
+  .op-fc-cta1{min-height:52px}
+  .op-fc-side{border-top:0;border-radius:0;padding:4px 20px calc(20px + env(safe-area-inset-bottom,0px))}
+  .op-fc-side::before{display:none}
+  .op-fc-side .op-fc-chips:not(.op-fc-chips--m){display:none}
+  .op-fc-days{margin:0 0 12px;border-top:1px solid var(--op-fc-line,#DCE3EC);padding-top:12px}
+  .op-fc-days-t{cursor:pointer;margin:0;padding:6px 0;min-height:44px;align-items:center}
+  .op-fc-days-ic{display:block}
+  .op-fc-days[open] .op-fc-days-t{margin-bottom:8px}
+  .op-fc-note{order:9}
+  .op-fc-facts{gap:4px 12px;margin-bottom:8px}
+  .op-fc-perk{padding:10px}
+  .op-fc-perk-img{width:72px;flex-basis:72px}
+}
+@media (max-height:520px) and (min-width:641px){
+  .op-fc-card{max-height:calc(100vh - 24px)}
+  .op-fc-main{padding:24px 24px 18px 26px}
+  .op-fc-side{padding:22px 22px 18px}
+}
+
+/* ---------- mini banner ---------- */
+.op-fc-mini{position:fixed;right:16px;bottom:calc(var(--op-fc-mini-lift,16px) + env(safe-area-inset-bottom,0px));z-index:99970;display:flex;align-items:stretch;max-width:280px;
+  background:#fff;border:1px solid var(--op-fc-line,#DCE3EC);border-left:3px solid var(--op-fc-gold,#C8A24B);border-radius:12px;box-shadow:0 12px 32px rgba(13,36,64,.18);
+  font-family:"Noto Sans JP","Inter",system-ui,-apple-system,"Segoe UI",sans-serif;opacity:0;transform:translateY(8px);transition:opacity .2s ease-out,transform .2s ease-out}
+.op-fc-mini.op-fc-mini-visible{opacity:1;transform:translateY(0)}
+.op-fc-mini-a{display:flex;flex-direction:column;justify-content:center;gap:1px;padding:10px 6px 10px 14px;text-decoration:none;color:var(--op-fc-navy,#14355F);min-height:56px;flex:1 1 auto;min-width:0;border-radius:12px 0 0 12px}
+.op-fc-mini-a:hover{background:#F5F7FA}
+.op-fc-mini-a:focus-visible{outline:3px solid var(--op-fc-gold,#C8A24B);outline-offset:-3px}
+.op-fc-mini-1{font-size:11px;font-weight:700;letter-spacing:.06em;color:var(--op-fc-gold-deep,#A9853A);line-height:1.3}
+.op-fc-mini-2{font-size:14px;font-weight:700;line-height:1.35;color:var(--op-fc-navy,#14355F)}
+.op-fc-mini-2 span{color:var(--op-fc-green,#007A4D)}
+.op-fc-mini-x{flex:0 0 44px;width:44px;display:inline-flex;align-items:center;justify-content:center;background:transparent;border:0;border-left:1px solid var(--op-fc-line,#DCE3EC);color:var(--op-fc-soft,#5A6A7C);cursor:pointer;padding:0;margin:0;border-radius:0 12px 12px 0}
+.op-fc-mini-x:hover{background:#F0F3F7;color:var(--op-fc-navy,#14355F)}
+.op-fc-mini-x:focus-visible{outline:3px solid var(--op-fc-gold,#C8A24B);outline-offset:-3px}
+@media (max-width:640px){
+  .op-fc-mini{right:16px;left:auto;max-width:min(320px,calc(100% - 32px))}
+}
+
+/* ---------- reduced motion: 装飾アニメーションを全停止 ---------- */
+@media (prefers-reduced-motion:reduce){
+  .op-fc-backdrop,.op-fc-card,.op-fc-mini,.op-fc-close,.op-fc-cta1,.op-fc-cta2,.op-fc-mini-a{transition:none!important}
+  .op-fc-root.op-fc-visible .op-fc-cta1,.op-fc-root.op-fc-visible .op-fc-cta1 .op-fc-ar,.op-fc-root.op-fc-visible .op-fc-days-l li{animation:none!important}
+  .op-fc-card{transform:none!important}
+  .op-fc-mini{transform:none!important}
+}</style>
+<style type="text/css" id="wp-custom-css">/* op-hide-jetpack-subscribe-modal 2026-07 */
+.jetpack-subscription-modal, .jetpack-subscription-modal__modal-content, .jetpack-subscription-modal-screen-overlay{display:none !important;}
+
+/* op-fix-vc-nav-hover 2026-07 : VC等の独自テンプレでヘッダーのドロップダウンが開かない不具合をCSSホバーで補完(マウス環境のみ) */
+@media (hover:hover) and (pointer:fine){
+  .nv-item:hover &gt; .nv-sub{display:block !important;}
+  .nv-item:hover &gt; .nv-sub.nv-mega{display:flex !important;}
+}
+
+/* op-gmw: hide Jetpack Likes unfilled %d dialog (2026-08-31) */
+#likes-other-gravatars{display:none !important;}</style>
+<link rel="stylesheet" id="op-gltip-css" href="../wp-content/themes/otemachi-prep-child/assets/css/op-gltip.css"></head>
+<body class="op-art2">
+<a class="art-skip" href="#art-body">本文へ移動</a>
+<header class="site-header op-hdr2 op-hdr3" id="siteHeader" data-logged-in="0">
+
+  <!-- ===== 第1段：ロゴ・検索・会員導線（白） ===== -->
+  <div class="op-uh">
+    <div class="wrap op-uh-in">
+
+      <div class="brand op-uh-brand">
+		        <a href="../index.html" aria-label="大手町プレップ トップページ">
+          <img class="brand-mark" src="../wp-content/themes/otemachi-prep-child/assets/images/op-logo-mark.png" alt="" width="40" height="42" onerror="this.style.display='none'">
+          <span class="brand-text">
+            <span class="brand-en-main">OTEMACHI&nbsp;PREP</span>
+            <span class="brand-ja-sub">大手町プレップ</span>
+          </span>
+        </a>
+		      </div>
+
+      <form class="op-hs" role="search" method="get" action="../index.html">
+        <label class="screen-reader-text" for="opm-s">サイト内検索</label>
+        <span class="op-hs-ico" aria-hidden="true"><svg viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M8.5 15a6.5 6.5 0 1 1 0-13 6.5 6.5 0 0 1 0 13Zm0-1.8a4.7 4.7 0 1 0 0-9.4 4.7 4.7 0 0 0 0 9.4Z" fill="currentColor"/><path d="m13.2 12 4.5 4.5-1.3 1.3-4.5-4.5z" fill="currentColor"/></svg></span>
+        <input type="search" id="opm-s" name="s" value="" placeholder="キーワードを入力" autocomplete="off" maxlength="80">
+        <button type="submit" class="op-hs-btn">検索</button>
+      </form>
+
+      <div class="op-uh-actions">
+		          <a class="op-btn op-btn-ghost" href="../login/index.html" data-ga4="header_login_click">ログイン</a>
+          <a class="op-btn op-btn-green" href="../register/index.html" data-ga4="header_signup_click" data-opm-cta="header">無料会員登録</a>
+		      </div>
+
+      <button type="button" class="op-hs-toggle" aria-expanded="false" aria-controls="opm-hs-m" aria-label="検索を開く"><svg viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M8.5 15a6.5 6.5 0 1 1 0-13 6.5 6.5 0 0 1 0 13Zm0-1.8a4.7 4.7 0 1 0 0-9.4 4.7 4.7 0 0 0 0 9.4Z" fill="currentColor"/><path d="m13.2 12 4.5 4.5-1.3 1.3-4.5-4.5z" fill="currentColor"/></svg></button>
+		            <a class="op-btn op-btn-green op-uh-mreg" href="../register/index.html" data-ga4="header_signup_click" data-opm-cta="mobile_header">無料会員登録</a>
+		            <a class="op2-acct-ic" href="../login/index.html" aria-label="ログイン"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="8" r="3.4" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="M5.5 19.5c1.2-3.4 3.6-5 6.5-5s5.3 1.6 6.5 5" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg></a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="op2nav" aria-label="メニューを開く"><span></span></button>
+
+    </div>
+
+    <div class="op-hs-m" id="opm-hs-m" hidden>
+      <form class="op-hs-mform" role="search" method="get" action="../index.html">
+        <label class="screen-reader-text" for="opm-s-m">サイト内検索</label>
+        <input type="search" id="opm-s-m" name="s" value="" placeholder="キーワードを入力" autocomplete="off" maxlength="80">
+        <button type="submit" class="op-hs-btn">検索</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- ===== 第2段：グローバルナビ（白） ===== -->
+  <div class="op-gn-row">
+    <div class="wrap op-gn-in">
+
+      <span class="op2-mini-brand brand">        <a href="../index.html" aria-label="大手町プレップ トップページ">
+          <img class="brand-mark" src="../wp-content/themes/otemachi-prep-child/assets/images/op-logo-mark.png" alt="" width="40" height="42" onerror="this.style.display='none'">
+          <span class="brand-text">
+            <span class="brand-en-main">OTEMACHI&nbsp;PREP</span>
+            <span class="brand-ja-sub">大手町プレップ</span>
+          </span>
+        </a>
+		</span>
+
+      <nav id="op2nav" class="op2-nav" aria-label="グローバルナビゲーション">
+
+        <!-- ドロワー先頭の会員導線（モバイルのみ） -->
+        <div class="op2-drawer-auth">
+		          <a class="op-btn op-btn-green" href="../register/index.html" data-ga4="header_signup_click" data-opm-cta="drawer">無料会員登録</a>
+          <a class="op-btn op-btn-ghost" href="../login/index.html" data-ga4="header_login_click">ログイン</a>
+		        </div>
+
+        <ul class="op2-list">
+          <li class="op2-item op2-item--home"><a class="op2-link" href="../index.html">ホーム</a></li>
+
+          <li class="op2-item"><a class="op2-link" href="../whats-new/index.html" data-ga4="header_whatsnew_click">新着情報</a></li>
+
+          <li class="op2-item op2-item--mega">
+            <button class="op2-btn" type="button" aria-expanded="false" aria-controls="op2-articles">記事・用語集<span class="op2-car" aria-hidden="true"></span></button>
+            <div class="op2-panel op2-panel--mega" id="op2-articles" aria-label="記事・用語集">
+              <div class="op2-cols">
+                <div class="op2-col">
+                  <p class="op2-ch">分野別記事</p>
+                  <ul>
+					<li><a href="../articles/index.html">会計・財務三表／財務分析</a></li>
+<li><a href="../articles/index.html">財務モデリング</a></li>
+<li><a href="../articles/index.html">バリュエーション</a></li>
+<li><a href="../articles/index.html">M&amp;A・投資銀行実務</a></li>
+<li><a href="../articles/index.html">PE・LBO</a></li>
+<li><a href="../articles/index.html">PEキャリア分析</a></li>
+<li><a href="../articles/index.html">ベンチャーキャピタル</a></li>
+<li><a href="../articles/index.html">資本市場・クレジット</a></li>
+<li><a href="../articles/index.html">事業再生・リストラクチャリング</a></li>
+<li><a href="../articles/index.html">不動産・REIT</a></li>
+<li><a href="../articles/index.html">業種別モデリング</a></li>
+<li><a href="../articles/index.html">投資分析・エクイティリサーチ</a></li>
+<li><a href="../articles/index.html">AI×ファイナンス</a></li>
+                  </ul>
+                </div>
+                <div class="op2-col">
+                  <p class="op2-ch">リファレンス</p>
+                  <ul>
+					<li><a href="../articles/index.html">構築チュートリアル（画面つき）</a></li>
+<li><a href="../articles/index.html">経営企画・FP&amp;A</a></li>
+<li><a href="../articles/index.html">Excel・PowerPoint実務</a></li>
+<li><a href="../articles/index.html">データ・テクノロジー</a></li>
+<li><a href="../glossary/index.html">ファイナンス実務用語集</a></li>
+<li><a href="../reference/index.html">財務・投資指標の早見辞典</a></li>
+<li><a href="../course/index.html">財務モデリング講座（無料・全28章）</a></li>
+                  </ul>
+                </div>
+              </div>
+              <a class="op2-foot" href="../articles/index.html">すべての記事から探す <span class="ar" aria-hidden="true">→</span></a>
+            </div>
+          </li>
+
+          <li class="op2-item op2-item--mega">
+            <button class="op2-btn" type="button" aria-expanded="false" aria-controls="op2-funds">データベース<span class="op2-car" aria-hidden="true"></span></button>
+            <div class="op2-panel op2-panel--mega op2-panel--grid" id="op2-funds" aria-label="データベース">
+              <div class="op2-mcols">
+                <div class="op2-mcol">
+                  <p class="op2-mk">投資家</p>
+                  <p class="op2-mh">PEファンド一覧</p>
+                  <p class="op2-md">国内・海外のPEファンドを地域別・投資規模別に検索、比較できます。</p>
+                  <a class="op2-mlink" href="../pe-funds/index.html">一覧を見る <span class="ar" aria-hidden="true">→</span></a>
+                </div>
+                <div class="op2-mcol">
+                  <p class="op2-mk">投資家</p>
+                  <p class="op2-mh">VC・CVC一覧</p>
+                  <p class="op2-md">国内・海外のVC・CVCを地域別・投資分野別に確認できます。</p>
+                  <a class="op2-mlink" href="../vc-funds/index.html">一覧を見る <span class="ar" aria-hidden="true">→</span></a>
+                </div>
+                <div class="op2-mcol">
+                  <p class="op2-mk">投資家</p>
+                  <p class="op2-mh">アクティビストファンド一覧</p>
+                  <p class="op2-md">国内外の主要アクティビストファンドと活動事例をまとめています。</p>
+                  <a class="op2-mlink" href="../activist-funds/index.html">一覧を見る <span class="ar" aria-hidden="true">→</span></a>
+                </div>
+                <div class="op2-mcol">
+                  <p class="op2-mk">アドバイザー</p>
+                  <p class="op2-mh">FA・M&amp;A仲介会社DB</p>
+                  <p class="op2-md">FA・M&amp;A仲介会社を手数料・得意領域・クロスボーダー実績で比較できます。</p>
+                  <a class="op2-mlink" href="../ma-advisors/index.html">一覧を見る <span class="ar" aria-hidden="true">→</span></a>
+                </div>
+              </div>
+            </div>
+          </li>
+
+          <li class="op2-item op2-item--mega">
+            <button class="op2-btn" type="button" aria-expanded="false" aria-controls="op2-lab">モデリングラボ<span class="op2-car" aria-hidden="true"></span></button>
+            <div class="op2-panel op2-panel--mega" id="op2-lab" aria-label="モデリングラボ">
+              <div class="op2-cols">
+                <div class="op2-col">
+                  <p class="op2-ch">ブラウザで計算する</p>
+                  <ul>
+					<li><a href="../lab/index.html">財務指標分析</a></li>
+<li><a href="../lab/index.html">財務三表・オペレーティングモデル</a></li>
+<li><a href="../lab/index.html">DCFモデル</a></li>
+<li><a href="../lab/index.html">LBOモデル</a></li>
+<li><a href="../lab/index.html">類似会社比較</a></li>
+<li><a href="../lab/index.html">類似取引比較</a></li>
+<li><a href="../lab/index.html">M&amp;Aモデル</a></li>
+                  </ul>
+                </div>
+                <div class="op2-col">
+                  <p class="op2-ch">手を動かして組む</p>
+                  <ul>
+					<li><a href="../tut-ops-3stmt-build/index.html">3表連動モデルを組む</a></li>
+<li><a href="../tut-dcf-excel-build/index.html">DCFモデルを組む</a></li>
+<li><a href="../tut-ma-excel-build/index.html">M&amp;Aモデルを組む（S&amp;U含む）</a></li>
+<li><a href="../tut-lbo-excel-build/index.html">LBOモデルを組む</a></li>
+<li><a href="../tut-debt-debt-schedule-build/index.html">Debt Scheduleを組む</a></li>
+<li><a href="../tut-sens-sens-table-build/index.html">感応度分析を組む</a></li>
+<li><a href="../mod-001-modeling-guide/index.html">モデルQCチェックリスト</a></li>
+                  </ul>
+                </div>
+              </div>
+              <a class="op2-foot" href="../lab/index.html">モデリングラボを開く <span class="ar" aria-hidden="true">→</span></a>
+            </div>
+          </li>
+
+          <li class="op2-item">
+            <button class="op2-btn" type="button" aria-expanded="false" aria-controls="op2-career">キャリア<span class="op2-car" aria-hidden="true"></span></button>
+            <div class="op2-panel" id="op2-career" aria-label="キャリア">
+              <div class="op2-col">
+                <ul>
+					<li><a class="op2-hot" href="../career-fit/index.html">無料｜ファイナンスキャリア適性診断</a></li>
+<li><a href="../car-001-ib-career/index.html">投資銀行（IBD）を目指す</a></li>
+<li><a href="../car-002-pe-career/index.html">PEファンドを目指す</a></li>
+<li><a href="../car-012-ma-career-comparison/index.html">FAS・M&amp;Aアドバイザリーを目指す</a></li>
+<li><a href="../car-003-technical-interview/index.html">テクニカル面接の頻出質問</a></li>
+<li><a href="../articles/index.html">面接・モデルテスト対策の記事</a></li>
+                </ul>
+              </div>
+              <a class="op2-foot" href="../articles/index.html">キャリア・面接対策の記事をすべて見る <span class="ar" aria-hidden="true">→</span></a>
+            </div>
+          </li>
+
+          <li class="op2-item op2-item--mega op2-item--last">
+            <button class="op2-btn" type="button" aria-expanded="false" aria-controls="op2-program">講座・アセスメント<span class="op2-car" aria-hidden="true"></span></button>
+            <div class="op2-panel op2-panel--mega op2-panel--grid" id="op2-program" aria-label="講座・アセスメント">
+              <div class="op2-mcols">
+                <div class="op2-mcol">
+                  <p class="op2-mk">Input</p>
+                  <p class="op2-mh">講座・教材</p>
+                  <p class="op2-md">PDF、Excel、ケーススタディを通じて、会計、バリュエーション、M&amp;A、LBO、財務モデリングを体系的に学びます。</p>
+                  <a class="op2-mlink" href="../materials/index.html">講座・教材を見る <span class="ar" aria-hidden="true">→</span></a>
+                </div>
+                <div class="op2-mcol">
+                  <p class="op2-mk">Output</p>
+                  <p class="op2-mh">実践アセスメント</p>
+                  <p class="op2-md">課題を提出し、採点、レビュー、フィードバックを受けて、実務レベルのアウトプットへ改善します。</p>
+                  <a class="op2-mlink" href="../assessment/index.html">アセスメントを見る <span class="ar" aria-hidden="true">→</span></a>
+                </div>
+                <div class="op2-mcol">
+                  <p class="op2-mk">Plan</p>
+                  <p class="op2-mh">料金・プラン比較</p>
+                  <p class="op2-md">各講座プランとAssessmentの対象範囲、提供内容を比較できます。</p>
+                  <a class="op2-mlink" href="../pricing/index.html" data-ga4="pricing_nav_click">料金を比較する <span class="ar" aria-hidden="true">→</span></a>
+                </div>
+                <div class="op2-mcol">
+                  <p class="op2-mk">Complete</p>
+                  <p class="op2-mh">学習の進め方</p>
+                  <p class="op2-md">教材で学び（Input）、Assessmentで評価を受ける（Output）推奨学習フローを確認できます。</p>
+                  <a class="op2-mlink" href="../pricing/index.html">進め方を見る <span class="ar" aria-hidden="true">→</span></a>
+                </div>
+              </div>
+            </div>
+          </li>
+
+                    <li class="op2-item op2-item--drawer-only"><a class="op2-link" href="../about/index.html">大手町プレップについて</a></li>
+        </ul>
+      </nav>
+
+      <div class="op2-tools">
+        <button type="button" class="op2-c-search" aria-expanded="false" aria-controls="op2-c-panel" aria-label="検索を開く"><svg viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M8.5 15a6.5 6.5 0 1 1 0-13 6.5 6.5 0 0 1 0 13Zm0-1.8a4.7 4.7 0 1 0 0-9.4 4.7 4.7 0 0 0 0 9.4Z" fill="currentColor"/><path d="m13.2 12 4.5 4.5-1.3 1.3-4.5-4.5z" fill="currentColor"/></svg></button>
+		        <a class="op2-tool-link" href="../login/index.html">ログイン</a>
+        <a class="op-btn op-btn-green op-btn-sm op2-reg-mini" href="../register/index.html" data-ga4="header_signup_click" data-opm-cta="sticky">無料会員登録</a>
+		      </div>
+
+    </div>
+
+    <div class="op2-c-panel" id="op2-c-panel" hidden>
+      <form class="op2-c-form" role="search" method="get" action="../index.html">
+        <label class="screen-reader-text" for="op2-s-c">サイト内検索</label>
+        <input type="search" id="op2-s-c" name="s" value="" placeholder="キーワードを入力" autocomplete="off" maxlength="80">
+        <button type="submit" class="op-hs-btn">検索</button>
+      </form>
+    </div>
+  </div>
+</header>
+				
+<main id="main" class="op-art">
+<div class="wrap">
+<div class="art-grid">
+  <header class="art-head">
+    <nav class="art-crumbs" aria-label="パンくずリスト"><ol><li><a href="../index.html">ホーム</a></li><li><a href="../articles/financial-modeling/index.html">財務モデリング</a></li><li aria-current="page"><span>財務モデルのためのHistorical Data Cleaning｜モデルを組む前のデータ整形</span></li></ol></nav>
+    <p class="art-cat"><a href="../articles/financial-modeling/index.html">財務モデリング</a></p>
+    <h1 class="art-title"><span class="art-h1-main">財務モデルのためのHistorical Data Cleaning</span><span class="art-sr">｜</span><span class="art-h1-sub">モデルを組む前のデータ整形</span></h1>
+    <p class="art-lead">財務モデルの実績データ整形（Historical Data Cleaning）を解説。会計方針変更・決算期変更・期中M&amp;Aによる断絶の繋ぎ方、異常値・欠損値の判断基準、Adjustment Logによる調整記録の型まで実務目線でまとめます。</p>    <p class="art-meta"><span>公開日 <time datetime="2026-08-17T00:36:54+09:00">2026年8月17日</time></span><span>更新日 <time datetime="2026-08-16T15:36:54+09:00">2026年8月16日</time></span><span>読了目安 約18分</span></p>
+    <p class="art-byline"><span>執筆 <a href="../about/index.html">大手町プレップ編集部</a></span><span>監修 <a href="../about/index.html">西</a></span><span><a href="../about/index.html">編集方針</a></span></p>
+  </header>
+  <div class="art-rail">
+        <nav class="art-toc" aria-label="目次">
+      <p class="art-toc-title" aria-hidden="true">目次</p>
+      <button type="button" class="art-toc-btn" aria-expanded="false" aria-controls="art-toc-list"><span class="art-toc-btn-l">目次</span><span class="art-toc-count">17項目</span><span class="art-toc-state">開く</span><span class="art-toc-chev" aria-hidden="true"></span></button>
+      <ol id="art-toc-list" class="art-toc-list">
+        <li><a href="#s1"><span class="art-toc-n">1</span><span class="art-toc-t">結論：Historical Data Cleaningは「会計士の仕事」ではなく「モデラーの判断」</span></a></li><li><a href="#s2"><span class="art-toc-n">2</span><span class="art-toc-t">なぜ過去実績データはそのまま使えないのか</span></a></li><li><a href="#s3"><span class="art-toc-n">3</span><span class="art-toc-t">Like-for-Like（比較可能性）という一本の軸</span></a></li><li><a href="#s4"><span class="art-toc-n">4</span><span class="art-toc-t">会計方針変更をまたぐ実績の繋ぎ方（収益認識・リースを中心に）</span></a></li><li><a href="#s5"><span class="art-toc-n">5</span><span class="art-toc-t">決算期変更（変則決算期間）の調整</span></a></li><li><a href="#s6"><span class="art-toc-n">6</span><span class="art-toc-t">期中M&amp;A・連結範囲の変更をどう扱うか</span></a></li><li><a href="#s7"><span class="art-toc-n">7</span><span class="art-toc-t">非継続事業（Discontinued Operations）の扱い</span></a></li><li><a href="#s8"><span class="art-toc-n">8</span><span class="art-toc-t">異常値・One-off項目の検出と調整判断</span></a></li><li><a href="#s9"><span class="art-toc-n">9</span><span class="art-toc-t">欠損値の扱い（補間の可否・注記）</span></a></li><li><a href="#s10"><span class="art-toc-n">10</span><span class="art-toc-t">勘定科目名の変更・組替の追跡</span></a></li><li><a href="#s11"><span class="art-toc-n">11</span><span class="art-toc-t">セグメント変更の橋渡し</span></a></li><li><a href="#s12"><span class="art-toc-n">12</span><span class="art-toc-t">過年度修正（Restatement）が入った場合の処理</span></a></li><li><a href="#s13"><span class="art-toc-n">13</span><span class="art-toc-t">Adjustment Log――調整の記録と開示</span></a></li><li><a href="#s14"><span class="art-toc-n">14</span><span class="art-toc-t">クリーニング作業のチェックリスト</span></a></li><li><a href="#faq"><span class="art-toc-n">15</span><span class="art-toc-t">よくある質問（FAQ）</span></a></li><li><a href="#sum"><span class="art-toc-n">16</span><span class="art-toc-t">まとめ</span></a></li><li><a href="#src"><span class="art-toc-n">17</span><span class="art-toc-t">出典・参考（2026年8月16日確認）</span></a></li>      </ol>
+    </nav>
+      </div>
+  <div class="art-main">
+    <article class="article-body art-body" id="art-body">
+
+<div class="summary-box"><h2 style="word-break:auto-phrase">この記事で分かること</h2><ul>
+<li style="word-break:auto-phrase">過去の実績データをそのまま<a href="../mod-001-modeling-guide/index.html" class="op-gt" data-gt="financial-modeling">財務モデル</a>に投入すると、どこで数字が壊れるのか（会計方針変更・決算期変更・期中M&amp;A・<a href="../glossary/discontinued-operations/index.html" class="op-gt" data-gt="discontinued-operations">非継続事業</a>など）</li>
+<li style="word-break:auto-phrase">「<a href="../glossary/qualitative-characteristics/index.html" class="op-gt" data-gt="qualitative-characteristics">比較可能性</a><span style="white-space:nowrap">（Like-for-Like）</span>」を軸に、断絶した実績をどう繋ぎ直すかの判断手順</li>
+<li style="word-break:auto-phrase">異常値・欠損値をどこまで調整してよいか、してはいけないかの線引き</li>
+<li style="word-break:auto-phrase">調整内容を追跡可能にする「Adjustment Log」の型と、レビュー・DD時の開示の作法</li>
+</ul></div>
+
+<h2 id="s1" style="word-break:auto-phrase">結論：Historical Data Cleaningは「会計士の仕事」ではなく「モデラーの判断」</h2>
+<p>財務モデルのHistorical Data Cleaning<span style="white-space:nowrap">（実績データの整形）</span>とは、過去数年分の決算数値を「同じものさしで並べられる状態」にする作業です。会計処理そのものを訂正するわけではなく、モデルの前提として使うために、期をまたいだ数値の連続性・比較可能性<span style="white-space:nowrap">（Like-for-Like）</span>を確保する判断作業だと理解してください。単なる表記の統一（TRIM・重複削除・単位揃え）とは次元が違い、「この数字を将来予測の起点にしてよいか」という会計的な意味の判断が中心になります。</p>
+<p>本記事が扱う範囲は、経理から受け取った実績（試算表・決算短信・<a href="../acc-015-yuho-reading/index.html" class="op-gt" data-gt="yuho-reading">有価証券報告書</a>など）を、モデルのHistoricalsタブに載せる<b>直前の整形工程</b>です。範囲外として、次の3本と役割を分けています。</p>
+<ul>
+<li><a href="../mod-025-trial-balance-to-historicals/index.html">mod-025：月次試算表からHistoricalsを作る方法</a>――試算表の勘定科目をモデルの標準科目へマッピングする「構造変換」を扱います。本記事はその後工程、つまり構造変換が終わった時系列データを「時系列として使える状態」に整える工程です。</li>
+<li><a href="../xl-019-data-cleaning/index.html">xl-019：Excelの財務データクリーニング実務</a>――TRIM・重複削除・区切り位置・<a href="../glossary/flash-fill/index.html" class="op-gt" data-gt="flash-fill">フラッシュフィル</a>といった<b>操作</b>を扱います。本記事は「何を異常値として扱うか」「決算期変更をどう繋ぐか」という<b>判断</b>の側です。</li>
+<li><a href="../acc-013-adjusted-ebitda/index.html" class="op-gt" data-gt="adjusted-ebitda">acc-013：EBITDAの正常化調整<span style="white-space:nowrap">（Adjusted EBITDA）</span></a>――こちらは特定期間の<a href="../glossary/accruals-earnings-quality/index.html" class="op-gt" data-gt="accruals-earnings-quality">利益の質</a>を測るための調整（バイヤー視点の「本来の稼ぐ力」を測る）が目的です。本記事は複数期を並べたときの<b>時系列の比較可能性</b>が目的で、同じ「非経常項目」を扱っていても判断の軸が異なります。両者は重なる調整項目もありますが、目的が違うため必ず両方を意識してください。</li>
+</ul>
+
+<h2 id="s2" style="word-break:auto-phrase">なぜ過去実績データはそのまま使えないのか</h2>
+<p>経理が作成する決算数値は、その期の実態を会計基準に従って正確に表すことを目的に作られています。複数年を横に並べて将来を予測する、という財務モデルの目的のためには作られていません。このズレから、実績データには次のような「断絶」が生じます。</p>
+<ul>
+<li>会計方針の変更（<a href="../acc-017-revenue-recognition/index.html" class="op-gt" data-gt="revenue-recognition">収益認識基準</a>や<a href="../acc-006-lease-accounting/index.html" class="op-gt" data-gt="lease-accounting">リース会計</a>基準の適用開始など）で、同じ勘定科目でも算定方法が期の途中で変わる</li>
+<li>決算期変更により、ある年度だけ12か月でない変則決算期間<span style="white-space:nowrap">（スタブ期間）</span>が存在する</li>
+<li>期中のM&amp;A・<a href="../ma-002-scheme-comparison/index.html" class="op-gt" data-gt="ma-scheme">事業譲渡</a>により、連結範囲が期の途中で変わる</li>
+<li>事業の売却・撤退により、非継続事業として表示区分が変わる</li>
+<li>一時的な特殊要因（災害損失、訴訟和解金、減損など）が特定の期だけ数字を大きく歪める</li>
+<li>データが単純に欠落している期間がある</li>
+<li>勘定科目名や表示区分が組み替えられ、過去と当期で同じ名前でも中身が違う</li>
+<li>セグメント区分が変更され、事業別の実績を過去に遡って比較できない</li>
+<li>過年度の決算に誤りが見つかり、修正再表示<span style="white-space:nowrap">（Restatement）</span>が行われている</li>
+</ul>
+<p>これらを放置したままモデルに数字を流し込むと、成長率・マージン・回転期間といった指標が「実態の変化」ではなく「集計方法の変化」によって動いてしまい、将来予測の前提として使い物にならなくなります。まずは全体像として、汚れの種類ごとの影響と処置を一覧化します。</p>
+
+<figure style="margin:24px 0;overflow-x:auto"><table style="border-collapse:collapse;width:100%;min-width:796px;font-size:15px">
+<thead style="white-space:nowrap"><tr style="background:#14355F;color:#fff">
+<th style="padding:10px;text-align:left">データの乱れ</th>
+<th style="padding:10px;text-align:left">そのまま使うと何が壊れるか</th>
+<th style="white-space:nowrap;padding:10px;text-align:left">判断・処置の基本方針</th>
+</tr></thead>
+<tbody>
+<tr><td style="padding:10px;border-bottom:1px solid #D8DEE8">会計方針変更<span style="white-space:nowrap">（収益認識・リース等）</span></td><td style="padding:10px;border-bottom:1px solid #D8DEE8">売上・費用・資産負債の水準が変更前後で不連続にジャンプする</td><td style="padding:10px;border-bottom:1px solid #D8DEE8">新基準ベースに揃える（可能なら旧年度を組み替え、無理なら注記の上で断絶を明示）</td></tr>
+<tr><td style="padding:10px;border-bottom:1px solid #D8DEE8">決算期変更<span style="white-space:nowrap">（変則決算期間）</span></td><td style="padding:10px;border-bottom:1px solid #D8DEE8">12か月ベースの成長率・マージンが計算不能または歪む</td><td style="padding:10px;border-bottom:1px solid #D8DEE8">スタブ期間を年換算するか、独立期間として別枠表示するか判断</td></tr>
+<tr><td style="padding:10px;border-bottom:1px solid #D8DEE8">期中M&amp;A・連結範囲変更</td><td style="padding:10px;border-bottom:1px solid #D8DEE8">前年同期比が「事業の伸び」なのか「連結範囲の拡大」なのか区別できない</td><td style="padding:10px;border-bottom:1px solid #D8DEE8">取得後月数のみの実績と、参考情報としてのプロフォーマ合算を併記</td></tr>
+<tr><td style="white-space:nowrap;padding:10px;border-bottom:1px solid #D8DEE8">非継続事業</td><td style="padding:10px;border-bottom:1px solid #D8DEE8">売却・撤退した事業の数字が将来予測に残り続ける</td><td style="padding:10px;border-bottom:1px solid #D8DEE8">継続事業ベースに揃えるか、明示的に区分して両建て表示</td></tr>
+<tr><td style="white-space:nowrap;padding:10px;border-bottom:1px solid #D8DEE8">異常値・One-off項目</td><td style="padding:10px;border-bottom:1px solid #D8DEE8">特定期の利益率・成長率が実態以上に良く<span style="white-space:nowrap">（悪く）</span>見える</td><td style="padding:10px;border-bottom:1px solid #D8DEE8">構造的要因か一時的要因かを切り分け、一時的なもののみ調整</td></tr>
+<tr><td style="white-space:nowrap;padding:10px;border-bottom:1px solid #D8DEE8">欠損値</td><td style="padding:10px;border-bottom:1px solid #D8DEE8">時系列に穴が空き、比率・トレンド計算がエラーまたは誤読を招く</td><td style="padding:10px;border-bottom:1px solid #D8DEE8">補間可能な性質か見極め、補間する場合は前提と方法を必ず注記</td></tr>
+<tr><td style="padding:10px;border-bottom:1px solid #D8DEE8">勘定科目名・表示の組替</td><td style="padding:10px;border-bottom:1px solid #D8DEE8">同じ科目名でも中身が違う年度をそのまま連続表示してしまう</td><td style="padding:10px;border-bottom:1px solid #D8DEE8">マッピングログで科目の対応関係を追跡し、必要なら過去分を組み替え</td></tr>
+<tr><td style="white-space:nowrap;padding:10px;border-bottom:1px solid #D8DEE8">セグメント変更</td><td style="padding:10px;border-bottom:1px solid #D8DEE8">事業別の実績が年度ごとに区分基準が違い、単純比較できない</td><td style="padding:10px;border-bottom:1px solid #D8DEE8">開示された遡及後データを優先、無ければ自前で橋渡し試算を作成</td></tr>
+<tr><td style="padding:10px;border-bottom:none">過年度修正<span style="white-space:nowrap">（Restatement）</span></td><td style="padding:10px;border-bottom:none">誤った旧数値のままモデルの前提を作ってしまう</td><td style="padding:10px;border-bottom:none">修正後の数値を原則採用し、修正差分もAdjustment Logに残す</td></tr>
+</tbody>
+</table></figure>
+
+<h2 id="s3" style="word-break:auto-phrase">Like-for-Like<span style="white-space:nowrap">（比較可能性）</span>という一本の軸</h2>
+<p>ここまでの9パターンはバラバラに見えますが、判断基準は一つに集約できます。それが<b>Like-for-Like<span style="white-space:nowrap">（比較可能性）</span></b>です。「同じ定義・同じ範囲・同じ期間で測った数字を並べているか」を常に問うということです。数字が存在していても、測っているものが違えば時系列としての意味を持ちません。逆に、多少粗くても測っているものを揃えられれば、モデルの前提としては使えます。</p>
+<p>整形の流れは、生データ（そのままでは断絶がある実績）を、上記マトリクスに従って正常化し、調整内容を記録した上でHistoricalsとして確定させる、という3段階で考えると整理しやすくなります。</p>
+
+<figure style="margin:28px 0;border:1px solid var(--line,#D8DEE8);background:#fff;border-radius:10px;overflow:hidden">
+<div style="overflow-x:auto;-webkit-overflow-scrolling:touch">
+<svg viewBox="0 0 1000 320" role="img" aria-label="生データから正常化を経てHistoricals確定に至る3段階のフロー図" style="display:block;width:100%;min-width:680px;height:auto;font-family:'Noto Sans JP',sans-serif">
+  <rect x="0" y="0" width="1000" height="56" fill="#14355F"/>
+  <text x="24" y="36" fill="#fff" font-size="33" font-weight="700">図1：Historicals確定までの3段階</text>
+
+  <rect x="30" y="100" width="260" height="150" rx="10" fill="#EAF1FB" stroke="#14355F" stroke-width="1.5"/>
+  <text x="160" y="140" fill="#14355F" font-size="26" font-weight="700" text-anchor="middle">① 生データ</text>
+  <text x="160" y="168" fill="#1A2331" font-size="20" text-anchor="middle">決算短信・有報・試算表</text>
+  <text x="160" y="190" fill="#1A2331" font-size="20" text-anchor="middle">会計方針変更／決算期変更</text>
+  <text x="160" y="212" fill="#1A2331" font-size="20" text-anchor="middle">M&amp;A／異常値／欠損が混在</text>
+
+  <polygon points="300,175 340,165 340,185" fill="#2563EB"/>
+  <line x1="292" y1="175" x2="340" y2="175" stroke="#2563EB" stroke-width="3"/>
+
+  <rect x="370" y="90" width="260" height="170" rx="10" fill="#FFF7E8" stroke="#C08A2D" stroke-width="1.5"/>
+  <text x="500" y="130" fill="#14355F" font-size="26" font-weight="700" text-anchor="middle">② 正常化</text>
+  <text x="500" y="158" fill="#1A2331" font-size="20" text-anchor="middle">Like-for-Likeで判断</text>
+  <text x="500" y="180" fill="#1A2331" font-size="20" text-anchor="middle">断絶を繋ぐ／異常値を除外</text>
+  <text x="500" y="202" fill="#1A2331" font-size="20" text-anchor="middle">欠損を補完（可能な範囲で）</text>
+  <text x="500" y="224" fill="#1A2331" font-size="20" text-anchor="middle">科目・セグメントを組替</text>
+
+  <polygon points="640,175 680,165 680,185" fill="#2563EB"/>
+  <line x1="632" y1="175" x2="680" y2="175" stroke="#2563EB" stroke-width="3"/>
+
+  <rect x="710" y="100" width="260" height="150" rx="10" fill="#EAF1FB" stroke="#1F7A5A" stroke-width="1.5"/>
+  <text x="840" y="140" fill="#14355F" font-size="26" font-weight="700" text-anchor="middle">③ Historicals確定</text>
+  <text x="840" y="168" fill="#1A2331" font-size="20" text-anchor="middle">モデルのHistoricalsタブへ</text>
+  <text x="840" y="190" fill="#1A2331" font-size="20" text-anchor="middle">Adjustment Log付きで確定</text>
+  <text x="840" y="212" fill="#1A2331" font-size="20" text-anchor="middle">前提設定の起点として使用可</text>
+
+  <text x="500" y="290" fill="#5B6470" font-size="20" text-anchor="middle">②で「何を・なぜ・どう」調整したかを③へ引き継ぐことがトレーサビリティの要</text>
+</svg>
+</div>
+<figcaption style="word-break:auto-phrase;padding:8px 14px;color:#5B6470;font-size:13px">図：実績データはこの3段階を経てはじめてモデルの前提として使える状態になります。</figcaption>
+</figure>
+
+<h2 id="s4" style="word-break:auto-phrase">会計方針変更をまたぐ実績の繋ぎ方（収益認識・リースを中心に）</h2>
+<p><a href="../glossary/accounting-policy-change/index.html" class="op-gt" data-gt="accounting-policy-change">会計方針の変更</a>は、日本基準では2021年4月以降開始事業年度から「収益認識に関する会計基準」の本格適用が進み、対象企業では総額表示から純額表示への変更（代理人取引の手数料相当額のみを売上計上する等）や、履行義務の充足時点の見直しにより、売上高の水準そのものが変更前後で断絶することがあります。同様に、リース会計基準の見直し（借手のオペレーティングリースのオンバランス化）が適用されると、<a href="../glossary/ebit/index.html" class="op-gt" data-gt="ebit">営業利益</a>・<a href="../fin-002-ebitda/index.html" class="op-gt" data-gt="ebitda">EBITDA</a>・総資産・有利子負債の水準が会計処理の変更だけで動きます。</p>
+<p><b>そのまま使うと何が壊れるか</b>――変更前後を単純に横に並べると、売上成長率やEBITDAマージンの推移が「事業の実態変化」ではなく「集計方法の変化」を表してしまいます。</p>
+<p><b>どう調整するか</b>――有価証券報告書や決算短信の注記には、多くの場合「遡及適用した場合の影響額」または「会計方針変更の影響額」が開示されています。これを使って旧年度を新基準ベースに組み替えるのが最も望ましい対応です。開示が定性的な説明にとどまり金額の遡及開示がない場合は、変更のあった期を境に区分し、無理に一本の連続した時系列としては扱わない（開示ベースの断絶として明示する）方が誠実です。</p>
+<p><b>調整の開示方法</b>――どちらの処理を選んだかをAdjustment Logに明記します<span style="white-space:nowrap">（後述）</span>。特に借手のリース会計基準変更はEBITDAの水準を機械的に押し上げるため、EBITDA倍率で評価する場面では旧基準期と新基準期を混在させないよう注意してください。</p>
+
+<h2 id="s5" style="word-break:auto-phrase">決算期変更<span style="white-space:nowrap">（変則決算期間）</span>の調整</h2>
+<p>決算期を変更した会社では、変更年度だけ12か月に満たない、あるいは超える変則決算期間<span style="white-space:nowrap">（スタブ期間）</span>が生じます。たとえば3月決算から12月決算へ変更する場合、変更年度は4月〜12月の9か月決算になるのが典型です。</p>
+<p><b>そのまま使うと何が壊れるか</b>――9か月分の実績を12か月ベースの前年・翌年と並べると、売上・利益の絶対額も、対前年成長率も意味を持たなくなります。</p>
+<p><b>どう調整するか</b>――季節性がほとんどない事業であれば月割り<span style="white-space:nowrap">（9か月実績÷9×12）</span>で年換算する簡便法が使えますが、季節性のある事業<span style="white-space:nowrap">（小売・観光・建設など）</span>では単純な月割りは実態を歪めます。<a href="../glossary/fiscal-year-calendar-conversion/index.html" class="op-gt" data-gt="fiscal-year-calendar-conversion">決算期とカレンダー年度の変換</a>における月割り補正の基本的な考え方も参考にしてください。可能であれば月次・四半期の内訳データを使い、繁忙期・閑散期の構成を踏まえた年換算を行うか、あるいは年換算せず「スタブ期間」として独立表示し、成長率計算からは除外するのが安全です。</p>
+<p><b>調整の開示方法</b>――年換算した場合はその前提（単純月割りか、季節性を考慮した推計か）を必ず注記します。下図は決算期変更と期中M&amp;Aによって生じる期間の断絶を、どう橋渡しするかのイメージです。</p>
+
+<figure style="margin:28px 0;border:1px solid var(--line,#D8DEE8);background:#fff;border-radius:10px;overflow:hidden">
+<div style="overflow-x:auto;-webkit-overflow-scrolling:touch">
+<svg viewBox="0 0 1000 420" role="img" aria-label="決算期変更のスタブ期間と期中M&amp;Aによる連結範囲変更を、期間の橋渡しとしてどう調整するかを示すタイムライン図" style="display:block;width:100%;min-width:1000px;height:auto;font-family:'Noto Sans JP',sans-serif">
+  <rect x="0" y="0" width="1000" height="56" fill="#14355F"/>
+  <text x="24" y="36" fill="#fff" font-size="23" font-weight="700">図2：決算期変更・期中M&amp;Aの期間橋渡し</text>
+
+  <text x="24" y="90" fill="#14355F" font-size="16" font-weight="700">ケースA：決算期変更（3月決算→12月決算）</text>
+  <rect x="24" y="102" width="260" height="46" fill="#EAF1FB" stroke="#14355F"/>
+  <text x="154" y="130" font-size="14" text-anchor="middle" fill="#1A2331">FY22（4月〜翌3月・12か月）</text>
+  <rect x="290" y="102" width="200" height="46" fill="#FFF7E8" stroke="#C08A2D"/>
+  <text x="390" y="124" font-size="14" text-anchor="middle" fill="#1A2331">スタブ期間</text>
+  <text x="390" y="140" font-size="13" text-anchor="middle" fill="#5B6470">（4月〜12月・9か月）</text>
+  <rect x="500" y="102" width="260" height="46" fill="#EAF1FB" stroke="#14355F"/>
+  <text x="630" y="130" font-size="14" text-anchor="middle" fill="#1A2331">FY24（1月〜12月・12か月）</text>
+  <line x1="290" y1="90" x2="290" y2="160" stroke="#B23A48" stroke-width="2" stroke-dasharray="6 5"/>
+  <line x1="490" y1="90" x2="490" y2="160" stroke="#B23A48" stroke-width="2" stroke-dasharray="6 5"/>
+  <text x="390" y="175" font-size="13" text-anchor="middle" fill="#B23A48">季節性を踏まえて年換算 or 独立表示</text>
+
+  <text x="24" y="230" fill="#14355F" font-size="16" font-weight="700">ケースB：期中M&amp;A（10月に子会社取得）</text>
+  <rect x="24" y="242" width="460" height="46" fill="#EAF1FB" stroke="#14355F" stroke-dasharray="4 3"/>
+  <text x="254" y="270" font-size="14" text-anchor="middle" fill="#5B6470">取得前（連結対象外・参考情報のみ）</text>
+  <rect x="484" y="242" width="140" height="46" fill="#1F7A5A" opacity="0.15" stroke="#1F7A5A"/>
+  <text x="554" y="270" font-size="14" text-anchor="middle" fill="#1A2331">実績連結（10〜12月）</text>
+  <line x1="484" y1="230" x2="484" y2="300" stroke="#1F7A5A" stroke-width="2"/>
+  <text x="484" y="320" font-size="13" text-anchor="middle" fill="#1F7A5A">取得日</text>
+
+  <rect x="24" y="345" width="600" height="46" fill="#F4F7FB" stroke="#D8DEE8"/>
+  <text x="34" y="365" font-size="13" fill="#1A2331">実績のみのライン：連結範囲の変化がそのまま成長率に混入</text>
+  <text x="34" y="383" font-size="13" fill="#1A2331">参考：取得前月分を仮に合算したプロフォーマ・ベースを別枠で併記すると実態把握に有用</text>
+</svg>
+</div>
+<figcaption style="word-break:auto-phrase;padding:8px 14px;color:#5B6470;font-size:13px">図：決算期変更のスタブ期間、期中M&amp;Aによる連結範囲の変化は、いずれも「年換算・注記」か「区分表示」のどちらかで橋渡しします。</figcaption>
+</figure>
+
+<h2 id="s6" style="word-break:auto-phrase">期中M&amp;A・連結範囲の変更をどう扱うか</h2>
+<p>期中に子会社を取得<span style="white-space:nowrap">（または売却）</span>した場合、連結<a href="../acc-002-pl-profit-levels/index.html" class="op-gt" data-gt="income-statement">損益計算書</a>にはその会社の取得後<span style="white-space:nowrap">（または売却前）</span>の月数分の実績しか含まれません。</p>
+<p><b>そのまま使うと何が壊れるか</b>――前年同期比の売上成長率を単純計算すると、既存事業の伸びなのか連結範囲の拡大なのか区別がつかなくなり、将来予測の前提として過大評価につながります。</p>
+<p><b>どう調整するか</b>――実務でよく使われるのは「実績連結ベース」と「<a href="../glossary/pro-forma-financials/index.html" class="op-gt" data-gt="pro-forma-financials">プロフォーマ</a>（取得前月数も仮に合算した参考値）」を併記する方法です。有価証券報告書やM&amp;A公表資料に対象会社の年間売上・利益の開示があれば、参考値として合算できます。開示がない場合は無理に推計せず、実績連結ベースのみを使い、連結範囲変更の影響を定性的に注記するにとどめます。連結範囲変更を伴う<a href="../ma-008-carveout/index.html" class="op-gt" data-gt="carveout">カーブアウト</a>案件で対象事業単独の財務諸表を組み立てる場合は、<a href="../ma-029-carveout-financial-statements/index.html">ma-029：カーブアウト財務諸表の作り方</a>で扱うスタンドアロン調整の考え方が参考になります。</p>
+<p><b>調整の開示方法</b>――取得日・売却日、実績連結に含まれる月数、プロフォーマを使ったかどうかをAdjustment Logに明記します。</p>
+
+<h2 id="s7" style="word-break:auto-phrase">非継続事業（Discontinued Operations）の扱い</h2>
+<p>事業を売却・撤退した会社の決算書では、その事業を「非継続事業」として損益計算書上区分表示することがあります（<a href="../glossary/ifrs/index.html" class="op-gt" data-gt="ifrs">IFRS</a>では一定の要件下で非継続事業の区分表示が求められる一方、日本基準にはこれに相当する明確な表示規定がなく、実務上は事業撤退損失等が特別損益に計上される形が中心です）。</p>
+<p><b>そのまま使うと何が壊れるか</b>――非継続事業の数字を含めたまま将来予測の起点にすると、既に手放した事業の実績が将来のベースラインに紛れ込みます。逆に、区分表示された年度と、まだ区分表示されていなかった過去年度を機械的に繋ぐと、対象事業の有無が年度ごとに揺れ、比較可能性が崩れます。</p>
+<p><b>どう調整するか</b>――継続事業のみを将来予測の対象にするのが原則です。過去年度についても、可能な範囲で継続事業ベースに組み替えます（決算短信・有報の「継続事業」区分の数値、またはセグメント情報から対象事業を除いた数値を使用）。組み替えが困難な場合は、非継続事業を含む年度を明示的に区分し、トレンド計算から除外します。</p>
+<p><b>調整の開示方法</b>――どの事業を非継続事業として除外したか、除外の根拠（開示区分に従ったか、自前で除外したか）をログに残します。</p>
+
+<h2 id="s8" style="word-break:auto-phrase">異常値・One-off項目の検出と調整判断</h2>
+<p>特定の期だけ数字が跳ねている場合、まず「構造的な変化」か「一時的な要因」かを切り分けます。検出の入口としては、対前年・対売上高比率での急変、決算短信・有報の「特別損益」注記、セグメント情報の脚注などを確認するのが基本です。</p>
+<p><b>そのまま使うと何が壊れるか</b>――減損損失や訴訟和解金、自然災害による損失、政府補助金などの一時的な項目を含んだままトレンドを取ると、将来の利益率やコスト構造の前提が歪みます。</p>
+<p><b>どう調整するか</b>――一時的要因であることが開示（注記の文言、決算説明資料でのハイライト）から確認できる場合のみ調整します。「大きいから」という理由だけで機械的に除外するのは危険です。逆に、毎年のように発生している「一時的」費用（たとえば毎期のリストラ費用）は、実質的に経常的なコストである可能性が高く、除外すべきかどうか慎重に判断してください。この判断軸は<a href="../glossary/normalized-earnings/index.html" class="op-gt" data-gt="normalized-earnings">正常収益力<span style="white-space:nowrap">（Normalized Earnings）</span></a>の考え方と地続きですが、acc-013のEBITDA正常化が「その期の稼ぐ力」を測るのに対し、本記事の調整は「複数期を並べたときにトレンドとして意味を持たせる」ことが目的である点に注意してください。</p>
+<p><b>調整の開示方法</b>――除外した金額、勘定科目、根拠となった開示情報の出所をログに記載します。</p>
+
+<h2 id="s9" style="word-break:auto-phrase">欠損値の扱い<span style="white-space:nowrap">（補間の可否・注記）</span></h2>
+<p>非上場企業や開示が限定的な会社では、一部の期間・勘定科目のデータが単純に取得できないことがあります。</p>
+<p><b>そのまま使うと何が壊れるか</b>――欠損をゼロや空欄のまま計算すると、比率やトレンドの計算がエラーになるか、実態と異なる値を示します。</p>
+<p><b>どう調整するか</b>――補間が許されるのは「本来は存在する数値が単に未取得・未開示なだけ」の場合に限ります。前後期からの直線補間や、関連指標<span style="white-space:nowrap">（売上高比率など）</span>を使った推計が典型的な手法ですが、いずれも精度は粗いため、モデルの重要な前提<span style="white-space:nowrap">（成長率の起点など）</span>には使わないのが無難です。一方、そもそも事業が存在しなかった期間<span style="white-space:nowrap">（設立前、事業開始前）</span>については補間の対象にせず、単に「データなし」として扱います。季節性のある事業で月次データが一部欠けている場合は、<a href="../glossary/seasonality-modeling/index.html" class="op-gt" data-gt="seasonality-modeling">季節性のモデル化</a>の考え方を踏まえた補完が必要です。</p>
+<p><b>調整の開示方法</b>――どの期間・科目を補間したか、補間方法、補間値を使った理由を必ず注記します。補間した数値であることが分かるよう、モデル上でも色分け等の表示ルールを設けることを推奨します。</p>
+
+<h2 id="s10" style="word-break:auto-phrase">勘定科目名の変更・組替の追跡</h2>
+<p>決算書の表示区分は年度ごとに変わることがあります。たとえば「その他販管費」に集約されていた項目が翌年から独立科目として表示される、逆に細分化されていた科目が統合される、といったケースです。</p>
+<p><b>そのまま使うと何が壊れるか</b>――同じ科目名でも中身が違う年度をそのまま時系列に並べると、実際には移動しただけの費用があたかも増減したように見えます。</p>
+<p><b>どう調整するか</b>――mod-025で作成した勘定科目マッピングを起点に、年度ごとの科目対応関係を突き合わせます。過去の開示資料を遡り、組替の影響額が注記されていればそれを使い、なければ金額規模から推測できる範囲で組み替えます。</p>
+<p><b>調整の開示方法</b>――マッピングログ（旧科目名→新科目名、対応関係の根拠）を残し、<a href="../mod-025-trial-balance-to-historicals/index.html">mod-025</a>のマッピング表と一体で管理すると、後続の実績更新作業が楽になります。</p>
+
+<h2 id="s11" style="word-break:auto-phrase">セグメント変更の橋渡し</h2>
+<p>事業セグメントの区分<span style="white-space:nowrap">（報告セグメント）</span>が組織変更に伴って変わることがあります。開示上は多くの場合、変更年度の有価証券報告書に「変更後区分による遡及開示」が掲載されますが、それより前の年度まで遡及されているとは限りません。</p>
+<p><b>そのまま使うと何が壊れるか</b>――事業別モデル（<a href="../glossary/segment-modeling/index.html" class="op-gt" data-gt="segment-modeling">セグメント別モデリング</a>）を組む際、区分基準が変わった年度をまたぐと、特定事業の成長率が実態と無関係に跳ねます。</p>
+<p><b>どう調整するか</b>――変更年度の有報に遡及開示があれば、それを使って過去分を新区分に組み替えます。遡及開示がない場合は、セグメント情報の脚注や決算説明資料の定性的な記述を手がかりに、金額規模の見当をつけた上で自前の橋渡し試算を作り、あくまで推計であることを明示します。</p>
+<p><b>調整の開示方法</b>――遡及開示を使ったか自前推計かを区別してログに残します。自前推計の場合は前提条件も併記してください。</p>
+
+<h2 id="s12" style="word-break:auto-phrase">過年度修正<span style="white-space:nowrap">（Restatement）</span>が入った場合の処理</h2>
+<p><a href="../glossary/restatement/index.html" class="op-gt" data-gt="restatement">過年度決算の修正再表示<span style="white-space:nowrap">（Restatement）</span></a>は、誤謬の訂正や不正会計の是正など、会計方針変更よりも重い理由で発生します。</p>
+<p><b>そのまま使うと何が壊れるか</b>――修正前の旧数値のままモデルの前提を組んでしまうと、誤った基礎の上に将来予測を積み上げることになります。</p>
+<p><b>どう調整するか</b>――原則として修正後の数値を採用します。修正の影響が複数年度に及ぶ場合は、修正後の有価証券報告書や訂正報告書に記載された遡及修正後の数値を使ってください。修正の理由・影響額の重要性によっては、その会社の実績データ全体の信頼性を再評価する必要も出てきます。</p>
+<p><b>調整の開示方法</b>――旧数値と修正後数値の差分、修正の理由、参照した訂正報告書の名称・日付をAdjustment Logに残します。決算日後に判明した事象（<a href="../glossary/subsequent-events/index.html" class="op-gt" data-gt="subsequent-events">後発事象</a>）との違いにも注意してください。後発事象は将来に向けた開示情報であり、過去実績の数値そのものを書き換えるRestatementとは性質が異なります。</p>
+
+<h2 id="s13" style="word-break:auto-phrase">Adjustment Log――調整の記録と開示</h2>
+<p>ここまでの各判断は、モデルの中に痕跡を残さなければ、後で誰も再現できません。デューデリジェンスやモデルレビューの場面では「なぜこの数字を使ったのか」を説明できることが、数字そのものと同じくらい重要です。実務では、以下のような列構成のAdjustment Log<span style="white-space:nowrap">（調整記録）</span>をHistoricalsタブと並べて管理するのが一般的です。</p>
+
+<figure style="margin:24px 0;overflow-x:auto"><table style="border-collapse:collapse;width:100%;min-width:1764px;font-size:15px">
+<thead style="white-space:nowrap"><tr style="background:#14355F;color:#fff">
+<th style="padding:10px;text-align:left">No.</th>
+<th style="white-space:nowrap;padding:10px;text-align:left">対象期間</th>
+<th style="white-space:nowrap;padding:10px;text-align:left">勘定科目／指標</th>
+<th style="white-space:nowrap;padding:10px;text-align:left">調整前</th>
+<th style="white-space:nowrap;padding:10px;text-align:left">調整後</th>
+<th style="white-space:nowrap;padding:10px;text-align:left">調整の種類</th>
+<th style="white-space:nowrap;padding:10px;text-align:left">調整理由</th>
+<th style="white-space:nowrap;padding:10px;text-align:left">根拠資料</th>
+</tr></thead>
+<tbody>
+<tr><td style="white-space:nowrap;padding:10px;border-bottom:1px solid #D8DEE8">1</td><td style="white-space:nowrap;padding:10px;border-bottom:1px solid #D8DEE8">2022年3月期</td><td style="white-space:nowrap;padding:10px;border-bottom:1px solid #D8DEE8">売上高</td><td style="white-space:nowrap;padding:10px;border-bottom:1px solid #D8DEE8">1,240百万円</td><td style="white-space:nowrap;padding:10px;border-bottom:1px solid #D8DEE8">1,180百万円</td><td style="padding:10px;border-bottom:1px solid #D8DEE8">会計方針変更<span style="white-space:nowrap">（純額表示化）</span></td><td style="padding:10px;border-bottom:1px solid #D8DEE8">収益認識基準の遡及適用影響を開示注記どおり反映</td><td style="padding:10px;border-bottom:1px solid #D8DEE8">有報注記<span style="white-space:nowrap">（会計方針の変更）</span></td></tr>
+<tr><td style="white-space:nowrap;padding:10px;border-bottom:1px solid #D8DEE8">2</td><td style="padding:10px;border-bottom:1px solid #D8DEE8">2023年12月期<span style="white-space:nowrap">（9か月変則）</span></td><td style="white-space:nowrap;padding:10px;border-bottom:1px solid #D8DEE8">営業利益</td><td style="white-space:nowrap;padding:10px;border-bottom:1px solid #D8DEE8">312百万円<span style="white-space:nowrap">（9か月）</span></td><td style="white-space:nowrap;padding:10px;border-bottom:1px solid #D8DEE8">年換算せず区分表示</td><td style="padding:10px;border-bottom:1px solid #D8DEE8">決算期変更<span style="white-space:nowrap">（スタブ期間）</span></td><td style="padding:10px;border-bottom:1px solid #D8DEE8">季節性が大きい事業のため単純月割りを回避</td><td style="padding:10px;border-bottom:1px solid #D8DEE8">決算短信<span style="white-space:nowrap">（決算期変更のお知らせ）</span></td></tr>
+<tr><td style="white-space:nowrap;padding:10px;border-bottom:none">3</td><td style="white-space:nowrap;padding:10px;border-bottom:none">2024年12月期</td><td style="white-space:nowrap;padding:10px;border-bottom:none">特別損失</td><td style="white-space:nowrap;padding:10px;border-bottom:none">▲85百万円含む</td><td style="white-space:nowrap;padding:10px;border-bottom:none">▲85百万円を除外</td><td style="white-space:nowrap;padding:10px;border-bottom:none">一時的要因の除外</td><td style="padding:10px;border-bottom:none">工場火災による損失<span style="white-space:nowrap">（非経常と開示）</span></td><td style="white-space:nowrap;padding:10px;border-bottom:none">決算説明資料</td></tr>
+</tbody>
+</table></figure>
+<p class="art-note">※上表の金額・企業名は説明用の仮設例であり、実在の企業のデータではありません。</p>
+
+<p>列構成はプロジェクトごとに増減しますが、「調整前」「調整後」「調整の種類」「調整理由」「根拠資料」の5点は最低限残しておくと、後から別の担当者がモデルをレビューする際にも判断過程を再現できます。特にPEのデューデリジェンスやIM<span style="white-space:nowrap">（Information Memorandum）</span>に添付する資料では、この記録が調整の妥当性を説明する根拠そのものになります。モデル全体のレビュー観点は<a href="../mod-009-model-qc/index.html" class="op-gt" data-gt="model-qc">mod-009：財務モデルのクオリティチェック<span style="white-space:nowrap">（QC）</span>完全ガイド</a>も参照してください。</p>
+
+<aside class="art-cta art-cta--inline" data-art-cta="inline" data-art-cta-src="authored" data-art-cta-target="3statement" aria-labelledby="art-cta-inline-2"><p class="art-cta-eyebrow">実務で試す</p><p class="art-cta-title" id="art-cta-inline-2">断絶だらけの実績データを、自分の手で「使える形」にできますか</p><p class="art-cta-text">会計方針変更・決算期変更・M&amp;Aが絡んだ実績データは、教科書通りの手順では処理しきれない判断の連続です。財務三表モデリング講座では、実際の開示資料を題材にHistoricals整形からモデル構築までを一気通貫で扱います。</p><p class="art-cta-act"><a class="art-btn art-btn--gold" href="../materials/3statement/index.html">財務三表モデリング講座を見る</a></p></aside>
+
+<h2 id="s14" style="word-break:auto-phrase">クリーニング作業のチェックリスト</h2>
+<p>実績データをHistoricalsとして確定させる前に、次の項目を確認してください。</p>
+<ul>
+<li>対象期間中に会計方針変更<span style="white-space:nowrap">（収益認識・リース等）</span>はなかったか。あった場合、遡及開示を反映したか</li>
+<li>決算期変更によるスタブ期間はないか。あった場合、年換算か区分表示かを決めたか</li>
+<li>期中のM&amp;A・事業譲渡による連結範囲の変化はないか。実績ベースとプロフォーマの扱いを決めたか</li>
+<li>非継続事業に該当する区分表示はないか。継続事業ベースへの組み替えを検討したか</li>
+<li>対前年・対売上比率で急変している科目はないか。一時的要因か構造変化かを開示情報で確認したか</li>
+<li>欠損値がある期間・科目はないか。補間の可否と方法を検討し、注記したか</li>
+<li>勘定科目名・表示区分が年度で変わっていないか。マッピングログで対応関係を追跡したか</li>
+<li>セグメント区分の変更はないか。遡及開示の有無を確認したか</li>
+<li>過年度修正<span style="white-space:nowrap">（Restatement）</span>はないか。修正後数値を使っているか</li>
+<li>すべての調整をAdjustment Logに記録したか（調整前・調整後・理由・根拠資料）</li>
+</ul>
+
+<h2 id="faq" style="word-break:auto-phrase">よくある質問<span style="white-space:nowrap">（FAQ）</span></h2>
+<div class="art-faq"><div class="art-faq-item"><h3 class="art-faq-q"><span class="art-faq-mk" aria-hidden="true">Q</span><span class="art-faq-qt">異常値は必ず除外すべきですか。</span></h3><div class="art-faq-a"><span class="art-faq-mk" aria-hidden="true">A</span><div class="art-faq-at"><p>いいえ。金額が大きいという理由だけで除外するのは危険です。開示情報から一時的要因であることが確認できる場合に限り調整し、理由をログに残してください。毎期発生しているコストは実質的に経常的である可能性を疑ってください。</p></div></div></div>
+<div class="art-faq-item"><h3 class="art-faq-q"><span class="art-faq-mk" aria-hidden="true">Q</span><span class="art-faq-qt">欠損値を補間すると、モデルの信頼性は落ちませんか。</span></h3><div class="art-faq-a"><span class="art-faq-mk" aria-hidden="true">A</span><div class="art-faq-at"><p>補間した箇所を明示し、重要な前提<span style="white-space:nowrap">（成長率の起点など）</span>には使わない、という運用を徹底すれば実務上は許容されます。補間したことを隠すと信頼性を損ないますが、注記した補間はむしろ透明性の担保になります。</p></div></div></div>
+<div class="art-faq-item"><h3 class="art-faq-q"><span class="art-faq-mk" aria-hidden="true">Q</span><span class="art-faq-qt">Adjustment Logは社内向けだけで十分ですか。</span></h3><div class="art-faq-a"><span class="art-faq-mk" aria-hidden="true">A</span><div class="art-faq-at"><p>デューデリジェンスやIMに添付する場合は、外部の読み手が調整の妥当性を検証できる粒度で記載する必要があります。社内検討用の粗いログとは別に、開示用に整理し直すことも多くあります。</p></div></div></div>
+<div class="art-faq-item"><h3 class="art-faq-q"><span class="art-faq-mk" aria-hidden="true">Q</span><span class="art-faq-qt">mod-025で作ったHistoricalsに対して、本記事の調整はいつ行うべきですか。</span></h3><div class="art-faq-a"><span class="art-faq-mk" aria-hidden="true">A</span><div class="art-faq-at"><p>勘定科目マッピング<span style="white-space:nowrap">（mod-025の範囲）</span>が終わった後、モデルの前提設定（成長率・マージンの過去トレンド算出）に着手する前に行うのが基本です。マッピングと整形を同時並行で進めると、どちらの調整か分からなくなりやすいため注意してください。</p></div></div></div>
+
+</div><h2 id="sum" style="word-break:auto-phrase">まとめ</h2>
+<p>Historical Data Cleaningは、単なる表記統一の作業ではなく、「この数字を将来予測の起点にしてよいか」を一つひとつ判断していく作業です。会計方針変更・決算期変更・期中M&amp;A・非継続事業・異常値・欠損値・科目組替・セグメント変更・Restatementという9つの断絶要因に対して、Like-for-Like<span style="white-space:nowrap">（比較可能性）</span>を軸にそれぞれ「そのまま使うと何が壊れるか」「どう調整するか」「どう開示するか」を判断し、Adjustment Logに記録する。この一連の流れができて初めて、過去実績はモデルの前提として信頼できるものになります。</p>
+
+
+
+<div class="related-box"><p class="related-box-h">次に読む</p><ul>
+<li><a href="../mod-025-trial-balance-to-historicals/index.html">月次試算表からHistoricalsを作る方法｜勘定科目マッピングの実務</a></li>
+<li><a href="../xl-019-data-cleaning/index.html">Excelの財務データクリーニング実務｜TRIM・重複削除・区切り位置・フラッシュフィルで「揃った表」を作る</a></li>
+<li><a href="../acc-013-adjusted-ebitda/index.html" class="op-gt" data-gt="adjusted-ebitda">EBITDAの正常化調整<span style="white-space:nowrap">（Adjusted EBITDA）</span>｜どこまで足し戻してよいか</a></li>
+<li><a href="../mod-009-model-qc/index.html" class="op-gt" data-gt="model-qc">財務モデルのクオリティチェック<span style="white-space:nowrap">（QC）</span>完全ガイド｜提出前に回す4層チェック</a></li>
+<li><a href="../mod-027-ltm-ntm-calendarization/index.html">LTM・NTM・Calendarizationの実装｜四半期データから直近12か月を組む</a></li>
+<li><a href="../val-022-comps-fiscal-year-adjustment/index.html">決算期が異なる会社をCompsで比較する方法｜CY化・スタブ期間・予想年度</a></li>
+<li><a href="../mod-035-reasonability-check/index.html">前提が現実的かを見抜く7つのテスト</a></li></ul></div>
+
+<h2 id="src" style="word-break:auto-phrase">出典・参考<span style="white-space:nowrap">（2026年8月16日確認）</span></h2>
+<ul class="art-src">
+<li>企業会計基準委員会<span style="white-space:nowrap">（ASBJ）</span>ウェブサイト（収益認識・リースなど会計基準の公表状況） <a href="https://www.asb.or.jp/" rel="nofollow">https://www.asb.or.jp/</a></li>
+<li>IFRS財団「IFRS 5号：非流動資産の売却目的保有及び非継続事業」 <a href="https://www.ifrs.org/issued-standards/list-of-standards/ifrs-5-non-current-assets-held-for-sale-and-discontinued-operations/" rel="nofollow">https://www.ifrs.org/issued-standards/list-of-standards/ifrs-5-non-current-assets-held-for-sale-and-discontinued-operations/</a></li>
+<li>IFRS財団「IFRS 16号：リース」 <a href="https://www.ifrs.org/issued-standards/list-of-standards/ifrs-16-leases/" rel="nofollow">https://www.ifrs.org/issued-standards/list-of-standards/ifrs-16-leases/</a></li>
+<li>米国証券取引委員会<span style="white-space:nowrap">（SEC）</span>Regulation S-X（プロフォーマ財務情報に関するArticle 11を含む） <a href="https://www.sec.gov/rules-regulations/regulation-s-x" rel="nofollow">https://www.sec.gov/rules-regulations/regulation-s-x</a></li>
+<li>e-Gov法令検索「財務諸表等の用語、様式及び作成方法に関する規則」 <a href="https://elaws.e-gov.go.jp/" rel="nofollow">https://elaws.e-gov.go.jp/</a></li>
+</ul>
+
+<p class="art-note">※本記事は教育目的の一般的な解説であり、法務・税務・投資助言ではありません。設例は理解のための仮設例です。</p>
+
+<aside class="op-fml" aria-label="財務モデリングを体系的に学ぶ"><p class="op-fml__h">この記事のテーマを、体系的に学ぶ</p><ul class="op-fml__list"><li><a href="../course/index.html" data-ga4="fm_links_click" data-fml="pillar">財務モデリングの学び方（講座案内）</a><span class="op-fml__note">Excel・財務三表・DCF・Comps・M&amp;A・LBOの学習順序、無料28章と7日間講座、有料教材との違い</span></li><li><a href="../materials/3statement/index.html" data-ga4="fm_links_click" data-fml="material-3statement">財務三表モデルの講座</a><span class="op-fml__note">PL・BS・CFを読むだけでなく、Excel上で連動させるための基礎モデル。</span></li><li><a href="../materials/excel-starter-pack/index.html" data-ga4="fm_links_click" data-fml="starter">無料Excelテンプレート集（Excel Starter Pack）</a><span class="op-fml__note">無料会員登録で、三表連動・DCF・LBO・M&amp;Aモデルなど9つのExcelテンプレートを受け取れます</span></li></ul></aside>    </article>
+    <div class="art-share"><style id="op-share-style">
+.op-share{margin:44px 0 0;padding-top:18px;border-top:1px solid #E3E8EF}
+.op-share-h{font-size:.78rem;font-weight:700;color:#5B6470;letter-spacing:.05em;margin:0 0 10px}
+.op-share-list{display:flex;flex-wrap:wrap;gap:8px;list-style:none;margin:0;padding:0}
+.op-share-list li{margin:0;padding:0}
+.op-share-btn{display:inline-flex;align-items:center;gap:7px;min-height:34px;padding:6px 13px;border:1px solid #D8DEE8;border-radius:8px;background:#fff;color:#14355F;font-size:.78rem;font-weight:600;font-family:inherit;line-height:1;text-decoration:none;cursor:pointer;transition:border-color .15s ease,color .15s ease,background .15s ease}
+.op-share-btn svg{width:15px;height:15px;flex:0 0 auto}
+.op-share-btn:hover{border-color:#C08A2D;color:#8A6115;background:#FFFDF7}
+.op-share-btn:focus-visible{outline:2px solid #14355F;outline-offset:2px}
+.op-share-copy .op-share-ic-done{display:none}
+.op-share-copy.is-copied{border-color:#007A4D;color:#007A4D;background:#F2FAF6}
+.op-share-copy.is-copied .op-share-ic-link{display:none}
+.op-share-copy.is-copied .op-share-ic-done{display:inline-block}
+@media(max-width:760px){.op-share-btn{min-height:40px;padding:8px 14px;font-size:.8rem}.op-share-btn svg{width:16px;height:16px}}
+</style>
+<div class="op-share" data-ctype="article" data-slug="mod-026-historical-data-cleaning" data-stitle="財務モデルのためのHistorical Data Cleaning｜モデルを組む前のデータ整形" data-url="https://otemachiprep.com/mod-026-historical-data-cleaning/">
+  <h3 class="op-share-h">この記事を共有</h3>
+  <ul class="op-share-list">
+    <li><a class="op-share-btn" data-pf="x" href="https://twitter.com/intent/tweet?text=%E8%B2%A1%E5%8B%99%E3%83%A2%E3%83%87%E3%83%AB%E3%81%AE%E3%81%9F%E3%82%81%E3%81%AEHistorical%20Data%20Cleaning%EF%BD%9C%E3%83%A2%E3%83%87%E3%83%AB%E3%82%92%E7%B5%84%E3%82%80%E5%89%8D%E3%81%AE%E3%83%87%E3%83%BC%E3%82%BF%E6%95%B4%E5%BD%A2&#038;url=https%3A%2F%2Fotemachiprep.com%2Fmod-026-historical-data-cleaning%2F" target="_blank" rel="nofollow noopener noreferrer" aria-label="X（旧Twitter）で共有（新しいウィンドウで開きます）"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231 5.451-6.231zm-1.161 17.52h1.833L7.084 4.126H5.117l11.966 15.644z"/></svg><span>X</span></a></li>
+    <li><a class="op-share-btn" data-pf="facebook" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fotemachiprep.com%2Fmod-026-historical-data-cleaning%2F" target="_blank" rel="nofollow noopener noreferrer" aria-label="Facebookで共有（新しいウィンドウで開きます）"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M24 12.073C24 5.446 18.627.073 12 .073S0 5.446 0 12.073c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.668 4.533-4.668 1.312 0 2.686.234 2.686.234v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg><span>Facebook</span></a></li>
+    <li><a class="op-share-btn" data-pf="linkedin" href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fotemachiprep.com%2Fmod-026-historical-data-cleaning%2F" target="_blank" rel="nofollow noopener noreferrer" aria-label="LinkedInで共有（新しいウィンドウで開きます）"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.266 2.37 4.266 5.455v6.286zM5.337 7.433a2.062 2.062 0 1 1 0-4.125 2.062 2.062 0 0 1 0 4.125zM7.119 20.452H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.225 0z"/></svg><span>LinkedIn</span></a></li>
+    <li><button type="button" class="op-share-btn op-share-copy" data-pf="copy_link" aria-label="記事のリンクをコピー"><svg class="op-share-ic-link" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z"/></svg><svg class="op-share-ic-done" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M9 16.2 5.5 12.7 4 14.2l5 5 11-11-1.5-1.5z"/></svg><span class="op-share-copylabel" aria-live="polite">リンクをコピー</span></button></li>
+    <li class="op-share-native-li" hidden><button type="button" class="op-share-btn" data-pf="native_share" aria-label="その他のアプリで共有"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92s2.92-1.31 2.92-2.92-1.31-2.92-2.92-2.92z"/></svg><span>その他のアプリで共有</span></button></li>
+  </ul>
+</div>
+<script id="op-share-js">
+(function(){
+  'use strict';
+  var d = document;
+  function reveal(){
+    if (navigator.share) {
+      var lis = d.querySelectorAll('.op-share-native-li');
+      for (var i = 0; i < lis.length; i++) { lis[i].hidden = false; }
+    }
+  }
+  if (d.readyState === 'loading') { d.addEventListener('DOMContentLoaded', reveal); } else { reveal(); }
+  function track(root, pf){
+    var p = {
+      content_type:  root.getAttribute('data-ctype') || '',
+      article_slug:  root.getAttribute('data-slug') || '',
+      article_title: root.getAttribute('data-stitle') || '',
+      share_platform: pf
+    };
+    if (typeof window.gtag === 'function') { window.gtag('event', 'article_share', p); }
+    else if (window.dataLayer && typeof window.dataLayer.push === 'function') { p.event = 'article_share'; window.dataLayer.push(p); }
+  }
+  d.addEventListener('click', function(e){
+    var btn = e.target && e.target.closest ? e.target.closest('.op-share-btn') : null;
+    if (!btn) { return; }
+    var root = btn.closest('.op-share');
+    if (!root) { return; }
+    var pf    = btn.getAttribute('data-pf') || '';
+    var url   = root.getAttribute('data-url') || location.href;
+    var title = root.getAttribute('data-stitle') || d.title;
+    if (pf === 'copy_link') {
+      e.preventDefault();
+      var done = function(){
+        btn.classList.add('is-copied');
+        var lb = btn.querySelector('.op-share-copylabel');
+        if (lb) { lb.textContent = 'コピーしました'; }
+        if (btn._opShareT) { clearTimeout(btn._opShareT); }
+        btn._opShareT = setTimeout(function(){
+          btn.classList.remove('is-copied');
+          if (lb) { lb.textContent = 'リンクをコピー'; }
+        }, 2200);
+      };
+      var fallback = function(){
+        var ta = d.createElement('textarea');
+        ta.value = url;
+        ta.setAttribute('readonly', '');
+        ta.style.position = 'fixed';
+        ta.style.opacity = '0';
+        d.body.appendChild(ta);
+        ta.select();
+        try { if (d.execCommand('copy')) { done(); } } catch (err) {}
+        d.body.removeChild(ta);
+      };
+      if (navigator.clipboard && window.isSecureContext) {
+        navigator.clipboard.writeText(url).then(done, fallback);
+      } else {
+        fallback();
+      }
+    } else if (pf === 'native_share') {
+      e.preventDefault();
+      if (navigator.share) { navigator.share({ title: title, url: url }).catch(function(){}); }
+    }
+    track(root, pf);
+  });
+})();
+</script>
+</div>    <aside class="art-cta art-cta--end" data-art-cta="end" data-art-cta-src="authored" data-art-cta-target="3statement" aria-labelledby="art-cta-end-1"><p class="art-cta-eyebrow">関連教材</p><p class="art-cta-title" id="art-cta-end-1">実際の開示資料で、断絶のあるHistoricalsを組んでみる</p><p class="art-cta-text">判断基準を読むだけでは、実際の決算短信・有価証券報告書を前にしたときに手が止まりがちです。財務三表モデリング講座では、会計方針変更や決算期変更を含む実データを使った演習で、この記事の判断プロセスを手を動かしながら身につけられます。</p><div class="art-cta-item"><p class="art-cta-name"><a href="../materials/3statement/index.html">財務三表モデリング講座</a></p><p class="art-cta-facts"><span>PDF＋Blank／Guide／Completed＋README（全17シート）</span><span>収録プラン：シルバー以上</span></p></div><p class="art-cta-act"><a class="art-btn art-btn--gold" href="../materials/3statement/index.html">財務三表モデリング講座を見る</a><a class="art-cta-sub" href="../materials/index.html">教材一覧を見る</a></p></aside>  </div>
+</div>
+	<section class="art-related" aria-labelledby="art-rel-h">
+  <h2 id="art-rel-h" class="art-rel-h">関連記事</h2>
+  <ul class="art-rel-grid">
+		    <li><a class="art-rel-card" href="../mod-029-multicurrency-model/index.html"><span class="art-rel-thumb"><img src="https://i0.wp.com/otemachiprep.com/wp-content/uploads/thumbnails/2026-08-22/mod-029-multicurrency-model.webp?fit=1024%2C576&#038;ssl=1" srcset="https://i0.wp.com/otemachiprep.com/wp-content/uploads/thumbnails/2026-08-22/mod-029-multicurrency-model.webp?w=1600&amp;ssl=1 1600w, https://i0.wp.com/otemachiprep.com/wp-content/uploads/thumbnails/2026-08-22/mod-029-multicurrency-model.webp?resize=300%2C169&amp;ssl=1 300w, https://i0.wp.com/otemachiprep.com/wp-content/uploads/thumbnails/2026-08-22/mod-029-multicurrency-model.webp?resize=1024%2C576&amp;ssl=1 1024w, https://i0.wp.com/otemachiprep.com/wp-content/uploads/thumbnails/2026-08-22/mod-029-multicurrency-model.webp?resize=768%2C432&amp;ssl=1 768w, https://i0.wp.com/otemachiprep.com/wp-content/uploads/thumbnails/2026-08-22/mod-029-multicurrency-model.webp?resize=1536%2C864&amp;ssl=1 1536w, https://i0.wp.com/otemachiprep.com/wp-content/uploads/thumbnails/2026-08-22/mod-029-multicurrency-model.webp?resize=1200%2C675&amp;ssl=1 1200w, https://i0.wp.com/otemachiprep.com/wp-content/uploads/thumbnails/2026-08-22/mod-029-multicurrency-model.webp?resize=1320%2C743&amp;ssl=1 1320w, https://i0.wp.com/otemachiprep.com/wp-content/uploads/thumbnails/2026-08-22/mod-029-multicurrency-model.webp?resize=600%2C338&amp;ssl=1 600w" sizes="(max-width:599px) 92vw, (max-width:1023px) 46vw, 360px" width="1024" height="576" alt="" loading="lazy" decoding="async"></span><span class="art-rel-body"><span class="art-rel-cat">財務モデリング</span><span class="art-rel-title">多通貨財務モデルの作り方｜Average Rate・Closing Rate・換算差額</span><span class="art-rel-more" aria-hidden="true">読む <span>→</span></span></span></a></li>
+		    <li><a class="art-rel-card" href="../mod-020-models-as-communication/index.html"><span class="art-rel-thumb"><img src="https://i0.wp.com/otemachiprep.com/wp-content/uploads/thumbnails/2026-09-20/mod-020-models-as-communication.webp?fit=1024%2C576&#038;ssl=1" srcset="https://i0.wp.com/otemachiprep.com/wp-content/uploads/thumbnails/2026-09-20/mod-020-models-as-communication.webp?w=1600&amp;ssl=1 1600w, https://i0.wp.com/otemachiprep.com/wp-content/uploads/thumbnails/2026-09-20/mod-020-models-as-communication.webp?resize=300%2C169&amp;ssl=1 300w, https://i0.wp.com/otemachiprep.com/wp-content/uploads/thumbnails/2026-09-20/mod-020-models-as-communication.webp?resize=1024%2C576&amp;ssl=1 1024w, https://i0.wp.com/otemachiprep.com/wp-content/uploads/thumbnails/2026-09-20/mod-020-models-as-communication.webp?resize=768%2C432&amp;ssl=1 768w, https://i0.wp.com/otemachiprep.com/wp-content/uploads/thumbnails/2026-09-20/mod-020-models-as-communication.webp?resize=1536%2C864&amp;ssl=1 1536w, https://i0.wp.com/otemachiprep.com/wp-content/uploads/thumbnails/2026-09-20/mod-020-models-as-communication.webp?resize=1320%2C743&amp;ssl=1 1320w, https://i0.wp.com/otemachiprep.com/wp-content/uploads/thumbnails/2026-09-20/mod-020-models-as-communication.webp?resize=600%2C338&amp;ssl=1 600w" sizes="(max-width:599px) 92vw, (max-width:1023px) 46vw, 360px" width="1024" height="576" alt="" loading="lazy" decoding="async"></span><span class="art-rel-body"><span class="art-rel-cat">財務モデリング</span><span class="art-rel-title">財務モデルは「伝えるための道具」｜意思決定者に読まれるモデルの条件</span><span class="art-rel-more" aria-hidden="true">読む <span>→</span></span></span></a></li>
+		    <li><a class="art-rel-card" href="../mod-030-source-mapping-audit-trail/index.html"><span class="art-rel-thumb"><img src="https://i0.wp.com/otemachiprep.com/wp-content/uploads/thumbnails/2026-08-22/mod-030-source-mapping-audit-trail.webp?fit=1024%2C576&#038;ssl=1" srcset="https://i0.wp.com/otemachiprep.com/wp-content/uploads/thumbnails/2026-08-22/mod-030-source-mapping-audit-trail.webp?w=1600&amp;ssl=1 1600w, https://i0.wp.com/otemachiprep.com/wp-content/uploads/thumbnails/2026-08-22/mod-030-source-mapping-audit-trail.webp?resize=300%2C169&amp;ssl=1 300w, https://i0.wp.com/otemachiprep.com/wp-content/uploads/thumbnails/2026-08-22/mod-030-source-mapping-audit-trail.webp?resize=1024%2C576&amp;ssl=1 1024w, https://i0.wp.com/otemachiprep.com/wp-content/uploads/thumbnails/2026-08-22/mod-030-source-mapping-audit-trail.webp?resize=768%2C432&amp;ssl=1 768w, https://i0.wp.com/otemachiprep.com/wp-content/uploads/thumbnails/2026-08-22/mod-030-source-mapping-audit-trail.webp?resize=1536%2C864&amp;ssl=1 1536w, https://i0.wp.com/otemachiprep.com/wp-content/uploads/thumbnails/2026-08-22/mod-030-source-mapping-audit-trail.webp?resize=1200%2C675&amp;ssl=1 1200w, https://i0.wp.com/otemachiprep.com/wp-content/uploads/thumbnails/2026-08-22/mod-030-source-mapping-audit-trail.webp?resize=1320%2C743&amp;ssl=1 1320w, https://i0.wp.com/otemachiprep.com/wp-content/uploads/thumbnails/2026-08-22/mod-030-source-mapping-audit-trail.webp?resize=600%2C338&amp;ssl=1 600w" sizes="(max-width:599px) 92vw, (max-width:1023px) 46vw, 360px" width="1024" height="576" alt="" loading="lazy" decoding="async"></span><span class="art-rel-body"><span class="art-rel-cat">財務モデリング</span><span class="art-rel-title">財務モデルのSource Mapping・Audit Trail｜レビューに耐えるモデルの作法</span><span class="art-rel-more" aria-hidden="true">読む <span>→</span></span></span></a></li>
+		  </ul>
+</section>
+	</div>
+</main>
+<footer class="site-footer op2-footer">
+
+  <!-- 中段：メインフッター（濃紺・ブランド行＋6分類） -->
+  <div class="op2-fmain op2-fv4">
+    <div class="wrap">
+      <div class="op2-fgrid">
+        <div class="op2-fbrand footer-brand">
+          <span class="brand-lockup">
+            <img class="footer-mark" src="../wp-content/themes/otemachi-prep-child/assets/images/op-logo-mark-white.png" alt="" width="44" height="46" onerror="this.style.display='none'">
+            <span class="brand-text">
+              <span class="brand-en-main">OTEMACHI&nbsp;PREP</span>
+              <span class="brand-ja-sub">大手町プレップ</span>
+            </span>
+          </span>
+          <p class="op2-fdesc">M&amp;A・PE・投資銀行・コーポレートファイナンスを、専門記事・一次情報データベース・モデリングラボ・専門講座で「学ぶ・調べる・実践する」。日本語で実務水準まで到達するためのファイナンス専門プラットフォームです。</p>
+        </div>
+
+        <nav class="op2-fcol" aria-label="記事・用語集">
+          <h3>記事・用語集</h3>
+          <ul>
+			<li><a href="../articles/index.html">分野別記事</a></li>
+<li><a href="../glossary/index.html">ファイナンス実務用語集</a></li>
+<li><a href="../reference/index.html">指標リファレンス</a></li>
+<li><a href="../course/index.html">財務モデリング講座（無料）</a></li>
+<li><a href="../articles/index.html">AI×ファイナンス</a></li>
+<li><a href="../materials/excel-starter-pack/index.html">無料Excelテンプレート集（Starter Pack）</a></li>
+          </ul>
+        </nav>
+
+        <nav class="op2-fcol" aria-label="データベース">
+          <h3>データベース</h3>
+          <ul>
+			<li><a href="../pe-funds/index.html">PEファンド一覧</a></li>
+<li><a href="../vc-funds/index.html">VC・CVC一覧</a></li>
+<li><a href="../activist-funds/index.html">アクティビスト一覧</a></li>
+<li><a href="../ma-advisors/index.html">FA・M&amp;A仲介会社DB</a></li>
+<li><a href="../whats-new/index.html">データベース更新情報</a></li>
+          </ul>
+        </nav>
+
+        <nav class="op2-fcol" aria-label="モデリングラボ">
+          <h3>モデリングラボ</h3>
+          <ul>
+			<li><a href="../lab/index.html">モデリングラボ</a></li>
+<li><a href="../lab/index.html">財務三表モデル</a></li>
+<li><a href="../lab/index.html">DCFモデル</a></li>
+<li><a href="../lab/index.html">M&amp;Aモデル</a></li>
+<li><a href="../lab/index.html">LBOモデル</a></li>
+<li><a href="../articles/index.html">構築チュートリアル</a></li>
+          </ul>
+        </nav>
+
+        <nav class="op2-fcol" aria-label="キャリア">
+          <h3>キャリア</h3>
+          <ul>
+			<li><a href="../career-fit/index.html">キャリア適性診断（無料）</a></li>
+<li><a href="../car-001-ib-career/index.html">投資銀行（IBD）</a></li>
+<li><a href="../car-002-pe-career/index.html">PEファンド</a></li>
+<li><a href="../car-012-ma-career-comparison/index.html">FAS・M&amp;Aアドバイザリー</a></li>
+<li><a href="../articles/index.html">面接・選考対策の記事</a></li>
+          </ul>
+        </nav>
+
+        <nav class="op2-fcol" aria-label="講座・アセスメント">
+          <h3>講座・アセスメント</h3>
+          <ul>
+			<li><a href="../materials/index.html">講座・教材</a></li>
+<li><a href="../assessment/index.html">実践アセスメント</a></li>
+<li><a href="../pricing/index.html">料金・プラン比較</a></li>
+<li><a href="../pricing/index.html">学習の進め方</a></li>
+			            <li><a href="../register/index.html">無料会員登録</a></li>
+            <li><a href="../login/index.html">ログイン</a></li>
+			          </ul>
+        </nav>
+
+        <nav class="op2-fcol" aria-label="大手町プレップ">
+          <h3>大手町プレップ</h3>
+          <ul>
+			<li><a href="../about/index.html">大手町プレップとは</a></li>
+<li><a href="../about/index.html">運営者情報・編集方針</a></li>
+<li><a href="../index.html">よくある質問</a></li>
+<li><a href="../contact/index.html">お問い合わせ</a></li>
+<li><a href="../legal/index.html">利用規約</a></li>
+<li><a href="../legal/index.html">プライバシーポリシー</a></li>
+<li><a href="../legal/index.html">免責事項</a></li>
+<li><a href="../legal/index.html">特定商取引法に基づく表記（教材プラン）</a></li>
+<li><a href="../tokushoho/index.html">特定商取引法に基づく表記（月額アセスメント）</a></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </div>
+
+  <!-- 下段：リーガル -->
+  <div class="op2-flegal">
+    <div class="wrap op2-flegal-in">
+      <p class="op2-fnote">本サイトは特定の金融商品の勧誘・投資助言を行うものではありません。</p>
+      <p class="op2-fcopy">&copy; <span id="year">2026</span> OTEMACHI PREP</p>
+    </div>
+  </div>
+</footer>
+		
+
+<a class="to-top" href="#" aria-label="ページの先頭へ">↑</a>
+<script>(function(){try{if(navigator.webdriver||document.getElementById('wpadminbar'))return;var k='opfv-art-mod-026-historical-data-cleaning';if(sessionStorage.getItem(k))return;setTimeout(function(){try{sessionStorage.setItem(k,'1');}catch(e){}fetch('https://otemachiprep.com/wp-json/otemachi/v1/fv',{method:'POST',credentials:'same-origin',keepalive:true,headers:{'Content-Type':'application/json'},body:JSON.stringify({d:'art',s:'mod-026-historical-data-cleaning'})}).catch(function(){});},2000);}catch(e){}})();</script><!-- wpcom_wp_footer -->
+<script type="speculationrules">
+{"prefetch":[{"source":"document","where":{"and":[{"href_matches":"/*"},{"not":{"href_matches":["/wp-*.php","/wp-admin/*","/wp-content/uploads/*","/wp-content/*","/wp-content/plugins/*","/wp-content/themes/otemachi-prep-child/*","/wp-content/themes/assembler/*","/*\\?(.+)"]}},{"not":{"selector_matches":"a[rel~=\"nofollow\"]"}},{"not":{"selector_matches":".no-prefetch, .no-prefetch a"}}]},"eagerness":"conservative"}]}
+</script>
+<meta id="bilmur" property="bilmur:data" content="" data-customproperties="{&quot;woo_active&quot;:&quot;1&quot;,&quot;logged_in&quot;:&quot;0&quot;,&quot;wptheme&quot;:&quot;otemachi-prep-child&quot;,&quot;wptheme_is_block&quot;:&quot;1&quot;}" data-provider="wordpress.com" data-service="atomic"  data-site-tz="Asia/Tokyo"  >
+<script defer src="https://s0.wp.com/wp-content/js/bilmur.min.js?m=202639"></script>
+					<div class="jetpack-subscription-modal">
+						<div class="jetpack-subscription-modal__modal-content">
+								
+	<div class="wp-block-group has-border-color jetpack-subscription-modal__modal-content-form is-layout-flow wp-block-group-is-layout-flow" style="border-color:#dddddd;border-width:1px;margin-top:0;margin-bottom:0;padding:32px">
+
+		
+		<h2 class="wp-block-heading has-text-align-center" style="margin-top:4px;margin-bottom:10px;font-size:clamp(16.834px, 1.052rem + ((1vw - 3.2px) * 0.818), 26px);font-style:normal;font-weight:600">大手町プレップをもっと見る</h2>
+		
+
+		
+		<p class="has-text-align-center wp-block-paragraph" style='margin-top:4px;margin-bottom:0px;font-size:clamp(14px, 0.875rem + ((1vw - 3.2px) * 0.089), 15px);'>今すぐ購読し、続きを読んで、すべてのアーカイブにアクセスしましょう。</p>
+		
+
+			<div class="wp-block-jetpack-subscriptions__supports-newline is-style-compact wp-block-jetpack-subscriptions">
+		<div class="wp-block-jetpack-subscriptions__container is-not-subscriber">
+							<form
+					action="https://wordpress.com/email-subscriptions"
+					method="post"
+					accept-charset="utf-8"
+					data-blog="255956723"
+					data-post_access_level="everybody"
+					data-subscriber_email=""
+					id="subscribe-blog"
+				>
+					<div class="wp-block-jetpack-subscriptions__form-elements">
+												<p id="subscribe-email">
+							<label
+								id="subscribe-field-label"
+								for="subscribe-field"
+								class="screen-reader-text"
+							>
+								メールアドレスを入力...							</label>
+							<input
+									required="required"
+									type="email"
+									name="email"
+									autocomplete="email"
+									
+									style="font-size: 16px;padding: 15px 23px 15px 23px;border-radius: 50px;border-width: 1px;"
+									placeholder="メールアドレスを入力..."
+									value=""
+									id="subscribe-field"
+									title="このフィールドに入力してください。"
+								/>						</p>
+												<p id="subscribe-submit"
+													>
+							<input type="hidden" name="action" value="subscribe"/>
+							<input type="hidden" name="blog_id" value="255956723"/>
+							<input type="hidden" name="source" value="https://otemachiprep.com/mod-026-historical-data-cleaning/"/>
+							<input type="hidden" name="sub-type" value="subscribe-block"/>
+							<input type="hidden" name="app_source" value="atomic-subscription-modal-lo"/>
+							<input type="hidden" name="redirect_fragment" value="subscribe-blog"/>
+							<input type="hidden" name="lang" value="ja"/>
+							<input type="hidden" id="_wpnonce" name="_wpnonce" value="7764d9547f" /><input type="hidden" name="_wp_http_referer" value="/mod-026-historical-data-cleaning/" /><input type="hidden" name="post_id" value="3905"/>							<button type="submit"
+																	class="wp-block-button__link"
+																									style="font-size: 16px;padding: 15px 23px 15px 23px;margin: 0; margin-left: 10px;border-radius: 50px;border-width: 1px;"
+																name="jetpack_subscriptions_widget"
+							>
+								購読							</button>
+						</p>
+					</div>
+				</form>
+								</div>
+	</div>
+	
+
+		
+		<p class="has-text-align-center jetpack-subscription-modal__close wp-block-paragraph" style="margin-top:20px;font-size:14px"><a href="#">続きを読む</a></p>
+		
+	</div>
+							</div>
+					</div>
+			<link rel='stylesheet' id='all-css-02e62cf3b6d888714ec6fdd45820a25c' href='https://otemachiprep.com/wp-content/plugins/woocommerce/assets/client/blocks/wc-blocks.css?m=1790088002' type='text/css' media='all' />
+<link rel='stylesheet' id='all-css-dd532132d321d843ecfd793ab082b479' href='https://otemachiprep.com/_static/??-eJyljkEKwjAQRS9kO1QI1YV4FEmmIR2bJsNMYujtLXTlStDl530er3GHORWfCnCsgZJCqPt0XgK4SnECLVv0Ci5mXLpITqxsMHs7UQoH7FdKPaqe2o82tmKDWJ6/+56+sMUFHpTwsChodYpCXCjvjxf59ldNkFz5s+S+3obxcjXGDOP5DRK+dWk=' type='text/css' media='all' />
+<script id="wp-dom-ready-js" src="../wp-content/plugins/gutenberg/build/scripts/dom-ready/index.min.js"></script>
+<script id="subscription-modal-js-js-extra">
+var subscriptionData = {"homeUrl":"otemachiprep.com"};
+//# sourceURL=subscription-modal-js-js-extra
+</script>
+<script type='text/javascript'  src='https://otemachiprep.com/_static/??-eJyljksOwjAMRC9EmtANZYE4S+paNCWJo9gh18dCLPjt2HnmaZ7ciwHKgllsie0SMtsNpXi42kRLi8gWKCXlbLnNDDUUCZSNUh+NHk/8gw4b7/q3vxM9NhXQemZU86ZyalrMjQXrWxhSyB8mWTHpYySYPKzBlIoK1xCXFyEV46sEiPjf2txGFZzTaX84OjdNzo13BRJ1PQ=='></script>
+<script id="op-act-meganav-card-js-after">
+(function(){var C={"label":"NEW","title":"\u30a2\u30af\u30c6\u30a3\u30d3\u30b9\u30c8\u30d5\u30a1\u30f3\u30c9\u5206\u6790","desc":"\u65e5\u672c\u682a\u306e\u4fdd\u6709\u30fb\u63d0\u6848\u30fb\u8b70\u6c7a\u7d50\u679c\u3092\u8ffd\u8de1","href":"/activist-funds/","ev":"popular:activist-funds","note":"109","icon":"<svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M4 5v14h16\"/><path d=\"M6.5 14.5 10 10.5l3 2.5 4.5-5.5\"/><circle cx=\"17.5\" cy=\"7.5\" r=\"2.1\"/><path d=\"M17.5 4.6v1.2M17.5 9.2v1.2M14.6 7.5h1.2M19.2 7.5h1.2\"/></svg>"};function esc(s){return String(s).replace(/[&<>"]/g,function(c){return({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;"})[c];});}function build(){return '<span class="opmm-card-ic">'+C.icon+'</span>'+'<span class="opmm-card-b"><span class="opmm-card-t">'+esc(C.title)+'</span>'+'<span class="opmm-card-d">'+esc(C.desc)+(C.note?'<span class="opmm-n">'+esc(C.note)+'</span>':'')+'</span></span>'+'<span class="opmm-tag">'+esc(C.label)+'</span><span class="opmm-go" aria-hidden="true">→</span>';}function fix(){var root=document.getElementById("nv-cat");if(!root){return;}var a=root.querySelector('a.opmm-card[data-opnav="popular:career"]');if(!a){return;}a.setAttribute("href",C.href);a.setAttribute("data-opnav",C.ev);a.innerHTML=build();}fix();if("MutationObserver" in window){var mo=new MutationObserver(function(){fix();});mo.observe(document.body,{childList:true,subtree:true});}window.addEventListener("load",fix);if(document.readyState==="loading"){document.addEventListener("DOMContentLoaded",fix);}setTimeout(fix,300);setTimeout(fix,1000);setTimeout(fix,2500);})();
+//# sourceURL=op-act-meganav-card-js-after
+</script>
+<script id="jetpack-stats-js-before">
+_stq = window._stq || [];
+_stq.push([ "view", {"v":"ext","blog":"255956723","post":"3905","tz":"9","srv":"otemachiprep.com","hp":"atomic","ac":"2","amp":"0","j":"1:16.3-a.3"} ]);
+_stq.push([ "clickTrackerInit", "255956723", "3905" ]);
+//# sourceURL=jetpack-stats-js-before
+</script>
+<script data-wp-strategy="defer" defer fetchpriority="low" id="jetpack-stats-js" src="https://stats.wp.com/e-202639.js"></script>
+<script id="opm-js" src="../wp-content/plugins/otemachi-prep-membership/assets/js/opm.js"></script>
+<script id="opm-js-after">
+(function () {
+  var d = document;
+  if (window.__opmNav2) { return; }
+  window.__opmNav2 = true;
+
+  var hdr   = d.getElementById('siteHeader');
+  var nav   = d.getElementById('op2nav');
+  var mBtn  = d.querySelector('.op-hdr3 .menu-toggle');
+  var uh    = d.querySelector('.op-hdr3 .op-uh');
+  var cBtn  = d.querySelector('.op2-c-search');
+  var cPane = d.getElementById('op2-c-panel');
+  var mqPc    = window.matchMedia('(min-width: 901px)');
+  var mqHover = window.matchMedia('(hover: hover) and (pointer: fine)');
+
+  function closeCPanel() {
+    if (cPane && !cPane.hasAttribute('hidden')) {
+      cPane.setAttribute('hidden', '');
+      if (cBtn) { cBtn.setAttribute('aria-expanded', 'false'); }
+    }
+  }
+
+  /* ---- scrolled ＋ コンパクト固定（.is-stuck） ---- */
+  if (hdr) {
+    var stuckAt = 60;
+    var measure = function () {
+      if (uh) {
+        var h = Math.round(uh.getBoundingClientRect().height);
+        if (h > 0) { stuckAt = h; }
+      }
+    };
+    measure();
+    window.addEventListener('resize', measure, { passive: true });
+    window.addEventListener('load', measure);
+
+    var onScroll = function () {
+      var y = window.scrollY || 0;
+      hdr.classList.toggle('scrolled', y > 10);
+      if (mqPc.matches) {
+        if (y > stuckAt + 8) { hdr.classList.add('is-stuck'); }
+        else if (y < stuckAt - 8) { hdr.classList.remove('is-stuck'); closeCPanel(); }
+      } else if (hdr.classList.contains('is-stuck')) {
+        hdr.classList.remove('is-stuck');
+        closeCPanel();
+      }
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+  }
+
+  /* ---- コンパクト検索 ---- */
+  if (cBtn && cPane) {
+    cBtn.addEventListener('click', function () {
+      if (cPane.hasAttribute('hidden')) {
+        cPane.removeAttribute('hidden');
+        cBtn.setAttribute('aria-expanded', 'true');
+        var f = cPane.querySelector('input[type="search"]');
+        if (f) { f.focus(); }
+      } else {
+        closeCPanel();
+      }
+    });
+  }
+
+  if (!nav) { return; }
+
+  /* ---- ドロワー（〜900px） ---- */
+  function drawerOpen() { return nav.classList.contains('open'); }
+  function setDrawer(open) {
+    nav.classList.toggle('open', open);
+    d.documentElement.classList.toggle('op2-lock', open && !mqPc.matches);
+    if (mBtn) {
+      mBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+      mBtn.setAttribute('aria-label', open ? 'メニューを閉じる' : 'メニューを開く');
+    }
+    if (!open) { closeAll(null); }
+  }
+  if (mBtn) {
+    mBtn.addEventListener('click', function () { setDrawer(!drawerOpen()); });
+  }
+
+  /* ---- ドロップダウン／アコーディオン ---- */
+  var items = Array.prototype.slice.call(nav.querySelectorAll('.op2-item'));
+  function setOpen(it, on) {
+    it.setAttribute('data-open', on ? 'true' : 'false');
+    var b = it.querySelector('.op2-btn');
+    if (b) { b.setAttribute('aria-expanded', on ? 'true' : 'false'); }
+  }
+  function closeAll(except) {
+    items.forEach(function (o) { if (o !== except) { setOpen(o, false); } });
+  }
+
+  items.forEach(function (it) {
+    var b = it.querySelector('.op2-btn');
+    if (!b) { return; }
+
+    b.addEventListener('click', function () {
+      var was = it.getAttribute('data-open') === 'true';
+      closeAll(it);
+      setOpen(it, !was);
+    });
+
+    b.addEventListener('keydown', function (e) {
+      if (e.key === 'ArrowDown') {
+        e.preventDefault();
+        if (it.getAttribute('data-open') !== 'true') { closeAll(it); setOpen(it, true); }
+        var f = it.querySelector('.op2-panel a');
+        if (f) { f.focus(); }
+      }
+    });
+
+    /* fine pointer のPCのみホバーで開閉（タッチではクリックのみ） */
+    var tm = null;
+    it.addEventListener('mouseenter', function () {
+      if (!mqPc.matches || !mqHover.matches) { return; }
+      if (tm) { clearTimeout(tm); tm = null; }
+      closeAll(it);
+      setOpen(it, true);
+    });
+    it.addEventListener('mouseleave', function () {
+      if (!mqPc.matches || !mqHover.matches) { return; }
+      tm = setTimeout(function () { setOpen(it, false); }, 140);
+    });
+  });
+
+  /* 外側クリックで閉じる */
+  d.addEventListener('click', function (e) {
+    var t = e.target;
+    if (!nav.contains(t) && !(mBtn && mBtn.contains(t))) {
+      closeAll(null);
+      if (drawerOpen() && !mqPc.matches && hdr && !hdr.contains(t)) { setDrawer(false); }
+    }
+    if (cPane && cBtn && !cPane.contains(t) && !cBtn.contains(t)) {
+      // コンパクト検索はフォーム操作中を除き閉じる
+      if (!cPane.hasAttribute('hidden') && !(t.closest && t.closest('#op2-c-panel'))) { closeCPanel(); }
+    }
+  });
+
+  /* Esc で閉じ、開いていた項目のボタンへフォーカスを戻す */
+  d.addEventListener('keydown', function (e) {
+    if (e.key !== 'Escape') { return; }
+    var open = null;
+    items.some(function (o) { if (o.getAttribute('data-open') === 'true') { open = o; return true; } return false; });
+    closeAll(null);
+    closeCPanel();
+    if (open) {
+      var b = open.querySelector('.op2-btn');
+      if (b) { b.focus(); }
+    }
+    if (drawerOpen() && !mqPc.matches) {
+      setDrawer(false);
+      if (mBtn) { mBtn.focus(); }
+    }
+  });
+
+  /* フォーカスがナビ外へ出たら閉じる（PCのみ） */
+  nav.addEventListener('focusout', function () {
+    window.setTimeout(function () {
+      if (mqPc.matches && !nav.contains(d.activeElement)) { closeAll(null); }
+    }, 10);
+  });
+
+  /* ドロワー展開中のフォーカストラップ（Tabをヘッダー内で循環させる） */
+  d.addEventListener('keydown', function (e) {
+    if (e.key !== 'Tab') { return; }
+    if (!drawerOpen() || mqPc.matches || !hdr) { return; }
+    var fs = hdr.querySelectorAll('a[href], button:not([disabled]), input:not([disabled])');
+    var list = [];
+    for (var i = 0; i < fs.length; i++) {
+      var el = fs[i];
+      if (el.offsetParent !== null) { list.push(el); }
+    }
+    if (!list.length) { return; }
+    var first = list[0], last = list[list.length - 1];
+    if (e.shiftKey && d.activeElement === first) { e.preventDefault(); last.focus(); }
+    else if (!e.shiftKey && d.activeElement === last) { e.preventDefault(); first.focus(); }
+    else if (!hdr.contains(d.activeElement)) { e.preventDefault(); first.focus(); }
+  });
+
+  /* 画面幅がPCへ変わったらドロワー状態とスクロール固定を解除 */
+  function onMq() {
+    if (mqPc.matches) {
+      setDrawer(false);
+      d.documentElement.classList.remove('op2-lock');
+    } else if (hdr) {
+      hdr.classList.remove('is-stuck');
+      closeCPanel();
+    }
+  }
+  if (mqPc.addEventListener) { mqPc.addEventListener('change', onMq); }
+  else if (mqPc.addListener) { mqPc.addListener(onMq); }
+})();
+(function () {
+  var d = document;
+  var f = d.querySelector('[data-opm-form="register"]');
+  if (!f || window.__opmFormLive) { return; }
+  window.__opmFormLive = true;
+
+  function paint(id, key, msg) {
+    var input = d.getElementById(id);
+    if (!input) { return; }
+    var wrap = input.closest('.op-field');
+    var box  = d.getElementById('opm-err-' + key);
+    if (msg) {
+      if (wrap) { wrap.classList.add('has-error'); }
+      input.setAttribute('aria-invalid', 'true');
+      if (box) {
+        box.textContent = '';
+        var ic = d.createElement('span');
+        ic.className = 'op-err-ico';
+        ic.setAttribute('aria-hidden', 'true');
+        ic.textContent = '!';
+        box.appendChild(ic);
+        box.appendChild(d.createTextNode(msg));
+        box.removeAttribute('hidden');
+        box.setAttribute('role', 'alert');
+      }
+    } else {
+      if (wrap) { wrap.classList.remove('has-error'); }
+      input.removeAttribute('aria-invalid');
+      if (box) { box.textContent = ''; box.setAttribute('hidden', ''); }
+    }
+  }
+
+  var email  = d.getElementById('opm-reg-email');
+  var pass   = d.getElementById('opm-reg-pass');
+  var pass2  = d.getElementById('opm-reg-pass2');
+
+  function checkEmail() {
+    var v = email ? email.value.trim() : '';
+    if (!v) { paint('opm-reg-email', 'email', ''); return; }
+    paint('opm-reg-email', 'email', /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v) ? '' : 'メールアドレスの形式が正しくありません');
+  }
+  function checkPass() {
+    if (!pass || !pass.value) { paint('opm-reg-pass', 'pass', ''); return; }
+    paint('opm-reg-pass', 'pass', pass.value.length >= 8 ? '' : 'パスワードは8文字以上で設定してください');
+  }
+  function checkPass2() {
+    if (!pass2 || !pass2.value) { paint('opm-reg-pass2', 'pass2', ''); return; }
+    paint('opm-reg-pass2', 'pass2', pass.value === pass2.value ? '' : 'パスワードが一致していません');
+  }
+
+  // 確認欄は入力中も判定する（詳細は v1 と同じ3段階ロジック）。
+  var tp2 = null;
+  function livePass2( force ) {
+    if (!pass2) { return; }
+    clearTimeout(tp2);
+    var s = pass ? pass.value : '';
+    var c = pass2.value;
+    if (!c || c === s) { paint('opm-reg-pass2', 'pass2', ''); return; }
+    var typing = s.indexOf(c) === 0 && !force;
+    paint('opm-reg-pass2', 'pass2', typing ? '' : 'パスワードが一致していません');
+    if (typing) { tp2 = setTimeout(function () { livePass2(true); }, 700); }
+  }
+  function onPass2() { livePass2(false); }
+
+  if (email)  { email.addEventListener('blur', checkEmail); }
+  if (pass)   { pass.addEventListener('blur', function () { checkPass(); checkPass2(); }); pass.addEventListener('input', onPass2); }
+  if (pass2)  { pass2.addEventListener('input', onPass2); pass2.addEventListener('blur', checkPass2); }
+})();
+(function () {
+  var box = document.querySelector('[data-opm-ev="register_mail_sent"]');
+  if (!box || window.__opmVerifyPoll) { return; }
+  window.__opmVerifyPoll = true;
+
+  var tries = 0, busy = false, done = false, timer = null;
+
+  function check() {
+    if (busy || done) { return; }
+    busy = true;
+    fetch('https://otemachiprep.com/wp-admin/admin-ajax.php', {
+      method: 'POST',
+      credentials: 'same-origin',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: 'action=opm_verify_status'
+    })
+      .then(function (r) { return r.json(); })
+      .then(function (j) {
+        busy = false;
+        if (j && j.data && j.data.verified && j.data.redirect) {
+          done = true;
+          if (timer) { clearInterval(timer); }
+          window.location.href = j.data.redirect;
+        }
+      })
+      .catch(function () { busy = false; });  // 通信失敗時は次の機会に再試行
+  }
+
+  timer = setInterval(function () {
+    tries++;
+    if (tries > 150) { clearInterval(timer); return; }  // 約10分で打ち切り
+    check();
+  }, 4000);
+
+  // 非表示タブの setInterval は間引かれるため、タブ復帰時に必ず確認する。
+  document.addEventListener('visibilitychange', function () {
+    if (!document.hidden) { check(); }
+  });
+  window.addEventListener('focus', check);
+  window.addEventListener('pageshow', check);
+})();
+//# sourceURL=opm-js-after
+</script>
+<script id="jetpack-blocks-assets-base-url-js-before">
+var Jetpack_Block_Assets_Base_Url="https://otemachiprep.com/wp-content/plugins/jetpack/_inc/blocks/";
+//# sourceURL=jetpack-blocks-assets-base-url-js-before
+</script>
+<script type='text/javascript'  src='https://otemachiprep.com/wp-includes/js/dist/vendor/wp-polyfill.min.js?m=1784059681'></script>
+<script data-wp-strategy="defer" defer id="jetpack-block-subscriptions-js" src="../wp-content/plugins/jetpack/_inc/blocks/subscriptions/view.js"></script>
+<script id="wp-emoji-settings" type="application/json">
+{"baseUrl":"https://s.w.org/images/core/emoji/17.0.2/72x72/","ext":".png","svgUrl":"https://s.w.org/images/core/emoji/17.0.2/svg/","svgExt":".svg","source":{"concatemoji":"https://otemachiprep.com/wp-includes/js/wp-emoji-release.min.js?ver=7.1.2"}}
+</script>
+<script type="module">
+/*! This file is auto-generated */
+var e="script#wp-emoji-settings",t=document.querySelector(e);if(!(t instanceof HTMLScriptElement))throw new Error("Element missing: "+e);const r=JSON.parse(t.text),s=(window._wpemojiSettings=r,"wpEmojiSettingsSupports"),o=["flag","emoji"];function i(e){try{var t={supportTests:e,timestamp:(new Date).valueOf()};sessionStorage.setItem(s,JSON.stringify(t))}catch(e){}}function c(e,t,n){e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(t,0,0);t=new Uint32Array(e.getImageData(0,0,e.canvas.width,e.canvas.height).data);e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(n,0,0);const r=new Uint32Array(e.getImageData(0,0,e.canvas.width,e.canvas.height).data);return t.every((e,t)=>e===r[t])}function p(e,t){e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(t,0,0);var n=e.getImageData(16,16,1,1);for(let e=0;e<n.data.length;e++)if(0!==n.data[e])return!1;return!0}function u(e,t,n,r){switch(t){case"flag":return n(e,"\ud83c\udff3\ufe0f\u200d\u26a7\ufe0f","\ud83c\udff3\ufe0f\u200b\u26a7\ufe0f")?!1:!n(e,"\ud83c\udde8\ud83c\uddf6","\ud83c\udde8\u200b\ud83c\uddf6")&&!n(e,"\ud83c\udff4\udb40\udc67\udb40\udc62\udb40\udc65\udb40\udc6e\udb40\udc67\udb40\udc7f","\ud83c\udff4\u200b\udb40\udc67\u200b\udb40\udc62\u200b\udb40\udc65\u200b\udb40\udc6e\u200b\udb40\udc67\u200b\udb40\udc7f");case"emoji":return!r(e,"\ud83e\u1fac8")}return!1}function f(e,t,n,r){let a;const s=(a="undefined"!=typeof WorkerGlobalScope&&self instanceof WorkerGlobalScope?new OffscreenCanvas(300,150):document.createElement("canvas")).getContext("2d",{willReadFrequently:!0}),o=(s.textBaseline="top",s.font="600 32px Arial",{});return e.forEach(e=>{o[e]=t(s,e,n,r)}),o}function a(e){var t=document.createElement("script");t.src=e,t.defer=!0,document.head.appendChild(t)}r.supports={everything:!0,everythingExceptFlag:!0},new Promise(t=>{let n=function(){try{var e=JSON.parse(sessionStorage.getItem(s));if("object"==typeof e&&"number"==typeof e.timestamp&&(new Date).valueOf()<e.timestamp+604800&&"object"==typeof e.supportTests)return e.supportTests}catch(e){}return null}();if(!n){if("undefined"!=typeof Worker&&"undefined"!=typeof OffscreenCanvas&&"undefined"!=typeof URL&&URL.createObjectURL&&"undefined"!=typeof Blob)try{var e="postMessage("+f.toString()+"("+[JSON.stringify(o),u.toString(),c.toString(),p.toString()].join(",")+"));",r=new Blob([e],{type:"text/javascript"});const a=new Worker(URL.createObjectURL(r),{name:"wpTestEmojiSupports"});return void(a.onmessage=e=>{i(n=e.data),a.terminate(),t(n)})}catch(e){}i(n=f(o,u,c,p))}t(n)}).then(e=>{for(const n in e)r.supports[n]=e[n],r.supports.everything=r.supports.everything&&r.supports[n],"flag"!==n&&(r.supports.everythingExceptFlag=r.supports.everythingExceptFlag&&r.supports[n]);var t;r.supports.everythingExceptFlag=r.supports.everythingExceptFlag&&!r.supports.flag,r.supports.everything||((t=r.source||{}).concatemoji?a(t.concatemoji):t.wpemoji&&t.twemoji&&(a(t.twemoji),a(t.wpemoji)))});
+//# sourceURL=https://otemachiprep.com/wp-includes/js/wp-emoji-loader.min.js
+</script>
+
+<!-- op-fc-popup-v4 -->
+<div id="op-fc-root" class="op-fc-root" data-kind="" hidden><div class="op-fc-backdrop" data-fc="backdrop"></div><div class="op-fc-card op-fc-card--course" role="dialog" aria-modal="true" aria-labelledby="op-fc-h1" aria-describedby="op-fc-d1" tabindex="-1" data-fc-card="course"><button type="button" class="op-fc-close" data-fc="close" aria-label="無料講座のご案内を閉じる"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button><div class="op-fc-main"><p class="op-fc-eyebrow"><span class="op-fc-eyebrow-free">無料</span><span data-fc-copy="label">7日間 財務モデリング講座</span><span class="op-fc-eyebrow-line" aria-hidden="true"></span></p><h2 id="op-fc-h1" class="op-fc-h" data-fc-copy="headline">財務モデリングを、<br>7日間で“読む”から“組める”へ。</h2><p id="op-fc-d1" class="op-fc-sub" data-fc-copy="sub" data-fc-subtext="1">Excelの基本ルールから、実務で使える財務モデルの組み方まで学べます。</p><ul class="op-fc-chips op-fc-chips--m" aria-label="学べるテーマ"><li>Excel</li><li>財務三表</li><li>DCF</li><li>LBO</li><li>M&amp;A</li></ul><div class="op-fc-actions"><a class="op-fc-cta1" data-fc="cta1" data-fc-cta="free" href="https://otemachiprep.com/register/?src=fc-popup&#038;v=A&#038;t=exceltech"><span data-fc-copy="cta1">無料講座を受け取る</span><span class="op-fc-ar" aria-hidden="true">→</span></a><a class="op-fc-cta2" data-fc="cta2" data-fc-cta="materials" href="https://otemachiprep.com/materials/?src=fc-popup&#038;v=A&#038;t=exceltech"><span data-fc-copy="cta2">実践教材・料金プランを見る</span></a></div><ul class="op-fc-facts" aria-label="受講条件"><li>登録料0円</li><li>1日1通・メールで配信</li><li>いつでも配信停止</li></ul><p class="op-fc-note">無料会員登録後、7日間にわたりメールで講座をお届けします。登録は無料です。不要になった場合はいつでも配信停止できます。</p></div><aside class="op-fc-side" aria-label="7日間で学べる内容"><ul class="op-fc-chips" aria-label="学べるテーマ"><li>Excel</li><li>財務三表</li><li>DCF</li><li>LBO</li><li>M&amp;A</li></ul><details class="op-fc-days" open><summary class="op-fc-days-t"><span>7日間で学べる内容</span><span class="op-fc-days-ic" aria-hidden="true"></span></summary><ol class="op-fc-days-l"><li><span class="op-fc-day">Day 1</span><span class="op-fc-day-b"><strong>Excel・財務モデルの基本ルール</strong><span>入力は青、計算式は黒。Cover→Assumptions→Checksの構造</span></span></li><li><span class="op-fc-day">Day 2</span><span class="op-fc-day-b"><strong>財務三表のつながり</strong><span>減価償却が100増えると、PL→CF→BSはどう動くか</span></span></li><li><span class="op-fc-day">Day 3</span><span class="op-fc-day-b"><strong>予測と運転資本</strong><span>単価×数量のドライバー予測、固定費と変動費、回転日数</span></span></li><li><span class="op-fc-day">Day 4</span><span class="op-fc-day-b"><strong>DCF法による企業価値評価</strong><span>WACC・継続価値、企業価値から株式価値へのブリッジ</span></span></li><li><span class="op-fc-day">Day 5</span><span class="op-fc-day-b"><strong>LBOモデルの基本</strong><span>借入がIRRを押し上げる仕組みと、返済余力の確認</span></span></li><li><span class="op-fc-day">Day 6</span><span class="op-fc-day-b"><strong>M&amp;Aモデルの基本</strong><span>EPSと株主価値、のれん、提出前に確認するChecks 5項目</span></span></li><li><span class="op-fc-day">Day 7</span><span class="op-fc-day-b"><strong>現在地の確認と次の学習</strong><span>3問の自己診断で「理解」と「白紙から再現」の差を測る</span></span></li></ol></details><div class="op-fc-perk"><img class="op-fc-perk-img" data-src="../wp-content/themes/otemachi-prep-child/assets/images/exsp/exsp-preview1.webp" alt="Excel Starter Packの3表連動モデル（PL）の画面" width="1600" height="996"><p class="op-fc-perk-t">登録当日に <strong>Excel Starter Pack</strong>（3表連動・DCF・LBO・M&amp;Aなど9ブック）をお渡しします。</p></div></aside></div><div class="op-fc-card op-fc-card--materials" role="dialog" aria-modal="true" aria-labelledby="op-fc-h2" aria-describedby="op-fc-d2" tabindex="-1" data-fc-card="materials" hidden><button type="button" class="op-fc-close" data-fc="close" aria-label="教材のご案内を閉じる"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button><div class="op-fc-main"><p class="op-fc-eyebrow"><span>実践教材・料金プラン</span><span class="op-fc-eyebrow-line" aria-hidden="true"></span></p><h2 id="op-fc-h2" class="op-fc-h">財務モデリングを、<br>体系的に学びませんか？</h2><p id="op-fc-d2" class="op-fc-sub">財務三表、DCF、M&amp;A、LBO、PE実務、AI×ファイナンスまで。目的とレベルに応じた実践教材をご用意しています。</p><div class="op-fc-actions"><a class="op-fc-cta1" data-fc="cta1" data-fc-cta="materials" href="https://otemachiprep.com/materials/?src=fc-popup&#038;v=A&#038;t=exceltech"><span>実践教材・料金プランを見る</span><span class="op-fc-ar" aria-hidden="true">→</span></a><a class="op-fc-cta2" data-fc="cta2" data-fc-cta="free" href="https://otemachiprep.com/register/?src=fc-popup&#038;v=R&#038;t=exceltech"><span>まずは7日間の無料講座から始める</span></a></div><p class="op-fc-note">無料会員登録は不要です。教材の内容と料金は一覧ページでご確認いただけます。</p></div><aside class="op-fc-side" aria-label="目的別に選べる実践教材"><p class="op-fc-side-t">目的別に選べる実践教材</p><ul class="op-fc-list"><li>財務三表モデリング講座<small>シルバー以上</small></li><li>DCFモデリング講座／Compsモデリング講座<small>ゴールド以上</small></li><li>M&amp;Aモデリング講座／LBOマスター講座<small>プラチナ</small></li><li>PEディールプロセス実務入門<small>プラチナ</small></li><li>AI×ファイナンス実務マスター講座<small>単体購入</small></li></ul><p class="op-fc-side-note">プランは買い切り・税込。6か月後の更新は任意です。</p></aside></div></div>
+<!-- /op-fc-popup-v4 -->
+
+<!-- op-fc-mini-v4 -->
+<div id="op-fc-mini" class="op-fc-mini" role="complementary" aria-label="無料・7日間 財務モデリング講座のご案内" hidden><a class="op-fc-mini-a" data-fc-mini="link" href="https://otemachiprep.com/register/?src=fc-mini&#038;t=exceltech"><span class="op-fc-mini-1">無料・7日間</span><span class="op-fc-mini-2">財務モデリング講座 <span aria-hidden="true">→</span></span></a><button type="button" class="op-fc-mini-x" data-fc-mini="close" aria-label="無料講座のご案内を閉じる"><svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button></div>
+<!-- /op-fc-mini-v4 -->
+
+<script id="op-cp-config">window.OP_CP={"mode":"popup","source":"contextual-popup","version":"4.0.0","state":{"loginState":"guest","loggedIn":false,"membershipStatus":"guest","courseStatus":"guest"},"page":{"pageType":"article_single","articleCategory":"exceltech","isArticle":true,"contentCategory":"article"},"timing":{"triggerActiveMs":12000,"triggerScrollRatio":0.35,"triggerPageViews":2,"triggerPageViewDelayMs":1500,"triggerMode":"any","articleActiveMs":20000,"articleScrollRatio":0.5,"maxImpressionsPerSession":1,"modalSuppressMs":604800000,"miniDelayMs":90000,"miniSuppressMs":604800000,"ctaMiniSuppressMs":86400000,"returningAfterMs":86400000,"attrTtlMs":2592000000,"variantTtlMs":7776000000,"signupStartWindowMs":1800000},"variants":{"A":{"weight":100,"label":"7\u65e5\u9593 \u8ca1\u52d9\u30e2\u30c7\u30ea\u30f3\u30b0\u8b1b\u5ea7","headline":"\u8ca1\u52d9\u30e2\u30c7\u30ea\u30f3\u30b0\u3092\u3001<br>7\u65e5\u9593\u3067\u201c\u8aad\u3080\u201d\u304b\u3089\u201c\u7d44\u3081\u308b\u201d\u3078\u3002","sub":"Excel\u30fb\u8ca1\u52d9\u4e09\u8868\u304b\u3089DCF\u3001M&A\u3001LBO\u307e\u3067\u3002\u30d5\u30a1\u30a4\u30ca\u30f3\u30b9\u5b9f\u52d9\u306e\u5168\u4f53\u50cf\u3092\u3001\u6bce\u65e5\u5c11\u3057\u305a\u3064\u5b66\u3079\u307e\u3059\u3002","cta1":"\u7121\u6599\u8b1b\u5ea7\u3092\u53d7\u3051\u53d6\u308b","cta2":"\u5b9f\u8df5\u6559\u6750\u30fb\u6599\u91d1\u30d7\u30e9\u30f3\u3092\u898b\u308b","layout":"standard"},"B":{"weight":0,"label":"7\u65e5\u9593\u306e\u7121\u6599\u30d5\u30a1\u30a4\u30ca\u30f3\u30b9\u8b1b\u5ea7","headline":"\u30d5\u30a1\u30a4\u30ca\u30f3\u30b9\u5b9f\u52d9\u306e\u5168\u4f53\u50cf\u3092\u3001<br>7\u65e5\u9593\u3067\u3002","sub":"\u8ca1\u52d9\u4e09\u8868\u30fbDCF\u30fbM&A\u30fbLBO\u306e\u300c\u3064\u306a\u304c\u308a\u300d\u3092\u30011\u65e51\u901a\u306e\u30e1\u30fc\u30eb\u3068Excel\u6f14\u7fd2\u3067\u4f53\u7cfb\u7684\u306b\u5b66\u3079\u307e\u3059\u3002","cta1":"7\u65e5\u9593\u306e\u7121\u6599\u8b1b\u5ea7\u3092\u59cb\u3081\u308b","cta2":"\u5b9f\u8df5\u6559\u6750\u30fb\u6599\u91d1\u30d7\u30e9\u30f3\u3092\u898b\u308b","layout":"standard"},"C":{"weight":0,"label":"7\u65e5\u9593 \u8ca1\u52d9\u30e2\u30c7\u30ea\u30f3\u30b0\u8b1b\u5ea7","headline":"\u8ca1\u52d9\u30e2\u30c7\u30ea\u30f3\u30b0\u3092\u3001<br>7\u65e5\u9593\u3067\u201c\u8aad\u3080\u201d\u304b\u3089\u201c\u7d44\u3081\u308b\u201d\u3078\u3002","sub":"Excel\u30fb\u8ca1\u52d9\u4e09\u8868\u304b\u3089DCF\u3001M&A\u3001LBO\u307e\u3067\u3002\u30d5\u30a1\u30a4\u30ca\u30f3\u30b9\u5b9f\u52d9\u306e\u5168\u4f53\u50cf\u3092\u3001\u6bce\u65e5\u5c11\u3057\u305a\u3064\u5b66\u3079\u307e\u3059\u3002","cta1":"\u7121\u6599\u8b1b\u5ea7\u3092\u53d7\u3051\u53d6\u308b","cta2":"\u5b9f\u8df5\u6559\u6750\u30fb\u6599\u91d1\u30d7\u30e9\u30f3\u3092\u898b\u308b","layout":"preview"},"D":{"weight":0,"label":"7\u65e5\u9593 \u8ca1\u52d9\u30e2\u30c7\u30ea\u30f3\u30b0\u8b1b\u5ea7","headline":"\u8ca1\u52d9\u30e2\u30c7\u30ea\u30f3\u30b0\u3092\u3001<br>7\u65e5\u9593\u3067\u201c\u8aad\u3080\u201d\u304b\u3089\u201c\u7d44\u3081\u308b\u201d\u3078\u3002","sub":"Excel\u30fb\u8ca1\u52d9\u4e09\u8868\u304b\u3089DCF\u3001M&A\u3001LBO\u307e\u3067\u3002\u30d5\u30a1\u30a4\u30ca\u30f3\u30b9\u5b9f\u52d9\u306e\u5168\u4f53\u50cf\u3092\u3001\u6bce\u65e5\u5c11\u3057\u305a\u3064\u5b66\u3079\u307e\u3059\u3002","cta1":"\u7121\u6599\u8b1b\u5ea7\u3092\u53d7\u3051\u53d6\u308b","cta2":"\u5b9f\u8df5\u6559\u6750\u30fb\u6599\u91d1\u30d7\u30e9\u30f3\u3092\u898b\u308b","layout":"choice"}},"subtext":"Excel\u306e\u57fa\u672c\u30eb\u30fc\u30eb\u304b\u3089\u3001\u5b9f\u52d9\u3067\u4f7f\u3048\u308b\u8ca1\u52d9\u30e2\u30c7\u30eb\u306e\u7d44\u307f\u65b9\u307e\u3067\u5b66\u3079\u307e\u3059\u3002","urls":{"register":"\/register\/?src=fc-popup&v=A&t=exceltech","materials":"\/materials\/?src=fc-popup&v=A&t=exceltech","registerReturning":"\/register\/?src=fc-popup&v=R&t=exceltech","mini":"\/register\/?src=fc-mini&t=exceltech"},"ids":{"course":"op-fc-course","materials":"op-fc-materials","mini":"op-fc-mini"}};</script>
+<script id="op-cp-js">/* op-fc v4.0.0 — 無料・7日間 財務モデリング講座ポップアップ
+   表示制御: アクティブ12秒 / スクロール35% / セッション2ページ目 のいずれか（記事は20秒/50%）。
+   頻度:     1セッション1回 / 閉じて7日 / CTA後7日（ミニは24h）。
+   再訪者:   初回接触から24h以上のゲストには教材一覧版カードを表示。
+   再接触:   モーダルを閉じて90秒後に右下ミニバナー（閉じたら7日）。
+   定数はサーバー側 op_cp_timing() の1箇所で管理し window.OP_CP.timing で受け取る。
+   ES5固定（wp.comの古いUAキャッシュ経路を考慮）。 */
+(function () {
+	'use strict';
+
+	var CFG = window.OP_CP;
+	if (!CFG || !CFG.mode) { return; }
+
+	var T = CFG.timing || {};
+
+	/* ---------- ストレージ（プライベートモード等で例外が出ても無視・メモリへフォールバック） ---------- */
+	var memStore = {};
+	function ssGet(k) { try { var v = window.sessionStorage.getItem(k); return (v === null && k in memStore) ? memStore[k] : v; } catch (e) { return (k in memStore) ? memStore[k] : null; } }
+	function ssSet(k, v) { memStore[k] = v; try { window.sessionStorage.setItem(k, v); } catch (e) {} }
+	function lsGet(k) { try { var v = window.localStorage.getItem(k); return (v === null && k in memStore) ? memStore[k] : v; } catch (e) { return (k in memStore) ? memStore[k] : null; } }
+	function lsSet(k, v) { memStore[k] = v; try { window.localStorage.setItem(k, v); } catch (e) {} }
+	function lsRemove(k) { try { delete memStore[k]; } catch (e0) {} try { window.localStorage.removeItem(k); } catch (e) {} }
+
+	/* ---------- 新キー（すべて op_fc_ 接頭辞） ---------- */
+	var K_FIRST_SEEN   = 'op_fc_first_seen';
+	var K_VARIANT      = 'op_fc_variant';
+	var K_MODAL_UNTIL  = 'op_fc_modal_until';
+	var K_DISMISSED_AT = 'op_fc_dismissed_at';
+	var K_MINI_UNTIL   = 'op_fc_mini_until';
+	var K_ATTR         = 'op_fc_attr';
+	var K_SIGNUP_DONE  = 'op_fc_signup_done';
+	var K_PV                 = 'op_fc_pv';
+	var K_REF                = 'op_fc_ref';
+	var K_SESSION_SHOWN      = 'op_fc_session_shown';
+	var K_VARIANT_SENT       = 'op_fc_variant_sent';
+	var K_MINI_IMP_SENT      = 'op_fc_mini_imp_sent';
+	var K_SIGNUP_START_SENT  = 'op_fc_signup_start_sent';
+	var K_MATERIALS_VIEW_SENT = 'op_fc_materials_view_sent';
+
+	/* ---------- 旧 v3 キーの掃除（起動時に1回。残留していると新版が出ない事故を防ぐ） ----------
+	   注意: 記事ページのLBOモデルCTA（op-lbo-cta.php）はv3のキーを読み書きして自身の
+	   表示抑制・アトリビューションを行っている（現役・併存中）。そのため
+	   op_cp_dismiss_until / op_cp_cta_until / op_cp2_dismiss_until / op_cp_attribution は
+	   ここで削除しない（v4側から値をミラー書き込みし、期限切れは自然消滅に任せる）。
+	   それ以外の、v3内部でのみ使われていたキーだけを掃除する。 */
+	function cleanupLegacyKeys() {
+		var legacyLocal = ['op_cp2_signup_attr'];
+		var legacySession = ['op_cp_session_impressions', 'op_cp2_pending', 'op_cp2_active_ms', 'op_cp2_session_shown'];
+		var i;
+		for (i = 0; i < legacyLocal.length; i++) { lsRemove(legacyLocal[i]); }
+		for (i = 0; i < legacySession.length; i++) {
+			try { window.sessionStorage.removeItem(legacySession[i]); } catch (e) {}
+		}
+	}
+	/* 旧LBO CTA（v3系）との互換のための固定値。v3のCTAクリック後10時間抑制の値をそのまま踏襲。 */
+	var LEGACY_CTA_SUPPRESS_MS = 10 * 60 * 60 * 1000;
+
+	function now() { return Date.now(); }
+	function num(v) { var n = parseInt(v || '0', 10); return isNaN(n) ? 0 : n; }
+
+	function deviceType() {
+		var w = window.innerWidth || document.documentElement.clientWidth || 0;
+		if (w <= 640) { return 'mobile'; }
+		if (w <= 1024) { return 'tablet'; }
+		return 'desktop';
+	}
+
+	/* ---------- 初回接触・セッションPV・参照元 ----------
+	   pv（op_fc_pv）は popup / track の両モードで加算する（例: /materials/lbo/ を track で
+	   閲覧した後に記事を開いたセッションは2ページ目として数える）。モーダルの表示判定
+	   （pv>=triggerPageViews）自体は popup モードのみで評価する。 */
+	function ensureFirstSeen() {
+		var fs = lsGet(K_FIRST_SEEN);
+		if (!fs) { lsSet(K_FIRST_SEEN, String(now())); }
+	}
+	function isReturning() {
+		var fs = num(lsGet(K_FIRST_SEEN));
+		if (!fs) { return false; }
+		return (now() - fs) >= (T.returningAfterMs || 0);
+	}
+	function incrementPv() {
+		var v = num(ssGet(K_PV)) + 1;
+		ssSet(K_PV, String(v));
+		return v;
+	}
+	function computeReferrerType() {
+		var ref = '';
+		try { ref = document.referrer || ''; } catch (e) {}
+		var host = '';
+		if (ref) {
+			try { host = String(ref).replace(/^https?:\/\//i, '').split('/')[0].toLowerCase(); } catch (e2) { host = ''; }
+		}
+		var selfHost = '';
+		try { selfHost = (window.location && window.location.hostname) || ''; } catch (e3) {}
+		var result = 'direct';
+		if (host) {
+			if (selfHost && host === selfHost.toLowerCase()) {
+				result = 'internal';
+			} else if (matchesAny(host, ['google', 'bing', 'yahoo', 'duckduckgo', 'baidu'])) {
+				result = 'search';
+			} else if (isHostOrSub(host, 't.co') || matchesAny(host, ['x.com', 'twitter.com', 'threads.net', 'facebook', 'instagram', 'linkedin', 'b.hatena', 'note.com'])) {
+				result = 'social';
+			} else if (matchesAny(host, ['chatgpt', 'openai', 'perplexity', 'claude.ai', 'gemini.google', 'copilot'])) {
+				result = 'ai';
+			} else {
+				result = 'referral';
+			}
+		}
+		var search = '';
+		try { search = (window.location && window.location.search) || ''; } catch (e4) {}
+		if (search.indexOf('utm_source=email') !== -1) { result = 'email'; }
+		return result;
+	}
+	function matchesAny(host, needles) {
+		var i;
+		for (i = 0; i < needles.length; i++) { if (host.indexOf(needles[i]) !== -1) { return true; } }
+		return false;
+	}
+	/* 't.co'（Twitterの短縮URLドメイン）は単純な部分一致だと 'chatgpt.com' 等と誤衝突するため、
+	   ホスト自体またはサブドメインとしての一致に限定する。 */
+	function isHostOrSub(host, base) {
+		if (host === base) { return true; }
+		var suf = '.' + base;
+		return host.length > suf.length && host.slice(-suf.length) === suf;
+	}
+	function ensureRef() {
+		var r = ssGet(K_REF);
+		if (!r) { r = computeReferrerType(); ssSet(K_REF, r); }
+		return r;
+	}
+	function getRef() { var r = ssGet(K_REF); return r || 'direct'; }
+
+	/* ---------- 計測（個人情報は送らない） ---------- */
+	var emittedSeen = {};
+	function commonAttrs() {
+		return {
+			device_type: deviceType(),
+			page_type: (CFG.page && CFG.page.pageType) || '',
+			article_category: (CFG.page && CFG.page.articleCategory) ? CFG.page.articleCategory : 'unclassified',
+			new_or_returning: isReturning() ? 'returning' : 'new',
+			referrer_type: getRef(),
+			logged_in_status: (CFG.state && CFG.state.loggedIn) ? 'logged_in' : 'logged_out',
+			membership_status: (CFG.state && CFG.state.membershipStatus) || 'guest',
+			course_registration_status: (CFG.state && CFG.state.courseStatus) || 'guest'
+		};
+	}
+	function emit(eventName, popupId, variant, triggerType, extra) {
+		var dedupeKey = eventName + '|' + Math.floor(now() / 1000);
+		if (emittedSeen[dedupeKey]) { return; }
+		emittedSeen[dedupeKey] = true;
+		var payload = commonAttrs();
+		payload.event = eventName;
+		payload.popup_id = popupId || '';
+		payload.popup_version = CFG.version || '';
+		payload.variant = variant || '';
+		payload.trigger_type = triggerType || '';
+		var k;
+		if (extra) { for (k in extra) { if (Object.prototype.hasOwnProperty.call(extra, k)) { payload[k] = extra[k]; } } }
+		try {
+			if (typeof window.opmTrack === 'function') {
+				window.opmTrack(payload);
+			} else {
+				window.dataLayer = window.dataLayer || [];
+				window.dataLayer.push(payload);
+			}
+		} catch (e) {}
+		try { document.dispatchEvent(new CustomEvent('op_finance_course_popup', { detail: payload })); } catch (e2) {}
+	}
+
+	function idFor(kind) {
+		var ids = CFG.ids || {};
+		if (kind === 'course') { return ids.course || 'op-fc-course'; }
+		if (kind === 'materials') { return ids.materials || 'op-fc-materials'; }
+		return ids.mini || 'op-fc-mini';
+	}
+
+	/* ---------- variant（重み付き乱択・90日保持） ---------- */
+	function pickWeighted() {
+		var variants = CFG.variants || {};
+		var pool = [];
+		var total = 0;
+		var key, w;
+		for (key in variants) {
+			if (Object.prototype.hasOwnProperty.call(variants, key)) {
+				w = num(variants[key] && variants[key].weight);
+				if (w > 0) { pool.push({ k: key, w: w }); total += w; }
+			}
+		}
+		if (!pool.length || total <= 0) { return 'A'; }
+		var r = Math.random() * total;
+		var acc = 0, i;
+		for (i = 0; i < pool.length; i++) {
+			acc += pool[i].w;
+			if (r <= acc) { return pool[i].k; }
+		}
+		return pool[pool.length - 1].k;
+	}
+	function resolveVariant() {
+		var raw = lsGet(K_VARIANT);
+		if (raw) {
+			try {
+				var obj = JSON.parse(raw);
+				if (obj && obj.v && obj.exp && now() < obj.exp) { return obj.v; }
+			} catch (e) {}
+		}
+		var v = pickWeighted();
+		try { lsSet(K_VARIANT, JSON.stringify({ v: v, exp: now() + (T.variantTtlMs || 0) })); } catch (e2) {}
+		return v;
+	}
+	function maybeSendVariantEvent(variant, kind) {
+		if (num(ssGet(K_VARIANT_SENT)) >= 1) { return; }
+		ssSet(K_VARIANT_SENT, '1');
+		emit('finance_course_popup_variant', idFor(kind), variant, '', {});
+	}
+
+	/* ---------- 固定UI（ミニバナーが覆わないようにする対象） ---------- */
+	var MINI_AVOID_SELECTOR = '.to-top, .m-ctabar, #opMcta, #op-lbocta-sticky';
+	function computeMiniLift() {
+		var lift = 0;
+		try {
+			var els = document.querySelectorAll(MINI_AVOID_SELECTOR);
+			var i, el, rect, cs, d;
+			for (i = 0; i < els.length; i++) {
+				el = els[i];
+				if (!el || el.hidden) { continue; }
+				rect = el.getBoundingClientRect ? el.getBoundingClientRect() : null;
+				if (!rect || rect.height <= 0) { continue; }
+				cs = window.getComputedStyle ? window.getComputedStyle(el) : null;
+				if (!cs || cs.position !== 'fixed') { continue; }
+				d = (window.innerHeight || 0) - rect.top;
+				if (d > lift) { lift = d; }
+			}
+		} catch (e) {}
+		return lift;
+	}
+
+	/* ================================================================
+	 * 競合防止（他モーダル・展開中メニュー・入力中フォーム）
+	 * ==============================================================*/
+	function conflicting(root) {
+		try {
+			if (document.documentElement.classList.contains('op-lbocta-lock')) { return true; }
+			var modals = document.querySelectorAll('[aria-modal="true"], dialog[open], .op-lightbox.is-open, [data-op-modal="open"], #op-lbocta-popup, #op-lbocta-lb');
+			var i, m;
+			for (i = 0; i < modals.length; i++) {
+				m = modals[i];
+				if (root && root.contains(m)) { continue; }
+				if (m.hidden) { continue; }
+				if (m.offsetParent !== null || (m.getClientRects && m.getClientRects().length)) { return true; }
+			}
+			var expanded = document.querySelectorAll('.menu-toggle[aria-expanded="true"], .op-hs-toggle[aria-expanded="true"], .op2-c-search[aria-expanded="true"]');
+			if (expanded.length) { return true; }
+			var ae = document.activeElement;
+			if (ae && (ae.tagName === 'INPUT' || ae.tagName === 'TEXTAREA' || ae.tagName === 'SELECT' || ae.isContentEditable)) { return true; }
+			var fields = document.querySelectorAll('form input[type="text"], form input[type="email"], form input[type="password"], form textarea');
+			for (i = 0; i < fields.length; i++) {
+				if (fields[i].value && fields[i].value.length > 0 && fields[i].value !== fields[i].defaultValue) { return true; } // サーバー初期値（ログイン中の自動入力等）は「入力中」とみなさない
+			}
+		} catch (e) {}
+		return false;
+	}
+
+	/* ================================================================
+	 * モーダル（op-fc-course / op-fc-materials）
+	 * ==============================================================*/
+	function buildModal(miniApi) {
+		var root = document.getElementById('op-fc-root');
+		if (!root) { return null; }
+		var courseCard = root.querySelector('[data-fc-card="course"]');
+		var materialsCard = root.querySelector('[data-fc-card="materials"]');
+		if (!courseCard || !materialsCard) { return null; }
+
+		function suppressedModal() {
+			if (num(ssGet(K_SESSION_SHOWN)) >= (T.maxImpressionsPerSession || 1)) { return true; }
+			var mu = num(lsGet(K_MODAL_UNTIL));
+			if (mu && now() < mu) { return true; }
+			return false;
+		}
+		if (suppressedModal()) { return null; }
+
+		var kind = isReturning() ? 'materials' : 'course';
+		var card = (kind === 'course') ? courseCard : materialsCard;
+		var otherCard = (kind === 'course') ? materialsCard : courseCard;
+
+		var variant = resolveVariant();
+		maybeSendVariantEvent(variant, kind);
+		applyHrefs(variant);
+		if (kind === 'course') { applyCourseCopy(courseCard, variant); }
+
+		var isArticle = !!(CFG.page && CFG.page.isArticle);
+		var ACTIVE_MS = isArticle ? T.articleActiveMs : T.triggerActiveMs;
+		var SCROLL_RATIO = isArticle ? T.articleScrollRatio : T.triggerScrollRatio;
+		var activeLabel = 'active_' + Math.round((ACTIVE_MS || 0) / 1000) + 's';
+		var scrollLabel = 'scroll_' + Math.round((SCROLL_RATIO || 0) * 100);
+
+		var triggerType = '';
+		var shown = false, closed = false;
+		var timeReady = false, scrollReady = false, pvReady = false;
+		var activeMs = 0, lastTick = 0, tickTimer = null, retryTimer = null, pvTimer = null, scrollGuardTimer = null;
+		var lastFocused = null;
+		var windowBlurred = false;
+		var resizeObserverInstance = null;
+		var modalBootTime = now();
+		/* 戻る操作・アンカー付き遷移で読み込み直後からスクロール率が既に閾値以上のケースの
+		   誤トリガーを防ぐため、起動から最低これだけは経過してからスクロール条件を成立させる。 */
+		var SCROLL_MIN_ELAPSED_MS = 2000;
+		var conflictRetryCount = 0;
+		/* 競合状態が解消しないまま無限にリトライし続けないための上限（700ms×60=約42秒で諦める）。
+		   諦めた場合もセッション枠（K_SESSION_SHOWN）は消費しない。 */
+		var CONFLICT_RETRY_MAX = 60;
+
+		function isActive() {
+			if (document.visibilityState && document.visibilityState !== 'visible') { return false; }
+			return !windowBlurred;
+		}
+		function tick() {
+			var t = now();
+			if (isActive()) {
+				if (lastTick) { activeMs += (t - lastTick); }
+				lastTick = t;
+				if (!timeReady && activeMs >= ACTIVE_MS) {
+					timeReady = true;
+					if (!triggerType) { triggerType = activeLabel; }
+					maybeShow();
+				}
+			} else {
+				lastTick = 0;
+			}
+		}
+		function startTicking() {
+			if (tickTimer) { return; }
+			lastTick = isActive() ? now() : 0;
+			tickTimer = window.setInterval(tick, 250);
+		}
+		function stopTicking() {
+			if (tickTimer) { window.clearInterval(tickTimer); tickTimer = null; }
+			if (retryTimer) { window.clearInterval(retryTimer); retryTimer = null; }
+			if (pvTimer) { window.clearTimeout(pvTimer); pvTimer = null; }
+			if (scrollGuardTimer) { window.clearTimeout(scrollGuardTimer); scrollGuardTimer = null; }
+		}
+
+		function scrollRatio() {
+			var d = document.documentElement;
+			var docH = Math.max(
+				d.scrollHeight || 0, document.body ? document.body.scrollHeight : 0,
+				d.offsetHeight || 0, document.body ? document.body.offsetHeight : 0
+			);
+			var max = docH - (window.innerHeight || d.clientHeight || 0);
+			if (max <= 0) { return -1; }
+			var y = window.scrollY || window.pageYOffset || d.scrollTop || 0;
+			var r = y / max;
+			if (r < 0) { r = 0; }
+			if (r > 1) { r = 1; }
+			return r;
+		}
+		function checkScroll() {
+			if (scrollReady) { return; }
+			if (now() - modalBootTime < SCROLL_MIN_ELAPSED_MS) { return; }
+			var r = scrollRatio();
+			if (r >= SCROLL_RATIO) {
+				scrollReady = true;
+				if (!triggerType) { triggerType = scrollLabel; }
+				maybeShow();
+			}
+		}
+		function checkPv() {
+			if (pvReady) { return; }
+			if (num(ssGet(K_PV)) >= (T.triggerPageViews || 2)) {
+				pvTimer = window.setTimeout(function () {
+					pvReady = true;
+					if (!triggerType) { triggerType = 'second_pageview'; }
+					maybeShow();
+				}, T.triggerPageViewDelayMs || 0);
+			}
+		}
+
+		function maybeShow() {
+			if (shown || closed) { return; }
+			if (!(timeReady || scrollReady || pvReady)) { return; }
+			if (suppressedModal()) { teardown(); return; }
+			if (conflicting(root)) {
+				conflictRetryCount++;
+				if (conflictRetryCount >= CONFLICT_RETRY_MAX) {
+					// 競合が解消しないまま諦める。トリガー監視は全解除し、セッション枠は消費しない
+					// （closedにするだけで、K_SESSION_SHOWNは増やさない＝別ページビューで再挑戦できる）。
+					stopWatching();
+					closed = true;
+					return;
+				}
+				if (!retryTimer) { retryTimer = window.setInterval(function () { maybeShow(); }, 700); }
+				return;
+			}
+			if (retryTimer) { window.clearInterval(retryTimer); retryTimer = null; }
+			conflictRetryCount = 0;
+			show();
+		}
+
+		/* ---------- フォーカストラップ（表示中のカードに限定） ---------- */
+		var FOCUSABLE = 'a[href], button:not([disabled]), textarea, input, select, summary, [tabindex]:not([tabindex="-1"])';
+		function focusables() {
+			var list = card.querySelectorAll(FOCUSABLE);
+			var out = [];
+			var i, el;
+			for (i = 0; i < list.length; i++) {
+				el = list[i];
+				if (el.offsetParent !== null || (el.getClientRects && el.getClientRects().length)) { out.push(el); }
+			}
+			return out;
+		}
+		function onKeydown(ev) {
+			if (ev.key === 'Escape' || ev.keyCode === 27) {
+				ev.preventDefault();
+				close('esc');
+				return;
+			}
+			if (ev.key !== 'Tab' && ev.keyCode !== 9) { return; }
+			var f = focusables();
+			if (!f.length) { ev.preventDefault(); card.focus(); return; }
+			var first = f[0];
+			var last = f[f.length - 1];
+			if (ev.shiftKey) {
+				if (document.activeElement === first || document.activeElement === card) { ev.preventDefault(); last.focus(); }
+			} else if (document.activeElement === last) {
+				ev.preventDefault();
+				first.focus();
+			}
+		}
+		function onFocusIn(ev) {
+			if (!root.hidden && !root.contains(ev.target)) {
+				ev.stopPropagation();
+				var f = focusables();
+				(f.length ? f[0] : card).focus();
+			}
+		}
+
+		function applyDaysOpenState() {
+			var details = card.querySelector('.op-fc-days');
+			if (!details) { return; }
+			if ((window.innerWidth || 0) <= 640) { details.removeAttribute('open'); }
+			else { details.setAttribute('open', ''); }
+		}
+		function applyLazyImage() {
+			var img = card.querySelector('.op-fc-perk-img');
+			if (img) {
+				var ds = img.getAttribute('data-src');
+				if (ds) { img.setAttribute('src', ds); }
+			}
+		}
+
+		function show() {
+			shown = true;
+			stopWatching();
+			ssSet(K_SESSION_SHOWN, String(num(ssGet(K_SESSION_SHOWN)) + 1));
+
+			try { lastFocused = document.activeElement; } catch (e) { lastFocused = null; }
+
+			card.hidden = false;
+			otherCard.hidden = true;
+			root.setAttribute('data-kind', kind);
+			applyDaysOpenState();
+			applyLazyImage();
+
+			root.hidden = false;
+			void root.offsetHeight;
+			root.classList.add('op-fc-visible');
+			document.documentElement.classList.add('op-fc-lock');
+			if (document.body) { document.body.classList.add('op-fc-lock'); }
+
+			document.addEventListener('keydown', onKeydown, true);
+			document.addEventListener('focusin', onFocusIn, true);
+
+			var closeBtn = card.querySelector('[data-fc="close"]');
+			var f = focusables();
+			try { (closeBtn || (f.length ? f[0] : card)).focus(); } catch (e2) {}
+
+			emit('finance_course_popup_impression', idFor(kind), variant, triggerType, {});
+		}
+
+		function release() {
+			document.removeEventListener('keydown', onKeydown, true);
+			document.removeEventListener('focusin', onFocusIn, true);
+			document.documentElement.classList.remove('op-fc-lock');
+			if (document.body) { document.body.classList.remove('op-fc-lock'); }
+		}
+
+		function close(reason) {
+			if (closed || root.hidden) { return; }
+			closed = true;
+			root.classList.remove('op-fc-visible');
+			var t = now();
+			var modalUntil = t + (T.modalSuppressMs || 0);
+			lsSet(K_MODAL_UNTIL, String(modalUntil));
+			lsSet(K_DISMISSED_AT, String(t));
+			// 旧LBO CTA（v3系）が読む op_cp_dismiss_until をミラー書き込みする（互換維持）。
+			lsSet('op_cp_dismiss_until', String(modalUntil));
+			release();
+			emit('finance_course_popup_close', idFor(kind), variant, triggerType, { close_method: reason || 'close_button' });
+			try { if (lastFocused && lastFocused.focus) { lastFocused.focus(); } } catch (e) {}
+			window.setTimeout(function () { root.hidden = true; }, 260);
+			if (miniApi) { miniApi.arm(); }
+		}
+
+		function buildHref(base, v) {
+			if (!base) { return ''; }
+			return String(base).replace('v=A', 'v=' + v);
+		}
+		function applyHrefs(v) {
+			var courseCta1 = courseCard.querySelector('[data-fc="cta1"]');
+			var courseCta2 = courseCard.querySelector('[data-fc="cta2"]');
+			var matCta1 = materialsCard.querySelector('[data-fc="cta1"]');
+			var matCta2 = materialsCard.querySelector('[data-fc="cta2"]');
+			var urls = CFG.urls || {};
+			if (courseCta1) { courseCta1.setAttribute('href', buildHref(urls.register, v)); }
+			if (courseCta2) { courseCta2.setAttribute('href', buildHref(urls.materials, v)); }
+			if (matCta1) { matCta1.setAttribute('href', buildHref(urls.materials, v)); }
+			if (matCta2) { matCta2.setAttribute('href', urls.registerReturning || ''); }
+		}
+		function applyCourseCopy(cCard, v) {
+			var variants = CFG.variants || {};
+			var vv = variants[v];
+			if (!vv || vv.layout !== 'standard') { vv = variants.A; }
+			if (!vv) { return; }
+			setCopy(cCard, 'label', vv.label, false);
+			setCopy(cCard, 'headline', vv.headline, true);
+			var subEl = cCard.querySelector('[data-fc-copy="sub"]');
+			if (subEl && subEl.getAttribute('data-fc-subtext') !== '1' && vv.sub) {
+				subEl.textContent = vv.sub;
+			}
+			setCopy(cCard, 'cta1', vv.cta1, false);
+			setCopy(cCard, 'cta2', vv.cta2, false);
+		}
+		function setCopy(cCard, key, text, asHtml) {
+			if (!text) { return; }
+			var el = cCard.querySelector('[data-fc-copy="' + key + '"]');
+			if (!el) { return; }
+			if (asHtml) { el.innerHTML = text; } else { el.textContent = text; }
+		}
+
+		function onCta(ctaKind, url) {
+			var t = now();
+			var modalUntil = t + (T.modalSuppressMs || 0);
+			lsSet(K_MODAL_UNTIL, String(modalUntil));
+			lsSet(K_MINI_UNTIL, String(t + (T.ctaMiniSuppressMs || 0)));
+			// 旧LBO CTA（v3系）との互換: op_cp_dismiss_until をミラーし、
+			// v3独自の10時間CTA抑止（op_cp_cta_until）も書き込む。
+			lsSet('op_cp_dismiss_until', String(modalUntil));
+			lsSet('op_cp_cta_until', String(t + LEGACY_CTA_SUPPRESS_MS));
+			try {
+				lsSet(K_ATTR, JSON.stringify({
+					popup_id: idFor(kind),
+					variant: variant || '',
+					page_type: (CFG.page && CFG.page.pageType) || '',
+					article_category: (CFG.page && CFG.page.articleCategory) || '',
+					cta: ctaKind,
+					trigger_type: triggerType || '',
+					ts: t
+				}));
+			} catch (e) {}
+			emit(ctaKind === 'free' ? 'finance_course_popup_free_cta_click' : 'finance_course_popup_materials_cta_click', idFor(kind), variant, triggerType, { cta_destination: url || '' });
+			release();
+		}
+
+		var ctaEls = root.querySelectorAll('[data-fc="cta1"], [data-fc="cta2"]');
+		(function bindCtas() {
+			var i;
+			for (i = 0; i < ctaEls.length; i++) {
+				(function (el) {
+					el.addEventListener('click', function () {
+						onCta(el.getAttribute('data-fc-cta') || '', el.getAttribute('href') || '');
+					});
+				})(ctaEls[i]);
+			}
+		})();
+
+		var closeEls = root.querySelectorAll('[data-fc="close"]');
+		(function bindClose() {
+			var i;
+			for (i = 0; i < closeEls.length; i++) {
+				(function (el) {
+					el.addEventListener('click', function (e) { e.preventDefault(); close('close_button'); });
+				})(closeEls[i]);
+			}
+		})();
+		var backdrop = root.querySelector('[data-fc="backdrop"]');
+		if (backdrop) { backdrop.addEventListener('click', function () { close('backdrop'); }); }
+
+		function teardown() {
+			stopWatching();
+			if (!root.hidden) {
+				root.classList.remove('op-fc-visible');
+				release();
+				root.hidden = true;
+			}
+			closed = true;
+		}
+		window.addEventListener('storage', function (ev) {
+			if (!ev || ev.key !== K_MODAL_UNTIL) { return; }
+			if (suppressedModal() && !shown) { teardown(); }
+		});
+
+		/* ---------- トリガー監視用リスナー一式（表示・離脱・諦めのいずれでも確実に解除する） ---------- */
+		function onVisibilityChange() { lastTick = isActive() ? now() : 0; }
+		function onWindowBlur() { windowBlurred = true; lastTick = 0; }
+		function onWindowFocus() { windowBlurred = false; if (isActive()) { lastTick = now(); } }
+		/** トリガー検出まわりの監視を全解除する（表示確定・離脱・競合断念のいずれでも呼ぶ）。 */
+		function stopWatching() {
+			stopTicking();
+			document.removeEventListener('visibilitychange', onVisibilityChange);
+			window.removeEventListener('blur', onWindowBlur);
+			window.removeEventListener('focus', onWindowFocus);
+			window.removeEventListener('scroll', checkScroll);
+			window.removeEventListener('resize', checkScroll);
+			window.removeEventListener('orientationchange', checkScroll);
+			if (resizeObserverInstance) {
+				try { resizeObserverInstance.disconnect(); } catch (e) {}
+				resizeObserverInstance = null;
+			}
+		}
+
+		checkPv();
+		startTicking();
+		document.addEventListener('visibilitychange', onVisibilityChange);
+		window.addEventListener('blur', onWindowBlur);
+		window.addEventListener('focus', onWindowFocus);
+		window.addEventListener('scroll', checkScroll, { passive: true });
+		window.addEventListener('resize', checkScroll, { passive: true });
+		window.addEventListener('orientationchange', checkScroll);
+		try {
+			if (window.ResizeObserver && document.body) {
+				resizeObserverInstance = new ResizeObserver(function () { checkScroll(); });
+				resizeObserverInstance.observe(document.body);
+			}
+		} catch (e) {}
+		checkScroll();
+		// 読み込み直後に既にスクロール済み（戻る操作・アンカー付き遷移）でも、以後スクロールが
+		// 全く起きないケースを拾えるよう、猶予時間の経過時点で一度だけ再評価する。
+		scrollGuardTimer = window.setTimeout(function () { scrollGuardTimer = null; checkScroll(); }, SCROLL_MIN_ELAPSED_MS);
+
+		return { close: close };
+	}
+
+	/* ================================================================
+	 * ミニバナー（非モーダル・右下）
+	 * ==============================================================*/
+	function buildMini() {
+		var mini = document.getElementById('op-fc-mini');
+		if (!mini) { return null; }
+		var link = mini.querySelector('[data-fc-mini="link"]');
+		var closeBtn = mini.querySelector('[data-fc-mini="close"]');
+		var urls = CFG.urls || {};
+		if (link && urls.mini) { link.setAttribute('href', urls.mini); }
+
+		var shown = false, closed = false;
+		var delayTimer = null;
+		var liftThrottle = null;
+
+		function suppressedMini() {
+			var mu = num(lsGet(K_MINI_UNTIL));
+			return !!(mu && now() < mu);
+		}
+		function modalVisible() {
+			var r = document.getElementById('op-fc-root');
+			return !!(r && !r.hidden);
+		}
+		function eligible() {
+			var da = num(lsGet(K_DISMISSED_AT));
+			if (!da) { return false; }
+			if (now() - da < (T.miniDelayMs || 0)) { return false; }
+			if (suppressedMini()) { return false; }
+			if (modalVisible()) { return false; }
+			return true;
+		}
+
+		function applyLift() {
+			try {
+				var lift = computeMiniLift();
+				var px = lift ? (lift + 12) : 16;
+				mini.style.setProperty('--op-fc-mini-lift', px + 'px');
+			} catch (e) {}
+		}
+		function onViewportChange() {
+			if (liftThrottle) { return; }
+			liftThrottle = window.setTimeout(function () { liftThrottle = null; applyLift(); }, 150);
+		}
+
+		function show() {
+			shown = true;
+			applyLift();
+			if (num(ssGet(K_MINI_IMP_SENT)) < 1) {
+				ssSet(K_MINI_IMP_SENT, '1');
+				emit('finance_course_mini_banner_impression', idFor('mini'), '', '', {});
+			}
+			mini.hidden = false;
+			void mini.offsetHeight;
+			mini.classList.add('op-fc-mini-visible');
+			window.addEventListener('resize', onViewportChange, { passive: true });
+			window.addEventListener('scroll', onViewportChange, { passive: true });
+			window.addEventListener('orientationchange', onViewportChange);
+		}
+		function close() {
+			if (closed) { return; }
+			closed = true;
+			mini.classList.remove('op-fc-mini-visible');
+			var miniUntil = now() + (T.miniSuppressMs || 0);
+			lsSet(K_MINI_UNTIL, String(miniUntil));
+			// 旧LBO CTA（v3系）が読む op_cp2_dismiss_until をミラー書き込みする（互換維持）。
+			lsSet('op_cp2_dismiss_until', String(miniUntil));
+			emit('finance_course_mini_banner_close', idFor('mini'), '', '', {});
+			window.removeEventListener('resize', onViewportChange);
+			window.removeEventListener('scroll', onViewportChange);
+			window.removeEventListener('orientationchange', onViewportChange);
+			if (liftThrottle) { window.clearTimeout(liftThrottle); liftThrottle = null; }
+			window.setTimeout(function () { mini.hidden = true; }, 200);
+		}
+		function maybeShow() {
+			if (shown || closed) { return; }
+			if (!eligible()) { return; }
+			show();
+		}
+		function arm() {
+			if (shown || closed) { return; }
+			if (delayTimer) { window.clearTimeout(delayTimer); delayTimer = null; }
+			var da = num(lsGet(K_DISMISSED_AT));
+			if (!da) { return; }
+			var elapsed = now() - da;
+			var wait = (elapsed >= (T.miniDelayMs || 0)) ? 600 : ((T.miniDelayMs || 0) - elapsed);
+			delayTimer = window.setTimeout(maybeShow, wait);
+		}
+
+		if (closeBtn) { closeBtn.addEventListener('click', function (e) { e.preventDefault(); close(); }); }
+		if (link) {
+			link.addEventListener('click', function () {
+				var miniUntil = now() + (T.miniSuppressMs || 0);
+				lsSet(K_MINI_UNTIL, String(miniUntil));
+				// 旧LBO CTA（v3系）が読む op_cp2_dismiss_until をミラー書き込みする（互換維持）。
+				lsSet('op_cp2_dismiss_until', String(miniUntil));
+				try {
+					lsSet(K_ATTR, JSON.stringify({
+						popup_id: idFor('mini'),
+						variant: '',
+						page_type: (CFG.page && CFG.page.pageType) || '',
+						article_category: (CFG.page && CFG.page.articleCategory) || '',
+						cta: 'mini',
+						trigger_type: '',
+						ts: now()
+					}));
+				} catch (e) {}
+				emit('finance_course_mini_banner_click', idFor('mini'), '', '', { cta_destination: link.getAttribute('href') || '' });
+			});
+		}
+		window.addEventListener('storage', function (ev) {
+			if (!ev || ev.key !== K_MINI_UNTIL) { return; }
+			if (suppressedMini() && !shown) {
+				closed = true;
+				if (delayTimer) { window.clearTimeout(delayTimer); delayTimer = null; }
+			}
+		});
+
+		return { arm: arm };
+	}
+
+	/* ================================================================
+	 * ブート: mode='popup'
+	 * ==============================================================*/
+	function bootPopup() {
+		// first_seen（再訪者=教材一覧カード判定の起点）はpopupモードの初回ロードでのみ設定する
+		// （SPEC §5: trackモードのページ閲覧だけでは初回接触とみなさない）。
+		ensureFirstSeen();
+		cleanupStaleDismissedAt();
+		var miniApi = buildMini();
+		buildModal(miniApi);
+		if (miniApi) { miniApi.arm(); }
+	}
+
+	/**
+	 * op_fc_modal_until が無い、または期限切れの状態で op_fc_dismissed_at だけが
+	 * 残っていると、7日の抑制期間が過ぎた「新規訪問」相当のセッションでも
+	 * ミニバナーの90秒条件だけが古い値のまま成立してしまう。
+	 * その場合は dismissed_at を消し、新たな「閉じる」操作がない限りミニは出さない。
+	 */
+	function cleanupStaleDismissedAt() {
+		var mu = num(lsGet(K_MODAL_UNTIL));
+		if (!mu || now() >= mu) {
+			lsRemove(K_DISMISSED_AT);
+		}
+	}
+
+	/* ================================================================
+	 * ブート: mode='track'（遷移先ページ到達・登録完了・購入のアトリビューション）
+	 * ==============================================================*/
+	function readAttr() {
+		var raw = lsGet(K_ATTR);
+		if (!raw) { return null; }
+		try { return JSON.parse(raw); } catch (e) { return null; }
+	}
+	function bootTrack() {
+		var page = CFG.page || {};
+		var attr = readAttr();
+
+		function attrFreshWithin(windowMs) {
+			if (!attr || !attr.ts) { return false; }
+			return (now() - Number(attr.ts)) <= windowMs;
+		}
+
+		if (page.isRegister && attr && attrFreshWithin(T.signupStartWindowMs || 0) && num(ssGet(K_SIGNUP_START_SENT)) < 1) {
+			ssSet(K_SIGNUP_START_SENT, '1');
+			emit('finance_course_popup_signup_start', (attr.popup_id || ''), (attr.variant || ''), (attr.trigger_type || ''), {});
+		}
+
+		var loginState = (CFG.state && CFG.state.loginState) || 'guest';
+		if (loginState !== 'guest' && attr && attrFreshWithin(T.attrTtlMs || 0) && lsGet(K_SIGNUP_DONE) !== '1') {
+			lsSet(K_SIGNUP_DONE, '1');
+			emit('finance_course_popup_signup_complete', (attr.popup_id || ''), (attr.variant || ''), (attr.trigger_type || ''), {});
+		}
+
+		if (page.isMaterials && attr && num(ssGet(K_MATERIALS_VIEW_SENT)) < 1) {
+			ssSet(K_MATERIALS_VIEW_SENT, '1');
+			emit('finance_course_popup_materials_view', (attr.popup_id || ''), (attr.variant || ''), (attr.trigger_type || ''), {});
+		}
+
+		var isReceived = !!page.isOrderReceived;
+		if (!isReceived) {
+			try {
+				var cls = document.body ? document.body.className : '';
+				var href = (window.location && window.location.href) || '';
+				isReceived = (String(cls).indexOf('woocommerce-order-received') > -1) || (String(href).indexOf('order-received') > -1);
+			} catch (e) {}
+		}
+		if (isReceived && attr) {
+			var orderId = '';
+			try {
+				var href2 = (window.location && window.location.href) || '';
+				var m = href2.match(/order-received\/(\d+)/);
+				if (m) { orderId = m[1]; }
+			} catch (e2) {}
+			emit('finance_course_popup_purchase', (attr.popup_id || ''), (attr.variant || ''), (attr.trigger_type || ''), { op_order_id: orderId });
+			lsRemove(K_ATTR);
+		}
+
+		legacyTrack(isReceived);
+	}
+
+	/* ================================================================
+	 * 旧v3ポップアップ（記事のLBOモデルCTA・op-lbo-cta.php）との計測互換。
+	 * v3は sessionStorage の op_cp_attribution（{popup_id, context, variant,
+	 * page_type, fund_slug, track, ts}）を自分で書き込み、遷移先到達と購入完了を
+	 * 自分のemit()（op_popup_destination_view / op_popup_purchase）で計測していた。
+	 * op-lbo-cta.php は現役で併存しているため、そちらの遷移も同じ形で計測を続ける。
+	 * ==============================================================*/
+	function legacyTrack(isReceived) {
+		var raw = null;
+		try { raw = window.sessionStorage.getItem('op_cp_attribution'); } catch (e) { raw = null; }
+		if (!raw) { return; }
+		var attr = null;
+		try { attr = JSON.parse(raw); } catch (e2) { attr = null; }
+		if (!attr || typeof attr !== 'object') { return; }
+
+		var search = '';
+		try { search = (window.location && window.location.search) || ''; } catch (e3) {}
+		var pathname = '';
+		try { pathname = (window.location && window.location.pathname) || ''; } catch (e4) {}
+
+		function legacyEmit(eventName) {
+			var payload = {
+				event: eventName,
+				popup_id: attr.popup_id || '',
+				copy_variant: attr.variant || '',
+				page_type: attr.page_type || '',
+				content_category: attr.context || '',
+				fund_slug: attr.fund_slug || '',
+				cta_destination: pathname,
+				device_type: deviceType(),
+				login_state: (CFG.state && CFG.state.loginState) || 'guest'
+			};
+			try {
+				if (typeof window.opmTrack === 'function') { window.opmTrack(payload); }
+				else { window.dataLayer = window.dataLayer || []; window.dataLayer.push(payload); }
+			} catch (e5) {}
+			try { document.dispatchEvent(new CustomEvent('op_contextual_popup', { detail: payload })); } catch (e6) {}
+		}
+
+		if (search.indexOf('source=contextual-popup') !== -1) {
+			legacyEmit('op_popup_destination_view');
+		}
+		if (isReceived) {
+			legacyEmit('op_popup_purchase');
+			try { window.sessionStorage.removeItem('op_cp_attribution'); } catch (e7) {}
+		}
+	}
+
+	/* ---------- ブート ---------- */
+	function boot() {
+		try { cleanupLegacyKeys(); } catch (e0) {}
+		try { incrementPv(); } catch (e2) {}
+		try { ensureRef(); } catch (e3) {}
+		try {
+			if (CFG.mode === 'popup') { bootPopup(); }
+			else if (CFG.mode === 'track') { bootTrack(); }
+		} catch (e) { /* 閲覧を妨げない */ }
+	}
+
+	if (document.readyState === 'loading') {
+		document.addEventListener('DOMContentLoaded', boot);
+	} else {
+		boot();
+	}
+})();</script>
+<script id="op-meganav-inline">
+/*!
+ * op-meganav.js — 大手町プレップ ヘッダー「分野別記事」メガメニュー（v2 / 3層バンド構成）
+ * 単一データソース方式。#nv-cat の中身を作り替え、全テンプレ共通で適用（19テンプレ非改変）。
+ * 表示名のみ変更・URLは既存維持（404回避）。計測は dataLayer.push（無害・GA4/GTM接続時に流れる）。
+ * v2.1.0 2026-08-02（AI×ファイナンス/Excel・PPT/データ・テクノロジーを追加・件数を実数に更新）
+ */
+(function () {
+  'use strict';
+  if (window.__opMegaNavInit) return;
+  window.__opMegaNavInit = true;
+
+  var A = '/articles/';
+
+  /* ---- 単一データソース（表示名とURLを一元管理・件数は表示用） ---------------- */
+  var DATA = {
+    popular: [
+      { label: '業界研究', icon: 'net',    title: 'PEファンド一覧・業界マップ', desc: '国内PEファンドを一覧＋業界マップで', href: '/pe-funds/', ev: 'popular:pe-funds' },
+      { label: '業界研究', icon: 'rocket', title: 'VC・CVC一覧・業界マップ',   desc: "VC\/CVC 846組織のデータベース",   href: '/vc-funds/', ev: 'popular:vc-funds' },
+      { label: '実務辞典', icon: 'book',   title: 'ファイナンス実務用語集',     desc: '実務1000用語をやさしく解説',       href: '/glossary/', ev: 'popular:glossary', note: '1000' },
+      { label: '人気',     icon: 'case',   title: 'キャリア・面接対策',         desc: 'IB・PE・FAS の選考／面接対策',    href: A + '#g6',    ev: 'popular:career',   note: '42' }
+    ],
+    colLeft: {
+      head: '業界研究・キャリア',
+      items: [
+        { t: 'PEファンド一覧・業界マップ',    h: '/pe-funds/', tag: '業界研究', ev: 'left:pe-funds' },
+        { t: 'VC・CVC一覧・業界マップ',      h: '/vc-funds/', tag: '業界研究', ev: 'left:vc-funds' },
+        { t: 'キャリア・面接対策',           h: A + '#g6',  n: '42', tag: '人気', ev: 'left:career' },
+        { t: '投資銀行・FAS・M&A',           h: A + '#g4',  n: '22', ev: 'left:ib-fas-ma' },
+        { t: 'プライベートエクイティ・LBO',  h: A + '#g5',  n: '31', ev: 'left:pe-lbo' },
+        { t: 'ベンチャーキャピタル実務',     h: A + '#g11', n: '8',  ev: 'left:vc' },
+        { t: '資本市場・クレジット',         h: A + '#g10', n: '25', ev: 'left:capmkt' },
+        { t: '事業再生・リストラクチャリング', h: A + '#g9', n: '8', ev: 'left:restructuring' },
+        { t: '不動産・REIT',                h: A + '#g12', n: '3',  ev: 'left:re-reit' }
+      ]
+    },
+    colRight: {
+      head: '財務・モデリング実務',
+      items: [
+        { t: 'ファイナンス実務用語集',       h: '/glossary/', n: '1000', tag: '辞典', ev: 'right:glossary' },
+        { t: '財務モデリング',               h: A + '#g2',  n: '22', ev: 'right:modeling' },
+        { t: '会計・財務三表・財務分析',     h: A + '#g1',  n: '36', ev: 'right:accounting' },
+        { t: 'バリュエーション',             h: A + '#g3',  n: '22', ev: 'right:valuation' },
+        { t: '経営企画・FP&A',               h: A + '#g7',  n: '19',  ev: 'right:fpa' },
+        { t: 'AI×ファイナンス',              h: A + '#g16', n: '12', tag: 'NEW', ev: 'right:ai-finance' },
+        { t: '投資分析・エクイティリサーチ', h: A + '#g13', n: '9',  ev: 'right:er' },
+        { t: '業種別モデリング',             h: A + '#g8',  n: '12',  ev: 'right:industry' },
+        { t: 'Excel・PowerPoint実務',         h: A + '#g15', n: '19', ev: 'right:excel-ppt' },
+        { t: 'データ・テクノロジー',           h: A + '#g14', n: '7',  ev: 'right:data-tech' },
+        { t: '財務モデル構築チュートリアル', h: A + '#g0',  n: '12',  ev: 'right:tutorial' },
+        { t: '財務・投資指標の早見辞典',     h: '/reference/', n: '31', ev: 'right:reference' }
+      ]
+    },
+    cta: [
+      { t: '無料記事をすべて見る',     h: '/articles/',   kind: 'primary',   ev: 'cta:free-articles' },
+      { t: '教材で体系的に学ぶ',       h: '/materials/',  kind: 'secondary', ev: 'cta:materials' },
+      { t: '学習ロードマップ',         h: '/#roadmap',    kind: 'link',      ev: 'cta:roadmap' },
+      { t: 'アセスメントで実力を確認', h: '/assessment/', kind: 'link',      ev: 'cta:assessment' }
+    ]
+  };
+
+  var ICON = {
+    net:    '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="6" cy="7" r="2.2"/><circle cx="18" cy="7" r="2.2"/><circle cx="12" cy="17" r="2.2"/><path d="M7.6 8.4 11 15M16.4 8.4 13 15M8 7h8"/></svg>',
+    rocket: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 15c-1 2-1 4-1 4s2 0 4-1M14 5c3-1 5-1 5-1s0 2-1 5c-1 3-4 6-8 8l-3-3c2-4 5-7 7-9z"/><circle cx="14.5" cy="9.5" r="1.3"/></svg>',
+    book:   '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 5.5A1.5 1.5 0 0 1 6.5 4H18v14H6.5A1.5 1.5 0 0 0 5 19.5zM18 18v2H6.5A1.5 1.5 0 0 1 5 18.5"/><path d="M8.5 8h6M8.5 11h6"/></svg>',
+    case:   '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="7.5" width="17" height="11" rx="1.6"/><path d="M9 7.5V6a1.5 1.5 0 0 1 1.5-1.5h3A1.5 1.5 0 0 1 15 6v1.5M3.5 12.5h17"/></svg>'
+  };
+
+  function e(s) { return String(s).replace(/[&<>"]/g, function (c) { return ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]; }); }
+
+  function card(c) {
+    return '<a class="opmm-card" href="' + e(c.href) + '" data-opnav="' + e(c.ev) + '">' +
+      '<span class="opmm-card-ic">' + (ICON[c.icon] || '') + '</span>' +
+      '<span class="opmm-card-b"><span class="opmm-card-t">' + e(c.title) + '</span>' +
+      '<span class="opmm-card-d">' + e(c.desc) + (c.note ? '<span class="opmm-n">' + e(c.note) + '</span>' : '') + '</span></span>' +
+      '<span class="opmm-tag">' + e(c.label) + '</span><span class="opmm-go" aria-hidden="true">→</span></a>';
+  }
+  function row(it) {
+    return '<li><a href="' + e(it.h) + '" data-opnav="' + e(it.ev) + '">' +
+      '<span class="opmm-rt">' + e(it.t) + '</span>' +
+      (it.tag ? '<span class="opmm-rtag">' + e(it.tag) + '</span>' : '') +
+      (it.n ? '<span class="opmm-ct">' + e(it.n) + '</span>' : '') + '</a></li>';
+  }
+  function col(c) {
+    return '<div class="opmm-col"><p class="opmm-ch">' + e(c.head) + '</p><ul>' + c.items.map(row).join('') + '</ul></div>';
+  }
+  function cta(c) {
+    var ar = c.kind === 'link' ? ' <span class="opmm-ar" aria-hidden="true">→</span>' : '';
+    return '<a class="opmm-cta-' + c.kind + '" href="' + e(c.h) + '" data-opnav="' + e(c.ev) + '">' + e(c.t) + ar + '</a>';
+  }
+  function buildHTML() {
+    return '<div class="opmm">' +
+      '<section class="opmm-pop" aria-label="人気コンテンツ"><p class="opmm-h">人気コンテンツ</p>' +
+        '<div class="opmm-cards">' + DATA.popular.map(card).join('') + '</div></section>' +
+      '<div class="opmm-cols">' + col(DATA.colLeft) + col(DATA.colRight) + '</div>' +
+      '<div class="opmm-cta">' + DATA.cta.map(cta).join('') + '</div></div>';
+  }
+
+  /* ---- CSS（#nv-cat配下にスコープ・ブランド配色 navy#14355F / gold#B08A3C） ---- */
+  var CSS = [
+    'body #nv-cat.nv-mega{width:704px!important;min-width:704px!important;padding:0!important;overflow:hidden;border-radius:0 0 10px 10px;}',
+    '#nv-cat .opmm{width:100%;box-sizing:border-box;color:#1B2838;font-size:14px;line-height:1.5;}',
+    '#nv-cat .opmm *{box-sizing:border-box;}',
+    '#nv-cat .opmm-h,#nv-cat .opmm-ch{display:flex;align-items:center;gap:8px;font-size:11px;letter-spacing:.09em;font-weight:700;color:#41546A;margin:0 0 10px;}',
+    '#nv-cat .opmm-h::before,#nv-cat .opmm-ch::before{content:"";width:3px;height:13px;background:#B08A3C;border-radius:1px;flex:0 0 auto;}',
+    '#nv-cat .opmm-pop{padding:15px 18px 16px;background:#F6F8FB;border-bottom:1px solid #E7ECF2;}',
+    '#nv-cat .opmm-cards{display:grid;grid-template-columns:1fr 1fr;gap:9px;}',
+    '#nv-cat .opmm-card{position:relative;display:flex;align-items:flex-start;gap:11px;padding:12px 13px;border:1px solid #E7ECF2;border-radius:9px;background:#fff;text-decoration:none;transition:transform .18s ease,box-shadow .18s ease,border-color .18s ease;}',
+    '#nv-cat .opmm-card:hover,#nv-cat .opmm-card:focus-visible{border-color:#B08A3C;transform:translateY(-1px);box-shadow:0 5px 16px rgba(20,53,95,.10);outline:none;}',
+    '#nv-cat .opmm-card-ic{flex:0 0 auto;width:36px;height:36px;display:flex;align-items:center;justify-content:center;border-radius:8px;background:#EEF2F8;transition:background .18s ease;}',
+    '#nv-cat .opmm-card-ic svg{width:20px;height:20px;fill:none;stroke:#14355F;stroke-width:1.55;stroke-linecap:round;stroke-linejoin:round;transition:stroke .18s ease;}',
+    '#nv-cat .opmm-card:hover .opmm-card-ic{background:#F3EBD9;}#nv-cat .opmm-card:hover .opmm-card-ic svg{stroke:#B08A3C;}',
+    '#nv-cat .opmm-card-b{display:flex;flex-direction:column;min-width:0;}',
+    '#nv-cat .opmm-card-t{font-weight:700;color:#14355F;font-size:13.5px;line-height:1.35;letter-spacing:.01em;}',
+    '#nv-cat .opmm-card-d{color:#5B6B7F;font-size:12px;margin-top:3px;}',
+    '#nv-cat .opmm-n{display:inline-block;margin-left:6px;padding:0 5px;font-size:10px;font-weight:700;color:#8A6A28;background:#F3EBD9;border-radius:9px;vertical-align:middle;}',
+    '#nv-cat .opmm-tag{position:absolute;top:11px;right:12px;font-size:9.5px;font-weight:700;letter-spacing:.03em;color:#B08A3C;text-transform:uppercase;}',
+    '#nv-cat .opmm-go{position:absolute;right:12px;bottom:10px;color:#B08A3C;font-size:14px;opacity:0;transform:translateX(-3px);transition:opacity .18s ease,transform .18s ease;}',
+    '#nv-cat .opmm-card:hover .opmm-go,#nv-cat .opmm-card:focus-visible .opmm-go{opacity:1;transform:translateX(0);}',
+    '#nv-cat .opmm-cols{display:grid;grid-template-columns:1fr 1fr;padding:15px 18px 6px;}',
+    '#nv-cat .opmm-col:first-child{padding-right:22px;border-right:1px solid #EBEFF4;}',
+    '#nv-cat .opmm-col:last-child{padding-left:22px;}',
+    '#nv-cat .opmm-col ul{list-style:none;margin:0;padding:0;}',
+    '#nv-cat .opmm-col a{position:relative;display:flex;align-items:center;gap:8px;padding:7px 9px;border-radius:6px;text-decoration:none;color:#25384C;transition:background .16s ease,color .16s ease,box-shadow .16s ease;}',
+    '#nv-cat .opmm-col a:hover,#nv-cat .opmm-col a:focus-visible{background:#EEF3F8;color:#14355F;box-shadow:inset 2px 0 0 #B08A3C;outline:none;}',
+    '#nv-cat .opmm-rt{flex:1 1 auto;min-width:0;font-size:13.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}',
+    '#nv-cat .opmm-rtag{flex:0 0 auto;font-size:9.5px;font-weight:700;color:#B08A3C;text-transform:uppercase;letter-spacing:.03em;}',
+    '#nv-cat .opmm-ct{flex:0 0 auto;font-size:11px;color:#8695A6;font-variant-numeric:tabular-nums;min-width:22px;text-align:right;}',
+    '#nv-cat .opmm-col a:hover .opmm-ct{color:#14355F;}',
+    '#nv-cat .opmm-cta{display:flex;flex-wrap:wrap;align-items:center;gap:9px 14px;padding:13px 18px;background:#F6F8FB;border-top:1px solid #E7ECF2;}',
+    '#nv-cat .opmm-cta-primary,#nv-cat .opmm-cta-secondary{display:inline-flex;align-items:center;justify-content:center;padding:9px 17px;border-radius:8px;font-weight:700;font-size:13px;text-decoration:none;transition:background .18s ease,border-color .18s ease;}',
+    '#nv-cat .opmm-cta-primary{background:#14355F;color:#fff;box-shadow:0 1px 2px rgba(20,53,95,.2);}',
+    '#nv-cat .opmm-cta-primary:hover,#nv-cat .opmm-cta-primary:focus-visible{background:#0F2848;outline:none;}',
+    '#nv-cat .opmm-cta-secondary{background:#fff;color:#14355F;border:1px solid #C9A24A;}',
+    '#nv-cat .opmm-cta-secondary:hover,#nv-cat .opmm-cta-secondary:focus-visible{background:#FBF6EC;border-color:#B08A3C;outline:none;}',
+    '#nv-cat .opmm-cta-link{color:#41546A;text-decoration:none;font-size:12.5px;font-weight:600;padding:6px 2px;transition:color .16s ease;}',
+    '#nv-cat .opmm-cta-link:hover,#nv-cat .opmm-cta-link:focus-visible{color:#B08A3C;outline:none;}',
+    '#nv-cat .opmm-ar{display:inline-block;transition:transform .18s ease;}#nv-cat .opmm-cta-link:hover .opmm-ar{transform:translateX(3px);}',
+    '#nv-cat .opmm-cta .opmm-cta-link:first-of-type{margin-left:auto;}',
+    '#nv-cat .opmm a:focus-visible{box-shadow:0 0 0 2px #D9B36A;}',
+    /* ---- narrow / mobile (<=980px): 積み上げ・44px・全幅 ---- */
+    '@media (max-width:980px){',
+      'body #nv-cat.nv-mega{width:100%!important;min-width:0!important;border-radius:0;}',
+      '#nv-cat .opmm-pop{padding:10px 10px 12px;}',
+      '#nv-cat .opmm-cards{grid-template-columns:1fr;gap:8px;}',
+      '#nv-cat .opmm-cols{grid-template-columns:1fr;padding:10px 10px 2px;}',
+      '#nv-cat .opmm-col:first-child{padding-right:0;border-right:0;}',
+      '#nv-cat .opmm-col:last-child{padding-left:0;border-top:1px solid #EBEFF4;margin-top:8px;padding-top:10px;}',
+      '#nv-cat .opmm-col a,#nv-cat .opmm-card{min-height:44px;}',
+      '#nv-cat .opmm-rt{white-space:normal;}',
+      '#nv-cat .opmm-cta{flex-direction:column;align-items:stretch;padding:12px 10px;}',
+      '#nv-cat .opmm-cta-primary,#nv-cat .opmm-cta-secondary{width:100%;min-height:44px;}',
+      '#nv-cat .opmm-cta .opmm-cta-link:first-of-type{margin-left:0;}',
+      '#nv-cat .opmm-cta-link{min-height:40px;display:flex;align-items:center;}',
+    '}',
+    '@media (prefers-reduced-motion:reduce){#nv-cat .opmm *{transition:none!important;}}'
+  ].join('\n');
+
+  function injectCSS() {
+    if (document.getElementById('op-meganav-css')) return;
+    var st = document.createElement('style');
+    st.id = 'op-meganav-css';
+    st.textContent = CSS;
+    document.head.appendChild(st);
+  }
+
+  /* ---- 計測（dataLayer.push・無害。GA4/GTM未導入でも安全） ---- */
+  function track(ev, href) {
+    try { window.dataLayer = window.dataLayer || []; window.dataLayer.push({ event: 'mega_nav_click', nav_item: ev, nav_url: href }); } catch (x) {}
+  }
+
+  /* ---- a11y 補助（開閉はテーマ既存＝mouseenter/クリック。ここは属性・計測・Esc） ---- */
+  function wire(cat) {
+    var item = cat.closest('.nv-item');
+    var btn = item && item.querySelector('.nv-btn, button');
+    if (!cat.id) cat.id = 'nv-cat';
+    if (btn) {
+      btn.setAttribute('aria-controls', cat.id);
+      if (!btn.hasAttribute('aria-expanded')) btn.setAttribute('aria-expanded', 'false');
+    }
+    cat.addEventListener('click', function (ev) {
+      var a = ev.target.closest('a[data-opnav]');
+      if (a) track(a.getAttribute('data-opnav'), a.getAttribute('href'));
+    });
+    cat.addEventListener('keydown', function (ev) {
+      if (ev.key === 'Escape' && btn) { btn.focus(); }
+    });
+  }
+
+  function run() {
+    var cat = document.getElementById('nv-cat') || document.querySelector('.nv-sub.nv-mega');
+    if (!cat) return;
+    if (cat.querySelector('.opmm')) return;
+    injectCSS();
+    cat.innerHTML = buildHTML();
+    wire(cat);
+  }
+
+  if (document.readyState === 'loading') { document.addEventListener('DOMContentLoaded', run); } else { run(); }
+})();
+</script>
+    
+<script type="application/json" id="op-gt-data">{"v":1,"st":"article","terms":{"financial-modeling":{"t":"財務モデリング","e":"Financial Modeling","a":"","s":"財務諸表や事業計画をExcel等で予測・分析可能な形に構造化する作業。バリュエーションやM\u0026Aの基礎となる。","u":"\/mod-001-modeling-guide\/"},"discontinued-operations":{"t":"非継続事業","e":"Discontinued Operations","a":"","s":"非継続事業とは、売却・清算が決定または進行中の事業セグメントを継続事業の損益と区分して表示する会計上の区分です。IFRSにおける単一行表示のルールと、対応する独立基準を持たない日本基準での特別損失としての実務対応の違いを整数設例つきで解説します。","u":"\/glossary\/discontinued-operations\/"},"qualitative-characteristics":{"t":"会計情報の質的特性","e":"Qualitative Characteristics of Accounting Information","a":"","s":"財務諸表が投資家等の意思決定に役立つために備えるべき性質。目的適合性・信頼性・比較可能性・理解可能性などが代表的な質的特性として整理される。","u":"\/glossary\/qualitative-characteristics\/"},"yuho-reading":{"t":"有価証券報告書","e":"Annual Securities Report","a":"有報","s":"上場企業が金融商品取引法に基づき年1回開示する、事業・財務内容を網羅した法定開示書類。","u":"\/acc-015-yuho-reading\/"},"flash-fill":{"t":"フラッシュフィル","e":"Flash Fill","a":"","s":"フラッシュフィルとは、隣接列に入力したパターンをExcelが自動認識し、残りのセルを一括補完してくれる機能です。決算資料のテキストから数値を抽出する整数設例をもとに検算しながら、関数・Power Queryとの使い分けと実務上の注意点まで解説します。","u":"\/glossary\/flash-fill\/"},"adjusted-ebitda":{"t":"調整後EBITDA","e":"Adjusted EBITDA","a":"","s":"一時費用や非経常項目を除外し、EBITDAの実態収益力を補正した指標。バリュエーションの基準に用いられる。","u":"\/acc-013-adjusted-ebitda\/"},"accruals-earnings-quality":{"t":"会計発生高と利益の質","e":"Accruals and Earnings Quality","a":"","s":"純利益と営業キャッシュフローの差である会計発生高に注目し、利益がどれだけ現金の裏付けを持つかを評価する分析。","u":"\/glossary\/accruals-earnings-quality\/"},"revenue-recognition":{"t":"収益認識基準","e":"Revenue Recognition","a":"","s":"顧客との契約に基づき、履行義務の充足に応じて収益を認識するタイミング・金額を定めた会計基準。","u":"\/acc-017-revenue-recognition\/"},"lease-accounting":{"t":"リース会計","e":"Lease Accounting","a":"","s":"リース取引を資産・負債としてオンバランス計上する会計基準の適用ルール。オペレーティングリースも原則対象。","u":"\/acc-006-lease-accounting\/"},"ma-scheme":{"t":"M\u0026Aスキーム","e":"M\u0026A Transaction Structures","a":"","s":"株式譲渡・事業譲渡・合併など、M\u0026A取引で用いられる代表的な取引スキームの類型。","u":"\/ma-002-scheme-comparison\/"},"accounting-policy-change":{"t":"会計方針の変更と会計上の見積りの変更","e":"Changes in Accounting Policies and Accounting Estimates","a":"","s":"会計方針の変更は原則として過去の財務諸表に遡及適用するのに対し、会計上の見積りの変更は将来に向かって適用する点が異なる。注記でどちらに該当するか区別される。","u":"\/glossary\/accounting-policy-change\/"},"ebit":{"t":"EBIT（利払前・税引前利益）","e":"Earnings Before Interest and Taxes","a":"EBIT","s":"支払利息と税金を差し引く前の事業利益。資本構成の異なる企業を同じ土俵で比較でき、営業利益で近似されることが多い。","u":"\/glossary\/ebit\/"},"ebitda":{"t":"EBITDA","e":"Earnings Before Interest, Taxes, Depreciation and Amortization","a":"EBITDA","s":"金利・税金・減価償却前利益。事業本来のキャッシュ創出力を測る収益性指標として広く用いられる。","u":"\/fin-002-ebitda\/"},"fiscal-year-calendar-conversion":{"t":"決算期とカレンダー年度の変換","e":"Fiscal Year to Calendar Year Conversion","a":"","s":"3月決算の日本企業を12月決算の海外企業や類似会社と比較する際、決算期のズレを月割りで補正しカレンダーベースに揃える手法。","u":"\/glossary\/fiscal-year-calendar-conversion\/"},"income-statement":{"t":"損益計算書","e":"Income Statement \/ Profit and Loss Statement","a":"P\/L","s":"一定期間の収益・費用・利益を示す財務諸表。売上高から営業利益・経常利益・純利益等を段階的に算出する。","u":"\/acc-002-pl-profit-levels\/"},"pro-forma-financials":{"t":"プロフォーマ財務諸表","e":"Pro Forma Financial Statements","a":"","s":"プロフォーマ財務諸表とは、M\u0026Aや資本政策が期首から実行されていたと仮定して作成する仮定条件下の財務諸表です。買収後の合算業績イメージやプロフォーマEPSの計算方法、日本のM\u0026A開示・IPO目論見書での使われ方までを整数設例つきで解説します。","u":"\/glossary\/pro-forma-financials\/"},"carveout":{"t":"カーブアウト","e":"Carve-Out","a":"","s":"企業の一部事業や子会社を切り出し、独立させるか第三者に売却する取引。","u":"\/ma-008-carveout\/"},"ifrs":{"t":"国際財務報告基準","e":"International Financial Reporting Standards (IFRS)","a":"IFRS","s":"IFRS（国際財務報告基準）とは、IASBが策定し多くの国・地域で採用されている国際的な会計基準です。のれん非償却・開発費の資産計上・リースなど分析で効く差異を日本基準と対比し、同じ事業でも営業段階の利益がいくら変わるかを整数設例で示します。","u":"\/glossary\/ifrs\/"},"normalized-earnings":{"t":"正常収益力の算定","e":"Normalized Earnings Analysis","a":"","s":"オーナー報酬・一過性損益・関連当事者取引などの非経常項目を加減算し、対象会社が継続的に生み出せる実態ベースの収益力を算定する分析。バリュエーションとDDの起点となる。","u":"\/glossary\/normalized-earnings\/"},"seasonality-modeling":{"t":"季節性のモデル化","e":"Seasonality Modeling","a":"","s":"年間予測を月次・四半期に配分する際、業種特有の繁閑パターン（季節指数）を反映するモデリング手法。単純な月割りでは実態とずれる業種で使う。","u":"\/glossary\/seasonality-modeling\/"},"segment-modeling":{"t":"セグメント別モデリング（事業部制モデル）","e":"Segment-Level Modeling","a":"","s":"複数の事業セグメントや子会社を持つ企業のモデルを、セグメントごとのタブで作成し全社合算タブに集約する設計手法。","u":"\/glossary\/segment-modeling\/"},"restatement":{"t":"過年度決算の訂正","e":"Restatement of Financial Statements","a":"","s":"誤謬や不正の判明により過去の財務諸表を遡って修正すること。時系列分析やモデルの前提をやり直す必要が生じる。","u":"\/glossary\/restatement\/"},"subsequent-events":{"t":"後発事象","e":"Subsequent Events","a":"","s":"決算日の翌日から財務諸表の作成日までに発生した、財務諸表に影響を及ぼす事象。修正を要する事象と開示のみで足りる事象に区分される。","u":"\/glossary\/subsequent-events\/"},"model-qc":{"t":"モデルQC","e":"Model Quality Control","a":"QC","s":"財務モデルの数式・整合性・前提条件を体系的に検証する品質管理作業。誤りやハードコードを洗い出す。","u":"\/mod-009-model-qc\/"}}}</script><script src="../wp-content/themes/otemachi-prep-child/assets/js/op-gltip.js" defer></script>
+</body>
+</html>
